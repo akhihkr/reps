@@ -1,0 +1,12 @@
+C:\MYProjectsShare\REPS\Global\bin\Debug\Global.dll.config
+C:\MYProjectsShare\REPS\Global\bin\Debug\Global.dll
+C:\MYProjectsShare\REPS\Global\bin\Debug\Global.pdb
+C:\MYProjectsShare\REPS\Global\bin\Debug\EntityFramework.dll
+C:\MYProjectsShare\REPS\Global\bin\Debug\EntityFramework.SqlServer.dll
+C:\MYProjectsShare\REPS\Global\bin\Debug\EntityFramework.xml
+C:\MYProjectsShare\REPS\Global\bin\Debug\EntityFramework.SqlServer.xml
+C:\MYProjectsShare\REPS\Global\obj\Debug\Global.csproj.AssemblyReference.cache
+C:\MYProjectsShare\REPS\Global\obj\Debug\Global.csproj.CoreCompileInputs.cache
+C:\MYProjectsShare\REPS\Global\obj\Debug\Global.csproj.CopyComplete
+C:\MYProjectsShare\REPS\Global\obj\Debug\Global.dll
+C:\MYProjectsShare\REPS\Global\obj\Debug\Global.pdb

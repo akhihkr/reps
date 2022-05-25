@@ -1,0 +1,151 @@
+﻿/************************ PAGINATION ***********************/
+/*
+        * jQuery Dynatable plugin 0.3.1
+        *
+        * Copyright (c) 2014 Steve Schwartz (JangoSteve)
+        *
+        * Dual licensed under the AGPL and Proprietary licenses:
+        *   http://www.dynatable.com/license/
+        *
+        * Date: Tue Jan 02 2014
+        */
+/*th {
+          background: #006a72;
+        }
+        th a {
+          color: #fff;
+        }
+        th a:hover {
+          color: #fff;
+          text-decoration: underline;
+        }*/
+.all-deals-table {
+  position: relative;
+  display: block; }
+
+.dynatable-search {
+  margin-bottom: 10px;
+  margin-right: 28px;
+  background: #f00;
+  margin-top: 0;
+  width: 151px;
+  display: block;
+  float: right;
+  position: relative; }
+
+.dynatable-search input {
+  height: 2rem;
+  padding: .5rem;
+  border: 1px solid #e0ebf5;
+  margin: 0;
+  font-family: inherit;
+  font-size: .9rem;
+  color: #212121;
+  background-color: #fbfdff;
+  box-shadow: inset 0 1px 2px rgba(242, 244, 250, 0.3);
+  border-radius: 0; }
+
+a.dynatable-sort-header {
+  color: #1a1a1a;
+  font-weight: 400; }
+
+span.dynatable-arrow {
+  float: right;
+  display: inline-block;
+  position: absolute; }
+
+input#dynatable-query-search-deals-table {
+  padding: 15px 10px;
+  height: 30px;
+  margin: 0px;
+  margin-bottom: 8px; }
+
+.dynatable-pagination-links {
+  text-align: center;
+  font-size: 13px;
+  margin: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: block;
+  position: relative;
+  height: auto; }
+
+.dynatable-record-count {
+  display: block;
+  padding: 5px 0;
+  font-size: 12px;
+  padding-left: 28px; }
+
+.dynatable-pagination-links span,
+.dynatable-pagination-links li {
+  display: inline-block; }
+
+.dynatable-page-link, .dynatable-page-break {
+  display: block;
+  padding: 5px 8px;
+  margin-left: 4px;
+  margin-right: 4px;
+  transition: 0.2s ease background;
+  background: none; }
+
+.dynatable-page-link:hover {
+  background: #2196f3;
+  color: #fff;
+  transition: 0.2s ease background; }
+
+.dynatable-page-link {
+  cursor: pointer; }
+
+.dynatable-active-page,
+.dynatable-disabled-page {
+  cursor: text; }
+
+.dynatable-active-page:hover,
+.dynatable-disabled-page:hover {
+  text-decoration: none; }
+
+.dynatable-active-page {
+  background: #2196f3;
+  color: #fff; }
+
+.dynatable-active-page:hover {
+  color: #fff; }
+
+.dynatable-disabled-page,
+.dynatable-disabled-page:hover {
+  background: none;
+  color: #999; }
+
+/************************ END PAGINATION ***********************/
+
+/*------------------------------------*	Pagination
+\*------------------------------------*/
+.paging-nav {
+  text-align: right;
+  padding-top: 2px; }
+
+.paging-nav a {
+  margin: auto 2px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 3px 9px;
+  color: #01152e;
+  font-size: 13px; }
+
+.paging-nav a:hover {
+  background: #2196f3;
+  color: #fff; }
+
+.paging-nav .selected-page {
+  background: none;
+  font-weight: bold;
+  background: #2196f3 !important;
+  color: #fff !important; }
+
+.paging-nav, #tableData {
+  max-width: 580px;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 30px; }
+
+/******************************** END PAGINATION *********************/

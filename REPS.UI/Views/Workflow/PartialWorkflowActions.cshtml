@@ -1,0 +1,41 @@
+﻿@{
+    //User roles
+    var WorkflowTasksActions = ViewData["WorkflowTasksActionsList"];
+    var selectedTaskID = ViewData["SelectedTaskID"];
+
+    if (TempData["ToasterWorflowUser"] != null)
+    {
+        <script type="text/javascript">
+            @Html.Raw(TempData["ToasterWorflowUser"])
+        </script>
+    }
+}
+<div id="WorkflowTaskActionTabs">
+
+        @{
+            if (ViewData["WorkflowTasksActionsList"] != null)
+            {
+
+                foreach (var workflowTaskAction in WorkflowTasksActions as IEnumerable<dynamic>)
+                {
+                    <div class="@( (Convert.ToInt32(workflowTaskAction["Tick"]) == 0) ? "action-wrapper" : "action-wrapper-done" )">
+                        <h1>@workflowTaskAction["DisplayName"]</h1>
+                        <div id="@workflowTaskAction["WorkflowActionID"]">
+                            @{
+                                if ((Convert.ToInt32(workflowTaskAction["Tick"]) == 0))
+                                {
+                                    <a href="#" class="button ActionAdd" onclick="CallPopupPanel('Workflow', 'PopupAddAction', 'general-panel', {taskID: '@ViewData["SelectedTaskID"]',workflowActionID:'@workflowTaskAction["WorkflowActionID"]'})">Add</a>
+                                }
+                                else
+                                {
+                                    <a href="#" class="button ActionEdit" onclick="CallPopupPanel('Workflow', 'PopupEditAction', 'general-panel', {taskID:'@ViewData["SelectedTaskID"]',workflowActionID:'@workflowTaskAction["WorkflowActionID"]',partial:false})">Edit</a>
+                                    <i class="material-icons">done</i>
+                                }
+                            }
+                        </div>
+                    </div> <!-- End of action-wrapper -->
+
+                }
+            }
+        }
+</div>

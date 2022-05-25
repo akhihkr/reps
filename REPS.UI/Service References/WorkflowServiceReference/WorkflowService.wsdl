@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WorkflowService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:54738/WorkflowService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:54738/WorkflowService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:54738/WorkflowService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Common" />
+      <xsd:import schemaLocation="http://localhost:54738/WorkflowService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:54738/WorkflowService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/REPS.DATA.Entity" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IWorkflowService_GetWorkFlowTasks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkFlowTasks" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetWorkFlowTasks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkFlowTasksResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetWorkFlowTasksActions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkFlowTasksActions" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetWorkFlowTasksActions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkFlowTasksActionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetTaskWorkflowID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTaskWorkflowID" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetTaskWorkflowID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTaskWorkflowIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetWorkFlowActionsAddFields_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkFlowActionsAddFields" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetWorkFlowActionsAddFields_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkFlowActionsAddFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetTaskWorkflowName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTaskWorkflowName" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetTaskWorkflowName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTaskWorkflowNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetWorkflowIDTaskID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkflowIDTaskID" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetWorkflowIDTaskID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkflowIDTaskIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetWorkflowDealCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkflowDealCount" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetWorkflowDealCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkflowDealCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetWorkflowsList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkflowsList" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetWorkflowsList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkflowsListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetWorkFlowTasksActionsList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkFlowTasksActionsList" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetWorkFlowTasksActionsList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkFlowTasksActionsListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_InsertWorkflowActionValues_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertWorkflowActionValues" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_InsertWorkflowActionValues_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertWorkflowActionValuesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetWorkFlowActionsEditFields_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkFlowActionsEditFields" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetWorkFlowActionsEditFields_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkFlowActionsEditFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_UpdateWorkflowActionValues_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateWorkflowActionValues" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_UpdateWorkflowActionValues_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateWorkflowActionValuesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_SaveWorkflowChanges_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveWorkflowChanges" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_SaveWorkflowChanges_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveWorkflowChangesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_AddWorkflow_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddWorkflow" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_AddWorkflow_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddWorkflowResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetAllTasks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTasks" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetAllTasks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTasksResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetWorkflowVariableList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkflowVariableList" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetWorkflowVariableList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkflowVariableListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetWorkflowActionIsMandatory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkflowActionIsMandatory" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetWorkflowActionIsMandatory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkflowActionIsMandatoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_ToggleWorkflowVariable_InputMessage">
+    <wsdl:part name="parameters" element="tns:ToggleWorkflowVariable" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_ToggleWorkflowVariable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ToggleWorkflowVariableResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_ToggleWorkflowVariableRequired_InputMessage">
+    <wsdl:part name="parameters" element="tns:ToggleWorkflowVariableRequired" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_ToggleWorkflowVariableRequired_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ToggleWorkflowVariableRequiredResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_ToggleActionMandatory_InputMessage">
+    <wsdl:part name="parameters" element="tns:ToggleActionMandatory" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_ToggleActionMandatory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ToggleActionMandatoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_AddNewAction_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewAction" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_AddNewAction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewActionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_SaveActionChanges_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveActionChanges" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_SaveActionChanges_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveActionChangesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_UnAssignActionFromTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnAssignActionFromTask" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_UnAssignActionFromTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UnAssignActionFromTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_AssignActionToTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:AssignActionToTask" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_AssignActionToTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AssignActionToTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_UnAssignTaskFromWorkflow_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnAssignTaskFromWorkflow" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_UnAssignTaskFromWorkflow_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UnAssignTaskFromWorkflowResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_AssignTaskToWorkflow_InputMessage">
+    <wsdl:part name="parameters" element="tns:AssignTaskToWorkflow" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_AssignTaskToWorkflow_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AssignTaskToWorkflowResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_DeleteTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTask" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_DeleteTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_DeleteWorkflow_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteWorkflow" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_DeleteWorkflow_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteWorkflowResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_SwitchUserWorkflowAfterDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:SwitchUserWorkflowAfterDelete" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_SwitchUserWorkflowAfterDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SwitchUserWorkflowAfterDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_AddNewTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewTask" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_AddNewTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_UpdateTask_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTask" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_UpdateTask_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetTransactionDetailIDByTransactionDetailGUID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactionDetailIDByTransactionDetailGUID" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetTransactionDetailIDByTransactionDetailGUID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactionDetailIDByTransactionDetailGUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_RemoveTransactionImg_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveTransactionImg" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_RemoveTransactionImg_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveTransactionImgResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetCurrentWorkflowsDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentWorkflowsDetails" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetCurrentWorkflowsDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentWorkflowsDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_AddWorkflowStep_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddWorkflowStep" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_AddWorkflowStep_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddWorkflowStepResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetTemplatePerWorkflowStep_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTemplatePerWorkflowStep" />
+  </wsdl:message>
+  <wsdl:message name="IWorkflowService_GetTemplatePerWorkflowStep_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTemplatePerWorkflowStepResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IWorkflowService">
+    <wsdl:operation name="GetWorkFlowTasks">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/GetWorkFlowTasks" message="tns:IWorkflowService_GetWorkFlowTasks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/GetWorkFlowTasksResponse" message="tns:IWorkflowService_GetWorkFlowTasks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkFlowTasksActions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/GetWorkFlowTasksActions" message="tns:IWorkflowService_GetWorkFlowTasksActions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/GetWorkFlowTasksActionsResponse" message="tns:IWorkflowService_GetWorkFlowTasksActions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTaskWorkflowID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/GetTaskWorkflowID" message="tns:IWorkflowService_GetTaskWorkflowID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/GetTaskWorkflowIDResponse" message="tns:IWorkflowService_GetTaskWorkflowID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkFlowActionsAddFields">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/GetWorkFlowActionsAddFields" message="tns:IWorkflowService_GetWorkFlowActionsAddFields_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/GetWorkFlowActionsAddFieldsResponse" message="tns:IWorkflowService_GetWorkFlowActionsAddFields_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTaskWorkflowName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/GetTaskWorkflowName" message="tns:IWorkflowService_GetTaskWorkflowName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/GetTaskWorkflowNameResponse" message="tns:IWorkflowService_GetTaskWorkflowName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkflowIDTaskID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/GetWorkflowIDTaskID" message="tns:IWorkflowService_GetWorkflowIDTaskID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/GetWorkflowIDTaskIDResponse" message="tns:IWorkflowService_GetWorkflowIDTaskID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkflowDealCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/GetWorkflowDealCount" message="tns:IWorkflowService_GetWorkflowDealCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/GetWorkflowDealCountResponse" message="tns:IWorkflowService_GetWorkflowDealCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkflowsList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/GetWorkflowsList" message="tns:IWorkflowService_GetWorkflowsList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/GetWorkflowsListResponse" message="tns:IWorkflowService_GetWorkflowsList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkFlowTasksActionsList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/GetWorkFlowTasksActionsList" message="tns:IWorkflowService_GetWorkFlowTasksActionsList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/GetWorkFlowTasksActionsListResponse" message="tns:IWorkflowService_GetWorkFlowTasksActionsList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertWorkflowActionValues">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/InsertWorkflowActionValues" message="tns:IWorkflowService_InsertWorkflowActionValues_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/InsertWorkflowActionValuesResponse" message="tns:IWorkflowService_InsertWorkflowActionValues_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkFlowActionsEditFields">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/GetWorkFlowActionsEditFields" message="tns:IWorkflowService_GetWorkFlowActionsEditFields_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/GetWorkFlowActionsEditFieldsResponse" message="tns:IWorkflowService_GetWorkFlowActionsEditFields_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWorkflowActionValues">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/UpdateWorkflowActionValues" message="tns:IWorkflowService_UpdateWorkflowActionValues_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/UpdateWorkflowActionValuesResponse" message="tns:IWorkflowService_UpdateWorkflowActionValues_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveWorkflowChanges">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/SaveWorkflowChanges" message="tns:IWorkflowService_SaveWorkflowChanges_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/SaveWorkflowChangesResponse" message="tns:IWorkflowService_SaveWorkflowChanges_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddWorkflow">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/AddWorkflow" message="tns:IWorkflowService_AddWorkflow_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/AddWorkflowResponse" message="tns:IWorkflowService_AddWorkflow_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTasks">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/GetAllTasks" message="tns:IWorkflowService_GetAllTasks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/GetAllTasksResponse" message="tns:IWorkflowService_GetAllTasks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkflowVariableList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/GetWorkflowVariableList" message="tns:IWorkflowService_GetWorkflowVariableList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/GetWorkflowVariableListResponse" message="tns:IWorkflowService_GetWorkflowVariableList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkflowActionIsMandatory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/GetWorkflowActionIsMandatory" message="tns:IWorkflowService_GetWorkflowActionIsMandatory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/GetWorkflowActionIsMandatoryResponse" message="tns:IWorkflowService_GetWorkflowActionIsMandatory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ToggleWorkflowVariable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/ToggleWorkflowVariable" message="tns:IWorkflowService_ToggleWorkflowVariable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/ToggleWorkflowVariableResponse" message="tns:IWorkflowService_ToggleWorkflowVariable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ToggleWorkflowVariableRequired">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/ToggleWorkflowVariableRequired" message="tns:IWorkflowService_ToggleWorkflowVariableRequired_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/ToggleWorkflowVariableRequiredResponse" message="tns:IWorkflowService_ToggleWorkflowVariableRequired_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ToggleActionMandatory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/ToggleActionMandatory" message="tns:IWorkflowService_ToggleActionMandatory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/ToggleActionMandatoryResponse" message="tns:IWorkflowService_ToggleActionMandatory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNewAction">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/AddNewAction" message="tns:IWorkflowService_AddNewAction_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/AddNewActionResponse" message="tns:IWorkflowService_AddNewAction_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveActionChanges">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/SaveActionChanges" message="tns:IWorkflowService_SaveActionChanges_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/SaveActionChangesResponse" message="tns:IWorkflowService_SaveActionChanges_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnAssignActionFromTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/UnAssignActionFromTask" message="tns:IWorkflowService_UnAssignActionFromTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/UnAssignActionFromTaskResponse" message="tns:IWorkflowService_UnAssignActionFromTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AssignActionToTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/AssignActionToTask" message="tns:IWorkflowService_AssignActionToTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/AssignActionToTaskResponse" message="tns:IWorkflowService_AssignActionToTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnAssignTaskFromWorkflow">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/UnAssignTaskFromWorkflow" message="tns:IWorkflowService_UnAssignTaskFromWorkflow_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/UnAssignTaskFromWorkflowResponse" message="tns:IWorkflowService_UnAssignTaskFromWorkflow_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AssignTaskToWorkflow">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/AssignTaskToWorkflow" message="tns:IWorkflowService_AssignTaskToWorkflow_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/AssignTaskToWorkflowResponse" message="tns:IWorkflowService_AssignTaskToWorkflow_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/DeleteTask" message="tns:IWorkflowService_DeleteTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/DeleteTaskResponse" message="tns:IWorkflowService_DeleteTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWorkflow">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/DeleteWorkflow" message="tns:IWorkflowService_DeleteWorkflow_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/DeleteWorkflowResponse" message="tns:IWorkflowService_DeleteWorkflow_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SwitchUserWorkflowAfterDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/SwitchUserWorkflowAfterDelete" message="tns:IWorkflowService_SwitchUserWorkflowAfterDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/SwitchUserWorkflowAfterDeleteResponse" message="tns:IWorkflowService_SwitchUserWorkflowAfterDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNewTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/AddNewTask" message="tns:IWorkflowService_AddNewTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/AddNewTaskResponse" message="tns:IWorkflowService_AddNewTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTask">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/UpdateTask" message="tns:IWorkflowService_UpdateTask_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/UpdateTaskResponse" message="tns:IWorkflowService_UpdateTask_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionDetailIDByTransactionDetailGUID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/GetTransactionDetailIDByTransactionDetailGUID" message="tns:IWorkflowService_GetTransactionDetailIDByTransactionDetailGUID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/GetTransactionDetailIDByTransactionDetailGUIDResponse" message="tns:IWorkflowService_GetTransactionDetailIDByTransactionDetailGUID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveTransactionImg">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/RemoveTransactionImg" message="tns:IWorkflowService_RemoveTransactionImg_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/RemoveTransactionImgResponse" message="tns:IWorkflowService_RemoveTransactionImg_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentWorkflowsDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/GetCurrentWorkflowsDetails" message="tns:IWorkflowService_GetCurrentWorkflowsDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/GetCurrentWorkflowsDetailsResponse" message="tns:IWorkflowService_GetCurrentWorkflowsDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddWorkflowStep">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/AddWorkflowStep" message="tns:IWorkflowService_AddWorkflowStep_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/AddWorkflowStepResponse" message="tns:IWorkflowService_AddWorkflowStep_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTemplatePerWorkflowStep">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWorkflowService/GetTemplatePerWorkflowStep" message="tns:IWorkflowService_GetTemplatePerWorkflowStep_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWorkflowService/GetTemplatePerWorkflowStepResponse" message="tns:IWorkflowService_GetTemplatePerWorkflowStep_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="WorkflowService" />
+</wsdl:definitions>

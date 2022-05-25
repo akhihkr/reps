@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AlertsService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:54738/AlertsService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:54738/AlertsService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:54738/AlertsService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Common" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IAlertsService_InsertAlerts_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAlerts" />
+  </wsdl:message>
+  <wsdl:message name="IAlertsService_InsertAlerts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertAlertsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAlertsService_UpdateAlerts_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAlerts" />
+  </wsdl:message>
+  <wsdl:message name="IAlertsService_UpdateAlerts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAlertsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAlertsService_UpdateAlertsStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAlertsStatus" />
+  </wsdl:message>
+  <wsdl:message name="IAlertsService_UpdateAlertsStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAlertsStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAlertsService_GetAlertsInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAlertsInfo" />
+  </wsdl:message>
+  <wsdl:message name="IAlertsService_GetAlertsInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAlertsInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAlertsService_GetEventByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEventByID" />
+  </wsdl:message>
+  <wsdl:message name="IAlertsService_GetEventByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEventByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAlertsService_GetAlertsForDiaryItems_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAlertsForDiaryItems" />
+  </wsdl:message>
+  <wsdl:message name="IAlertsService_GetAlertsForDiaryItems_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAlertsForDiaryItemsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAlertsService_GetAlertsIDByAlertsGUID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAlertsIDByAlertsGUID" />
+  </wsdl:message>
+  <wsdl:message name="IAlertsService_GetAlertsIDByAlertsGUID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAlertsIDByAlertsGUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAlertsService_GetDealIDByAlertsGUID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealIDByAlertsGUID" />
+  </wsdl:message>
+  <wsdl:message name="IAlertsService_GetDealIDByAlertsGUID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealIDByAlertsGUIDResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IAlertsService">
+    <wsdl:operation name="InsertAlerts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAlertsService/InsertAlerts" message="tns:IAlertsService_InsertAlerts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAlertsService/InsertAlertsResponse" message="tns:IAlertsService_InsertAlerts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAlerts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAlertsService/UpdateAlerts" message="tns:IAlertsService_UpdateAlerts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAlertsService/UpdateAlertsResponse" message="tns:IAlertsService_UpdateAlerts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAlertsStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAlertsService/UpdateAlertsStatus" message="tns:IAlertsService_UpdateAlertsStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAlertsService/UpdateAlertsStatusResponse" message="tns:IAlertsService_UpdateAlertsStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAlertsInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAlertsService/GetAlertsInfo" message="tns:IAlertsService_GetAlertsInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAlertsService/GetAlertsInfoResponse" message="tns:IAlertsService_GetAlertsInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEventByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAlertsService/GetEventByID" message="tns:IAlertsService_GetEventByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAlertsService/GetEventByIDResponse" message="tns:IAlertsService_GetEventByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAlertsForDiaryItems">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAlertsService/GetAlertsForDiaryItems" message="tns:IAlertsService_GetAlertsForDiaryItems_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAlertsService/GetAlertsForDiaryItemsResponse" message="tns:IAlertsService_GetAlertsForDiaryItems_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAlertsIDByAlertsGUID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAlertsService/GetAlertsIDByAlertsGUID" message="tns:IAlertsService_GetAlertsIDByAlertsGUID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAlertsService/GetAlertsIDByAlertsGUIDResponse" message="tns:IAlertsService_GetAlertsIDByAlertsGUID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDealIDByAlertsGUID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAlertsService/GetDealIDByAlertsGUID" message="tns:IAlertsService_GetDealIDByAlertsGUID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAlertsService/GetDealIDByAlertsGUIDResponse" message="tns:IAlertsService_GetDealIDByAlertsGUID_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="AlertsService" />
+</wsdl:definitions>

@@ -1,0 +1,162 @@
+﻿@charset "UTF-8";
+@import "../Partials/GlobalVariables.scss";
+
+
+
+/*------------------------------------*\
+	Payments
+\*------------------------------------*/
+
+.picker-sections input {
+    cursor: pointer;
+}
+
+.payments-table {
+    min-height: 350px;
+    width: 100%;
+    overflow: auto;
+}
+
+.payments-table i {
+    font-size: 15px;
+    top: 2px;
+    position: relative;
+}
+
+.payments-table .pagination {
+    position: relative;
+    float: left;
+    display: inline-block;
+    margin-left: 28px;
+}
+
+.fees-table-box {
+    padding: 0;
+    padding-bottom: 28px;
+}
+
+.payments-tab {
+    margin: 10px;
+}
+
+.payments-table .button {
+    float: right;
+    margin-top: 5px;
+}
+
+.payments-records {
+    text-align: center;
+    font-size: 13px;
+    font-family: Gotham-Bold;
+    position: relative;
+    display: inline-block;
+    float: right;
+    margin-top: 20px;
+    margin-right: 28px;
+}
+
+.payments-total {
+    height: auto;
+    overflow: auto;
+    display: block;
+    float: right;
+    text-align: right;
+    margin-top: 20px;
+
+    h1 {
+        font-size: 16px;
+    }
+
+    p {
+        font-size: 13px;
+        line-height: 22px;
+        margin-bottom: 5px;
+    }
+}
+
+.unbalanced-count {
+    color: $red;
+}
+
+.balanced-count {
+    color: $green-btn-color;
+}
+
+.total-box {
+    display: block;
+    margin-bottom: 14px;
+}
+
+.balanced {
+    background: $green-btn-color;
+    color: $white;
+    font-size: 12px;
+    text-align: center;
+}
+
+.unbalanced {
+    background: $red;
+    color: $white;
+    font-size: 12px;
+    text-align: center;
+}
+
+.debits-box {
+    float: left;
+    display: block;
+    margin-right: 20px;
+}
+
+.credits-box {
+    float: left;
+    display: block;
+}
+
+.total-payments-row {
+    background-color: $white !important;
+    border-bottom: 0 !important;
+}
+
+.add-border-td-total {
+    border-top: 2px solid $primary-color;
+}
+
+/*------------------------------------*\
+	Responsive
+\*------------------------------------*/
+
+/* ----------- Small ----------- */
+@media all and (min-width: 1px) and (max-width: 482px) {
+
+}
+
+
+
+/* ----------- Tablet ----------- */
+/* max-width: 64em */
+@media all and (min-width: 483px) and (max-width: 1024px) {
+
+}
+
+
+
+/* ----------- 483px to 622px ----------- */
+@media all and (min-width: 483px) and (max-width: 622px) {
+
+}
+
+
+
+
+/* ----------- Laptop ----------- */
+@media only screen and (min-width: 64.063em) {
+
+}
+
+
+
+
+/* ----------- 1024px to 1193px ----------- */
+@media all and (min-width: 1024px) and (max-width: 1193px) {
+
+}

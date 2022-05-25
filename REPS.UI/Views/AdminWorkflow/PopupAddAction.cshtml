@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Add Action";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    //ajax
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "content-wrapper",
+        OnSuccess = "onSuccessToasterMsg(null,null,null,null,'Changes have been successfully saved')",
+        OnFailure = "OnFailure",
+        OnComplete = "onComplete",
+    };
+}
+
+<div class="row reset-row manage-workflows">
+
+        @using (Ajax.BeginForm("SaveActionChanges", "AdminWorkflow", new { WorkflowID = @ViewData["WorkflowID"], TaskID = @ViewData["TaskID"] }, options, new { name = "AddAction", id = "AddAction", enctype = "multipart/form-data" }))
+        {
+            <div id="EditActionAdminDiv">
+                @if (ViewData["ActionsList"] != null && (int.Parse((ViewData["ActionsList"] as IEnumerable<dynamic>).Count().ToString()) != 0))
+                {
+                    foreach (var Action in ViewData["ActionsList"] as IEnumerable<dynamic>)
+                    {
+                        <div class="workflow-input-section">
+                            <div class="small-9 medium-10 columns">
+                                <label>
+                                    Action Name
+                                    <input name="Edit:@Action["WorkflowActionID"]" type="text" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar100))" value="@Action["DisplayName"]" />
+                                </label>
+                            </div> <!-- End of medium-10 columns -->
+
+                            <div class="small-3 medium-2 columns">
+                                <a class="remove-workflow remove-add-action" onclick="RemoveActionPopup(@Action["WorkflowActionID"],@ViewData["WorkflowTaskID"],@ViewData["WorkflowID"],@ViewData["TaskID"])">Remove</a>
+                            </div> <!-- End of medium-2 columns -->
+
+                        </div> <!-- End of workflow-input-section -->
+                    }
+                }
+            </div>
+        }
+
+</div> <!-- End of row -->
+
+@section footer
+{
+    <a id="add-action-admin-btn" href="#" class="button add-workflow add-action-admin-btn">
+        <i class="material-icons">add</i>
+        Add Action
+    </a>
+    <a id="btn-save" class="button align-right dirty-disabled" onclick="FormObjectSubmit('#btn-save', '#AddAction', true);">Save</a>
+}
+
+@section script{
+    <script type="text/javascript">
+    $(document).ready(function () {
+        //append Action admin
+        $('.add-action-admin-btn').on('click', function () {
+            workflowTaskID = @ViewData["WorkflowTaskID"];
+            $('#EditActionAdminDiv').append("<div class='workflow-input-section'><div class='small-12 medium-10 columns'><label>Action Name<input type='text' name='NewAction:"+ workflowTaskID + ":" + ($("#EditActionAdminDiv").find($("input")).length + 1) + "' placeholder='' /></label></div></div>");
+            $('#AddAction').dirrty()
+        });
+    });
+
+    //dirty function used to check if event listener has been modified and call the updates function
+        $('#AddAction').dirrty().on("dirty", function () {
+            $("#btn-save").removeClass("dirty-disabled");//removed attribute if in case if anchor tag is used
+        }).on("clean", function () {
+            $("#btn-save").addClass("dirty-disabled")//add attribute if in case if anchor tag is used
+        });
+    //end of dirty function used to check if event listener has been modified and call the updates function
+    </script>
+}

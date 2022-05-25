@@ -1,0 +1,143 @@
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/Fonts/MaterialIcons/MaterialIcons-Regular.eot'); /* For IE6-8 */
+  src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+       url('/Fonts/MaterialIcons/MaterialIcons-Regular.woff2') format('woff2'),
+       url('/Fonts/MaterialIcons/MaterialIcons-Regular.woff') format('woff'),
+       url('/Fonts/MaterialIcons/MaterialIcons-Regular.ttf') format('truetype');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+
+/* Below copied from icon.min.css*/
+@charset "UTF-8";
+
+@font-face {
+    font-family: "NotoSans";
+    src: Url("/Fonts/MaterialIcons/MaterialIcons-Regular.eot");
+    src: Url("/Fonts/MaterialIcons/MaterialIcons-Regular.eot?#iefix") format("embedded-opentype"),Url("/Fonts/MaterialIcons/MaterialIcons-Regular.woff") format("woff"),Url("/Fonts/MaterialIcons/MaterialIcons-Regular.ttf") format("truetype"),Url("/Fonts/MaterialIcons/MaterialIcons-Regular.svg#NotoSans") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+[data-icon]:before {
+    font-family: "NotoSans" !important;
+    content: attr(data-icon);
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="ic-"]:before, [class*=" ic-"]:before {
+    font-family: "NotoSans" !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    speak: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.ic-property:before {
+    content: "a";
+}
+
+.ic-settings:before {
+    content: "b";
+}
+
+.ic-search:before {
+    content: "c";
+}
+
+.ic-user:before {
+    content: "d";
+}
+
+.ic-register:before {
+    content: "f";
+}
+
+.ic-deals:before {
+    content: "g";
+}
+
+.ic-payment:before {
+    content: "h";
+}
+
+.ic-general:before {
+    content: "i";
+}
+
+.ic-created:before {
+    content: "j";
+}
+
+.ic-report:before {
+    content: "k";
+}
+
+.ic-logout:before {
+    content: "e";
+}
+
+.ic-deflate:before {
+    content: "l";
+}
+
+.ic-inflate:before {
+    content: "m";
+}
+
+.ic-broadcast:before {
+    content: "n";
+}
+
+.ic-notify:before {
+    content: "o";
+}
+
+.ic-openconn:before {
+    content: "p";
+}
+
+.ic-closeconn:before {
+    content: "q";
+}
+
+    

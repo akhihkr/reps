@@ -1,0 +1,168 @@
+﻿@using Global;
+@{
+    Layout = null;
+    double sumCredit = 0;
+
+    //User roles
+    string role_view_feeedit = "FE_ED";
+    string role_view_feeadd = "FE_AD";
+}
+
+<div class="payments-tab">
+    @if (Common.CArray.SearchInCookie(role_view_feeadd))
+    {
+        <a href="#" class="button align-right" onclick="CallPopupPanel('Payment', 'PopupAddPayment', 'general-panel')">Add Payment</a>
+    }
+</div> <!-- End of fees-tab -->
+
+@if (ViewBag.PaymentList == null)
+{
+    <div class="empty-section">
+        <i class="material-icons">event</i>
+        <p>No payments listed.</p>
+    </div> <!-- End of empty-section -->
+}
+else
+{
+    <div class="payments-table">
+        <div class="table-scroll add-box-padding">
+            <table>
+                <thead>
+                    <tr id="table-head">
+                        <th width="" class="hide-row-mobile">Date</th>
+                        <th width="" class="hide-row-mobile">Time</th>
+                        <th width="">Description</th>
+                        <th width="" class="hide-row-mobile">Payment Type</th>
+                        <th width="">Debit</th>
+                        <th width="">Credit</th>
+                        <th width=""></th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td class="hide-row-mobile"></td>
+                    <td class="hide-row-mobile"></td>
+                    <td>ABSA - Guaranteed Amount</td>
+                    <td class="hide-row-mobile"></td>
+                    <td>R @Math.Round(ViewBag.PriceMortgageSumValue, 2, MidpointRounding.AwayFromZero)</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                @foreach (var Payment in ViewBag.PaymentList)
+                {
+                    sumCredit = sumCredit + @Convert.ToDouble(Payment.paymentCredit);
+                    <tr>
+                        <td class="hide-row-mobile">@Payment.paymentDate</td>
+                        <td class="hide-row-mobile">@Payment.paymentTime</td>
+                        <td>@Payment.paymentDescription</td>
+                        <td class="hide-row-mobile">@Payment.paymentType</td>
+                        <td></td>
+                        <td>R @Math.Round(@Convert.ToDouble(Payment.paymentCredit), 2, MidpointRounding.AwayFromZero)</td>
+                        @if (Common.CArray.SearchInCookie(role_view_feeedit))
+                        {
+                            <td><a href="#" onclick="CallPopupPanel('Payment', 'PopupEditPayment', 'general-panel', {transactionGUID : '@Payment.transactionDetailGUID'})">Edit</a></td>
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+                    </tr>
+                }
+
+                <!-- Empty Row -->
+                <tr class="total-payments-row">
+                    <td class="hide-row-mobile"></td>
+                    <td class="hide-row-mobile"></td>
+                    <td></td>
+                    <td class="hide-row-mobile"></td>
+                    <td></td>
+                    <td></td>
+                    <td>&nbsp</td>
+                </tr>
+
+                <!-- Total Debits & Credits -->
+                <tr class="total-payments-row">
+                    <td class="hide-row-mobile"></td>
+                    <td class="hide-row-mobile"></td>
+                    <td></td>
+                    <td class="hide-row-mobile"></td>
+                    <td class="add-border-td-total">R @Math.Round(ViewBag.PriceMortgageSumValue, 2, MidpointRounding.AwayFromZero)</td>
+                    <td class="add-border-td-total">R @Math.Round(sumCredit, 2, MidpointRounding.AwayFromZero)</td>
+                    <td class="add-border-td-total"></td>
+                </tr>
+
+                <!-- Unbalanced Credits -->
+                <tr class="total-payments-row">
+                    <td class="hide-row-mobile"></td>
+                    <td class="hide-row-mobile"></td>
+                    <td></td>
+                    <td class="hide-row-mobile"></td>
+                    <td></td>
+                    @if (@Math.Round(Convert.ToDouble(ViewBag.PriceMortgageSumValue), 2, MidpointRounding.AwayFromZero) != @Math.Round(Convert.ToDouble(Convert.ToDouble(sumCredit)), 2, MidpointRounding.AwayFromZero))
+                    {
+                        <td class="unbalanced-count">R @Math.Round((Convert.ToDouble(ViewBag.PriceMortgageSumValue) - Convert.ToDouble(sumCredit)), 2, MidpointRounding.AwayFromZero)</td>
+                    }
+                    else
+                    {
+                        <td class="balanced-count">R 0</td>
+                    }
+                    <td></td>
+                </tr>
+
+                <!-- Balanced/Unbalanced -->
+                <tr class="total-payments-row">
+                    <td class="hide-row-mobile"></td>
+                    <td class="hide-row-mobile"></td>
+                    <td></td>
+                    <td class="hide-row-mobile"></td>
+                    <td></td>
+
+                    @if (@Math.Round(Convert.ToDouble(ViewBag.PriceMortgageSumValue), 2, MidpointRounding.AwayFromZero) != @Math.Round(Convert.ToDouble(Convert.ToDouble(sumCredit)), 2, MidpointRounding.AwayFromZero))
+                    {
+                        <td class="unbalanced">
+                            <span>Unbalanced</span>
+                        </td>
+                    }
+                    else
+                    {
+                        <td class="balanced">
+                            <div>
+                                <span>Balanced</span>
+                            </div>
+                        </td>
+                    }
+                    <td></td>
+                </tr>
+            </table>
+
+            @*<div class="payments-total">
+                    <div class="total-box debits-box">
+                        <h1>Total Debits</h1>
+                        <p>R @ViewBag.PriceMortgageSumValue</p>
+                    </div> <!-- End of total-box -->
+
+                    <div class="total-box credits-box">
+                        <h1>Total Credits</h1>
+                        <p>R @sumCredit</p>
+
+                        <span class="unbalanced-count">R @Math.Abs(Convert.ToInt32(ViewBag.PriceMortgageSumValue) - Convert.ToInt32(sumCredit))</span>
+
+                        @if (Convert.ToInt32(ViewBag.PriceMortgageSumValue) != Convert.ToInt32(sumCredit))
+                        {
+                            <div class="unbalanced">
+                                <span>Unbalanced</span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="balanced">
+                                <span>Balanced</span>
+                            </div>
+                        }
+                    </div> <!-- End of total-box -->
+                </div> <!-- End of payments-total -->*@
+
+
+
+        </div> <!--End of table-scroll-->
+    </div> <!-- End of payments-table -->
+}

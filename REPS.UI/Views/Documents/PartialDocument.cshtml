@@ -1,0 +1,157 @@
+﻿@{
+    Layout = null;
+
+    if (TempData["ToasterMsg"] != null)
+    {
+        <script type="text/javascript">
+            @Html.Raw(TempData["ToasterMsg"])
+        </script>
+    }
+    if (TempData["ToasterMsg1"] != null)
+    {
+        <script type="text/javascript">
+            @Html.Raw(TempData["ToasterMsg1"])
+        </script>
+    }
+
+
+    //User roles
+    string role_view_printlistgeneratedoc = "PL_GE";
+    string role_view_printlistuploadsigned = "PL_SI";
+    string role_view_printlistuploadstandard = "PL_ST";
+    string role_view_printlistdownloaddoc = "PL_DW";
+}
+ 
+@using (Ajax.BeginForm("GenerateDocuments", "Documents", null, new { name = "PrintListForm", id = "PrintListForm", enctype = "multipart/form-data" }))
+{
+    <div id="PrintListHidden">
+        <input type="hidden" id="PL_docType" name="docType" value="PDF" />
+    </div>  // Document Type list
+
+    if (ViewData["DocumentTypeList"] is object[] && ((object[])ViewData["DocumentTypeList"]).Any())
+
+        {
+            foreach (var DocType in ViewData["DocumentTypeList"] as IEnumerable<dynamic>)
+            {
+                <div class="box document-list-section printlist-box box-deal">
+                    <div class="table-headings">
+                        <div class="document-list-headings">
+                            <h4>@DocType["Description"]</h4>
+                        </div> <!-- End of document-list-titles -->
+                    </div> <!-- End of table-headings -->
+                    <div class="table-scroll">
+                        <table id="documents-list-table" class="documents-list-table">
+                            <thead>
+                                <tr id="table-head" class="align-center">
+                                    @*<th><input type="checkbox" class="documents-checkbox" /></th>*@
+                                    <th></th>
+                                    <th width="">Document Name</th>
+                                    <th class="align-center">Version</th>
+                                    <th class="align-center">Workflow Step</th>
+                                    <th class="align-center">Date</th>
+                                    <th class="align-center">Signed</th>
+                                    @if (Common.CArray.SearchInCookie(role_view_printlistdownloaddoc))
+                                    {
+                                        <th class="align-center">Download</th>
+                                    }
+                                    @if (Common.CArray.SearchInCookie(role_view_printlistuploadsigned) || Common.CArray.SearchInCookie(role_view_printlistuploadstandard))
+                                    {
+                                        <th class="align-center">Upload</th>
+                                    }
+                                </tr>
+                            </thead>
+                            <tbody class="hover">
+                                @{
+                                    // Display documents info with  templates
+                                    foreach (var document in ViewData["DocumentTemplateList"] as IEnumerable<dynamic>)
+                                    {
+                                        if (@document["ID"] == @DocType["ID"])          // Same Document Type
+                                        {
+                                            
+                                            <tr class="align-center">
+                                                <!--Set class CheckBox for each row, if docfusion is true-->
+                                                @{
+                                                    if ((@document["IsDocfusionTemplate"] == true) && (Common.CArray.SearchInCookie(role_view_printlistgeneratedoc)))  // Check If DocFusion & if user has role to generate document
+                                                    {
+                                                        <td><input type="checkbox" class="documents-checkbox"  id="@document["DocumentTemplateID"]_@document["workflowStepId"]" name="@document["DocumentTemplateID"]" /></td>
+                                                        <td><a onclick="CallPopupPanel('Documents', 'PopupDocumentExtention', 'general-panel',{objectDocumentID:'@document["DocumentTemplateID"]_@document["workflowStepId"]' },'Remove-popup-footer')" id="@document["DocumentTemplateID"]" class="docfusion-document" href="#">@document["TemplateDisplayName"]</a></td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td></td> // Normal template if docfusion is false
+                                                                <td>@document["TemplateDisplayName"]</td>
+                                                    }
+                                                }
+                                                <!--End of Set class CheckBox for each row, if docfusion is true-->
+
+                                                <td>@document["VersionName"]</td>
+                                                <td>@document["DisplayName"]</td>
+ 
+                                                <td>
+                                                    @{
+                                                        if (@document["SignedDocDate"] != null)
+                                                        {
+                                                            @Convert.ToDateTime(@document["SignedDocDate"]).ToString("dd/MM/yyyy");
+                                                        }
+                                                                                                           
+                                                        else if (@document["DateCreated"] != null)
+                                                        {
+                                                            @Convert.ToDateTime(@document["DateCreated"]).ToString("dd/MM/yyyy");
+                                                        }
+                                                    }
+                                                </td>
+                                                <td>
+                                                    @{
+                                                        if (@document["SignedDocFileName"] != null)              // If Signed Document
+                                                        {
+                                                            <a href="@Url.Action("DownloadSignedFile", "Documents", new { documentID = @document["DocumentID"], filename = @document["SignedDocFileName"]  })"><i class="material-icons document-signed">cloud_download</i></a>                                         
+                                                        }
+                                                    }
+                                                </td>
+
+                                                @if (Common.CArray.SearchInCookie(role_view_printlistdownloaddoc))
+                                                {
+                                                    <td id="download_file">
+                                                        @{
+                                                            if (@document["GeneratedDocFileName"] != null)
+                                                            {
+                                                                <a class="table-btn" href="@Url.Action("DownloadFile", "Documents", new { documentID = @document["DocumentID"], filename = @document["GeneratedDocFileName"] })">Download</a>
+                                                            }
+                                                            else if (@document["IsStaticDoc"] == true)//Download static document template
+                                                            {
+                                                                <a class="table-btn" href="@Url.Action("DownloadStaticFile", "Documents", new { documentTemplateID = @document["DocumentTemplateID"] })">Download</a>
+                                                            }
+                                                        }
+                                                    </td>
+                                                }
+                                                @if (Common.CArray.SearchInCookie(role_view_printlistuploadsigned) || Common.CArray.SearchInCookie(role_view_printlistuploadstandard))
+                                                {
+                                                    <td><a href="#" id="generated_document_@document["DocumentTemplateID"]" class="table-btn upload-btn upload-documents-btn inactive" onclick="CallPopupPanel('Documents', 'PopupUploadDocument', 'general-panel', {objectTypeID:@document["DocumentTemplateID"], workflowStepId:@document["workflowStepId"] })" >Upload</a></td>
+                                                }
+                                            </tr>
+                                            }
+                                    }   // End of document list
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            }
+        }
+
+        if (ViewData["DocumentTypeList"] is object[] && !(((object[])ViewData["DocumentTypeList"]).Any()))
+        {
+            <div class="">
+	            <div class="">
+		            <table >
+			            <tbody >
+				            <tr>
+                                <td class=""> No Workflow associated yet</td>
+				            </tr>
+			            </tbody>
+		            </table>
+	            </div>
+            </div>                                                                
+        }
+}
+

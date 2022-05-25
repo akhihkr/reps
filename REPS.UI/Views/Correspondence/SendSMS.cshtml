@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = ViewBag.PageLayoutPath;
+
+    if (ViewBag.PageLayoutPath != null)
+    {
+        @Html.Partial("PartialSubSection", null, new ViewDataDictionary { { "SelectedTab", "Correspondence" } })
+    }
+
+    //ajax
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "alerts-table",
+        OnSuccess = "onSuccessToasterMsg(null,null,null,null,'Your SMS has been sent successfully')",
+        OnFailure = "OnFailure",
+        OnComplete = "SetSelectedTabActiveCorrespondence('CorrespondenceListTab');",
+    };
+}
+
+@using (Ajax.BeginForm("SendSMSAction", "Correspondence", options, new { id = "SMSForm", name = "SMSForm" }))
+{
+    <div class="row email">
+        <div class="small-6 columns">
+            <label>
+                Number:
+                <input type="text" id="to-telephone-number" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharTelephone))" name="Number" data-content="required" format="number">
+            </label>
+        </div>
+        <div class="small-12 columns end">
+            <label>
+                Message (Limit: 160 characters):
+                <textarea maxlength="160" name="Message" id="messageCorrespondence" data-content="required"></textarea>
+            </label>
+        </div>
+        <div class="small-12 columns end">
+            <a tabindex="9" class="button align-right" id="btn-send-sms" href="#" name="smsSubmit" onclick="FormObjectSubmit('#btn-send-sms', '#SMSForm', true);">Send SMS</a>
+        </div>
+    </div> <!-- End of row row-reset -->
+}

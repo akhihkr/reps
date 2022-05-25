@@ -1,0 +1,324 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = null;
+
+    //User roles
+    string role_view_alertedit = "AL_ED";
+    string role_view_alertcomplete = "AL_CO";
+    string role_view_alertsarchive = "AL_AR";
+    string role_view_alertoutlook = "AL_OU";
+
+    if (ViewBag.PageLayoutPath != null)
+    {
+        @Html.Partial("PartialSubSection", null, new ViewDataDictionary { { "SelectedTab", "Alerts" } })
+    }
+
+    if (ViewBag.FilterSelection == "all")
+    {
+        <script type="text/javascript">
+            SetSelectedTabActiveCorrespondence('AllTab');
+        </script>
+    }
+}
+@if (int.Parse((ViewData["AllAlerts"] as IEnumerable<dynamic>).Count().ToString()) == 0)
+{
+    <div class="alerts-no-events">
+        <i class="material-icons">event</i>
+        <p>No alerts added</p>
+    </div> <!-- End of alerts-no-events -->
+}
+else
+{
+    <div class="table-scroll">
+        <table class="alerts-list-table">
+            <thead>
+                <tr id="table-head">
+                    <th width="">Date</th>
+                    <th width="">Name</th>
+                    <th width="">Location</th>
+                    <th width="">Duration</th>
+                    <th width="">Status</th>
+                    @if (ViewBag.FilterSelection != "all" && !ViewBag.FilterSelection.Contains("archive")) // If the filter is not set to archive, then display this column
+                    {
+                        <th width=""></th>
+                    }
+                    else if (ViewBag.FilterSelection == "all")
+                    {
+                        <th width=""></th>
+                    }
+                    @if (ViewBag.FilterSelection != "all" && !ViewBag.FilterSelection.Contains("archive")) // If the filter is not set to archive, then display this column
+                    {
+                        <th width=""></th>
+                    }
+                    else if (ViewBag.FilterSelection == "all")
+                    {
+                        <th width=""></th>
+                    }
+                    @if (ViewBag.FilterSelection != "all" && !ViewBag.FilterSelection.Contains("archive")) // If the filter is not set to archive, then display this column
+                    {
+                        <th width=""></th>
+                    }
+                    else if (ViewBag.FilterSelection == "all")
+                    {
+                        <th width=""></th>
+                    }
+                    @if (ViewBag.FilterSelection != "all" && !ViewBag.FilterSelection.Contains("archive")) // If the filter is not set to archive, then display this column
+                    {
+                        <th width=""></th>
+                    }
+                    else if (ViewBag.FilterSelection == "all")
+                    {
+                        <th width=""></th>
+                    }
+                </tr>
+            </thead>
+            <tbody class="hover">
+                @foreach (var Alert in ViewData["AllAlerts"] as IEnumerable<dynamic>)
+                {
+                    string statusString = string.Empty;
+                    DateTime myDate = TimeZone.CurrentTimeZone.ToLocalTime(Alert["StartDate"]);
+                    statusString = Alert["Description"];
+                    if (statusString == "Complete")
+                    {
+                        statusString = "Completed";
+                    }
+                    double alertDuration = double.Parse(Alert["Duration"].ToString());
+                    <tr>
+                        <td>@myDate.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>@Alert["EventName"]</td>
+                        <td>@Alert["Location"]</td>
+                        <td>@Math.Round((alertDuration)/60, 2) hour(s)</td>
+                        <td>@statusString</td>
+                        @if (ViewBag.FilterSelection != "all" && !ViewBag.FilterSelection.Contains("archive"))
+                        {
+                            if ((Alert["Description"]) == "Complete") // If event has already been completed, prevent click on the Edit button
+                            {
+                                <td>
+                                    <a href="#">
+                                        <i data-tooltip aria-haspopup="true" class="has-tip material-icons disabled">mode_edit</i>
+                                    </a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @if (Common.CArray.SearchInCookie(role_view_alertedit))
+                                    {
+                                        <a href="#" onclick="CallPopupPanel('Alerts', 'PopupEditEvent', 'general-panel', {alertsGUID : '@Alert["AlertsGUID"]', filter : '@ViewBag.FilterSelection'});">
+                                            <i data-tooltip aria-haspopup="true" title="Edit alert" class="has-tip material-icons">mode_edit</i>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="#">
+                                            <i data-tooltip aria-haspopup="true" class="has-tip material-icons disabled">mode_edit</i>
+                                        </a>
+                                    }
+                                </td>
+                            }
+                        }
+                        else if (ViewBag.FilterSelection == "all")
+                        {
+                            if ((Alert["Description"]) == "Complete") // If event has already been completed, prevent click on the Edit button
+                            {
+                                <td>
+                                    <a href="#">
+                                        <i data-tooltip aria-haspopup="true" class="has-tip material-icons disabled">mode_edit</i>
+                                    </a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @if (Common.CArray.SearchInCookie(role_view_alertedit))
+                                    {
+                                        <a href="#" onclick="CallPopupPanel('Alerts', 'PopupEditEvent', 'general-panel', {alertsGUID : '@Alert["AlertsGUID"]', filter : '@ViewBag.FilterSelection'});">
+                                            <i data-tooltip aria-haspopup="true" title="Edit alert" class="has-tip material-icons">mode_edit</i>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="#">
+                                            <i data-tooltip aria-haspopup="true" class="has-tip material-icons disabled">mode_edit</i>
+                                        </a>
+                                    }
+                                </td>
+                            }
+                        }
+                        @if (ViewBag.FilterSelection != "all" && !ViewBag.FilterSelection.Contains("archive"))
+                        {
+                            if ((Alert["Description"]) == "Complete") // If event has already been completed, prevent click on the Complete button
+                            {
+                                <td>
+                                    <a href="#">
+                                        <i data-tooltip aria-haspopup="true" class="has-tip material-icons disabled">done</i>
+                                    </a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @if (Common.CArray.SearchInCookie(role_view_alertcomplete))
+                                    {
+                                        <a href="#" onclick="changeAlertStatus('@Alert["AlertsGUID"]', 2, 'alerts-table', '@ViewBag.FilterSelection');">
+                                            <i data-tooltip aria-haspopup="true" title="Complete alert" class="has-tip material-icons">done</i>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="#">
+                                            <i data-tooltip aria-haspopup="true" class="has-tip material-icons disabled">done</i>
+                                        </a>
+                                    }
+                                </td>
+                            }
+                        }
+                        else if (ViewBag.FilterSelection == "all")
+                        {
+                            if ((Alert["Description"]) == "Complete") // If event has already been completed, prevent click on the Complete button
+                            {
+                                <td>
+                                    <a href="#">
+                                        <i data-tooltip aria-haspopup="true" class="has-tip material-icons disabled">done</i>
+                                    </a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @if (Common.CArray.SearchInCookie(role_view_alertcomplete))
+                                    {
+                                        <a href="#" onclick="changeAlertStatus('@Alert["AlertsGUID"]', 2, 'alerts-table', '@ViewBag.FilterSelection');">
+                                            <i data-tooltip aria-haspopup="true" title="Complete alert" class="has-tip material-icons">done</i>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="#">
+                                            <i data-tooltip aria-haspopup="true" class="has-tip material-icons disabled">done</i>
+                                        </a>
+                                    }
+                                </td>
+                            }
+                        }
+                        @if (ViewBag.FilterSelection != "all" && !ViewBag.FilterSelection.Contains("archive"))
+                        {
+                            if ((Alert["Description"]) == "Archived") // If event has already been Archived, prevent click on the Archive button
+                            {
+                                <td>
+                                    <a href="#">
+                                        <i data-tooltip aria-haspopup="true" class="has-tip material-icons disabled">delete</i>
+                                    </a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @if (Common.CArray.SearchInCookie(role_view_alertsarchive))
+                                    {
+                                        <a href="#" onclick="changeAlertStatus('@Alert["AlertsGUID"]', 4, 'alerts-table', '@ViewBag.FilterSelection');">
+                                            <i data-tooltip aria-haspopup="true" title="Archive alert" class="has-tip material-icons">delete</i>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="#">
+                                            <i data-tooltip aria-haspopup="true" class="has-tip material-icons disabled">delete</i>
+                                        </a>
+                                    }
+                                </td>
+                            }
+                        }
+                        else if (ViewBag.FilterSelection == "all")
+                        {
+                            if ((Alert["Description"]) == "Archived") // If event has already been Archived, prevent click on the Archive button
+                            {
+                                <td>
+                                    <a href="#">
+                                        <i data-tooltip aria-haspopup="true" class="has-tip material-icons disabled">delete</i>
+                                    </a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @if (Common.CArray.SearchInCookie(role_view_alertsarchive))
+                                    {
+                                        <a href="#" onclick="changeAlertStatus('@Alert["AlertsGUID"]', 4, 'alerts-table', '@ViewBag.FilterSelection');">
+                                            <i data-tooltip aria-haspopup="true" title="Archive alert" class="has-tip material-icons">delete</i>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="#">
+                                            <i data-tooltip aria-haspopup="true" class="has-tip material-icons disabled">delete</i>
+                                        </a>
+                                    }
+                                </td>
+                            }
+                        }
+
+                        @if (ViewBag.FilterSelection != "all" && !ViewBag.FilterSelection.Contains("archive"))
+                        {
+                            if ((Alert["Description"]) == "Complete") // If event has already been completed, prevent click on the Calendar button
+                            {
+                                <td>
+                                    <a href="#">
+                                        <i data-tooltip aria-haspopup="true" class="has-tip material-icons disabled">date_range</i>
+                                    </a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @if (Common.CArray.SearchInCookie(role_view_alertoutlook))
+                                    {
+                                        <a href="@Url.Action("OutlookCalendar", "Alerts", new { alertsGUID = Alert["AlertsGUID"] })">
+                                            <i data-tooltip aria-haspopup="true" title="Add alert to Outlook" class="has-tip material-icons">date_range</i>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="#">
+                                            <i data-tooltip aria-haspopup="true" class="has-tip material-icons disabled">date_range</i>
+                                        </a>
+                                    }
+                                </td>
+                            }
+                        }
+                        else if (ViewBag.FilterSelection == "all")
+                        {
+                            if ((Alert["Description"]) == "Complete") // If event has already been completed, prevent click on the Calendar button
+                            {
+                                <td>
+                                    <a href="#">
+                                        <i data-tooltip aria-haspopup="true" class="has-tip material-icons disabled">date_range</i>
+                                    </a>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @if (Common.CArray.SearchInCookie(role_view_alertoutlook))
+                                    {
+                                        <a href="@Url.Action("OutlookCalendar", "Alerts", new { alertsGUID = Alert["AlertsGUID"] })">
+                                            <i data-tooltip aria-haspopup="true" title="Add alert to Outlook" class="has-tip material-icons">date_range</i>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="#">
+                                            <i data-tooltip aria-haspopup="true" class="has-tip material-icons disabled">date_range</i>
+                                        </a>
+                                    }
+                                </td>
+                            }
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div> <!-- End of table-scroll -->
+    <span class="alerts-records">@((ViewData["AllAlerts"] as IEnumerable<dynamic>).Count()) Record(s)</span>
+
+}

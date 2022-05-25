@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:54738/HeaderTabService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Common" />
+  <xs:element name="InsertDeleteUserDeals">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="aspNetUserId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DealID" type="xs:int" />
+        <xs:element minOccurs="0" name="Status" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertDeleteUserDealsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="InsertDeleteUserDealsResult" nillable="true" type="q1:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserActiveDeals">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="aspNetId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserActiveDealsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetUserActiveDealsResult" nillable="true" type="q2:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserNotificationBarActiveDeals">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserNotificationBarActiveDealsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetUserNotificationBarActiveDealsResult" nillable="true" type="q3:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteAllUserDeals">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="aspNetUserId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteAllUserDealsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="DeleteAllUserDealsResult" nillable="true" type="q4:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ToggleHeaderTabsActivation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="aspNetUserId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Status" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ToggleHeaderTabsActivationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="ToggleHeaderTabsActivationResult" nillable="true" type="q5:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertLastViewName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="aspNetUserId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DealID" type="xs:int" />
+        <xs:element minOccurs="0" name="ViewName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertLastViewNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="InsertLastViewNameResult" nillable="true" type="q6:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

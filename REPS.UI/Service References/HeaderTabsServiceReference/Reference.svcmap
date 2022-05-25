@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d81611b9-591e-47df-9037-48698ca81a6e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:54738/HeaderTabService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="HeaderTabService.xsd" MetadataType="Schema" ID="3eed9b98-4431-46fb-ba8a-834b5ee1517f" SourceId="1" SourceUrl="http://localhost:54738/HeaderTabService.svc?xsd=xsd0" />
+    <MetadataFile FileName="HeaderTabService.wsdl" MetadataType="Wsdl" ID="de58bb1c-e00f-4c95-b37b-56224093138e" SourceId="1" SourceUrl="http://localhost:54738/HeaderTabService.svc?wsdl" />
+    <MetadataFile FileName="HeaderTabService1.xsd" MetadataType="Schema" ID="15718bb7-7667-4322-bb6c-d5de172dc26b" SourceId="1" SourceUrl="http://localhost:54738/HeaderTabService.svc?xsd=xsd1" />
+    <MetadataFile FileName="HeaderTabService.disco" MetadataType="Disco" ID="e4185f59-ce70-490e-ac65-53f9422cce01" SourceId="1" SourceUrl="http://localhost:54738/HeaderTabService.svc?disco" />
+    <MetadataFile FileName="HeaderTabService2.xsd" MetadataType="Schema" ID="f0d292d9-c47f-4193-8943-3b380cdaa542" SourceId="1" SourceUrl="http://localhost:54738/HeaderTabService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

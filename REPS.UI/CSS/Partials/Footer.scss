@@ -1,0 +1,18 @@
+﻿@charset "UTF-8";
+@import "GlobalVariables.scss";
+
+footer {
+    margin-right: 10px;
+    font-size: 11px;
+    color: #adb6d1;
+    display: block;
+    clear: both;
+    padding-bottom: 10px;
+}
+
+footer p {
+    color: #8e8e8e;
+    font-size: 11px;
+    bottom: 10px;
+    text-align: right;
+}

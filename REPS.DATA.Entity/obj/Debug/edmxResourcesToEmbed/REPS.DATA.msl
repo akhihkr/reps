@@ -1,0 +1,2795 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="REPSModelStoreContainer" CdmEntityContainer="REPSEntities">
+    <EntitySetMapping Name="C__RefactorLog">
+      <EntityTypeMapping TypeName="REPSModel.C__RefactorLog">
+        <MappingFragment StoreEntitySet="__RefactorLog">
+          <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AccountType">
+      <EntityTypeMapping TypeName="REPSModel.AccountType">
+        <MappingFragment StoreEntitySet="AccountType">
+          <ScalarProperty Name="AccountTypeID" ColumnName="AccountTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AddressType">
+      <EntityTypeMapping TypeName="REPSModel.AddressType">
+        <MappingFragment StoreEntitySet="AddressType">
+          <ScalarProperty Name="AddressTypeID" ColumnName="AddressTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Alerts">
+      <EntityTypeMapping TypeName="REPSModel.Alerts">
+        <MappingFragment StoreEntitySet="Alerts">
+          <ScalarProperty Name="AlertsGUID" ColumnName="AlertsGUID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+          <ScalarProperty Name="AlertTypeID" ColumnName="AlertTypeID" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="EventName" ColumnName="EventName" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AlertStatus">
+      <EntityTypeMapping TypeName="REPSModel.AlertStatus">
+        <MappingFragment StoreEntitySet="AlertStatus">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AlertType">
+      <EntityTypeMapping TypeName="REPSModel.AlertType">
+        <MappingFragment StoreEntitySet="AlertType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="REPSModel.AspNetRoles">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserClaims">
+      <EntityTypeMapping TypeName="REPSModel.AspNetUserClaims">
+        <MappingFragment StoreEntitySet="AspNetUserClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="REPSModel.AspNetUserLogins">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="REPSModel.AspNetUsers">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="sex" ColumnName="sex" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="TokenId" ColumnName="TokenId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Audit">
+      <EntityTypeMapping TypeName="REPSModel.Audit">
+        <MappingFragment StoreEntitySet="Audit">
+          <ScalarProperty Name="AuditID" ColumnName="AuditID" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="ForeignKey" ColumnName="ForeignKey" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuditDetail">
+      <EntityTypeMapping TypeName="REPSModel.AuditDetail">
+        <MappingFragment StoreEntitySet="AuditDetail">
+          <ScalarProperty Name="AuditDetailID" ColumnName="AuditDetailID" />
+          <ScalarProperty Name="AuditID" ColumnName="AuditID" />
+          <ScalarProperty Name="Column" ColumnName="Column" />
+          <ScalarProperty Name="OldValue" ColumnName="OldValue" />
+          <ScalarProperty Name="NewValue" ColumnName="NewValue" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BankorCreditUnion">
+      <EntityTypeMapping TypeName="REPSModel.BankorCreditUnion">
+        <MappingFragment StoreEntitySet="BankorCreditUnion">
+          <ScalarProperty Name="BankID" ColumnName="BankID" />
+          <ScalarProperty Name="EntityID" ColumnName="EntityID" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="UniversalSortCode" ColumnName="UniversalSortCode" />
+          <ScalarProperty Name="SwiftCode" ColumnName="SwiftCode" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Billing">
+      <EntityTypeMapping TypeName="REPSModel.Billing">
+        <MappingFragment StoreEntitySet="Billing">
+          <ScalarProperty Name="BillingID" ColumnName="BillingID" />
+          <ScalarProperty Name="KeyName" ColumnName="KeyName" />
+          <ScalarProperty Name="ForeignKey" ColumnName="ForeignKey" />
+          <ScalarProperty Name="BillingRateID" ColumnName="BillingRateID" />
+          <ScalarProperty Name="UniqueReference" ColumnName="UniqueReference" />
+          <ScalarProperty Name="InvoiceToUserID" ColumnName="InvoiceToUserID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BillingDiscount">
+      <EntityTypeMapping TypeName="REPSModel.BillingDiscount">
+        <MappingFragment StoreEntitySet="BillingDiscount">
+          <ScalarProperty Name="BillingDiscountID" ColumnName="BillingDiscountID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="BillingRateID" ColumnName="BillingRateID" />
+          <ScalarProperty Name="DiscountReference" ColumnName="DiscountReference" />
+          <ScalarProperty Name="DiscountTypeID" ColumnName="DiscountTypeID" />
+          <ScalarProperty Name="DiscountValue" ColumnName="DiscountValue" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BillingRate">
+      <EntityTypeMapping TypeName="REPSModel.BillingRate">
+        <MappingFragment StoreEntitySet="BillingRate">
+          <ScalarProperty Name="BillingRateID" ColumnName="BillingRateID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="TieredRate" ColumnName="TieredRate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BillingRateDetail">
+      <EntityTypeMapping TypeName="REPSModel.BillingRateDetail">
+        <MappingFragment StoreEntitySet="BillingRateDetail">
+          <ScalarProperty Name="BillingRateDetailID" ColumnName="BillingRateDetailID" />
+          <ScalarProperty Name="TierNumber" ColumnName="TierNumber" />
+          <ScalarProperty Name="StartValue" ColumnName="StartValue" />
+          <ScalarProperty Name="EndValue" ColumnName="EndValue" />
+          <ScalarProperty Name="CurrencyID" ColumnName="CurrencyID" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BillingTaxRate">
+      <EntityTypeMapping TypeName="REPSModel.BillingTaxRate">
+        <MappingFragment StoreEntitySet="BillingTaxRate">
+          <ScalarProperty Name="TaxRateID" ColumnName="TaxRateID" />
+          <ScalarProperty Name="BillingRateID" ColumnName="BillingRateID" />
+          <ScalarProperty Name="TaxValue" ColumnName="TaxValue" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Correspondence">
+      <EntityTypeMapping TypeName="REPSModel.Correspondence">
+        <MappingFragment StoreEntitySet="Correspondence">
+          <ScalarProperty Name="CorrespondenceGUID" ColumnName="CorrespondenceGUID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="MessageDate" ColumnName="MessageDate" />
+          <ScalarProperty Name="Incoming" ColumnName="Incoming" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Headers" ColumnName="Headers" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Html" ColumnName="Html" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+          <ScalarProperty Name="SmtpStatusID" ColumnName="SmtpStatusID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+          <ScalarProperty Name="AttachmentID" ColumnName="AttachmentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Country">
+      <EntityTypeMapping TypeName="REPSModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="ISOCode" ColumnName="ISOCode" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="RegistrarApi" ColumnName="RegistrarApi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrencyType">
+      <EntityTypeMapping TypeName="REPSModel.CurrencyType">
+        <MappingFragment StoreEntitySet="CurrencyType">
+          <ScalarProperty Name="CurrencyTypeID" ColumnName="CurrencyTypeID" />
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DealStatus">
+      <EntityTypeMapping TypeName="REPSModel.DealStatus">
+        <MappingFragment StoreEntitySet="DealStatus">
+          <ScalarProperty Name="DealStatusID" ColumnName="DealStatusID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DealType">
+      <EntityTypeMapping TypeName="REPSModel.DealType">
+        <MappingFragment StoreEntitySet="DealType">
+          <ScalarProperty Name="DealTypeID" ColumnName="DealTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DiscountType">
+      <EntityTypeMapping TypeName="REPSModel.DiscountType">
+        <MappingFragment StoreEntitySet="DiscountType">
+          <ScalarProperty Name="DiscountTypeID" ColumnName="DiscountTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocumentType">
+      <EntityTypeMapping TypeName="REPSModel.DocumentType">
+        <MappingFragment StoreEntitySet="DocumentType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocumentVersion">
+      <EntityTypeMapping TypeName="REPSModel.DocumentVersion">
+        <MappingFragment StoreEntitySet="DocumentVersion">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DocumentTypeID" ColumnName="DocumentTypeID" />
+          <ScalarProperty Name="VersionName" ColumnName="VersionName" />
+          <ScalarProperty Name="TemplateFileName" ColumnName="TemplateFileName" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="MimeTypeID" ColumnName="MimeTypeID" />
+          <ScalarProperty Name="XMLStoredProc" ColumnName="XMLStoredProc" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="eSignable" ColumnName="eSignable" />
+          <ScalarProperty Name="IsStaticDoc" ColumnName="IsStaticDoc" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FeeType">
+      <EntityTypeMapping TypeName="REPSModel.FeeType">
+        <MappingFragment StoreEntitySet="FeeType">
+          <ScalarProperty Name="FeeTypeID" ColumnName="FeeTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FinancialInstrumentDetail">
+      <EntityTypeMapping TypeName="REPSModel.FinancialInstrumentDetail">
+        <MappingFragment StoreEntitySet="FinancialInstrumentDetail">
+          <ScalarProperty Name="InstrumentDetailID" ColumnName="InstrumentDetailID" />
+          <ScalarProperty Name="InstrumentID" ColumnName="InstrumentID" />
+          <ScalarProperty Name="InstrumentTypeID" ColumnName="InstrumentTypeID" />
+          <ScalarProperty Name="InterestVariationID" ColumnName="InterestVariationID" />
+          <ScalarProperty Name="InterestTypeID" ColumnName="InterestTypeID" />
+          <ScalarProperty Name="CurrencyTypeID" ColumnName="CurrencyTypeID" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FinancialObligation">
+      <EntityTypeMapping TypeName="REPSModel.FinancialObligation">
+        <MappingFragment StoreEntitySet="FinancialObligation">
+          <ScalarProperty Name="ObligationID" ColumnName="ObligationID" />
+          <ScalarProperty Name="ParticipantID" ColumnName="ParticipantID" />
+          <ScalarProperty Name="CurrencyID" ColumnName="CurrencyID" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="LegalDescription" ColumnName="LegalDescription" />
+          <ScalarProperty Name="AccountBalance" ColumnName="AccountBalance" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="InterestVariationID" ColumnName="InterestVariationID" />
+          <ScalarProperty Name="InterestTypeID" ColumnName="InterestTypeID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FinancialObligationDetail">
+      <EntityTypeMapping TypeName="REPSModel.FinancialObligationDetail">
+        <MappingFragment StoreEntitySet="FinancialObligationDetail">
+          <ScalarProperty Name="ObligationDetailID" ColumnName="ObligationDetailID" />
+          <ScalarProperty Name="ObligationID" ColumnName="ObligationID" />
+          <ScalarProperty Name="InterestRate" ColumnName="InterestRate" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="InstalmentValue" ColumnName="InstalmentValue" />
+          <ScalarProperty Name="WaivedPercentage" ColumnName="WaivedPercentage" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FinancialTransaction">
+      <EntityTypeMapping TypeName="REPSModel.FinancialTransaction">
+        <MappingFragment StoreEntitySet="FinancialTransaction">
+          <ScalarProperty Name="FinancialTransactionID" ColumnName="FinancialTransactionID" />
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+          <ScalarProperty Name="ObligationID" ColumnName="ObligationID" />
+          <ScalarProperty Name="InstrumentID" ColumnName="InstrumentID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IdentityType">
+      <EntityTypeMapping TypeName="REPSModel.IdentityType">
+        <MappingFragment StoreEntitySet="IdentityType">
+          <ScalarProperty Name="IdentityTypeID" ColumnName="IdentityTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InstrumentType">
+      <EntityTypeMapping TypeName="REPSModel.InstrumentType">
+        <MappingFragment StoreEntitySet="InstrumentType">
+          <ScalarProperty Name="InstrumentTypeID" ColumnName="InstrumentTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InterestType">
+      <EntityTypeMapping TypeName="REPSModel.InterestType">
+        <MappingFragment StoreEntitySet="InterestType">
+          <ScalarProperty Name="InterestTypeID" ColumnName="InterestTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InterestVariation">
+      <EntityTypeMapping TypeName="REPSModel.InterestVariation">
+        <MappingFragment StoreEntitySet="InterestVariation">
+          <ScalarProperty Name="InterestVariationID" ColumnName="InterestVariationID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobTitle">
+      <EntityTypeMapping TypeName="REPSModel.JobTitle">
+        <MappingFragment StoreEntitySet="JobTitle">
+          <ScalarProperty Name="JobTitleID" ColumnName="JobTitleID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lenders">
+      <EntityTypeMapping TypeName="REPSModel.Lenders">
+        <MappingFragment StoreEntitySet="Lenders">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="AddressLine3" ColumnName="AddressLine3" />
+          <ScalarProperty Name="AddressLine4" ColumnName="AddressLine4" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="website" ColumnName="website" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MessageQueue">
+      <EntityTypeMapping TypeName="REPSModel.MessageQueue">
+        <MappingFragment StoreEntitySet="MessageQueue">
+          <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+          <ScalarProperty Name="KeyName" ColumnName="KeyName" />
+          <ScalarProperty Name="ForeignKey" ColumnName="ForeignKey" />
+          <ScalarProperty Name="MimeTypeID" ColumnName="MimeTypeID" />
+          <ScalarProperty Name="Inbound" ColumnName="Inbound" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FileContent" ColumnName="FileContent" />
+          <ScalarProperty Name="FileHash" ColumnName="FileHash" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="MessageStatusID" ColumnName="MessageStatusID" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MessageStatus">
+      <EntityTypeMapping TypeName="REPSModel.MessageStatus">
+        <MappingFragment StoreEntitySet="MessageStatus">
+          <ScalarProperty Name="MessageStatusID" ColumnName="MessageStatusID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MetaData">
+      <EntityTypeMapping TypeName="REPSModel.MetaData">
+        <MappingFragment StoreEntitySet="MetaData">
+          <ScalarProperty Name="MetadataID" ColumnName="MetadataID" />
+          <ScalarProperty Name="KeyName" ColumnName="KeyName" />
+          <ScalarProperty Name="ForeignKey" ColumnName="ForeignKey" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MimeType">
+      <EntityTypeMapping TypeName="REPSModel.MimeType">
+        <MappingFragment StoreEntitySet="MimeType">
+          <ScalarProperty Name="MimeTypeID" ColumnName="MimeTypeID" />
+          <ScalarProperty Name="Extension" ColumnName="Extension" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notification">
+      <EntityTypeMapping TypeName="REPSModel.Notification">
+        <MappingFragment StoreEntitySet="Notification">
+          <ScalarProperty Name="NotificationID" ColumnName="NotificationID" />
+          <ScalarProperty Name="NotificationTypeID" ColumnName="NotificationTypeID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+          <ScalarProperty Name="DateRead" ColumnName="DateRead" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotificationType">
+      <EntityTypeMapping TypeName="REPSModel.NotificationType">
+        <MappingFragment StoreEntitySet="NotificationType">
+          <ScalarProperty Name="NotificationTypeID" ColumnName="NotificationTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Date_Created" ColumnName="Date Created" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Organization">
+      <EntityTypeMapping TypeName="REPSModel.Organization">
+        <MappingFragment StoreEntitySet="Organization">
+          <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+          <ScalarProperty Name="OrganizationTypeID" ColumnName="OrganizationTypeID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+          <ScalarProperty Name="LegalName" ColumnName="LegalName" />
+          <ScalarProperty Name="VatID" ColumnName="VatID" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Verified" ColumnName="Verified" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="EntityID" ColumnName="EntityID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrganizationType">
+      <EntityTypeMapping TypeName="REPSModel.OrganizationType">
+        <MappingFragment StoreEntitySet="OrganizationType">
+          <ScalarProperty Name="OrganizationTypeID" ColumnName="OrganizationTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParticipantBankDetail">
+      <EntityTypeMapping TypeName="REPSModel.ParticipantBankDetail">
+        <MappingFragment StoreEntitySet="ParticipantBankDetail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ParticipantID" ColumnName="ParticipantID" />
+          <ScalarProperty Name="BankID" ColumnName="BankID" />
+          <ScalarProperty Name="AccountTypeID" ColumnName="AccountTypeID" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="SortCode" ColumnName="SortCode" />
+          <ScalarProperty Name="Verified" ColumnName="Verified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParticipantRole">
+      <EntityTypeMapping TypeName="REPSModel.ParticipantRole">
+        <MappingFragment StoreEntitySet="ParticipantRole">
+          <ScalarProperty Name="ParticipantRoleID" ColumnName="ParticipantRoleID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParticipantType">
+      <EntityTypeMapping TypeName="REPSModel.ParticipantType">
+        <MappingFragment StoreEntitySet="ParticipantType">
+          <ScalarProperty Name="ParticipantTypeID" ColumnName="ParticipantTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Person">
+      <EntityTypeMapping TypeName="REPSModel.Person">
+        <MappingFragment StoreEntitySet="Person">
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+          <ScalarProperty Name="TitleID" ColumnName="TitleID" />
+          <ScalarProperty Name="GivenName" ColumnName="GivenName" />
+          <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
+          <ScalarProperty Name="IdentityTypeID" ColumnName="IdentityTypeID" />
+          <ScalarProperty Name="IdentityNumber" ColumnName="IdentityNumber" />
+          <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+          <ScalarProperty Name="PassportCountryID" ColumnName="PassportCountryID" />
+          <ScalarProperty Name="TaxID" ColumnName="TaxID" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="BirthPlace" ColumnName="BirthPlace" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="JobTitleID" ColumnName="JobTitleID" />
+          <ScalarProperty Name="Verified" ColumnName="Verified" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PropertyType">
+      <EntityTypeMapping TypeName="REPSModel.PropertyType">
+        <MappingFragment StoreEntitySet="PropertyType">
+          <ScalarProperty Name="PropertyTypeID" ColumnName="PropertyTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Province">
+      <EntityTypeMapping TypeName="REPSModel.Province">
+        <MappingFragment StoreEntitySet="Province">
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReportFilters">
+      <EntityTypeMapping TypeName="REPSModel.ReportFilters">
+        <MappingFragment StoreEntitySet="ReportFilters">
+          <ScalarProperty Name="ReportsFiltersId" ColumnName="ReportsFiltersId" />
+          <ScalarProperty Name="ReportsId" ColumnName="ReportsId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="DropdownProcedure" ColumnName="DropdownProcedure" />
+          <ScalarProperty Name="Parameter" ColumnName="Parameter" />
+          <ScalarProperty Name="FilterID" ColumnName="FilterID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReportLocation">
+      <EntityTypeMapping TypeName="REPSModel.ReportLocation">
+        <MappingFragment StoreEntitySet="ReportLocation">
+          <ScalarProperty Name="reportLocationID" ColumnName="reportLocationID" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+          <ScalarProperty Name="ReportsId" ColumnName="ReportsId" />
+          <ScalarProperty Name="ChartType" ColumnName="ChartType" />
+          <ScalarProperty Name="ChartName" ColumnName="ChartName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reports">
+      <EntityTypeMapping TypeName="REPSModel.Reports">
+        <MappingFragment StoreEntitySet="Reports">
+          <ScalarProperty Name="ReportsId" ColumnName="ReportsId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="TableProcedure" ColumnName="TableProcedure" />
+          <ScalarProperty Name="ChartProcedure" ColumnName="ChartProcedure" />
+          <ScalarProperty Name="TableParameter" ColumnName="TableParameter" />
+          <ScalarProperty Name="ChartParameter" ColumnName="ChartParameter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="REPSModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SizeType">
+      <EntityTypeMapping TypeName="REPSModel.SizeType">
+        <MappingFragment StoreEntitySet="SizeType">
+          <ScalarProperty Name="SizeTypeID" ColumnName="SizeTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Task">
+      <EntityTypeMapping TypeName="REPSModel.Task">
+        <MappingFragment StoreEntitySet="Task">
+          <ScalarProperty Name="IsWorkflowTask" ColumnName="IsWorkflowTask" />
+          <ScalarProperty Name="TaskGUID" ColumnName="TaskGUID" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="TaskDisplayIcon" ColumnName="TaskDisplayIcon" />
+          <ScalarProperty Name="TaskControl" ColumnName="TaskControl" />
+          <ScalarProperty Name="TaskWorkflowID" ColumnName="TaskWorkflowID" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Title">
+      <EntityTypeMapping TypeName="REPSModel.Title">
+        <MappingFragment StoreEntitySet="Title">
+          <ScalarProperty Name="TitleID" ColumnName="TitleID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Township">
+      <EntityTypeMapping TypeName="REPSModel.Township">
+        <MappingFragment StoreEntitySet="Township">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="TownshipID" ColumnName="TownshipID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transaction">
+      <EntityTypeMapping TypeName="REPSModel.Transaction">
+        <MappingFragment StoreEntitySet="Transaction">
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+          <ScalarProperty Name="TransactionTypeID" ColumnName="TransactionTypeID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="TransactionStatusID" ColumnName="TransactionStatusID" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionDocuments">
+      <EntityTypeMapping TypeName="REPSModel.TransactionDocuments">
+        <MappingFragment StoreEntitySet="TransactionDocuments">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionStatus">
+      <EntityTypeMapping TypeName="REPSModel.TransactionStatus">
+        <MappingFragment StoreEntitySet="TransactionStatus">
+          <ScalarProperty Name="TransactionStatusID" ColumnName="TransactionStatusID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionType">
+      <EntityTypeMapping TypeName="REPSModel.TransactionType">
+        <MappingFragment StoreEntitySet="TransactionType">
+          <ScalarProperty Name="TransactionTypeID" ColumnName="TransactionTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserAction">
+      <EntityTypeMapping TypeName="REPSModel.UserAction">
+        <MappingFragment StoreEntitySet="UserAction">
+          <ScalarProperty Name="UserActionID" ColumnName="UserActionID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AbsoluteUri" ColumnName="AbsoluteUri" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Editable" ColumnName="Editable" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserDeal">
+      <EntityTypeMapping TypeName="REPSModel.UserDeal">
+        <MappingFragment StoreEntitySet="UserDeal">
+          <ScalarProperty Name="UserRoleID" ColumnName="UserRoleID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+          <ScalarProperty Name="LastViewName" ColumnName="LastViewName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserDocument">
+      <EntityTypeMapping TypeName="REPSModel.UserDocument">
+        <MappingFragment StoreEntitySet="UserDocument">
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="EntityID" ColumnName="EntityID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ParticipantID" ColumnName="ParticipantID" />
+          <ScalarProperty Name="MimeTypeID" ColumnName="MimeTypeID" />
+          <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
+          <ScalarProperty Name="FileContent" ColumnName="FileContent" />
+          <ScalarProperty Name="FileHash" ColumnName="FileHash" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRole">
+      <EntityTypeMapping TypeName="REPSModel.UserRole">
+        <MappingFragment StoreEntitySet="UserRole">
+          <ScalarProperty Name="UserRoleID" ColumnName="UserRoleID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRoleAction">
+      <EntityTypeMapping TypeName="REPSModel.UserRoleAction">
+        <MappingFragment StoreEntitySet="UserRoleAction">
+          <ScalarProperty Name="UserRoleActionID" ColumnName="UserRoleActionID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="UserActionID" ColumnName="UserActionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VariableType">
+      <EntityTypeMapping TypeName="REPSModel.VariableType">
+        <MappingFragment StoreEntitySet="VariableType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DefaultSortOrder" ColumnName="DefaultSortOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Workflow">
+      <EntityTypeMapping TypeName="REPSModel.Workflow">
+        <MappingFragment StoreEntitySet="Workflow">
+          <ScalarProperty Name="WorkflowGUID" ColumnName="WorkflowGUID" />
+          <ScalarProperty Name="WorkflowID" ColumnName="WorkflowID" />
+          <ScalarProperty Name="WorkflowName" ColumnName="WorkflowName" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkflowAction">
+      <EntityTypeMapping TypeName="REPSModel.WorkflowAction">
+        <MappingFragment StoreEntitySet="WorkflowAction">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkflowActionMap">
+      <EntityTypeMapping TypeName="REPSModel.WorkflowActionMap">
+        <MappingFragment StoreEntitySet="WorkflowActionMap">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="WorkflowActionID" ColumnName="WorkflowActionID" />
+          <ScalarProperty Name="WorkflowTaskID" ColumnName="WorkflowTaskID" />
+          <ScalarProperty Name="AllowAttachments" ColumnName="AllowAttachments" />
+          <ScalarProperty Name="ParticipantTypeID" ColumnName="ParticipantTypeID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsMandatory" ColumnName="IsMandatory" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkflowActionVariable">
+      <EntityTypeMapping TypeName="REPSModel.WorkflowActionVariable">
+        <MappingFragment StoreEntitySet="WorkflowActionVariable">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="WorkflowActionID" ColumnName="WorkflowActionID" />
+          <ScalarProperty Name="WorkflowVariableID" ColumnName="WorkflowVariableID" />
+          <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkflowProgress">
+      <EntityTypeMapping TypeName="REPSModel.WorkflowProgress">
+        <MappingFragment StoreEntitySet="WorkflowProgress">
+          <ScalarProperty Name="WorkflowProgressGUID" ColumnName="WorkflowProgressGUID" />
+          <ScalarProperty Name="WorkflowProgressID" ColumnName="WorkflowProgressID" />
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+          <ScalarProperty Name="WorkflowTaskID" ColumnName="WorkflowTaskID" />
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="WorkflowParentID" ColumnName="WorkflowParentID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkflowTask">
+      <EntityTypeMapping TypeName="REPSModel.WorkflowTask">
+        <MappingFragment StoreEntitySet="WorkflowTask">
+          <ScalarProperty Name="WorkflowTaskGUID" ColumnName="WorkflowTaskGUID" />
+          <ScalarProperty Name="WorkflowTaskID" ColumnName="WorkflowTaskID" />
+          <ScalarProperty Name="WorkflowID" ColumnName="WorkflowID" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="WorkflowTaskOrder" ColumnName="WorkflowTaskOrder" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkflowTransaction">
+      <EntityTypeMapping TypeName="REPSModel.WorkflowTransaction">
+        <MappingFragment StoreEntitySet="WorkflowTransaction">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="WorkflowActionID" ColumnName="WorkflowActionID" />
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkflowVariable">
+      <EntityTypeMapping TypeName="REPSModel.WorkflowVariable">
+        <MappingFragment StoreEntitySet="WorkflowVariable">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="VariableTypeID" ColumnName="VariableTypeID" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="REPSModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="AspNetUsers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="REPS_AddAddress" FunctionName="REPSModel.Store.REPS_AddAddress" />
+    <FunctionImportMapping FunctionImportName="REPS_AddDeal" FunctionName="REPSModel.Store.REPS_AddDeal" />
+    <FunctionImportMapping FunctionImportName="REPS_AddParticipantBankDetail" FunctionName="REPSModel.Store.REPS_AddParticipantBankDetail" />
+    <FunctionImportMapping FunctionImportName="REPS_AddPropertyDetail" FunctionName="REPSModel.Store.REPS_AddPropertyDetail" />
+    <FunctionImportMapping FunctionImportName="REPS_AddUserRole" FunctionName="REPSModel.Store.REPS_AddUserRole" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_AddNewAction" FunctionName="REPSModel.Store.REPS_ADM_AddNewAction" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_AddNewDocumentCategory" FunctionName="REPSModel.Store.REPS_ADM_AddNewDocumentCategory" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_AddRole" FunctionName="REPSModel.Store.REPS_ADM_AddRole" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_AddWorkflow" FunctionName="REPSModel.Store.REPS_ADM_AddWorkflow" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_AssignActionToTask" FunctionName="REPSModel.Store.REPS_ADM_AssignActionToTask" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_AssignRoleActionToRole" FunctionName="REPSModel.Store.REPS_ADM_AssignRoleActionToRole" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_AssignTaskToWorkflow" FunctionName="REPSModel.Store.REPS_ADM_AssignTaskToWorkflow" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_DeleteEntity" FunctionName="REPSModel.Store.REPS_ADM_DeleteEntity" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_DeleteTask" FunctionName="REPSModel.Store.REPS_ADM_DeleteTask" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_DeleteWorkflow" FunctionName="REPSModel.Store.REPS_ADM_DeleteWorkflow" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_DownloadTemplate" FunctionName="REPSModel.Store.REPS_ADM_DownloadTemplate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_ADM_DownloadTemplate_Result">
+          <ScalarProperty Name="TemplateFileName" ColumnName="TemplateFileName" />
+          <ScalarProperty Name="TemplateDisplayName" ColumnName="TemplateDisplayName" />
+          <ScalarProperty Name="MimeTypeID" ColumnName="MimeTypeID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_ADM_GetAllActions" FunctionName="REPSModel.Store.REPS_ADM_GetAllActions">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_ADM_GetAllActions_Result">
+          <ScalarProperty Name="WorkflowActionID" ColumnName="WorkflowActionID" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="Assigned" ColumnName="Assigned" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_ADM_GetAllRoleActions" FunctionName="REPSModel.Store.REPS_ADM_GetAllRoleActions">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_ADM_GetAllRoleActions_Result">
+          <ScalarProperty Name="UserActionID" ColumnName="UserActionID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Assigned" ColumnName="Assigned" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_ADM_GetAllTasksPerProcess" FunctionName="REPSModel.Store.REPS_ADM_GetAllTasksPerProcess">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_ADM_GetAllTasksPerProcess_Result">
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="Assigned" ColumnName="Assigned" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_ADM_GetDocumentVersionByTemplateID" FunctionName="REPSModel.Store.REPS_ADM_GetDocumentVersionByTemplateID" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_GetWorkflowActionIsMandatory" FunctionName="REPSModel.Store.REPS_ADM_GetWorkflowActionIsMandatory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_ADM_GetWorkflowActionIsMandatory_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IsMandatory" ColumnName="IsMandatory" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_ADM_GetWorkFlowTasksActionsByTaskID" FunctionName="REPSModel.Store.REPS_ADM_GetWorkFlowTasksActionsByTaskID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_ADM_GetWorkFlowTasksActionsByTaskID_Result">
+          <ScalarProperty Name="WorkflowTaskID" ColumnName="WorkflowTaskID" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="WorkflowActionID" ColumnName="WorkflowActionID" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="WorkflowTaskOrder" ColumnName="WorkflowTaskOrder" />
+          <ScalarProperty Name="TaskControl" ColumnName="TaskControl" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_ADM_GetWorkflowVariableList" FunctionName="REPSModel.Store.REPS_ADM_GetWorkflowVariableList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_ADM_GetWorkflowVariableList_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+          <ScalarProperty Name="Assigned" ColumnName="Assigned" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_ADM_ToggleActionMandatory" FunctionName="REPSModel.Store.REPS_ADM_ToggleActionMandatory" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_ToggleWorkflowVariable" FunctionName="REPSModel.Store.REPS_ADM_ToggleWorkflowVariable" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_ToggleWorkflowVariableRequired" FunctionName="REPSModel.Store.REPS_ADM_ToggleWorkflowVariableRequired" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_UnAssignActionFromTask" FunctionName="REPSModel.Store.REPS_ADM_UnAssignActionFromTask" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_UnAssignTaskFromWorkflow" FunctionName="REPSModel.Store.REPS_ADM_UnAssignTaskFromWorkflow" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_UpdateActionName" FunctionName="REPSModel.Store.REPS_ADM_UpdateActionName" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_UpdateRole" FunctionName="REPSModel.Store.REPS_ADM_UpdateRole" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_UpdateTask" FunctionName="REPSModel.Store.REPS_ADM_UpdateTask" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_UpdateWorkflowName" FunctionName="REPSModel.Store.REPS_ADM_UpdateWorkflowName" />
+    <FunctionImportMapping FunctionImportName="REPS_ArchiveFeesByTransactionID" FunctionName="REPSModel.Store.REPS_ArchiveFeesByTransactionID" />
+    <FunctionImportMapping FunctionImportName="REPS_ArchiveWorkflowActionsByTransactionID" FunctionName="REPSModel.Store.REPS_ArchiveWorkflowActionsByTransactionID" />
+    <FunctionImportMapping FunctionImportName="REPS_AutoSearchDeal" FunctionName="REPSModel.Store.REPS_AutoSearchDeal">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_AutoSearchDeal_Result">
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+          <ScalarProperty Name="UniqueReference" ColumnName="UniqueReference" />
+          <ScalarProperty Name="ClientReference" ColumnName="ClientReference" />
+          <ScalarProperty Name="DealTypeID" ColumnName="DealTypeID" />
+          <ScalarProperty Name="WorkflowTaskID" ColumnName="WorkflowTaskID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="GivenName" ColumnName="GivenName" />
+          <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LegalName" ColumnName="LegalName" />
+          <ScalarProperty Name="EntityID" ColumnName="EntityID" />
+          <ScalarProperty Name="UserFamilyName" ColumnName="UserFamilyName" />
+          <ScalarProperty Name="UserGivenName" ColumnName="UserGivenName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_DeleteAddress" FunctionName="REPSModel.Store.REPS_DeleteAddress" />
+    <FunctionImportMapping FunctionImportName="REPS_DeleteParticipant" FunctionName="REPSModel.Store.REPS_DeleteParticipant" />
+    <FunctionImportMapping FunctionImportName="REPS_DeleteParticipantBank" FunctionName="REPSModel.Store.REPS_DeleteParticipantBank" />
+    <FunctionImportMapping FunctionImportName="REPS_DeleteProperty" FunctionName="REPSModel.Store.REPS_DeleteProperty" />
+    <FunctionImportMapping FunctionImportName="REPS_DeleteUser" FunctionName="REPSModel.Store.REPS_DeleteUser" />
+    <FunctionImportMapping FunctionImportName="REPS_DownloadStaticTemplate" FunctionName="REPSModel.Store.REPS_DownloadStaticTemplate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_DownloadStaticTemplate_Result">
+          <ScalarProperty Name="TemplateFileName" ColumnName="TemplateFileName" />
+          <ScalarProperty Name="TemplateDisplayName" ColumnName="TemplateDisplayName" />
+          <ScalarProperty Name="MimeTypeID" ColumnName="MimeTypeID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GeneralSearchDeal" FunctionName="REPSModel.Store.REPS_GeneralSearchDeal">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GeneralSearchDeal_Result">
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+          <ScalarProperty Name="UniqueReference" ColumnName="UniqueReference" />
+          <ScalarProperty Name="ClientReference" ColumnName="ClientReference" />
+          <ScalarProperty Name="DealTypeID" ColumnName="DealTypeID" />
+          <ScalarProperty Name="WorkflowTaskID" ColumnName="WorkflowTaskID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="EntityID" ColumnName="EntityID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetAccountTypes" FunctionName="REPSModel.Store.REPS_GetAccountTypes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetAccountTypes_Result">
+          <ScalarProperty Name="AccountTypeID" ColumnName="AccountTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetAddressTypes" FunctionName="REPSModel.Store.REPS_GetAddressTypes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetAddressTypes_Result">
+          <ScalarProperty Name="AddressTypeID" ColumnName="AddressTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetAuditDetails_ByDealID" FunctionName="REPSModel.Store.REPS_GetAuditDetails_ByDealID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetAuditDetails_ByDealID_Result">
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+          <ScalarProperty Name="TransactionTypeID" ColumnName="TransactionTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TransactionStatusID" ColumnName="TransactionStatusID" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="GivenName" ColumnName="GivenName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetBankDetailsPerParticipant" FunctionName="REPSModel.Store.REPS_GetBankDetailsPerParticipant">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetBankDetailsPerParticipant_Result">
+          <ScalarProperty Name="ParticipantID" ColumnName="ParticipantID" />
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BankID" ColumnName="BankID" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="AccountTypeID" ColumnName="AccountTypeID" />
+          <ScalarProperty Name="ParticipantBankDetailID" ColumnName="ParticipantBankDetailID" />
+          <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="SortCode" ColumnName="SortCode" />
+          <ScalarProperty Name="VerifiedBank" ColumnName="VerifiedBank" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetBanks" FunctionName="REPSModel.Store.REPS_GetBanks">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetBanks_Result">
+          <ScalarProperty Name="BankID" ColumnName="BankID" />
+          <ScalarProperty Name="EntityID" ColumnName="EntityID" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="UniversalSortCode" ColumnName="UniversalSortCode" />
+          <ScalarProperty Name="SwiftCode" ColumnName="SwiftCode" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetClientReferenceByDealID" FunctionName="REPSModel.Store.REPS_GetClientReferenceByDealID" />
+    <FunctionImportMapping FunctionImportName="REPS_GetCompletedActionsByWorkflowID" FunctionName="REPSModel.Store.REPS_GetCompletedActionsByWorkflowID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetCompletedActionsByWorkflowID_Result">
+          <ScalarProperty Name="WorkflowTaskID" ColumnName="WorkflowTaskID" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="WorkflowActionID" ColumnName="WorkflowActionID" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="WorkflowTaskOrder" ColumnName="WorkflowTaskOrder" />
+          <ScalarProperty Name="TaskControl" ColumnName="TaskControl" />
+          <ScalarProperty Name="Tick" ColumnName="Tick" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetCorrespondence_ByCorrespondenceID" FunctionName="REPSModel.Store.REPS_GetCorrespondence_ByCorrespondenceID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetCorrespondence_ByCorrespondenceID_Result">
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="Headers" ColumnName="Headers" />
+          <ScalarProperty Name="Html" ColumnName="Html" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetCorrespondenceAttachmentByID" FunctionName="REPSModel.Store.REPS_GetCorrespondenceAttachmentByID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetCorrespondenceAttachmentByID_Result">
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="GeneratedDocFileName" ColumnName="GeneratedDocFileName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetCorrespondenceEmailAutocomplete_ByDealID" FunctionName="REPSModel.Store.REPS_GetCorrespondenceEmailAutocomplete_ByDealID" />
+    <FunctionImportMapping FunctionImportName="REPS_GetCorrespondenceNumberAutocomplete_ByDealID" FunctionName="REPSModel.Store.REPS_GetCorrespondenceNumberAutocomplete_ByDealID" />
+    <FunctionImportMapping FunctionImportName="REPS_GetCountries" FunctionName="REPSModel.Store.REPS_GetCountries">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetCountries_Result">
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="ISOCode" ColumnName="ISOCode" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetCurrentDealReference_ByDealID" FunctionName="REPSModel.Store.REPS_GetCurrentDealReference_ByDealID" />
+    <FunctionImportMapping FunctionImportName="REPS_GetDealFinalised" FunctionName="REPSModel.Store.REPS_GetDealFinalised" />
+    <FunctionImportMapping FunctionImportName="REPS_GetDealsDashboard" FunctionName="REPSModel.Store.REPS_GetDealsDashboard">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetDealsDashboard_Result">
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+          <ScalarProperty Name="UniqueReference" ColumnName="UniqueReference" />
+          <ScalarProperty Name="ClientReference" ColumnName="ClientReference" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DealTypeID" ColumnName="DealTypeID" />
+          <ScalarProperty Name="DealType" ColumnName="DealType" />
+          <ScalarProperty Name="DealProcessTaskID" ColumnName="DealProcessTaskID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Participants" ColumnName="Participants" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_AddAlerts" FunctionName="REPSModel.Store.REPS_AddAlerts" />
+    <FunctionImportMapping FunctionImportName="REPS_AddCorrespondence" FunctionName="REPSModel.Store.REPS_AddCorrespondence" />
+    <FunctionImportMapping FunctionImportName="REPS_AddFinancialTransaction" FunctionName="REPSModel.Store.REPS_AddFinancialTransaction" />
+    <FunctionImportMapping FunctionImportName="REPS_GetDealSumByTask" FunctionName="REPSModel.Store.REPS_GetDealSumByTask">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetDealSumByTask_Result">
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="DealCount" ColumnName="DealCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetDealTypes" FunctionName="REPSModel.Store.REPS_GetDealTypes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetDealTypes_Result">
+          <ScalarProperty Name="DealTypeID" ColumnName="DealTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetDocumentIDbyDocumentTemplateID" FunctionName="REPSModel.Store.REPS_GetDocumentIDbyDocumentTemplateID" />
+    <FunctionImportMapping FunctionImportName="REPS_GetDocumentTemplateByID" FunctionName="REPSModel.Store.REPS_GetDocumentTemplateByID" />
+    <FunctionImportMapping FunctionImportName="REPS_GetDocumentTemplateXMLByID" FunctionName="REPSModel.Store.REPS_GetDocumentTemplateXMLByID" />
+    <FunctionImportMapping FunctionImportName="REPS_GetDocumentVersionByTemplateID" FunctionName="REPSModel.Store.REPS_GetDocumentVersionByTemplateID" />
+    <FunctionImportMapping FunctionImportName="REPS_GetFileNameFromTemplateDescription" FunctionName="REPSModel.Store.REPS_GetFileNameFromTemplateDescription" />
+    <FunctionImportMapping FunctionImportName="REPS_GetMortgageLender" FunctionName="REPSModel.Store.REPS_GetMortgageLender">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetMortgageLender_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetMortgageType" FunctionName="REPSModel.Store.REPS_GetMortgageType">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetMortgageType_Result">
+          <ScalarProperty Name="InstrumentTypeID" ColumnName="InstrumentTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetOrganisation" FunctionName="REPSModel.Store.REPS_GetOrganisation">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetOrganisation_Result">
+          <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+          <ScalarProperty Name="OrganizationTypeID" ColumnName="OrganizationTypeID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+          <ScalarProperty Name="LegalName" ColumnName="LegalName" />
+          <ScalarProperty Name="VatID" ColumnName="VatID" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Verified" ColumnName="Verified" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="EntityID" ColumnName="EntityID" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetOrganisationTypes" FunctionName="REPSModel.Store.REPS_GetOrganisationTypes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetOrganisationTypes_Result">
+          <ScalarProperty Name="OrganizationTypeID" ColumnName="OrganizationTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetParticipantTypes" FunctionName="REPSModel.Store.REPS_GetParticipantTypes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetParticipantTypes_Result">
+          <ScalarProperty Name="ParticipantTypeID" ColumnName="ParticipantTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetPropertiesWithDetails" FunctionName="REPSModel.Store.REPS_GetPropertiesWithDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetPropertiesWithDetails_Result">
+          <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+          <ScalarProperty Name="PropertyDescription" ColumnName="PropertyDescription" />
+          <ScalarProperty Name="LegalDescription" ColumnName="LegalDescription" />
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="AddressTypeID" ColumnName="AddressTypeID" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="CountryDesc" ColumnName="CountryDesc" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="PropertyTypeID" ColumnName="PropertyTypeID" />
+          <ScalarProperty Name="PropertyType" ColumnName="PropertyType" />
+          <ScalarProperty Name="Verified" ColumnName="Verified" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="PropertyNumber" ColumnName="PropertyNumber" />
+          <ScalarProperty Name="PortionNumber" ColumnName="PortionNumber" />
+          <ScalarProperty Name="Township" ColumnName="Township" />
+          <ScalarProperty Name="PropertyDetailID" ColumnName="PropertyDetailID" />
+          <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+          <ScalarProperty Name="SectionNumber" ColumnName="SectionNumber" />
+          <ScalarProperty Name="PlanNumber" ColumnName="PlanNumber" />
+          <ScalarProperty Name="UnitNumber" ColumnName="UnitNumber" />
+          <ScalarProperty Name="SizeTypeID" ColumnName="SizeTypeID" />
+          <ScalarProperty Name="RegistrationDivision" ColumnName="RegistrationDivision" />
+          <ScalarProperty Name="SizeType" ColumnName="SizeType" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Geo" ColumnName="Geo" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetPropertyTypes" FunctionName="REPSModel.Store.REPS_GetPropertyTypes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetPropertyTypes_Result">
+          <ScalarProperty Name="PropertyTypeID" ColumnName="PropertyTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetProvince" FunctionName="REPSModel.Store.REPS_GetProvince">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetProvince_Result">
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetRoles" FunctionName="REPSModel.Store.REPS_GetRoles">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetRoles_Result">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetSizes" FunctionName="REPSModel.Store.REPS_GetSizes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetSizes_Result">
+          <ScalarProperty Name="SizeTypeID" ColumnName="SizeTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetStoredDocumentByID" FunctionName="REPSModel.Store.REPS_GetStoredDocumentByID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetStoredDocumentByID_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="GeneratedDocFileName" ColumnName="GeneratedDocFileName" />
+          <ScalarProperty Name="TemplateDisplayName" ColumnName="TemplateDisplayName" />
+          <ScalarProperty Name="MimeTypeID" ColumnName="MimeTypeID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetStoredSignedDocumentByID" FunctionName="REPSModel.Store.REPS_GetStoredSignedDocumentByID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetStoredSignedDocumentByID_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SignedDocFileName" ColumnName="SignedDocFileName" />
+          <ScalarProperty Name="TemplateDisplayName" ColumnName="TemplateDisplayName" />
+          <ScalarProperty Name="SignedDocMimeTypeID" ColumnName="SignedDocMimeTypeID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetTaskWorkflowIDByDealID" FunctionName="REPSModel.Store.REPS_GetTaskWorkflowIDByDealID" />
+    <FunctionImportMapping FunctionImportName="REPS_GetTaskWorkflowNameByDealID" FunctionName="REPSModel.Store.REPS_GetTaskWorkflowNameByDealID" />
+    <FunctionImportMapping FunctionImportName="REPS_GetWorkFlowActionsAddFields" FunctionName="REPSModel.Store.REPS_GetWorkFlowActionsAddFields">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetWorkFlowActionsAddFields_Result">
+          <ScalarProperty Name="WorkflowTaskID" ColumnName="WorkflowTaskID" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="WorkflowActionID" ColumnName="WorkflowActionID" />
+          <ScalarProperty Name="WorkflowActionDisplayName" ColumnName="WorkflowActionDisplayName" />
+          <ScalarProperty Name="WorkflowTaskOrder" ColumnName="WorkflowTaskOrder" />
+          <ScalarProperty Name="TaskControl" ColumnName="TaskControl" />
+          <ScalarProperty Name="WorkflowVariableID" ColumnName="WorkflowVariableID" />
+          <ScalarProperty Name="WorkflowVariableDisplayName" ColumnName="WorkflowVariableDisplayName" />
+          <ScalarProperty Name="WorkflowActionVarID" ColumnName="WorkflowActionVarID" />
+          <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_AddWorkflowActionValues" FunctionName="REPSModel.Store.REPS_AddWorkflowActionValues" />
+    <FunctionImportMapping FunctionImportName="REPS_GetWorkflowProgress" FunctionName="REPSModel.Store.REPS_GetWorkflowProgress">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetWorkflowProgress_Result">
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="GivenName" ColumnName="GivenName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetWorkFlowTasksActions" FunctionName="REPSModel.Store.REPS_GetWorkFlowTasksActions">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetWorkFlowTasksActions_Result">
+          <ScalarProperty Name="WorkflowActionID" ColumnName="WorkflowActionID" />
+          <ScalarProperty Name="Tick" ColumnName="Tick" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_UpdateAddress" FunctionName="REPSModel.Store.REPS_UpdateAddress" />
+    <FunctionImportMapping FunctionImportName="REPS_UpdateDeal" FunctionName="REPSModel.Store.REPS_UpdateDeal" />
+    <FunctionImportMapping FunctionImportName="REPS_UpdateDealApprove" FunctionName="REPSModel.Store.REPS_UpdateDealApprove" />
+    <FunctionImportMapping FunctionImportName="REPS_UpdateDealCompletionDate_ByDealID" FunctionName="REPSModel.Store.REPS_UpdateDealCompletionDate_ByDealID" />
+    <FunctionImportMapping FunctionImportName="REPS_UpdateEntity" FunctionName="REPSModel.Store.REPS_UpdateEntity" />
+    <FunctionImportMapping FunctionImportName="REPS_UpdateFinancialInstrument" FunctionName="REPSModel.Store.REPS_UpdateFinancialInstrument" />
+    <FunctionImportMapping FunctionImportName="REPS_UpdateFinancialTransaction" FunctionName="REPSModel.Store.REPS_UpdateFinancialTransaction" />
+    <FunctionImportMapping FunctionImportName="REPS_UpdateMortgageStatus" FunctionName="REPSModel.Store.REPS_UpdateMortgageStatus" />
+    <FunctionImportMapping FunctionImportName="REPS_UpdateOrganisationTypeID" FunctionName="REPSModel.Store.REPS_UpdateOrganisationTypeID" />
+    <FunctionImportMapping FunctionImportName="REPS_UpdateParticipantBankDetail" FunctionName="REPSModel.Store.REPS_UpdateParticipantBankDetail" />
+    <FunctionImportMapping FunctionImportName="REPS_UpdateProperty" FunctionName="REPSModel.Store.REPS_UpdateProperty" />
+    <FunctionImportMapping FunctionImportName="REPS_UpdatePropertyDetail" FunctionName="REPSModel.Store.REPS_UpdatePropertyDetail" />
+    <FunctionImportMapping FunctionImportName="REPS_UpdateUser_WorkflowID_ByUserID" FunctionName="REPSModel.Store.REPS_UpdateUser_WorkflowID_ByUserID" />
+    <FunctionImportMapping FunctionImportName="REPS_GetUserID" FunctionName="REPSModel.Store.REPS_GetUserID" />
+    <FunctionImportMapping FunctionImportName="REPS_LogTransaction" FunctionName="REPSModel.Store.REPS_LogTransaction" />
+    <FunctionImportMapping FunctionImportName="REPS_UpdateDealStatusInWorkflowProgress" FunctionName="REPSModel.Store.REPS_UpdateDealStatusInWorkflowProgress" />
+    <EntitySetMapping Name="Entity">
+      <EntityTypeMapping TypeName="REPSModel.Entity">
+        <MappingFragment StoreEntitySet="Entity">
+          <ScalarProperty Name="EntityGUID" ColumnName="EntityGUID" />
+          <ScalarProperty Name="DataVerification" ColumnName="DataVerification" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="ParentEntityID" ColumnName="ParentEntityID" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="AddressTypeID" ColumnName="AddressTypeID" />
+          <ScalarProperty Name="Verified" ColumnName="Verified" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="VatID" ColumnName="VatID" />
+          <ScalarProperty Name="AlternateName" ColumnName="AlternateName" />
+          <ScalarProperty Name="LegalName" ColumnName="LegalName" />
+          <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="OrganizationTypeID" ColumnName="OrganizationTypeID" />
+          <ScalarProperty Name="EntityID" ColumnName="EntityID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="REPS_AddUserDeal" FunctionName="REPSModel.Store.REPS_AddUserDeal" />
+    <FunctionImportMapping FunctionImportName="REPS_DeleteAllTabsForUser_ByUserGUID" FunctionName="REPSModel.Store.REPS_DeleteAllTabsForUser_ByUserGUID" />
+    <FunctionImportMapping FunctionImportName="REPS_UpdateLastActiveView_ByDealGUIDUserGUID" FunctionName="REPSModel.Store.REPS_UpdateLastActiveView_ByDealGUIDUserGUID" />
+    <FunctionImportMapping FunctionImportName="REPS_GetWorkFlowTasks" FunctionName="REPSModel.Store.REPS_GetWorkFlowTasks">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetWorkFlowTasks_Result">
+          <ScalarProperty Name="WorkflowTaskGUID" ColumnName="WorkflowTaskGUID" />
+          <ScalarProperty Name="TaskGUID" ColumnName="TaskGUID" />
+          <ScalarProperty Name="WorkflowTaskID" ColumnName="WorkflowTaskID" />
+          <ScalarProperty Name="WorkflowID" ColumnName="WorkflowID" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="TaskDisplayIcon" ColumnName="TaskDisplayIcon" />
+          <ScalarProperty Name="WorkflowName" ColumnName="WorkflowName" />
+          <ScalarProperty Name="WorkflowTaskOrder" ColumnName="WorkflowTaskOrder" />
+          <ScalarProperty Name="TaskControl" ColumnName="TaskControl" />
+          <ScalarProperty Name="TaskWorkflowID" ColumnName="TaskWorkflowID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetEntityID" FunctionName="REPSModel.Store.REPS_GetEntityID" />
+    <FunctionImportMapping FunctionImportName="REPS_UpdateUserToken" FunctionName="REPSModel.Store.REPS_UpdateUserToken" />
+    <FunctionImportMapping FunctionImportName="REPS_GETDealIDByDealGUID" FunctionName="REPSModel.Store.REPS_GETDealIDByDealGUID" />
+    <EntitySetMapping Name="Deal">
+      <EntityTypeMapping TypeName="REPSModel.Deal">
+        <MappingFragment StoreEntitySet="Deal">
+          <ScalarProperty Name="DealProcessTaskID" ColumnName="DealProcessTaskID" />
+          <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
+          <ScalarProperty Name="ClientReference" ColumnName="ClientReference" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="WorkflowTaskID" ColumnName="WorkflowTaskID" />
+          <ScalarProperty Name="DealTypeID" ColumnName="DealTypeID" />
+          <ScalarProperty Name="UniqueReference" ColumnName="UniqueReference" />
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetHeaderTabNotificationBarActiveDeals_ByUserGUID" FunctionName="REPSModel.Store.REPS_GetHeaderTabNotificationBarActiveDeals_ByUserGUID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetHeaderTabNotificationBarActiveDeals_ByUserGUID_Result">
+          <ScalarProperty Name="ClientReference" ColumnName="ClientReference" />
+          <ScalarProperty Name="UniqueReference" ColumnName="UniqueReference" />
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+          <ScalarProperty Name="LastViewName" ColumnName="LastViewName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetHeaderTabUserActiveDeals_ByUserGUID" FunctionName="REPSModel.Store.REPS_GetHeaderTabUserActiveDeals_ByUserGUID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetHeaderTabUserActiveDeals_ByUserGUID_Result">
+          <ScalarProperty Name="ClientReference" ColumnName="ClientReference" />
+          <ScalarProperty Name="UniqueReference" ColumnName="UniqueReference" />
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+          <ScalarProperty Name="LastViewName" ColumnName="LastViewName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetUserIDByAspNetUserID" FunctionName="REPSModel.Store.REPS_GetUserIDByAspNetUserID" />
+    <EntitySetMapping Name="Property">
+      <EntityTypeMapping TypeName="REPSModel.Property">
+        <MappingFragment StoreEntitySet="Property">
+          <ScalarProperty Name="PropertyGUID" ColumnName="PropertyGUID" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Verified" ColumnName="Verified" />
+          <ScalarProperty Name="PropertyTypeID" ColumnName="PropertyTypeID" />
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="LegalDescription" ColumnName="LegalDescription" />
+          <ScalarProperty Name="PropertyDescription" ColumnName="PropertyDescription" />
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+          <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetParticipantIDByParticipantGUID" FunctionName="REPSModel.Store.REPS_GetParticipantIDByParticipantGUID" />
+    <FunctionImportMapping FunctionImportName="REPS_GetParticipants" FunctionName="REPSModel.Store.REPS_GetParticipants">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetParticipants_Result">
+          <ScalarProperty Name="ParticipantID" ColumnName="ParticipantID" />
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+          <ScalarProperty Name="ParticipantTypeID" ColumnName="ParticipantTypeID" />
+          <ScalarProperty Name="ParticipantRoleID" ColumnName="ParticipantRoleID" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+          <ScalarProperty Name="BankID" ColumnName="BankID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="TitleID" ColumnName="TitleID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="GivenName" ColumnName="GivenName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
+          <ScalarProperty Name="LegalName" ColumnName="LegalName" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="TaxID" ColumnName="TaxID" />
+          <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+          <ScalarProperty Name="IdentityNumber" ColumnName="IdentityNumber" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailOrg" ColumnName="EmailOrg" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="TelephoneOrg" ColumnName="TelephoneOrg" />
+          <ScalarProperty Name="ParticipantGUID" ColumnName="ParticipantGUID" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetParticipantBankDetails" FunctionName="REPSModel.Store.REPS_GetParticipantBankDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetParticipantBankDetails_Result">
+          <ScalarProperty Name="ParticipantID" ColumnName="ParticipantID" />
+          <ScalarProperty Name="ParticipantGUID" ColumnName="ParticipantGUID" />
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BankID" ColumnName="BankID" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="AccountTypeID" ColumnName="AccountTypeID" />
+          <ScalarProperty Name="ParticipantBankDetailID" ColumnName="ParticipantBankDetailID" />
+          <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+          <ScalarProperty Name="SortCode" ColumnName="SortCode" />
+          <ScalarProperty Name="VerifiedBank" ColumnName="VerifiedBank" />
+          <ScalarProperty Name="TitleID" ColumnName="TitleID" />
+          <ScalarProperty Name="GivenName" ColumnName="GivenName" />
+          <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetBankAddressCountByParticpantID" FunctionName="REPSModel.Store.REPS_GetBankAddressCountByParticpantID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetBankAddressCountByParticpantID_Result">
+          <ScalarProperty Name="participantID" ColumnName="participantID" />
+          <ScalarProperty Name="ParticipantGUID" ColumnName="ParticipantGUID" />
+          <ScalarProperty Name="BankCount" ColumnName="BankCount" />
+          <ScalarProperty Name="AddressCount" ColumnName="AddressCount" />
+          <ScalarProperty Name="dealID" ColumnName="dealID" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="Individual" ColumnName="Individual" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Address">
+      <EntityTypeMapping TypeName="REPSModel.Address">
+        <MappingFragment StoreEntitySet="Address">
+          <ScalarProperty Name="AddressGUID" ColumnName="AddressGUID" />
+          <ScalarProperty Name="Verified" ColumnName="Verified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="AddressTypeID" ColumnName="AddressTypeID" />
+          <ScalarProperty Name="ParticipantID" ColumnName="ParticipantID" />
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PropertyDetail">
+      <EntityTypeMapping TypeName="REPSModel.PropertyDetail">
+        <MappingFragment StoreEntitySet="PropertyDetail">
+          <ScalarProperty Name="PropertyDetailGUID" ColumnName="PropertyDetailGUID" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Geo" ColumnName="Geo" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="SizeTypeID" ColumnName="SizeTypeID" />
+          <ScalarProperty Name="UnitNumber" ColumnName="UnitNumber" />
+          <ScalarProperty Name="PlanNumber" ColumnName="PlanNumber" />
+          <ScalarProperty Name="SectionNumber" ColumnName="SectionNumber" />
+          <ScalarProperty Name="RegistrationDivision" ColumnName="RegistrationDivision" />
+          <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+          <ScalarProperty Name="Township" ColumnName="Township" />
+          <ScalarProperty Name="PortionNumber" ColumnName="PortionNumber" />
+          <ScalarProperty Name="PropertyNumber" ColumnName="PropertyNumber" />
+          <ScalarProperty Name="RightTypeID" ColumnName="RightTypeID" />
+          <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+          <ScalarProperty Name="PropertyDetailID" ColumnName="PropertyDetailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetAddress" FunctionName="REPSModel.Store.REPS_GetAddress">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetAddress_Result">
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="ParticipantID" ColumnName="ParticipantID" />
+          <ScalarProperty Name="AddressTypeID" ColumnName="AddressTypeID" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="AddressGUID" ColumnName="AddressGUID" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetAddressIDByAddressGUID" FunctionName="REPSModel.Store.REPS_GetAddressIDByAddressGUID" />
+    <FunctionImportMapping FunctionImportName="REPS_GetPropertyDetailIDByPropertyDetailGUID" FunctionName="REPSModel.Store.REPS_GetPropertyDetailIDByPropertyDetailGUID" />
+    <FunctionImportMapping FunctionImportName="REPS_GetPropertyIDByPropertyGUID" FunctionName="REPSModel.Store.REPS_GetPropertyIDByPropertyGUID" />
+    <FunctionImportMapping FunctionImportName="REPS_GetProperties" FunctionName="REPSModel.Store.REPS_GetProperties">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetProperties_Result">
+          <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+          <ScalarProperty Name="PropertyDescription" ColumnName="PropertyDescription" />
+          <ScalarProperty Name="LegalDescription" ColumnName="LegalDescription" />
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="PropertyTypeID" ColumnName="PropertyTypeID" />
+          <ScalarProperty Name="Verified" ColumnName="Verified" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="PropertyAddress" ColumnName="PropertyAddress" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="PropertyDetails" ColumnName="PropertyDetails" />
+          <ScalarProperty Name="PropertyDetailID" ColumnName="PropertyDetailID" />
+          <ScalarProperty Name="Geo" ColumnName="Geo" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="PropertyGUID" ColumnName="PropertyGUID" />
+          <ScalarProperty Name="PropertyDetailGUID" ColumnName="PropertyDetailGUID" />
+          <ScalarProperty Name="AddressGUID" ColumnName="AddressGUID" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetInterestType" FunctionName="REPSModel.Store.REPS_GetInterestType">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetInterestType_Result">
+          <ScalarProperty Name="InterestTypeID" ColumnName="InterestTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetMortgagePurchasePrice" FunctionName="REPSModel.Store.REPS_GetMortgagePurchasePrice">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetMortgagePurchasePrice_Result">
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="LenderName" ColumnName="LenderName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="FinancialInstrument">
+      <EntityTypeMapping TypeName="REPSModel.FinancialInstrument">
+        <MappingFragment StoreEntitySet="FinancialInstrument">
+          <ScalarProperty Name="InstrumentGUID" ColumnName="InstrumentGUID" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="InterestTypeID" ColumnName="InterestTypeID" />
+          <ScalarProperty Name="InstrumentTypeID" ColumnName="InstrumentTypeID" />
+          <ScalarProperty Name="LenderID" ColumnName="LenderID" />
+          <ScalarProperty Name="Term" ColumnName="Term" />
+          <ScalarProperty Name="InterestRate" ColumnName="InterestRate" />
+          <ScalarProperty Name="Deposit" ColumnName="Deposit" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="CurrencyTypeID" ColumnName="CurrencyTypeID" />
+          <ScalarProperty Name="ParticipantID" ColumnName="ParticipantID" />
+          <ScalarProperty Name="InstrumentID" ColumnName="InstrumentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetMortgages_ByDealID" FunctionName="REPSModel.Store.REPS_GetMortgages_ByDealID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetMortgages_ByDealID_Result">
+          <ScalarProperty Name="InstrumentID" ColumnName="InstrumentID" />
+          <ScalarProperty Name="ParticipantID" ColumnName="ParticipantID" />
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="CurrencyTypeID" ColumnName="CurrencyTypeID" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Deposit" ColumnName="Deposit" />
+          <ScalarProperty Name="InterestRate" ColumnName="InterestRate" />
+          <ScalarProperty Name="Term" ColumnName="Term" />
+          <ScalarProperty Name="LenderID" ColumnName="LenderID" />
+          <ScalarProperty Name="LenderName" ColumnName="LenderName" />
+          <ScalarProperty Name="InterestTypeID" ColumnName="InterestTypeID" />
+          <ScalarProperty Name="InterestTypeDesc" ColumnName="InterestTypeDesc" />
+          <ScalarProperty Name="InstrumentTypeID" ColumnName="InstrumentTypeID" />
+          <ScalarProperty Name="InstrumentTypeDesc" ColumnName="InstrumentTypeDesc" />
+          <ScalarProperty Name="InstrumentGUID" ColumnName="InstrumentGUID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetReportName" FunctionName="REPSModel.Store.REPS_GetReportName">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetReportName_Result">
+          <ScalarProperty Name="ReportsId" ColumnName="ReportsId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="TableProcedure" ColumnName="TableProcedure" />
+          <ScalarProperty Name="ChartProcedure" ColumnName="ChartProcedure" />
+          <ScalarProperty Name="TableParameter" ColumnName="TableParameter" />
+          <ScalarProperty Name="ChartParameter" ColumnName="ChartParameter" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="ChartType" ColumnName="ChartType" />
+          <ScalarProperty Name="ChartName" ColumnName="ChartName" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetMortgageIDByMortgageGUID" FunctionName="REPSModel.Store.REPS_GetMortgageIDByMortgageGUID" />
+    <FunctionImportMapping FunctionImportName="REPS_ReportFilterFeeTypesListDropDown" FunctionName="REPSModel.Store.REPS_ReportFilterFeeTypesListDropDown">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_ReportFilterFeeTypesListDropDown_Result">
+          <ScalarProperty Name="ReportsId" ColumnName="ReportsId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_ReportGetUsers" FunctionName="REPSModel.Store.REPS_ReportGetUsers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_ReportGetUsers_Result">
+          <ScalarProperty Name="ReportsId" ColumnName="ReportsId" />
+          <ScalarProperty Name="EntityID" ColumnName="EntityID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="AspNetUsersId" ColumnName="AspNetUsersId" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_ReportWorkflowStatus" FunctionName="REPSModel.Store.REPS_ReportWorkflowStatus">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_ReportWorkflowStatus_Result">
+          <ScalarProperty Name="ReportsId" ColumnName="ReportsId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="workflowID" ColumnName="workflowID" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetReportFilters" FunctionName="REPSModel.Store.REPS_GetReportFilters">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetReportFilters_Result">
+          <ScalarProperty Name="ReportsFiltersId" ColumnName="ReportsFiltersId" />
+          <ScalarProperty Name="ReportsId" ColumnName="ReportsId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="DropdownProcedure" ColumnName="DropdownProcedure" />
+          <ScalarProperty Name="Parameter" ColumnName="Parameter" />
+          <ScalarProperty Name="FilterID" ColumnName="FilterID" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_UpdateAlerts_ByAlertID" FunctionName="REPSModel.Store.REPS_UpdateAlerts_ByAlertID" />
+    <FunctionImportMapping FunctionImportName="REPS_UpdateAlertsStatus_ByAlertID" FunctionName="REPSModel.Store.REPS_UpdateAlertsStatus_ByAlertID" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_AddEntity" FunctionName="REPSModel.Store.REPS_ADM_AddEntity" />
+    <FunctionImportMapping FunctionImportName="REPS_GetTitles" FunctionName="REPSModel.Store.REPS_GetTitles">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetTitles_Result">
+          <ScalarProperty Name="TitleID" ColumnName="TitleID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetAlerts_ByAlertID" FunctionName="REPSModel.Store.REPS_GetAlerts_ByAlertID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetAlerts_ByAlertID_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AlertsGUID" ColumnName="AlertsGUID" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="EventName" ColumnName="EventName" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetAlerts_ByUserID" FunctionName="REPSModel.Store.REPS_GetAlerts_ByUserID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetAlerts_ByUserID_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AlertsGUID" ColumnName="AlertsGUID" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EventName" ColumnName="EventName" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetDiaryItems_ByUserID" FunctionName="REPSModel.Store.REPS_GetDiaryItems_ByUserID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetDiaryItems_ByUserID_Result">
+          <ScalarProperty Name="DiaryDate" ColumnName="DiaryDate" />
+          <ScalarProperty Name="DiaryTime" ColumnName="DiaryTime" />
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EventName" ColumnName="EventName" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="AlertsGUID" ColumnName="AlertsGUID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_AddWorkflowActionNewTransaction" FunctionName="REPSModel.Store.REPS_AddWorkflowActionNewTransaction" />
+    <FunctionImportMapping FunctionImportName="REPS_GetAlertsIDByAlertsGUID" FunctionName="REPSModel.Store.REPS_GetAlertsIDByAlertsGUID" />
+    <FunctionImportMapping FunctionImportName="REPS_GetMandatoryActionsList" FunctionName="REPSModel.Store.REPS_GetMandatoryActionsList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetMandatoryActionsList_Result">
+          <ScalarProperty Name="WorkflowTaskID" ColumnName="WorkflowTaskID" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="WorkflowActionID" ColumnName="WorkflowActionID" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="WorkflowTaskOrder" ColumnName="WorkflowTaskOrder" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_UpdateWorkflowActionValues" FunctionName="REPSModel.Store.REPS_UpdateWorkflowActionValues" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_AddUser" FunctionName="REPSModel.Store.REPS_ADM_AddUser" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_UpdateReactivateUser" FunctionName="REPSModel.Store.REPS_ADM_UpdateReactivateUser" />
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="REPSModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="WorkflowID" ColumnName="WorkflowID" />
+          <ScalarProperty Name="ProfilePicture" ColumnName="ProfilePicture" />
+          <ScalarProperty Name="AspNetUsersId" ColumnName="AspNetUsersId" />
+          <ScalarProperty Name="TokenId" ColumnName="TokenId" />
+          <ScalarProperty Name="pwd" ColumnName="pwd" />
+          <ScalarProperty Name="HeaderTabToggle" ColumnName="HeaderTabToggle" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Verified" ColumnName="Verified" />
+          <ScalarProperty Name="JobTitleID" ColumnName="JobTitleID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="BirthPlace" ColumnName="BirthPlace" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="TaxID" ColumnName="TaxID" />
+          <ScalarProperty Name="PassportCountryID" ColumnName="PassportCountryID" />
+          <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+          <ScalarProperty Name="IdentityNumber" ColumnName="IdentityNumber" />
+          <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
+          <ScalarProperty Name="GivenName" ColumnName="GivenName" />
+          <ScalarProperty Name="TitleID" ColumnName="TitleID" />
+          <ScalarProperty Name="EntityID" ColumnName="EntityID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetUserInfo" FunctionName="REPSModel.Store.REPS_GetUserInfo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetUserInfo_Result">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="EntityID" ColumnName="EntityID" />
+          <ScalarProperty Name="TitleID" ColumnName="TitleID" />
+          <ScalarProperty Name="GivenName" ColumnName="GivenName" />
+          <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
+          <ScalarProperty Name="IdentityNumber" ColumnName="IdentityNumber" />
+          <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+          <ScalarProperty Name="PassportCountryID" ColumnName="PassportCountryID" />
+          <ScalarProperty Name="TaxID" ColumnName="TaxID" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="BirthPlace" ColumnName="BirthPlace" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="JobTitleID" ColumnName="JobTitleID" />
+          <ScalarProperty Name="Verified" ColumnName="Verified" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="AspNetUsersId" ColumnName="AspNetUsersId" />
+          <ScalarProperty Name="TokenId" ColumnName="TokenId" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="DataVerification" ColumnName="DataVerification" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="HeaderTabToggle" ColumnName="HeaderTabToggle" />
+          <ScalarProperty Name="WorkflowID" ColumnName="WorkflowID" />
+          <ScalarProperty Name="TaskWorkflowID" ColumnName="TaskWorkflowID" />
+          <ScalarProperty Name="TaskGUID" ColumnName="TaskGUID" />
+          <ScalarProperty Name="EntityGUID" ColumnName="EntityGUID" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetWorkflowDealCount" FunctionName="REPSModel.Store.REPS_GetWorkflowDealCount">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetWorkflowDealCount_Result">
+          <ScalarProperty Name="TaskGUID" ColumnName="TaskGUID" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="DealCount" ColumnName="DealCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_AddFinancialInstrument" FunctionName="REPSModel.Store.REPS_AddFinancialInstrument" />
+    <FunctionImportMapping FunctionImportName="REPS_GetUsersByAspId" FunctionName="REPSModel.Store.REPS_GetUsersByAspId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetUsersByAspId_Result">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="EntityID" ColumnName="EntityID" />
+          <ScalarProperty Name="TitleID" ColumnName="TitleID" />
+          <ScalarProperty Name="GivenName" ColumnName="GivenName" />
+          <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
+          <ScalarProperty Name="IdentityNumber" ColumnName="IdentityNumber" />
+          <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+          <ScalarProperty Name="PassportCountryID" ColumnName="PassportCountryID" />
+          <ScalarProperty Name="TaxID" ColumnName="TaxID" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="BirthPlace" ColumnName="BirthPlace" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="JobTitleID" ColumnName="JobTitleID" />
+          <ScalarProperty Name="Verified" ColumnName="Verified" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="AspNetUsersId" ColumnName="AspNetUsersId" />
+          <ScalarProperty Name="TokenId" ColumnName="TokenId" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="DataVerification" ColumnName="DataVerification" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_Template_Client_Care_Letter" FunctionName="REPSModel.Store.REPS_Template_Client_Care_Letter">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_Template_Client_Care_Letter_Result">
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+          <ScalarProperty Name="ClientReference" ColumnName="ClientReference" />
+          <ScalarProperty Name="GivenName" ColumnName="GivenName" />
+          <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
+          <ScalarProperty Name="PropertyDescription" ColumnName="PropertyDescription" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetAddPaymentFields" FunctionName="REPSModel.Store.REPS_GetAddPaymentFields">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetAddPaymentFields_Result">
+          <ScalarProperty Name="WorkflowTaskID" ColumnName="WorkflowTaskID" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="WorkflowActionID" ColumnName="WorkflowActionID" />
+          <ScalarProperty Name="WorkflowActionDisplayName" ColumnName="WorkflowActionDisplayName" />
+          <ScalarProperty Name="WorkflowTaskOrder" ColumnName="WorkflowTaskOrder" />
+          <ScalarProperty Name="TaskControl" ColumnName="TaskControl" />
+          <ScalarProperty Name="WorkflowVariableID" ColumnName="WorkflowVariableID" />
+          <ScalarProperty Name="WorkflowVariableDisplayName" ColumnName="WorkflowVariableDisplayName" />
+          <ScalarProperty Name="WorkflowActionVarID" ColumnName="WorkflowActionVarID" />
+          <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_ArchivePaymentByTransactionID" FunctionName="REPSModel.Store.REPS_ArchivePaymentByTransactionID" />
+    <FunctionImportMapping FunctionImportName="REPS_GetPaymentTypeList" FunctionName="REPSModel.Store.REPS_GetPaymentTypeList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetPaymentTypeList_Result">
+          <ScalarProperty Name="FeeTypeID" ColumnName="FeeTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_UpdatePayment" FunctionName="REPSModel.Store.REPS_UpdatePayment" />
+    <FunctionImportMapping FunctionImportName="REPS_VerifyIndividualExist" FunctionName="REPSModel.Store.REPS_VerifyIndividualExist">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_VerifyIndividualExist_Result">
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+          <ScalarProperty Name="ParticipantRoleID" ColumnName="ParticipantRoleID" />
+          <ScalarProperty Name="GivenName" ColumnName="GivenName" />
+          <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_AddPerson" FunctionName="REPSModel.Store.REPS_AddPerson" />
+    <FunctionImportMapping FunctionImportName="REPS_AddOrganisation" FunctionName="REPSModel.Store.REPS_AddOrganisation" />
+    <FunctionImportMapping FunctionImportName="REPS_GetParticipantRoles" FunctionName="REPSModel.Store.REPS_GetParticipantRoles">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetParticipantRoles_Result">
+          <ScalarProperty Name="ParticipantRoleID" ColumnName="ParticipantRoleID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="TransactionDetail">
+      <EntityTypeMapping TypeName="REPSModel.TransactionDetail">
+        <MappingFragment StoreEntitySet="TransactionDetail">
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="VariableTypeID" ColumnName="VariableTypeID" />
+          <ScalarProperty Name="WorkflowActionVarID" ColumnName="WorkflowActionVarID" />
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="TransactionDetailID" ColumnName="TransactionDetailID" />
+          <ScalarProperty Name="TransactionDetailGUID" ColumnName="TransactionDetailGUID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="REPS_AddPayment" FunctionName="REPSModel.Store.REPS_AddPayment" />
+    <FunctionImportMapping FunctionImportName="REPS_AddPaymentTransaction" FunctionName="REPSModel.Store.REPS_AddPaymentTransaction" />
+    <FunctionImportMapping FunctionImportName="REPS_GetTransactionDetailsIDByTransactionDetailsGUID" FunctionName="REPSModel.Store.REPS_GetTransactionDetailsIDByTransactionDetailsGUID" />
+    <FunctionImportMapping FunctionImportName="REPS_GetPaymentList" FunctionName="REPSModel.Store.REPS_GetPaymentList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetPaymentList_Result">
+          <ScalarProperty Name="TransactionDetailGUID" ColumnName="TransactionDetailGUID" />
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="TransactionDetailID" ColumnName="TransactionDetailID" />
+          <ScalarProperty Name="VariableTypeID" ColumnName="VariableTypeID" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_DeletePaymentByTransactionID" FunctionName="REPSModel.Store.REPS_DeletePaymentByTransactionID" />
+    <FunctionImportMapping FunctionImportName="REPS_GetEditPaymentFields" FunctionName="REPSModel.Store.REPS_GetEditPaymentFields">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetEditPaymentFields_Result">
+          <ScalarProperty Name="TransactionDetailGUID" ColumnName="TransactionDetailGUID" />
+          <ScalarProperty Name="WorkflowTaskID" ColumnName="WorkflowTaskID" />
+          <ScalarProperty Name="WorkflowActionID" ColumnName="WorkflowActionID" />
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="TransactionDetailID" ColumnName="TransactionDetailID" />
+          <ScalarProperty Name="WorkflowActionVarID" ColumnName="WorkflowActionVarID" />
+          <ScalarProperty Name="WorkflowVariableID" ColumnName="WorkflowVariableID" />
+          <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetDealCompletionDate_ByDealID" FunctionName="REPSModel.Store.REPS_GetDealCompletionDate_ByDealID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetDealCompletionDate_ByDealID_Result">
+          <ScalarProperty Name="ExportCompletionDate" ColumnName="ExportCompletionDate" />
+          <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetUserDeletedStatus" FunctionName="REPSModel.Store.REPS_GetUserDeletedStatus" />
+    <FunctionImportMapping FunctionImportName="REPS_AddProperty" FunctionName="REPSModel.Store.REPS_AddProperty" />
+    <FunctionImportMapping FunctionImportName="REPS_GetWorkFlowActionsEditFieldsValues" FunctionName="REPSModel.Store.REPS_GetWorkFlowActionsEditFieldsValues">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetWorkFlowActionsEditFieldsValues_Result">
+          <ScalarProperty Name="WorkflowTaskID" ColumnName="WorkflowTaskID" />
+          <ScalarProperty Name="WorkflowActionID" ColumnName="WorkflowActionID" />
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="TransactionDetailGUID" ColumnName="TransactionDetailGUID" />
+          <ScalarProperty Name="WorkflowActionVarID" ColumnName="WorkflowActionVarID" />
+          <ScalarProperty Name="WorkflowVariableID" ColumnName="WorkflowVariableID" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_DeleteTransactionImg" FunctionName="REPSModel.Store.REPS_DeleteTransactionImg" />
+    <FunctionImportMapping FunctionImportName="REPS_GetTransactionDetailByTransactionDetailGUID" FunctionName="REPSModel.Store.REPS_GetTransactionDetailByTransactionDetailGUID" />
+    <FunctionImportMapping FunctionImportName="REPS_GetUserRoleActions" FunctionName="REPSModel.Store.REPS_GetUserRoleActions">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetUserRoleActions_Result">
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_ADM_GetDocumentCategoryList" FunctionName="REPSModel.Store.REPS_ADM_GetDocumentCategoryList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_ADM_GetDocumentCategoryList_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetDealIDByAlertsGUID" FunctionName="REPSModel.Store.REPS_GetDealIDByAlertsGUID" />
+    <FunctionImportMapping FunctionImportName="REPS_GetCurrentWorkflowDetails" FunctionName="REPSModel.Store.REPS_GetCurrentWorkflowDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetCurrentWorkflowDetails_Result">
+          <ScalarProperty Name="WorkflowTaskGUID" ColumnName="WorkflowTaskGUID" />
+          <ScalarProperty Name="WorkflowTaskID" ColumnName="WorkflowTaskID" />
+          <ScalarProperty Name="WorkflowID" ColumnName="WorkflowID" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="TaskDisplayIcon" ColumnName="TaskDisplayIcon" />
+          <ScalarProperty Name="WorkflowName" ColumnName="WorkflowName" />
+          <ScalarProperty Name="WorkflowTaskOrder" ColumnName="WorkflowTaskOrder" />
+          <ScalarProperty Name="TaskControl" ColumnName="TaskControl" />
+          <ScalarProperty Name="TaskWorkflowID" ColumnName="TaskWorkflowID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_UpdateUser_ToggleHeaderTab_ByUserID" FunctionName="REPSModel.Store.REPS_UpdateUser_ToggleHeaderTab_ByUserID" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_GetTemplateFilename" FunctionName="REPSModel.Store.REPS_ADM_GetTemplateFilename" />
+    <EntitySetMapping Name="DocumentTemplate">
+      <EntityTypeMapping TypeName="REPSModel.DocumentTemplate">
+        <MappingFragment StoreEntitySet="DocumentTemplate">
+          <ScalarProperty Name="TemplateFixGUID" ColumnName="TemplateFixGUID" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="IsDocfusionTemplate" ColumnName="IsDocfusionTemplate" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="AttributeName" ColumnName="AttributeName" />
+          <ScalarProperty Name="DocumentVersionID" ColumnName="DocumentVersionID" />
+          <ScalarProperty Name="TemplateDisplayName" ColumnName="TemplateDisplayName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="REPS_ADM_AddDocumentTemplate" FunctionName="REPSModel.Store.REPS_ADM_AddDocumentTemplate" />
+    <FunctionImportMapping FunctionImportName="REPS_UpdateOrganisation" FunctionName="REPSModel.Store.REPS_UpdateOrganisation" />
+    <FunctionImportMapping FunctionImportName="REPS_UpdatePerson" FunctionName="REPSModel.Store.REPS_UpdatePerson" />
+    <FunctionImportMapping FunctionImportName="REPS_ReportSumPerFeeTypeGenerated" FunctionName="REPSModel.Store.REPS_ReportSumPerFeeTypeGenerated">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_ReportSumPerFeeTypeGenerated_Result">
+          <ScalarProperty Name="label" ColumnName="label" />
+          <ScalarProperty Name="value" ColumnName="value" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_ReportSumPerFeeDescriptionChart" FunctionName="REPSModel.Store.REPS_ReportSumPerFeeDescriptionChart">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_ReportSumPerFeeDescriptionChart_Result">
+          <ScalarProperty Name="label" ColumnName="label" />
+          <ScalarProperty Name="value" ColumnName="value" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_ReportWorkflowDealPerCount" FunctionName="REPSModel.Store.REPS_ReportWorkflowDealPerCount">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_ReportWorkflowDealPerCount_Result">
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="label" ColumnName="label" />
+          <ScalarProperty Name="value" ColumnName="value" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_DocXML_SearchReportLetter" FunctionName="REPSModel.Store.REPS_DocXML_SearchReportLetter" />
+    <FunctionImportMapping FunctionImportName="REPS_DocXML_MortgageLetter" FunctionName="REPSModel.Store.REPS_DocXML_MortgageLetter" />
+    <FunctionImportMapping FunctionImportName="REPS_DocXML_ClientCareLetter" FunctionName="REPSModel.Store.REPS_DocXML_ClientCareLetter" />
+    <FunctionImportMapping FunctionImportName="REPS_GetDeals" FunctionName="REPSModel.Store.REPS_GetDeals">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetDeals_Result">
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+          <ScalarProperty Name="UniqueReference" ColumnName="UniqueReference" />
+          <ScalarProperty Name="ClientReference" ColumnName="ClientReference" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DealTypeID" ColumnName="DealTypeID" />
+          <ScalarProperty Name="DealType" ColumnName="DealType" />
+          <ScalarProperty Name="DealProcessTaskID" ColumnName="DealProcessTaskID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Participants" ColumnName="Participants" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetWorkflowGUIDTaskGUID" FunctionName="REPSModel.Store.REPS_GetWorkflowGUIDTaskGUID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetWorkflowGUIDTaskGUID_Result">
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="TaskWorkflowID" ColumnName="TaskWorkflowID" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_UpdateUser" FunctionName="REPSModel.Store.REPS_UpdateUser" />
+    <FunctionImportMapping FunctionImportName="REPS_ReportSumPerFeeDescriptionTable" FunctionName="REPSModel.Store.REPS_ReportSumPerFeeDescriptionTable">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_ReportSumPerFeeDescriptionTable_Result">
+          <ScalarProperty Name="Created_By" ColumnName="Created By" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Fee_Description" ColumnName="Fee Description" />
+          <ScalarProperty Name="Total_Sum" ColumnName="Total Sum" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_ReportWorkflowDealPerCountTable" FunctionName="REPSModel.Store.REPS_ReportWorkflowDealPerCountTable">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_ReportWorkflowDealPerCountTable_Result">
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+          <ScalarProperty Name="Date_Created" ColumnName="Date Created" />
+          <ScalarProperty Name="Unique_Reference" ColumnName="Unique Reference" />
+          <ScalarProperty Name="Client_Reference" ColumnName="Client Reference" />
+          <ScalarProperty Name="Created_By" ColumnName="Created By" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_ADM_GetWorkflowsList" FunctionName="REPSModel.Store.REPS_ADM_GetWorkflowsList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_ADM_GetWorkflowsList_Result">
+          <ScalarProperty Name="WorkflowTaskGUID" ColumnName="WorkflowTaskGUID" />
+          <ScalarProperty Name="WorkflowTaskID" ColumnName="WorkflowTaskID" />
+          <ScalarProperty Name="TaskGUID" ColumnName="TaskGUID" />
+          <ScalarProperty Name="WorkflowID" ColumnName="WorkflowID" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="TaskDisplayIcon" ColumnName="TaskDisplayIcon" />
+          <ScalarProperty Name="WorkflowName" ColumnName="WorkflowName" />
+          <ScalarProperty Name="WorkflowTaskOrder" ColumnName="WorkflowTaskOrder" />
+          <ScalarProperty Name="TaskControl" ColumnName="TaskControl" />
+          <ScalarProperty Name="TaskWorkflowID" ColumnName="TaskWorkflowID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_ADM_GetDocumentTemplateList" FunctionName="REPSModel.Store.REPS_ADM_GetDocumentTemplateList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_ADM_GetDocumentTemplateList_Result">
+          <ScalarProperty Name="DocumentTypeID" ColumnName="DocumentTypeID" />
+          <ScalarProperty Name="DocumentTemplateID" ColumnName="DocumentTemplateID" />
+          <ScalarProperty Name="DocumentVersionID" ColumnName="DocumentVersionID" />
+          <ScalarProperty Name="TemplateDisplayName" ColumnName="TemplateDisplayName" />
+          <ScalarProperty Name="IsDocfusionTemplate" ColumnName="IsDocfusionTemplate" />
+          <ScalarProperty Name="TemplateFixGUID" ColumnName="TemplateFixGUID" />
+          <ScalarProperty Name="IsStaticDoc" ColumnName="IsStaticDoc" />
+          <ScalarProperty Name="VersionName" ColumnName="VersionName" />
+          <ScalarProperty Name="TemplateFileName" ColumnName="TemplateFileName" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CreatedByUser" ColumnName="CreatedByUser" />
+          <ScalarProperty Name="eSignable" ColumnName="eSignable" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_ADM_GetEditDocumentTemplateFields" FunctionName="REPSModel.Store.REPS_ADM_GetEditDocumentTemplateFields">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_ADM_GetEditDocumentTemplateFields_Result">
+          <ScalarProperty Name="DocumentTypeID" ColumnName="DocumentTypeID" />
+          <ScalarProperty Name="DocumentTemplateID" ColumnName="DocumentTemplateID" />
+          <ScalarProperty Name="DocumentVersionID" ColumnName="DocumentVersionID" />
+          <ScalarProperty Name="TemplateDisplayName" ColumnName="TemplateDisplayName" />
+          <ScalarProperty Name="IsDocfusionTemplate" ColumnName="IsDocfusionTemplate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TemplateFixGUID" ColumnName="TemplateFixGUID" />
+          <ScalarProperty Name="IsStaticDoc" ColumnName="IsStaticDoc" />
+          <ScalarProperty Name="VersionName" ColumnName="VersionName" />
+          <ScalarProperty Name="TemplateFileName" ColumnName="TemplateFileName" />
+          <ScalarProperty Name="XMLStoredProc" ColumnName="XMLStoredProc" />
+          <ScalarProperty Name="eSignable" ColumnName="eSignable" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_ADM_UpdateDocumentVersionDocumentTemplate" FunctionName="REPSModel.Store.REPS_ADM_UpdateDocumentVersionDocumentTemplate" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_AddWorkflowStepToDocumentTemplate" FunctionName="REPSModel.Store.REPS_ADM_AddWorkflowStepToDocumentTemplate" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_DeleteDocumentWorkflow" FunctionName="REPSModel.Store.REPS_ADM_DeleteDocumentWorkflow" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_GetDocumentWorkflowTaskList" FunctionName="REPSModel.Store.REPS_ADM_GetDocumentWorkflowTaskList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_ADM_GetDocumentWorkflowTaskList_Result">
+          <ScalarProperty Name="WorkflowStepID" ColumnName="WorkflowStepID" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="documentTemplateID" ColumnName="documentTemplateID" />
+          <ScalarProperty Name="workflowDocumentID" ColumnName="workflowDocumentID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_ADM_RemoveDocumentTemplate" FunctionName="REPSModel.Store.REPS_ADM_RemoveDocumentTemplate" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_SaveDocumentTemplate" FunctionName="REPSModel.Store.REPS_ADM_SaveDocumentTemplate" />
+    <FunctionImportMapping FunctionImportName="REPS_ADM_UpdateDocumentWorkflow" FunctionName="REPSModel.Store.REPS_ADM_UpdateDocumentWorkflow" />
+    <FunctionImportMapping FunctionImportName="REPS_GetDocumentTemplateListByWorkflow" FunctionName="REPSModel.Store.REPS_GetDocumentTemplateListByWorkflow">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetDocumentTemplateListByWorkflow_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+          <ScalarProperty Name="DocumentTemplateID" ColumnName="DocumentTemplateID" />
+          <ScalarProperty Name="TemplateDisplayName" ColumnName="TemplateDisplayName" />
+          <ScalarProperty Name="IsDocfusionTemplate" ColumnName="IsDocfusionTemplate" />
+          <ScalarProperty Name="CreatedByUser" ColumnName="CreatedByUser" />
+          <ScalarProperty Name="IsStaticDoc" ColumnName="IsStaticDoc" />
+          <ScalarProperty Name="VersionName" ColumnName="VersionName" />
+          <ScalarProperty Name="eSignable" ColumnName="eSignable" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="GeneratedDocFileName" ColumnName="GeneratedDocFileName" />
+          <ScalarProperty Name="SignedDocFileName" ColumnName="SignedDocFileName" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="MimeTypeID" ColumnName="MimeTypeID" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetDocumentType" FunctionName="REPSModel.Store.REPS_GetDocumentType">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetDocumentType_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+          <ScalarProperty Name="WorkflowID" ColumnName="WorkflowID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetDocumentTypeListByWorkflow" FunctionName="REPSModel.Store.REPS_GetDocumentTypeListByWorkflow">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetDocumentTypeListByWorkflow_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_ADM_UpdateDocumentTemplate" FunctionName="REPSModel.Store.REPS_ADM_UpdateDocumentTemplate" />
+    <EntitySetMapping Name="DocumentWorkflow">
+      <EntityTypeMapping TypeName="REPSModel.DocumentWorkflow">
+        <MappingFragment StoreEntitySet="DocumentWorkflow">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="WorkflowStepID" ColumnName="WorkflowStepID" />
+          <ScalarProperty Name="DocumentVersionID" ColumnName="DocumentVersionID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetDealLastActionBy" FunctionName="REPSModel.Store.REPS_GetDealLastActionBy">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetDealLastActionBy_Result">
+          <ScalarProperty Name="GivenName" ColumnName="GivenName" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="WorkflowTaskID" ColumnName="WorkflowTaskID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetExistingUser" FunctionName="REPSModel.Store.REPS_GetExistingUser" />
+    <FunctionImportMapping FunctionImportName="REPS_DeleteUserFromDeletedEntity" FunctionName="REPSModel.Store.REPS_DeleteUserFromDeletedEntity" />
+    <FunctionImportMapping FunctionImportName="REPS_GetUsers" FunctionName="REPSModel.Store.REPS_GetUsers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetUsers_Result">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="EntityID" ColumnName="EntityID" />
+          <ScalarProperty Name="TitleID" ColumnName="TitleID" />
+          <ScalarProperty Name="GivenName" ColumnName="GivenName" />
+          <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
+          <ScalarProperty Name="IdentityNumber" ColumnName="IdentityNumber" />
+          <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+          <ScalarProperty Name="PassportCountryID" ColumnName="PassportCountryID" />
+          <ScalarProperty Name="TaxID" ColumnName="TaxID" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="BirthPlace" ColumnName="BirthPlace" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="JobTitleID" ColumnName="JobTitleID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="Verified" ColumnName="Verified" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="AspNetUsersId" ColumnName="AspNetUsersId" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetEntities" FunctionName="REPSModel.Store.REPS_GetEntities">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetEntities_Result">
+          <ScalarProperty Name="EntityID" ColumnName="EntityID" />
+          <ScalarProperty Name="OrganizationTypeID" ColumnName="OrganizationTypeID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+          <ScalarProperty Name="LegalName" ColumnName="LegalName" />
+          <ScalarProperty Name="AlternateName" ColumnName="AlternateName" />
+          <ScalarProperty Name="VatID" ColumnName="VatID" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Verified" ColumnName="Verified" />
+          <ScalarProperty Name="AddressTypeID" ColumnName="AddressTypeID" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="ParentEntityID" ColumnName="ParentEntityID" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="DataVerification" ColumnName="DataVerification" />
+          <ScalarProperty Name="EntityGUID" ColumnName="EntityGUID" />
+          <ScalarProperty Name="num" ColumnName="num" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetCorrespondence_ByUserID" FunctionName="REPSModel.Store.REPS_GetCorrespondence_ByUserID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetCorrespondence_ByUserID_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="SmtpStatusID" ColumnName="SmtpStatusID" />
+          <ScalarProperty Name="Headers" ColumnName="Headers" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="AttachmentID" ColumnName="AttachmentID" />
+          <ScalarProperty Name="Html" ColumnName="Html" />
+          <ScalarProperty Name="CorrespondenceGUID" ColumnName="CorrespondenceGUID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GETCorrespondenceIDByCorrespondenceGUID" FunctionName="REPSModel.Store.REPS_GETCorrespondenceIDByCorrespondenceGUID" />
+    <EntitySetMapping Name="Participant">
+      <EntityTypeMapping TypeName="REPSModel.Participant">
+        <MappingFragment StoreEntitySet="Participant">
+          <ScalarProperty Name="EntityID" ColumnName="EntityID" />
+          <ScalarProperty Name="ParticipantGUID" ColumnName="ParticipantGUID" />
+          <ScalarProperty Name="ApprovedDate" ColumnName="ApprovedDate" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="BankID" ColumnName="BankID" />
+          <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="ParticipantRoleID" ColumnName="ParticipantRoleID" />
+          <ScalarProperty Name="ParticipantTypeID" ColumnName="ParticipantTypeID" />
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+          <ScalarProperty Name="ParticipantID" ColumnName="ParticipantID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="REPS_AutoSearchParticipant" FunctionName="REPSModel.Store.REPS_AutoSearchParticipant">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_AutoSearchParticipant_Result">
+          <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+          <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          <ScalarProperty Name="LegalName" ColumnName="LegalName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="GivenName" ColumnName="GivenName" />
+          <ScalarProperty Name="FamilyName" ColumnName="FamilyName" />
+          <ScalarProperty Name="ParticipantTypeID" ColumnName="ParticipantTypeID" />
+          <ScalarProperty Name="PersonTelephone" ColumnName="PersonTelephone" />
+          <ScalarProperty Name="ORGTelephone" ColumnName="ORGTelephone" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_AddParticipant" FunctionName="REPSModel.Store.REPS_AddParticipant" />
+    <FunctionImportMapping FunctionImportName="REPS_ReportFeePerDealChart" FunctionName="REPSModel.Store.REPS_ReportFeePerDealChart">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_ReportFeePerDealChart_Result">
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="label" ColumnName="label" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetTemplatePerWorkflowStep" FunctionName="REPSModel.Store.REPS_GetTemplatePerWorkflowStep">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetTemplatePerWorkflowStep_Result">
+          <ScalarProperty Name="TemplateDisplayName" ColumnName="TemplateDisplayName" />
+          <ScalarProperty Name="DocumentVersionID" ColumnName="DocumentVersionID" />
+          <ScalarProperty Name="Unassigned" ColumnName="Unassigned" />
+          <ScalarProperty Name="Assigned" ColumnName="Assigned" />
+          <ScalarProperty Name="WorkflowStepID" ColumnName="WorkflowStepID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_ADM_SwitchUserWorkflowID" FunctionName="REPSModel.Store.REPS_ADM_SwitchUserWorkflowID" />
+    <FunctionImportMapping FunctionImportName="REPS_ReportFeePerDealTable" FunctionName="REPSModel.Store.REPS_ReportFeePerDealTable">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_ReportFeePerDealTable_Result">
+          <ScalarProperty Name="Total_Fees" ColumnName="Total Fees" />
+          <ScalarProperty Name="Deal_Type" ColumnName="Deal Type" />
+          <ScalarProperty Name="Created_By" ColumnName="Created By" />
+          <ScalarProperty Name="Contact_Number" ColumnName="Contact Number" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_ADM_UpdateLogoutUserOnRoleChange" FunctionName="REPSModel.Store.REPS_ADM_UpdateLogoutUserOnRoleChange" />
+    <FunctionImportMapping FunctionImportName="REPS_ReportMonthlyPaymentChart" FunctionName="REPSModel.Store.REPS_ReportMonthlyPaymentChart">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_ReportMonthlyPaymentChart_Result">
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="label" ColumnName="label" />
+          <ScalarProperty Name="number" ColumnName="number" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_ReportMonthlyPaymentTable" FunctionName="REPSModel.Store.REPS_ReportMonthlyPaymentTable">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_ReportMonthlyPaymentTable_Result">
+          <ScalarProperty Name="Created_By" ColumnName="Created By" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Total_Sum" ColumnName="Total Sum" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetCurrentWorkflowStep_ByDealIDTransactionTypeID" FunctionName="REPSModel.Store.REPS_GetCurrentWorkflowStep_ByDealIDTransactionTypeID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetCurrentWorkflowStep_ByDealIDTransactionTypeID_Result">
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="GivenName" ColumnName="GivenName" />
+          <ScalarProperty Name="TransactionTypeID" ColumnName="TransactionTypeID" />
+          <ScalarProperty Name="WorkflowTaskID" ColumnName="WorkflowTaskID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_AddUploadedStandardDocument" FunctionName="REPSModel.Store.REPS_AddUploadedStandardDocument" />
+    <FunctionImportMapping FunctionImportName="REPS_AddUploadedSignedDocument" FunctionName="REPSModel.Store.REPS_AddUploadedSignedDocument" />
+    <EntitySetMapping Name="Document">
+      <EntityTypeMapping TypeName="REPSModel.Document">
+        <MappingFragment StoreEntitySet="Document">
+          <ScalarProperty Name="WorkflowStepID" ColumnName="WorkflowStepID" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="SignedUploadedByUserID" ColumnName="SignedUploadedByUserID" />
+          <ScalarProperty Name="SignedDocHash" ColumnName="SignedDocHash" />
+          <ScalarProperty Name="SignedDocDate" ColumnName="SignedDocDate" />
+          <ScalarProperty Name="SignedDocMimeTypeID" ColumnName="SignedDocMimeTypeID" />
+          <ScalarProperty Name="SignedDocFileName" ColumnName="SignedDocFileName" />
+          <ScalarProperty Name="MimeTypeID" ColumnName="MimeTypeID" />
+          <ScalarProperty Name="FileHash" ColumnName="FileHash" />
+          <ScalarProperty Name="GeneratedDocFileName" ColumnName="GeneratedDocFileName" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DocumentTemplateID" ColumnName="DocumentTemplateID" />
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="REPS_GetDocumentTemplateDetails" FunctionName="REPSModel.Store.REPS_GetDocumentTemplateDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="REPSModel.REPS_GetDocumentTemplateDetails_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DealID" ColumnName="DealID" />
+          <ScalarProperty Name="DocumentTemplateID" ColumnName="DocumentTemplateID" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="workflowStepId" ColumnName="workflowStepId" />
+          <ScalarProperty Name="TemplateDisplayName" ColumnName="TemplateDisplayName" />
+          <ScalarProperty Name="IsDocfusionTemplate" ColumnName="IsDocfusionTemplate" />
+          <ScalarProperty Name="CreatedByUser" ColumnName="CreatedByUser" />
+          <ScalarProperty Name="IsStaticDoc" ColumnName="IsStaticDoc" />
+          <ScalarProperty Name="VersionName" ColumnName="VersionName" />
+          <ScalarProperty Name="eSignable" ColumnName="eSignable" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="GeneratedDocFileName" ColumnName="GeneratedDocFileName" />
+          <ScalarProperty Name="SignedDocFileName" ColumnName="SignedDocFileName" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="SignedDocDate" ColumnName="SignedDocDate" />
+          <ScalarProperty Name="MimeTypeID" ColumnName="MimeTypeID" />
+          <ScalarProperty Name="CreatedByUserID" ColumnName="CreatedByUserID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="REPS_ADM_AddNewTask" FunctionName="REPSModel.Store.REPS_ADM_AddNewTask" />
+    <EntitySetMapping Name="FirmDetails">
+      <EntityTypeMapping TypeName="REPSModel.FirmDetails">
+        <MappingFragment StoreEntitySet="FirmDetails">
+          <ScalarProperty Name="CCWeb" ColumnName="CCWeb" />
+          <ScalarProperty Name="CCAddress" ColumnName="CCAddress" />
+          <ScalarProperty Name="CCEmail" ColumnName="CCEmail" />
+          <ScalarProperty Name="CCContactNumber" ColumnName="CCContactNumber" />
+          <ScalarProperty Name="CCTitle" ColumnName="CCTitle" />
+          <ScalarProperty Name="CCManagerSurname" ColumnName="CCManagerSurname" />
+          <ScalarProperty Name="CCManagerName" ColumnName="CCManagerName" />
+          <ScalarProperty Name="DirectorSurname" ColumnName="DirectorSurname" />
+          <ScalarProperty Name="DirectorName" ColumnName="DirectorName" />
+          <ScalarProperty Name="FirmwebURL" ColumnName="FirmwebURL" />
+          <ScalarProperty Name="FirmFaxNo" ColumnName="FirmFaxNo" />
+          <ScalarProperty Name="FirmTelNo" ColumnName="FirmTelNo" />
+          <ScalarProperty Name="FirmAddress" ColumnName="FirmAddress" />
+          <ScalarProperty Name="FirmName" ColumnName="FirmName" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="REPS_AddGeneratedDocument" FunctionName="REPSModel.Store.REPS_AddGeneratedDocument" />
+    <FunctionImportMapping FunctionImportName="REPS_UpdateDocumentTemplate" FunctionName="REPSModel.Store.REPS_UpdateDocumentTemplate" />
+    <FunctionImportMapping FunctionImportName="REPS_GetWorkFlowAction" FunctionName="REPSModel.Store.REPS_GetWorkFlowAction" />
+    <FunctionImportMapping FunctionImportName="REPS_UpdateParticipant" FunctionName="REPSModel.Store.REPS_UpdateParticipant" />
+    <FunctionImportMapping FunctionImportName="sp_generate_merge2" FunctionName="REPSModel.Store.sp_generate_merge" />
+  </EntityContainerMapping>
+</Mapping>

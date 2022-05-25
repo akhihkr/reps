@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Document";
+    Layout = ViewBag.PageLayoutPath;
+
+    if (ViewBag.PageLayoutPath != null)
+    {
+        @Html.Partial("PartialSubSection", null, new ViewDataDictionary { { "SelectedTab", "Documents" } })
+    }
+    if (TempData["ToasterMsg"] != null)
+    {
+        <script type="text/javascript">
+            @Html.Raw(TempData["ToasterMsg"])
+        </script>
+    }
+
+    //User roles
+    string role_view_documentlist = "PL_LI";
+    string role_view_printlistgeneratedoc = "PL_GE";
+
+
+    if (!Common.CArray.SearchInCookie(role_view_documentlist))
+    {
+        Response.Redirect(Url.Action("Index", "Dashboard"));
+    }
+}
+
+
+@if (Common.CArray.SearchInCookie(role_view_printlistgeneratedoc))
+{
+    <div class="generate-btn-section">
+        <span onclick="ValidateChkBxDocumentExtension('#PrintListForm');" class="c-button c-button--dropdown js-dropdown__current">Generate Document</span>
+    </div> <!-- End of generate-btn-section -->
+}
+
+
+<div id="partialDocumentFrm">
+    @Html.Partial("~/Views/Documents/PartialDocument.cshtml")
+</div>

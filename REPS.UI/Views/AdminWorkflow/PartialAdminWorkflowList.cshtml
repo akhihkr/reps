@@ -1,0 +1,128 @@
+﻿@{
+    Layout = null;
+
+    //variables
+    string Taskname = null;
+    int SelectedTaskID = 0;
+    string WorkflowTaskID = null;
+    int SelectedWorkflow = 0;
+    int TaskWorkflowID = 0;
+    int selectedCount = 0;
+    int taskCount = 0;
+    //end of variables
+}
+<!-- Admin Sub Tabs -->
+<div class="sub-tabs-section" id="sub-tabs-section">
+    <ul>
+        @foreach (var Workflow in ViewData["WorkflowsList"] as IEnumerable<dynamic>)
+        {
+            if (Convert.ToInt32(TempData["SelectedWorkflowID"]) == Workflow["TaskID"])
+            {
+                SelectedWorkflow = @Workflow["TaskID"];
+                TaskWorkflowID = @Workflow["TaskWorkflowID"];
+                <li>
+                    <a id="Active-@Workflow["TaskID"]" onclick="AjaxControllerCaller('AdminWorkflow', 'Index', 'content-wrapper', { WorkflowId: @Workflow["TaskID"], partial: false }); SetSelectedWorkflowTabActive('Active-@Workflow["TaskID"]', 'sub-tabs-section');" class="sub-tabs-active">@Workflow["TaskName"]</a>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a id="Active-@Workflow["TaskID"]" onclick="AjaxControllerCaller('AdminWorkflow', 'Index', 'content-wrapper', { WorkflowId: @Workflow["TaskID"], partial: false }); SetSelectedWorkflowTabActive('Active-@Workflow["TaskID"]', 'sub-tabs-section');">@Workflow["TaskName"]</a>
+                </li>
+            }
+        }
+    </ul>
+</div> <!-- End of sub-tabs-section -->
+<a href="#" class="manage-workflows-btn" onclick="CallPopupPanel('AdminWorkflow', 'PopupManageWorkflows', 'general-panel',{workflowID:@SelectedWorkflow, taskID:@TempData["SelectedTaskID"]})">
+    <i class="material-icons">settings</i>
+    Manage Workflows
+</a>
+
+
+<div class="box">
+    <div class="workflow-tab-section">
+        <!--general popup panel-->
+        <a id="manage-tasks-btn" class="button manage-tasks-btn" onclick="CallPopupPanel('AdminWorkflow', 'PopupAssignTasks', 'general-panel',{workflowID:@SelectedWorkflow, taskWorkflowID:@TaskWorkflowID, taskID:@TempData["SelectedTaskID"]})">Assign Tasks</a>
+        <a class="button add-task-btn" onclick="CallPopupPanel('AdminWorkflow', 'PopupManageTasks', 'general-panel',{workflowID:@SelectedWorkflow, taskWorkflowID:@TaskWorkflowID, taskID:@TempData["SelectedTaskID"]})">Manage Tasks</a>
+
+        <!--end of general popup panel-->
+
+        <div id="workflow-tasks">
+            <ul>
+                <!-- We check if the user has selected a task -->
+                @foreach (var Task in ViewData["TasksList"] as IEnumerable<dynamic>)
+                {
+                    if (Convert.ToInt32(TempData["SelectedTaskID"]) == Task["TaskID"])
+                    {
+                        selectedCount++;
+                    }
+                }
+
+                @foreach (var Task in ViewData["TasksList"] as IEnumerable<dynamic>)
+                {
+                    if ((Convert.ToInt32(TempData["SelectedTaskID"]) == Task["TaskID"]) || ((selectedCount == 0) && taskCount == 0))
+                    {
+                        SelectedTaskID = Task["TaskID"];
+                        Taskname = Task["TaskName"];
+                        <a onclick="AjaxControllerCaller('AdminWorkflow', 'Index', 'content-wrapper', { WorkflowId: @SelectedWorkflow, TaskId: @Task["TaskID"] }); SetSelectedTabActiveCorrespondence('ActiveTask-@Task["TaskID"]');">
+                            <li class="workflow-tab-selected" id="ActiveTask-@Task["TaskID"]">
+                                @if (Task["TaskDisplayIcon"] == null)
+                                {
+                                    <i class="material-icons">stars</i>
+                                }
+                                else
+                                {
+                                    <i class="material-icons">@Task["TaskDisplayIcon"]</i>
+                                }
+                                <p>@Task["TaskName"]</p>
+                            </li>
+                        </a>
+                        taskCount++;
+                    }
+                    else
+                    {
+                        <a onclick="AjaxControllerCaller('AdminWorkflow', 'Index', 'content-wrapper', { WorkflowId: @SelectedWorkflow, TaskId: @Task["TaskID"] }); SetSelectedTabActiveCorrespondence('ActiveTask-@Task["TaskID"]');">
+                            <li class="" id="ActiveTask-@Task["TaskID"]">
+                                @if (Task["TaskDisplayIcon"] == null)
+                                {
+                                    <i class="material-icons">stars</i>
+                                }
+                                else
+                                {
+                                    <i class="material-icons">@Task["TaskDisplayIcon"]</i>
+                                }
+                                <p>@Task["TaskName"]</p>
+                            </li>
+                        </a>
+                    }
+                }
+            </ul>
+        </div> <!-- End of workflow-tasks -->
+    </div> <!-- End of sub-tabs-section -->
+
+    <div class="add-box" id="add-box-workflow-action">
+        <div class="workflow-actions-wrapper worflow-admin-actions-wrapper">
+            @{
+                WorkflowTaskID = TaskWorkflowID.ToString() + SelectedTaskID.ToString();
+            }
+            @foreach (var Action in ViewData["TaskActionsList"] as IEnumerable<dynamic>)
+            {
+                <div class="action-wrapper">
+                    <h1>@Action["DisplayName"]</h1>
+                    <div id="">
+                        <a href="#" class="button edit-admin-action" onclick="CallPopupPanel('AdminWorkflow', 'PopupEditAction', 'general-panel',{taskID:@Convert.ToInt32(WorkflowTaskID),actionID:@Convert.ToInt32(Action["WorkflowActionID"])})">Edit</a>
+                        <a href="#" class="button edit-admin-action" onclick="CallPopupPanel('AdminWorkflow', 'PopupDocumentWorkflow', 'general-panel',{workflowStepID:@Convert.ToInt32(Action["WorkflowActionID"])})">Manage Document</a>
+                    </div>
+                </div> <!-- End of action-wrapper -->
+            }
+            @if (taskCount > 0)
+            {
+                <div class="action-wrapper add-admin-action" onclick="CallPopupPanel('AdminWorkflow', 'PopupAddAction', 'general-panel',{workflowTaskID:@Convert.ToInt32(WorkflowTaskID), indexTaskID:@TempData["SelectedTaskID"], workflowID:@SelectedWorkflow})">
+                    <i class="material-icons">add</i>
+                    <h1>Add Action</h1>
+                </div> <!-- End of action-wrapper -->
+            }
+        </div> <!-- End of workflow-actions-wrapper -->
+    </div> <!-- End of add-box-padding -->
+
+</div> <!-- End of box -->

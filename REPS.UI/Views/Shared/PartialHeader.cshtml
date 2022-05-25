@@ -1,0 +1,45 @@
+﻿@{
+    Layout = null;
+
+    //User roles
+    string role_view_diaryitemlist = "DI_LI";
+    string role_view_dealadd = "CR_MA";
+
+
+    /// Call WCF to get all active deals for header tab by User
+    object allActiveDeals = REPS.UI.Models.HeaderTabModel.GetUserActiveDeals(Request.Cookies["REPS_AspNetUsersId"].Value.ToString());
+    ViewData["ActiveHeaderTabs"] = allActiveDeals;
+}
+
+<header id="header-wrapper">
+    <!-- Header Tabs Section Starts Here-->
+    @if (int.Parse((ViewData["ActiveHeaderTabs"] as IEnumerable<dynamic>).Count().ToString()) < 1)
+    {
+        @Html.Partial("~/Views/HeaderTab/PartialHeaderTabs.cshtml")
+    }
+    else
+    {
+        <div class="mobile-menu">
+            <i class="material-icons">menu</i>
+            <span id="">Menu</span>
+        </div> <!-- End of mobile-menu -->
+        <div class="header-tabs-section" id="header-tabs-section">
+            @Html.Partial("~/Views/HeaderTab/PartialHeaderTabs.cshtml")
+        </div> <!-- End of header-tabs-section -->
+    }
+    <!-- RightHeaderTabPartial -->
+    <div class="header-right-section">
+        @if (Common.CArray.SearchInCookie(role_view_diaryitemlist))
+        {
+            <div id="notifications">
+                @Html.Partial("~/Views/Alerts/PartialAlertsNotificationsCount.cshtml")
+            </div>
+        }
+        @if (Common.CArray.SearchInCookie(role_view_dealadd))
+        {
+            <a href="#" class="button green-btn" onclick="CallPopupPanel('Deal', 'PopupCreateDeal', 'general-panel')">
+                New Deal
+            </a>
+        }
+    </div> <!-- End of header-right-section -->
+</header>

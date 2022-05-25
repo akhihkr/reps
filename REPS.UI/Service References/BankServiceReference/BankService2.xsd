@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:54738/BankService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Common" />
+  <xs:element name="GetAccountType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="countryId" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="startRow" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="endRow" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetAccountTypeResult" nillable="true" type="q1:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBanks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="bankName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="swiftCode" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="entityId" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="bankId" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="startRow" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="endRow" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBanksResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetBanksResult" nillable="true" type="q2:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBankDetailsPerParticipant">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="participantId" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="participantBankDetailID" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBankDetailsPerParticipantResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetBankDetailsPerParticipantResult" nillable="true" type="q3:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

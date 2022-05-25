@@ -1,0 +1,262 @@
+﻿@charset "UTF-8";
+@import "GlobalVariables.scss";
+
+
+.sub-tabs-section {
+    background: none;
+    height: 38px;
+    overflow: auto;
+    overflow-y: hidden;
+    position: relative;
+    clear: both;
+    margin: 0;
+    padding: 0;
+    float: left;
+}
+
+.sub-tabs-section i {
+    color: rgb(197, 202, 206);
+    display: inline-block;
+    position: relative;
+    top: 3px;
+    font-size: 25px;
+    float: left;
+    margin-right: 0;
+}
+
+.sub-tabs-section ul {
+    color: #e1e1e1;
+    margin: 0;
+    padding: 4px 0px;
+    list-style-type: none;
+    text-align: left;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    display: inline-block;
+    clear: left;
+    float: left;
+}
+
+.sub-tabs-section li {
+    list-style-type: none;
+    float: left;
+    font-size: 14px;
+    /* margin-right: 7%; */
+    line-height: 10px;
+    margin-right: 2px;
+    text-align: left;
+}
+
+.sub-tabs-section li:last-child {
+    margin-right: 0;
+}
+
+.sub-tabs-section span {
+    font-size: 11px;
+    margin-bottom: 4px;
+}
+
+.sub-tabs-section p {
+    font-size: 14px;
+    color: #fff;
+    position: relative;
+    margin-bottom: 0;
+}
+
+.sub-tabs-section a {
+    font-size: 12px;
+    color: #5f6c7b;
+    position: relative;
+    font-family: $heading-font;
+    text-transform: capitalize;
+    padding: 12px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: inline-block;
+    background: #ffffff;
+    border-bottom: 0;
+    font-weight: 400;
+    transition: .2s ease background;
+    border: 1px solid $border-color;
+    text-decoration: none;
+}
+
+.sub-tabs-section a:hover {
+    position: relative;
+    background: $primary-color;
+    transition: 0.2s ease background;
+    color: #fff;
+}
+
+.mobile-select-navigation {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.mobile-content-page-navigation {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.workflow-mobile-nav {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.workflow-tab-section-mobile {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.sub-tabs-active {
+    color: #fff !important;
+    background: $primary-color !important;
+    border-bottom: 2px solid $primary-color !important;
+}
+
+/*#region Admin Header Tab */
+.admin-header-tab {
+    min-width: 80px;
+    max-width: 90px;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+
+    h1 {
+        text-align: center;
+        float: none;
+        margin-left: 0;
+    }
+}
+
+.admin-select-navigation {
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 96.3%;
+    margin-bottom: 0;
+}
+/*#endregion Admin Header Tab */
+
+
+/*------------------------------------*\
+	Responsive
+\*------------------------------------*/
+
+/* ----------- Small ----------- */
+@media all and (min-width: 1px) and (max-width: 482px) {
+    .sub-tabs-section {
+        display: none;
+    }
+
+    .mobile-select-navigation {
+        display: block;
+    }
+
+    .mobile-content-page-navigation {
+        display: block;
+    }
+
+    .admin-header-tab {
+        display: none;
+    }
+
+    .admin-select-navigation {
+        display: block !important;
+        width: 94% !important;
+    }
+}
+
+
+/* ----------- Tablet ----------- */
+@media only screen and (min-width: 483px) and (max-width: 64em) {
+    .sub-tabs-section {
+        display: block;
+    }
+
+    .mobile-select-navigation {
+        display: none;
+    }
+
+    .mobile-content-page-navigation {
+        display: block;
+    }
+
+    .admin-select-navigation {
+        display: none !important;
+    }
+}
+
+
+/* ----------- 1px to 630px (For Admin Header Tab) ----------- */
+@media all and (min-width: 1px) and (max-width: 630px) {
+
+    .admin-header-tab {
+        display: none;
+    }
+
+    .admin-select-navigation {
+        display: block !important;
+        width: 96%;
+    }
+}
+
+
+/* ----------- 483px to 622px ----------- */
+@media all and (min-width: 483px) and (max-width: 622px) {
+    .sub-tabs-section {
+        display: none;
+    }
+    
+    .mobile-select-navigation {
+        display: block;
+    }
+
+    .mobile-content-page-navigation {
+        display: block;
+    }
+}
+
+/* ----------- 623px to 754px ----------- */
+@media only screen and (min-width: 623px) and (max-width: 754px) {
+    .mobile-select-navigation {
+        display: block;
+    }
+
+    .mobile-content-page-navigation {
+        display: block;
+    }
+
+    .sub-tabs-section {
+        display: none;
+    }
+}
+
+/* ----------- 820px to 1024px ----------- */
+@media only screen and (min-width: 820px) and (max-width: 1024px) {
+    .mobile-select-navigation {
+        display: none;
+    }
+
+    .mobile-content-page-navigation {
+        display: block;
+    }
+}
+
+
+/* ----------- Laptop ----------- */
+@media only screen and (min-width: 64.063em) {
+    .sub-tabs-section {
+        display: block;
+    }
+
+    .mobile-select-navigation {
+        display: none;
+    }
+
+    .mobile-content-page-navigation {
+        display: none;
+    }
+}

@@ -1,0 +1,13 @@
+﻿@{
+    Layout = null;
+}
+
+@if ((ViewData["DiaryItems"] as IEnumerable<dynamic>).Count() > 0)
+{
+    <span class="notification-count">@((ViewData["DiaryItems"] as IEnumerable<dynamic>).Count())</span>
+}
+<span data-tooltip aria-haspopup="true" class="has-tip" title="Alerts">
+    <a href="#"><i class="material-icons sidebar-icons">notifications</i></a>
+</span>
+
+

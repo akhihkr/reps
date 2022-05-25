@@ -1,0 +1,38 @@
+﻿@{
+    Layout = null;
+    //variables
+    var description = "";
+    var filterID = "";
+    var parametersIdSelectOption = "";
+    string[] splitwords;
+    string words;
+    //end of variables
+}
+<!-- Fiters Section  -->
+
+@{ if (ViewData["dropDownFilters"] != null)
+    {
+        @*///report names*@
+foreach (var filter in ViewData["dropDownFilters"] as Dictionary<string, object>)
+{
+    ///split string by comma
+    words = MvcHtmlString.Create(@filter.Key).ToString();
+    splitwords = words.Split(';');
+    filterID = splitwords[0];
+    description = splitwords[1];
+    parametersIdSelectOption = splitwords[3];
+    ///split string parameter by = to get ID
+
+    <select id="@parametersIdSelectOption" name="@parametersIdSelectOption">
+        <option default value="-1">Select @description:</option>
+        @foreach (var pair in filter.Value as IEnumerable<dynamic>)
+        {
+            <option value="@pair["ReportsId"]">@Common.CString.FirstCharToUpperPhrase(@pair["Description"])</option>
+
+        }
+    </select>
+    }
+}
+}
+<!-- End Fiters Section  -->
+

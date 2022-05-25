@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ParticipantService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:54738/ParticipantService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:54738/ParticipantService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:54738/ParticipantService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Common" />
+      <xsd:import schemaLocation="http://localhost:54738/ParticipantService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/REPS.DATA.Entity" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IParticipantService_GetParticipantTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetParticipantTypes" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_GetParticipantTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetParticipantTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_GetParticipantRoles_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetParticipantRoles" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_GetParticipantRoles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetParticipantRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_AddParticipant_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddParticipant" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_AddParticipant_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddParticipantResponse" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_GetParticipants_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetParticipants" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_GetParticipants_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetParticipantsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_UpdateParticipant_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateParticipant" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_UpdateParticipant_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateParticipantResponse" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_DeleteParticipant_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteParticipant" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_DeleteParticipant_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteParticipantResponse" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_VerifyIndividualExist_InputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyIndividualExist" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_VerifyIndividualExist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:VerifyIndividualExistResponse" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_AddParticipantBankDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddParticipantBankDetails" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_AddParticipantBankDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddParticipantBankDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_UpdateParticipantBankDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateParticipantBankDetails" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_UpdateParticipantBankDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateParticipantBankDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_DeleteParticipantBank_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteParticipantBank" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_DeleteParticipantBank_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteParticipantBankResponse" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_GetParticipantInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetParticipantInfo" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_GetParticipantInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetParticipantInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_GetParticipantAutosearch_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetParticipantAutosearch" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_GetParticipantAutosearch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetParticipantAutosearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_GetParticipantIDByParticipantGUID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetParticipantIDByParticipantGUID" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_GetParticipantIDByParticipantGUID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetParticipantIDByParticipantGUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_GetParticipantBankAccountCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetParticipantBankAccountCount" />
+  </wsdl:message>
+  <wsdl:message name="IParticipantService_GetParticipantBankAccountCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetParticipantBankAccountCountResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IParticipantService">
+    <wsdl:operation name="GetParticipantTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IParticipantService/GetParticipantTypes" message="tns:IParticipantService_GetParticipantTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IParticipantService/GetParticipantTypesResponse" message="tns:IParticipantService_GetParticipantTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetParticipantRoles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IParticipantService/GetParticipantRoles" message="tns:IParticipantService_GetParticipantRoles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IParticipantService/GetParticipantRolesResponse" message="tns:IParticipantService_GetParticipantRoles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddParticipant">
+      <wsdl:input wsaw:Action="http://tempuri.org/IParticipantService/AddParticipant" message="tns:IParticipantService_AddParticipant_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IParticipantService/AddParticipantResponse" message="tns:IParticipantService_AddParticipant_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetParticipants">
+      <wsdl:input wsaw:Action="http://tempuri.org/IParticipantService/GetParticipants" message="tns:IParticipantService_GetParticipants_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IParticipantService/GetParticipantsResponse" message="tns:IParticipantService_GetParticipants_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateParticipant">
+      <wsdl:input wsaw:Action="http://tempuri.org/IParticipantService/UpdateParticipant" message="tns:IParticipantService_UpdateParticipant_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IParticipantService/UpdateParticipantResponse" message="tns:IParticipantService_UpdateParticipant_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteParticipant">
+      <wsdl:input wsaw:Action="http://tempuri.org/IParticipantService/DeleteParticipant" message="tns:IParticipantService_DeleteParticipant_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IParticipantService/DeleteParticipantResponse" message="tns:IParticipantService_DeleteParticipant_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyIndividualExist">
+      <wsdl:input wsaw:Action="http://tempuri.org/IParticipantService/VerifyIndividualExist" message="tns:IParticipantService_VerifyIndividualExist_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IParticipantService/VerifyIndividualExistResponse" message="tns:IParticipantService_VerifyIndividualExist_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddParticipantBankDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IParticipantService/AddParticipantBankDetails" message="tns:IParticipantService_AddParticipantBankDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IParticipantService/AddParticipantBankDetailsResponse" message="tns:IParticipantService_AddParticipantBankDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateParticipantBankDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IParticipantService/UpdateParticipantBankDetails" message="tns:IParticipantService_UpdateParticipantBankDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IParticipantService/UpdateParticipantBankDetailsResponse" message="tns:IParticipantService_UpdateParticipantBankDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteParticipantBank">
+      <wsdl:input wsaw:Action="http://tempuri.org/IParticipantService/DeleteParticipantBank" message="tns:IParticipantService_DeleteParticipantBank_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IParticipantService/DeleteParticipantBankResponse" message="tns:IParticipantService_DeleteParticipantBank_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetParticipantInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IParticipantService/GetParticipantInfo" message="tns:IParticipantService_GetParticipantInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IParticipantService/GetParticipantInfoResponse" message="tns:IParticipantService_GetParticipantInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetParticipantAutosearch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IParticipantService/GetParticipantAutosearch" message="tns:IParticipantService_GetParticipantAutosearch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IParticipantService/GetParticipantAutosearchResponse" message="tns:IParticipantService_GetParticipantAutosearch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetParticipantIDByParticipantGUID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IParticipantService/GetParticipantIDByParticipantGUID" message="tns:IParticipantService_GetParticipantIDByParticipantGUID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IParticipantService/GetParticipantIDByParticipantGUIDResponse" message="tns:IParticipantService_GetParticipantIDByParticipantGUID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetParticipantBankAccountCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IParticipantService/GetParticipantBankAccountCount" message="tns:IParticipantService_GetParticipantBankAccountCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IParticipantService/GetParticipantBankAccountCountResponse" message="tns:IParticipantService_GetParticipantBankAccountCount_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="ParticipantService" />
+</wsdl:definitions>

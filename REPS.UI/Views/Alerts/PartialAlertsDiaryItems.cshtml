@@ -1,0 +1,148 @@
+﻿@{
+    DateTime currentDate = new DateTime();
+    int counter = 0;
+    Layout = null;
+
+    //User roles
+    string role_view_diaryitemcomplete = "DI_CO";
+    string role_view_diaryitemarchive = "DI_AR";
+}
+
+@*<div id="notifications-header">
+        <h4>Alerts</h4>
+        <i class="material-icons notification-close-icon">close</i>
+    </div>*@ <!-- End of notifications-header -->
+
+<div id="notifications-content-wrapper">
+    <div id="notifications-content">
+        @if (int.Parse((ViewData["DiaryItems"] as IEnumerable<dynamic>).Count().ToString()) == 0)
+            {
+            <div class="notification-list">
+                <i class="material-icons no-notification-icon">new_releases</i>
+                <p class="no-notification-text">No alerts for the next 7 days.</p>
+            </div> <!-- End of notification-list -->
+        }
+        else
+        {
+            foreach (var DiaryItem in ViewData["DiaryItems"] as IEnumerable<dynamic>)
+            {
+                counter++;
+                DateTime myDate = TimeZone.CurrentTimeZone.ToLocalTime(DiaryItem["StartDate"]);
+                if ((currentDate.Date != myDate.Date) || (counter == 1))
+                {
+                    string dateToBeDisplayed = string.Empty;
+                    currentDate = DiaryItem["StartDate"]; // We save the current event date to the variable
+
+                    if (myDate.Date == DateTime.Now.Date)
+                    {
+                        dateToBeDisplayed = "Today";
+                    }
+                    else if (myDate.Date == DateTime.Now.AddDays(1).Date)
+                    {
+                        dateToBeDisplayed = "Tomorrow";
+                    }
+                    else
+                    {
+                        dateToBeDisplayed = DiaryItem["DiaryDate"].ToString();
+                    }
+                        <!-- Per day -->
+                    <div class="notification-group-header">
+                        <i class="material-icons notification-calendar-icon">today</i>
+                        <p>@dateToBeDisplayed</p>
+                        <!-- <span>Mark all as read <i class="material-icons">check</i></span>-->
+                    </div> <!-- End of notification-date -->
+
+                    <div class="notification-list">
+                        <!--<span><i class="material-icons notification-calendar-icon">flag</i> 24 mins ago</span>-->
+                        <h1>@DiaryItem["EventName"]</h1> <!-- Event Name -->
+                        <p>@DiaryItem["Comment"]</p> <!-- Description -->
+                        <div class="notification-list-btns-section">
+                            @*<span class="read-btn" onclick="changeEventStatus(@DiaryItem["ID"], 2)">Complete</span>*@
+
+                            @if (Common.CArray.SearchInCookie(role_view_diaryitemcomplete))
+                            {
+                                @Ajax.ActionLink("Complete", "ChangeEventStatus", "Alerts",
+                                     new { alertsGUID = @DiaryItem["AlertsGUID"], StatusID = 2 },
+                                     new AjaxOptions
+                                     {
+                                         HttpMethod = "Post",
+                                         InsertionMode = InsertionMode.Replace,
+                                         UpdateTargetId = "notifications-panel",
+                                         Confirm = "Are you sure you want to complete this alert?",
+                                         OnSuccess = "onSuccessToasterMsg('Alerts','RefreshAlertList','alerts-table', null, null);onSuccessToasterMsg('Alerts','UpdateNotificationCount','notifications', null, 'Alert has been successfully completed');SetSelectedTabActiveCorrespondence('AllTab');",
+                                     },
+                                     new { @class = "read-btn" })
+                            }
+                            @*<span class="delete-btn" onclick="changeEventStatus(@DiaryItem["ID"], 4)">Archive</span>*@
+                            @if (Common.CArray.SearchInCookie(role_view_diaryitemarchive))
+                            {
+                                @Ajax.ActionLink("Archive", "ChangeEventStatus", "Alerts",
+                                     new { alertsGUID = @DiaryItem["AlertsGUID"], StatusID = 4 },
+                                     new AjaxOptions
+                                     {
+                                         HttpMethod = "Post",
+                                         InsertionMode = InsertionMode.Replace,
+                                         UpdateTargetId = "notifications-panel",
+                                         Confirm = "Are you sure you want to archive this alert?",
+                                         OnSuccess = "onSuccessToasterMsg('Alerts','RefreshAlertList','alerts-table', null, null);onSuccessToasterMsg('Alerts','UpdateNotificationCount','notifications', null, 'Alert has been successfully archived');SetSelectedTabActiveCorrespondence('AllTab');",
+                                     },
+                                     new { @class = "delete-btn" })
+                            }
+                        </div> <!-- End of notification-list-btns-section -->
+                    </div> <!-- End of notification-list -->
+                }
+                else
+                {
+                    <div class="notification-list">
+                        <!--<span><i class="material-icons notification-calendar-icon">flag</i> 24 mins ago</span>-->
+                        <h1>@DiaryItem["EventName"]</h1>
+                        <p>@DiaryItem["Comment"]</p>
+                        <div class="notification-list-btns-section">
+                            @*<span class="read-btn" onclick="changeEventStatus(@DiaryItem["ID"], 2)">Complete</span>*@
+
+                            @if (Common.CArray.SearchInCookie(role_view_diaryitemcomplete))
+                            {
+                                @Ajax.ActionLink("Complete", "ChangeEventStatus", "Alerts",
+                                     new { alertsGUID = @DiaryItem["AlertsGUID"], StatusID = 2 },
+                                     new AjaxOptions
+                                     {
+                                         HttpMethod = "Post",
+                                         InsertionMode = InsertionMode.Replace,
+                                         UpdateTargetId = "notifications-panel",
+                                         Confirm = "Are you sure you want to complete this alert?",
+                                         OnSuccess = "onSuccessToasterMsg('Alerts','UpdateNotificationCount','notifications', null, 'Alert has been successfully completed')",
+                                     },
+                                     new { @class = "read-btn" })
+                            }
+                            @*<span class="delete-btn" onclick="changeEventStatus(@DiaryItem["ID"], 4)">Archive</span>*@
+
+                            @if (Common.CArray.SearchInCookie(role_view_diaryitemarchive))
+                            {
+                                @Ajax.ActionLink("Archive", "ChangeEventStatus", "Alerts",
+                                     new { alertsGUID = @DiaryItem["AlertsGUID"], StatusID = 4 },
+                                     new AjaxOptions
+                                     {
+                                         HttpMethod = "Post",
+                                         InsertionMode = InsertionMode.Replace,
+                                         UpdateTargetId = "notifications-panel",
+                                         Confirm = "Are you sure you want to archive this alert?",
+                                         OnSuccess = "onSuccessToasterMsg('Alerts','UpdateNotificationCount','notifications', null, 'Alert has been successfully archived')",
+
+                                     },
+                                     new { @class = "delete-btn" })
+                            }
+                        </div> <!-- End of notification-list-btns-section -->
+                    </div> <!-- End of notification-list -->
+                }
+            }
+        }
+    </div> <!-- End of notifications-content -->
+</div> <!-- End of notifications-content-wrapper -->
+
+<script>
+    // Make notification panel appears from the right side of the screen.
+    $('.notification-close-icon').on('click', function () {
+        $('#notifications-panel').removeClass('clicked');
+        $('#notifications-arrow-top').removeClass('show');
+    });
+</script>

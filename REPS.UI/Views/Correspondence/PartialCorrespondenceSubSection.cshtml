@@ -1,0 +1,40 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<div class="workflow-tab-section correspondence-tab">
+    <ul>
+        <a onclick="AjaxControllerCaller('Correspondence', 'CorrespondenceList', 'alerts-table'); SetSelectedTabActiveCorrespondence('CorrespondenceListTab')">
+            <li class="@((ViewData.ContainsKey("SelectedTab") && ViewData["SelectedTab"].ToString() == Global.Enums.PageNames.CorrespondenceList.ToString() )? "workflow-tab-selected" : null)" id="CorrespondenceListTab">
+                <i class="material-icons">contact_mail</i><p>Correspondence List</p>
+            </li>
+        </a>
+
+        <a onclick="AjaxControllerCaller('Correspondence', 'SendEmail', 'alerts-table'); SetSelectedTabActiveCorrespondence('EmailTab')">
+            <li class="@((ViewData.ContainsKey("SelectedTab") && ViewData["SelectedTab"].ToString() ==Global.Enums.PageNames.SendEmail.ToString())? "workflow-tab-selected" : null)" id="EmailTab">
+                <i class="material-icons">email</i><p>Email</p>
+            </li>
+        </a>
+
+        <a onclick="AjaxControllerCaller('Correspondence', 'SendSMS', 'alerts-table'); SetSelectedTabActiveCorrespondence('SMSTab')">
+            <li class="@((ViewData.ContainsKey("SelectedTab") && ViewData["SelectedTab"].ToString() ==Global.Enums.PageNames.SendSMS.ToString() )? "workflow-tab-selected" : null)" id="SMSTab">
+                <i class="material-icons">textsms</i><p>SMS</p>
+            </li>
+        </a>
+    </ul>
+</div>
+
+
+
+<!-- Mobile Sub Tabs Selection -->
+@*<select id="mobile-subsection-nav" class="mobile-select-navigation" onchange="eval($('#mobile-subsection-nav').val())">
+    <option value="AjaxControllerCaller('Deal', 'ViewDeal', 'deal-content-wrapper')">General</option>
+    <option value="AjaxControllerCaller('Workflow', 'Index', 'deal-content-wrapper')">Buyer Workflow</option>
+    <option value="AjaxControllerCaller('Alerts', 'Index', 'deal-content-wrapper')">Alerts</option>
+    <option value="AjaxControllerCaller('Correspondence', 'Index', 'deal-content-wrapper')">Correspondence</option>
+    <option value="AjaxControllerCaller('Documents', 'Index', 'deal-content-wrapper')">Documents</option>
+    <option value="AjaxControllerCaller('Audit', 'Index', 'deal-content-wrapper')">Audit</option>
+    <option value="AjaxControllerCaller('Payments', 'Index', 'deal-content-wrapper')">Payments</option>
+</select>*@

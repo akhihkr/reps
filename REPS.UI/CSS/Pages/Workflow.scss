@@ -1,0 +1,718 @@
+﻿@charset "UTF-8";
+@import "../Partials/GlobalVariables.scss";
+
+
+/*------------------------------------*\
+	Workflow Tab
+\*------------------------------------*/
+
+.workflow-heading {
+    width: 100%;
+}
+
+.workflow-tab-section {
+    display: block;
+    height: auto;
+    padding: 0;
+    overflow: auto;
+    clear: both;
+    margin-top: 5px;
+    border-bottom: 1px solid #e4e4e4;
+}
+
+.workflow-tab-section ul {
+    color: #e1e1e1;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: left;
+    width: 100%;
+}
+
+.workflow-tab-section li {
+    list-style-type: none;
+    float: left;
+    min-width: 9.4%;
+    line-height: 20px;
+    padding-top: 10px;
+    text-align: center;
+    cursor: pointer;
+    border-right: 1px solid rgba(255,255,255,.15);
+    border-bottom: 2px solid #fff;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+.workflow-tab-section li:last-child {
+    margin-right: 0;
+}
+
+.workflow-tab-section i {
+    text-align: center;
+    display: inline;
+    position: relative;
+    clear: both;
+    float: none;
+    font-size: 20px;
+    color: $secondary-color;
+}
+
+.workflow-tab-section p {
+    font-size: 12px;
+    line-height: 22px;
+    margin-bottom: 6px;
+    font-family: $heading-font;
+    font-weight: 400;
+    color: $secondary-color;
+}
+
+.workflow-tab-selected {
+    background: none;
+    border-bottom: 2px solid $primary-color !important;
+}
+
+.workflow-tab-selected p {
+    color: $primary-color !important;
+}
+
+.workflow-tab-selected i {
+    color: $primary-color !important;
+}
+
+.workflow-tab-section li:hover {
+    border-bottom: 2px solid $primary-color !important;
+}
+
+.workflow-tab-section li:hover > p {
+    color: $primary-color !important;
+}
+
+.workflow-tab-section li:hover > i {
+    color: $primary-color !important;
+}
+
+.workflow-documents-container {
+    border: 3px solid #edeeee;
+    margin-top: 10px;
+    display: inline;
+    overflow: hidden;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    -moz-transition: 0.2s ease background;
+    -o-transition: 0.2s ease background;
+    -webkit-transition: 0.2s ease background;
+    transition: 0.2s ease background;
+    background: none;
+    float: left;
+    width: 360px;
+    min-height: 70px;
+    max-height: 70px;
+}
+
+.workflow-documents-container:hover {
+    border: 3px solid $primary-color;
+    -moz-transition: 0.2s ease background;
+    -o-transition: 0.2s ease background;
+    -webkit-transition: 0.2s ease background;
+    transition: 0.2s ease background;
+}
+
+.workflow-documents-container input[type="checkbox"] {
+    height: 16px;
+    width: 20px;
+    cursor: pointer;
+    float: left;
+    display: block;
+    position: relative;
+    top: 35px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+}
+
+.workflow-documents-box {
+    padding: 0;
+    float: left;
+}
+
+.workflow-documents-box h4 {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 15px;
+    max-width: 220px;
+    min-height: 46px;
+    overflow: hidden;
+}
+
+.smaller-workflow {
+    margin-top: 10px;
+    font-size: 12px !important;
+    line-height: 0px;
+    margin-bottom: 15px;
+}
+
+.vertical-seperator {
+    width: 1px;
+    background: #edeeee;
+    height: 64px;
+    display: block;
+    float: left;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.workflow-documents-heading {
+    display: block;
+    float: left;
+    min-width: 237px;
+}
+
+.workflow-documents-heading i {
+    display: block;
+    color: #ccc;
+    font-size: 14px;
+    float: left;
+    position: relative;
+    top: 1px;
+    margin-right: 4px;
+}
+
+.workflow-documents-heading span {
+    font-size: 11px;
+    display: block;
+    margin-bottom: 4px;
+    color: #6a7178;
+}
+
+.uploaded {
+    color: #41d147;
+}
+
+.workflow-documents-details {
+    display: inline-block;
+    float: left;
+    width: 35px;
+    position: relative;
+    top: 7px;
+    text-align: center;
+}
+
+.workflow-documents-details a {
+    font-size: 10px;
+    margin-top: 14px;
+}
+
+.workflow-documents-details .material-icons {
+    font-size: 15px;
+    display: inline-block;
+    position: relative;
+    top: 3px;
+    line-height: 0;
+    margin-left: 4px;
+}
+
+.workflow-description {
+    max-width: 300px;
+}
+
+.workflow-edit {
+    color: $primary-color !important;
+}
+
+.workflow-edit i {
+    color: $primary-color !important;
+}
+
+
+/* WORKFLOW NEW LAYOUT 1st JULY 2016 */
+
+.workflow-actions-wrapper {
+    height: auto;
+    min-width: 96%;
+    display: block;
+    overflow: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative;
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+.add-admin-action h1 {
+    color: #fff;
+}
+
+.add-admin-action i {
+    margin-top: 16px;
+    color: #fff;
+}
+
+.action-wrapper {
+    background: #f9f9f9;
+    border: 0px solid #efefef;
+    box-shadow: rgba(3, 9, 24, 0.14902) 0px 1px 8px 0px;
+    display: block;
+    max-width: 264px;
+    min-width: 260px;
+    max-height: 110px;
+    min-height: 110px;
+    padding: 12px;
+    float: left;
+    margin-right: 1.12%;
+    margin-bottom: 12px;
+    transition: 0.2s ease background;
+}
+
+/*.action-wrapper:hover {
+    border: 3px solid $primary-color;
+    transition: 0.2s ease background;
+}*/
+
+.action-wrapper h1 {
+    font-size: 0.7rem;
+    font-weight: normal;
+    min-height: 44px;
+    max-height: 44px;
+    display: block;
+    text-transform: uppercase;
+}
+
+.action-wrapper .button {
+    font-size: 11px;
+    padding: 8px 10px;
+}
+
+.action-wrapper-done {
+
+    background: #fff;
+    border: 3px solid $green-btn-color;
+    display: block;
+    max-width: 230px;
+    min-width: 230px;
+    max-height: 110px;
+    min-height: 110px;
+    padding: 12px;
+    float: left;
+    margin-right: 1.12%;
+    margin-bottom: 12px;
+    transition: 0.2s ease background;
+
+
+}
+
+.action-wrapper-done:hover {
+    border: 3px solid rgb(76, 175, 80);
+    background: $green-btn-color;
+    color: #fff;
+    overflow: hidden;
+}
+
+.action-wrapper-done h1 {
+    color: $heading-color;
+    font-size: 0.7rem;
+    font-weight: normal;
+    min-height: 44px;
+    max-height: 44px;
+    display: block;
+    text-transform: uppercase;
+}
+
+.action-wrapper-done i {
+    font-size: 40px;
+    display: inline-block;
+    position: relative;
+    float: right;
+    top: 10px;
+    right: 0;
+    line-height: 0;
+    clear: both;
+}
+
+.action-wrapper-done .button {
+    background: $primary-color;
+    color: $white;
+    transition: 0.2s ease background color;
+}
+
+.action-wrapper-done .button:hover {
+    background: $primary-color-hover;
+    color: $white;
+    transition: 0.2s ease background color;
+}
+
+.edit-action-section {
+    display: block;
+    overflow: auto;
+    margin-bottom: 6px;
+    clear: both;
+}
+
+.edit-action-section:last-child {
+    margin-bottom: 0;
+}
+
+.edit-action-section h4 {
+    margin-bottom: 2px !important;
+    clear: both;
+    font-weight: normal;
+}
+
+.edit-action-section hr {
+    margin: 0;
+    border-bottom: 1px solid #e4e4e4;
+}
+
+.action-field {
+    margin-top: 0;
+    display: block;
+    float: left;
+    width: 100px;
+    clear: left;
+}
+
+.action-field span {
+    font-weight: normal;
+    clear: right;
+    font-size: 14px;
+}
+
+.action-field .switch {
+    margin-left: 0;
+}
+
+.action-required {
+    margin-top: 0;
+    display: block;
+    float: left;
+    width: 100px;
+    clear: right;
+    margin-left: 20px;
+}
+
+.action-required span {
+    font-weight: normal;
+    clear: right;
+    font-size: 14px;
+}
+
+.action-required .switch {
+    margin-left: 0;
+}
+
+.action-mandatory-section {
+    display: block;
+    margin: 0;
+    position: relative;
+    width: 145px;
+    margin-top: -10px;
+    float: left;
+}
+
+.action-mandatory-section span {
+    font-weight: normal;
+    font-size: 13px;
+}
+
+.action-mandatory-section .switch {
+    margin-left: 0;
+}
+
+
+
+
+/* Files Attached */
+
+.files-uploaded-section {
+    margin-top: 10px;
+}
+
+.fileProgressbar
+{
+    padding: 0;
+    background-color: #e0ebf5;
+    color: $white;
+    font-size: 13px;
+    text-align: center;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    height: 0%;
+    z-index: 1;
+}
+
+.files-uploaded-section label {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+ul.edit-action-files-link {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+ul.edit-action-files-link a {
+    z-index: 999;
+    position: relative;
+}
+
+.edit-action-files-link li {
+    background: $white;
+    box-shadow: 0 5px 4px -5px #bbb;
+    border: solid 1px $border-color;
+    width: auto;
+    padding: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-bottom: 12px;
+    margin-right: 6px;
+    float: left;
+    font-size: 13px;
+    transition: 0.2s background ease;
+    position: relative;
+    z-index: 999;
+    width: 100%;
+}
+
+.edit-action-files-link li:hover {
+    background: #f7f7f7;
+    transition: 0.2s background ease;
+}
+
+.remove-file-uploaded {
+    margin-left: 6px;
+    color: $body-color;
+    font-size: 14px;
+    float: right;
+}
+
+.remove-file-uploaded:hover {
+    color: $red;
+}
+
+
+
+/*------------------------------------*\
+	Responsive
+\*------------------------------------*/
+
+/* ----------- Small ----------- */
+@media all and (min-width: 1px) and (max-width: 482px) {
+    .workflow-actions-wrapper {
+        height: auto;
+        min-width: 100%;
+        display: block;
+        overflow: auto;
+        position: relative;
+        /*margin-bottom: 30px;*/
+        margin-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .action-wrapper {
+        display: block;
+        max-width: 100%;
+        min-width: 100%;
+        max-height: 110px;
+        min-height: 110px;
+        padding: 12px;
+        float: left;
+        margin-right: 1.12%;
+        margin-bottom: 12px;
+    }
+
+    .action-wrapper-done {
+        max-width: 100%;
+        min-width: 100%;
+        max-height: 110px;
+        min-height: 110px;
+    }
+
+    .workflow-tab-section {
+        display: none;
+    }
+
+    .action-required {
+        float: left;
+        width: 100px;
+        clear: both;
+        margin-left: 0;
+    }
+
+    .image-upload-wrap {
+        height: 120px;
+    }
+
+    .drag-text h3 {
+        padding: 0px 0;
+        font-size: 15px;
+        margin-top: 0px;
+        padding-top: 11px;
+    }
+
+    .drag-text i {
+        top: 15px;
+        font-size: 52px;
+    }
+
+
+}
+
+
+
+/* ----------- Tablet ----------- */
+/* max-width: 64em */
+@media all and (min-width: 483px) and (max-width: 1024px) {
+    .workflow-actions-wrapper {
+        height: auto;
+        min-width: 100%;
+        display: block;
+        overflow: auto;
+        position: relative;
+        /*margin-bottom: 30px;*/
+        margin-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .action-wrapper {
+        display: block;
+        max-width: 230px;
+        min-width: 230px;
+        max-height: 110px;
+        min-height: 110px;
+        padding: 12px;
+        float: left;
+        margin-right: 1.12%;
+        margin-bottom: 12px;
+    }
+
+    .workflow-tab-section {
+        display: block;
+    }
+
+    .mobile-tabs-with-cta {
+        display: none;
+    }
+
+    .mobile-tabs-with-cta select {
+        display: block;
+    }
+
+    .mobile-tabs-with-cta a.button.create-event-btn {
+        display: block;
+    }
+}
+
+
+
+/* ----------- 483px to 622px ----------- */
+@media all and (min-width: 483px) and (max-width: 622px) {
+    
+
+    .workflow-actions-wrapper {
+        height: auto;
+        min-width: 100%;
+        display: block;
+        overflow: auto;
+        position: relative;
+        margin-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .action-wrapper {
+        display: block;
+        max-width: 100%;
+        min-width: 100%;
+        max-height: 110px;
+        min-height: 110px;
+        padding: 12px;
+        float: left;
+        margin-right: 1.12%;
+        margin-bottom: 12px;
+    }
+
+    .action-wrapper-done {
+        max-width: 100%;
+        min-width: 100%;
+        max-height: 110px;
+        min-height: 110px;
+    }
+
+    .workflow-tab-section {
+        display: block;
+    }
+
+    .mobile-tabs-with-cta {
+        display: none;
+    }
+
+    .mobile-tabs-with-cta select {
+        display: block;
+    }
+
+    .mobile-tabs-with-cta a.button.create-event-btn {
+        display: block;
+    }
+
+    .remove-on-mobile {
+        display: none !important;
+    }
+}
+
+/* ----------- 483px to 622px ----------- */
+@media all and (min-width: 623px) and (max-width: 754px) {
+    .remove-on-mobile {
+        display: none !important;
+    }
+
+}
+
+
+
+/* ----------- Laptop ----------- */
+@media only screen and (min-width: 64.063em) {
+    .workflow-actions-wrapper {
+        height: auto;
+        min-width: 100%;
+        display: block;
+        overflow: auto;
+        position: relative;
+    }
+
+    .action-wrapper {
+        display: block;
+        max-width: 230px;
+        min-width: 230px;
+        max-height: 110px;
+        min-height: 110px;
+        padding: 12px;
+        float: left;
+        margin-right: 1.12%;
+        margin-bottom: 12px;
+    }
+
+    .workflow-tab-section {
+        display: block;
+    }
+
+    .mobile-tabs-with-cta {
+        display: none;
+    }
+
+    .mobile-tabs-with-cta select {
+        display: block;
+    }
+}
+
+
+
+
+/* ----------- 1024px to 1193px ----------- */
+@media all and (min-width: 1024px) and (max-width: 1193px) {
+
+}

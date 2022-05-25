@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="RoleService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:54738/RoleService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:54738/RoleService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:54738/RoleService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Common" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IRoleService_GetUserRoleActions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserRoleActions" />
+  </wsdl:message>
+  <wsdl:message name="IRoleService_GetUserRoleActions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserRoleActionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRoleService_GetRoles_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoles" />
+  </wsdl:message>
+  <wsdl:message name="IRoleService_GetRoles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRoleService_AssignRoleActionToRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:AssignRoleActionToRole" />
+  </wsdl:message>
+  <wsdl:message name="IRoleService_AssignRoleActionToRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AssignRoleActionToRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRoleService_AddRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddRole" />
+  </wsdl:message>
+  <wsdl:message name="IRoleService_AddRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRoleService_UpdateRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRole" />
+  </wsdl:message>
+  <wsdl:message name="IRoleService_UpdateRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRoleService_LogoutUserOnRoleChange_InputMessage">
+    <wsdl:part name="parameters" element="tns:LogoutUserOnRoleChange" />
+  </wsdl:message>
+  <wsdl:message name="IRoleService_LogoutUserOnRoleChange_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogoutUserOnRoleChangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRoleService_GetAllRoleActions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRoleActions" />
+  </wsdl:message>
+  <wsdl:message name="IRoleService_GetAllRoleActions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRoleActionsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IRoleService">
+    <wsdl:operation name="GetUserRoleActions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRoleService/GetUserRoleActions" message="tns:IRoleService_GetUserRoleActions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRoleService/GetUserRoleActionsResponse" message="tns:IRoleService_GetUserRoleActions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRoleService/GetRoles" message="tns:IRoleService_GetRoles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRoleService/GetRolesResponse" message="tns:IRoleService_GetRoles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AssignRoleActionToRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRoleService/AssignRoleActionToRole" message="tns:IRoleService_AssignRoleActionToRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRoleService/AssignRoleActionToRoleResponse" message="tns:IRoleService_AssignRoleActionToRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRoleService/AddRole" message="tns:IRoleService_AddRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRoleService/AddRoleResponse" message="tns:IRoleService_AddRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRoleService/UpdateRole" message="tns:IRoleService_UpdateRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRoleService/UpdateRoleResponse" message="tns:IRoleService_UpdateRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LogoutUserOnRoleChange">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRoleService/LogoutUserOnRoleChange" message="tns:IRoleService_LogoutUserOnRoleChange_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRoleService/LogoutUserOnRoleChangeResponse" message="tns:IRoleService_LogoutUserOnRoleChange_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRoleActions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRoleService/GetAllRoleActions" message="tns:IRoleService_GetAllRoleActions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRoleService/GetAllRoleActionsResponse" message="tns:IRoleService_GetAllRoleActions_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="RoleService" />
+</wsdl:definitions>

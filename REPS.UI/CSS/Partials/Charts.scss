@@ -1,0 +1,27 @@
+﻿@charset "UTF-8";
+@import "GlobalVariables.scss";
+
+
+.fee-chart-container {
+    margin: 0 auto;
+    height: 210px;
+    width: 100%;
+    position: relative;
+    top: 15px;
+}
+
+.monthly-payment-overview-chart-container {
+    margin: 0 auto;
+    margin-top: 10px;
+    height: 170px;
+    width: 100%;
+}
+
+.pie-chart-container {
+    margin: 0 auto;
+    margin-top: 10px;
+    height: 211px;
+    width: 414px;
+    max-width: 100%;
+    max-height: 100%;
+}

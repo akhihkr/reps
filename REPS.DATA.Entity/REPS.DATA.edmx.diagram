@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3e6a56a597b24c818be22acc9cafe4d7" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="REPSModel.C__RefactorLog" Width="1.5" PointX="10.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.AccountType" Width="1.5" PointX="22.5" PointY="38.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.AddressType" Width="1.5" PointX="0.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.Alerts" Width="1.5" PointX="11.25" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.AlertStatus" Width="1.5" PointX="9" PointY="36.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.AlertType" Width="1.5" PointX="9" PointY="38.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.AspNetUsers" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.Audit" Width="1.5" PointX="11.25" PointY="34.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.AuditDetail" Width="1.5" PointX="13.5" PointY="34.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.BankorCreditUnion" Width="1.5" PointX="17.25" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.Billing" Width="1.5" PointX="10" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.BillingDiscount" Width="1.5" PointX="8" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.BillingRate" Width="1.5" PointX="7.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.BillingRateDetail" Width="1.5" PointX="21.75" PointY="46.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.BillingTaxRate" Width="1.5" PointX="10" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.Correspondence" Width="1.5" PointX="18.75" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.Country" Width="1.5" PointX="0.75" PointY="29.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.CurrencyType" Width="1.5" PointX="19.5" PointY="41.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.DealStatus" Width="1.5" PointX="10.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.DealType" Width="1.5" PointX="12" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.DiscountType" Width="1.5" PointX="5.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.DocumentType" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.DocumentVersion" Width="1.5" PointX="5.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.FeeType" Width="1.5" PointX="12.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.FinancialInstrumentDetail" Width="1.5" PointX="21.75" PointY="41.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.FinancialObligation" Width="1.5" PointX="21.75" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.FinancialObligationDetail" Width="1.5" PointX="24" PointY="33.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.FinancialTransaction" Width="1.5" PointX="16.5" PointY="30" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.IdentityType" Width="1.5" PointX="3.75" PointY="34.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.InstrumentType" Width="1.5" PointX="12" PointY="38.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.InterestType" Width="1.5" PointX="12" PointY="41.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.InterestVariation" Width="1.5" PointX="19.5" PointY="38.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.JobTitle" Width="1.5" PointX="6.75" PointY="42.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.Lenders" Width="1.5" PointX="12" PointY="45" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.MessageQueue" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.MessageStatus" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.MetaData" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.MimeType" Width="1.5" PointX="22.5" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.Notification" Width="1.5" PointX="2.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.NotificationType" Width="1.5" PointX="11.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.Organization" Width="1.5" PointX="3.75" PointY="37.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.OrganizationType" Width="1.5" PointX="1.5" PointY="38.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.ParticipantBankDetail" Width="1.5" PointX="24.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.ParticipantRole" Width="1.5" PointX="17.25" PointY="38" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.ParticipantType" Width="1.5" PointX="17.25" PointY="40.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.Person" Width="1.5" PointX="6" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.PropertyType" Width="1.5" PointX="3" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.Province" Width="1.5" PointX="0.75" PointY="33.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.ReportFilters" Width="1.5" PointX="13.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.ReportLocation" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.Reports" Width="1.5" PointX="14.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.Role" Width="1.5" PointX="9" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.SizeType" Width="1.5" PointX="5.25" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.Task" Width="1.5" PointX="14.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.Title" Width="1.5" PointX="3.75" PointY="42.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.Township" Width="1.5" PointX="15.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.Transaction" Width="1.5" PointX="16.5" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.TransactionDocuments" Width="1.5" PointX="21.75" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.TransactionStatus" Width="1.5" PointX="14.25" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.TransactionType" Width="1.5" PointX="14.25" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.UserAction" Width="1.5" PointX="9" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.UserDeal" Width="1.5" PointX="16.5" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.UserDocument" Width="1.5" PointX="24.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.UserRole" Width="1.5" PointX="11.25" PointY="25" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.UserRoleAction" Width="1.5" PointX="11.25" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.VariableType" Width="1.5" PointX="19.5" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.Workflow" Width="1.5" PointX="15.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.WorkflowAction" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.WorkflowActionMap" Width="1.5" PointX="16.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.WorkflowActionVariable" Width="1.5" PointX="19.5" PointY="34.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.WorkflowProgress" Width="1.5" PointX="16.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.WorkflowTask" Width="1.5" PointX="17.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.WorkflowTransaction" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="REPSModel.WorkflowVariable" Width="1.5" PointX="18.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="REPSModel.FK_ParticipantBankDetail_AccountType" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_Alerts_AlertStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_Alerts_AlertType" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_AuditDetail_Audit" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_ParticipantBankDetail_BankorCreditUnion" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_Billing_Billing" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_BillingDiscount_DiscountType" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_BillingTaxRate_BillingRate" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_BillingRateDetail_CurrencyType" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_Conversations_Conversations" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_Person_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_FinancialInstrumentDetail_CurrencyType" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_FinancialInstrumentDetail_InstrumentType" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_FinancialInstrumentDetail_InterestType" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_FinancialInstrumentDetail_InterestVariation" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_FinancialObligation_FinancialObligation" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_FinancialObligation_InterestType" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_FinancialObligation_InterestVariation" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_FinancialObligationDetail_FinancialObligation" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_Person_IdentityType" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_Person_JobTitle" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_MessageQueue_MessageStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_UserDocument_UserDocument" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_Organization_OrganizationType" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_Person_Organization" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_Person_Title" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_UserRole_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_UserRoleAction_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_Transaction_TransactionStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_Transaction_TransactionType" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_TransactionDocuments_Transaction" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.FK_UserRoleAction_UserAction" ManuallyRouted="false" />
+        <AssociationConnector Association="REPSModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="REPSModel.Entity" Width="1.5" PointX="0.75" PointY="19.25" />
+        <AssociationConnector Association="REPSModel.FK_BankorCreditUnion_Entity" />
+        <AssociationConnector Association="REPSModel.FK_UserDocument_Entity" />
+        <EntityTypeShape EntityType="REPSModel.Deal" Width="1.5" PointX="14.25" PointY="28" />
+        <AssociationConnector Association="REPSModel.FK_Alerts_Deal" />
+        <AssociationConnector Association="REPSModel.FK_Deal_DealType" />
+        <AssociationConnector Association="REPSModel.FK_FinancialTransaction_Deal" />
+        <AssociationConnector Association="REPSModel.FK_Transaction_Deal" />
+        <AssociationConnector Association="REPSModel.FK_UserDeal_Deal" />
+        <EntityTypeShape EntityType="REPSModel.Property" Width="1.5" PointX="25.5" PointY="19.875" />
+        <AssociationConnector Association="REPSModel.FK_Property_Deal" />
+        <AssociationConnector Association="REPSModel.FK_Property_PropertyType" />
+        <EntityTypeShape EntityType="REPSModel.Address" Width="1.5" PointX="3" PointY="28.125" />
+        <EntityTypeShape EntityType="REPSModel.PropertyDetail" Width="1.875" PointX="27.75" PointY="19.375" />
+        <AssociationConnector Association="REPSModel.FK_Address_AddressType" />
+        <AssociationConnector Association="REPSModel.FK_Address_Country" />
+        <AssociationConnector Association="REPSModel.FK_Address_Province" />
+        <AssociationConnector Association="REPSModel.FK_Property_Address" />
+        <AssociationConnector Association="REPSModel.FK_PropertyDetail_Property" />
+        <AssociationConnector Association="REPSModel.FK_PropertyDetail_SizeType" />
+        <EntityTypeShape EntityType="REPSModel.FinancialInstrument" Width="1.5" PointX="14.25" PointY="41.125" />
+        <AssociationConnector Association="REPSModel.FK_FinancialInstrument_InstrumentType" />
+        <AssociationConnector Association="REPSModel.FK_FinancialInstrument_InterestType" />
+        <AssociationConnector Association="REPSModel.FK_FinancialInstrument_Lenders" />
+        <AssociationConnector Association="REPSModel.FK_FinancialTransaction_FinancialInstrument" />
+        <EntityTypeShape EntityType="REPSModel.User" Width="1.5" PointX="9" PointY="27.125" />
+        <AssociationConnector Association="REPSModel.FK_Alerts_User" />
+        <AssociationConnector Association="REPSModel.FK_Audit_User" />
+        <AssociationConnector Association="REPSModel.FK_User_Country" />
+        <AssociationConnector Association="REPSModel.FK_Deal_User" />
+        <AssociationConnector Association="REPSModel.FK_User_Entity" />
+        <AssociationConnector Association="REPSModel.FK_User_JobTitle" />
+        <AssociationConnector Association="REPSModel.FK_UserDeal_User" />
+        <AssociationConnector Association="REPSModel.FK_UserDocument_User" />
+        <AssociationConnector Association="REPSModel.FK_UserRole_User" />
+        <EntityTypeShape EntityType="REPSModel.TransactionDetail" Width="1.5" PointX="21.75" PointY="25.125" />
+        <AssociationConnector Association="REPSModel.FK_TransactionDetail_TransactionDetail" />
+        <AssociationConnector Association="REPSModel.FK_TransactionDetail_VariableType" />
+        <AssociationConnector Association="REPSModel.FK_TransactionDetail_WorkflowActionVariable" />
+        <EntityTypeShape EntityType="REPSModel.DocumentTemplate" Width="1.5" PointX="19.375" PointY="6.75" />
+        <EntityTypeShape EntityType="REPSModel.DocumentWorkflow" Width="1.5" PointX="14.375" PointY="18.75" />
+        <EntityTypeShape EntityType="REPSModel.Participant" Width="1.5" PointX="19.5" PointY="28.25" />
+        <AssociationConnector Association="REPSModel.FK_Participant_BankorCreditUnion" />
+        <AssociationConnector Association="REPSModel.FK_Participant_Deal" />
+        <AssociationConnector Association="REPSModel.FK_FinancialObligation_Participant" />
+        <AssociationConnector Association="REPSModel.FK_Participant_Organization" />
+        <AssociationConnector Association="REPSModel.FK_Participant_ParticipantRole" />
+        <AssociationConnector Association="REPSModel.FK_Participant_ParticipantType" />
+        <AssociationConnector Association="REPSModel.FK_ParticipantBankDetail_Participant" />
+        <AssociationConnector Association="REPSModel.FK_UserDocument_Participant" />
+        <EntityTypeShape EntityType="REPSModel.Document" Width="1.5" PointX="21.375" PointY="1" />
+        <AssociationConnector Association="REPSModel.FK_TransactionDocuments_Document" />
+        <EntityTypeShape EntityType="REPSModel.FirmDetails" Width="1.5" PointX="21.375" PointY="6.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

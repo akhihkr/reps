@@ -1,0 +1,57 @@
+﻿@{
+    Layout = null;
+    <script type="text/javascript">
+        @Html.Raw(TempData["ToasterMsgUpdated"])
+    </script>
+}
+
+<div class="table-scroll entity-table">
+    <table class="deals-table" id="table-data">
+        <thead>
+            <tr id="table-head">
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Birthday</th>
+                <th>Telephone</th>
+                <th>Email</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="hover">
+            @foreach (var user in ViewData["Userslist"] as IEnumerable<dynamic>)
+            {
+                <tr>
+                    <td>@user["GivenName"]</td>
+                    <td>@user["FamilyName"]</td>
+                    <td>@(TimeZone.CurrentTimeZone.ToLocalTime(user["BirthDate"]).ToString("dd/MM/yyyy"))</td>
+                    <td>@(user["Telephone"] == null ? null : user["Telephone"])</td>
+                    <td>@user["Email"]</td>
+                    <td><a onclick="CallPopupPanel('AdminUser', 'PopupEditUser', 'general-panel',{ userID :'@user["AspNetUsersId"]' })">Edit</a></td>
+                    <td>
+                        @Ajax.ActionLink("Remove", "RemoveUser", new { userID = @user["AspNetUsersId"], Deleted = true },
+                          new AjaxOptions
+                          {
+                              UpdateTargetId = "user-details",
+                              InsertionMode = InsertionMode.Replace,
+                              HttpMethod = "POST",
+                              Confirm = "Are you sure you want to remove this user?",
+                              OnSuccess = "onSuccessToasterMsg(null,null, null,null,'User has been successfully removed')"
+                          }, new { @class = "remove-btn-user" })
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<div id="table-result-search-data"></div>
+
+<!-- Scripts -->
+<script type="text/javascript">
+    //call dynatable plugin search when document is ready
+    DynatableSearch('#table-data', '#table-result-search-data', '#search-table');
+    //end of call dynatable plugin search when document is ready
+</script>

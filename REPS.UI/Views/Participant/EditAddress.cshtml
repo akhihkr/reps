@@ -1,0 +1,131 @@
+﻿
+@{
+    ViewBag.Title = "Edit Address";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    //variables
+    string participantGUID = ViewData["participantGUID"].ToString();
+    string addressGUID = ViewData["AddressGUID"].ToString();
+    //end of variables
+
+    // get address info
+    dynamic AddressInfo = null;
+
+    if (ViewData["AddressInfo"] != null)
+    {
+        AddressInfo = (ViewData["AddressInfo"] as IEnumerable<dynamic>).FirstOrDefault();
+    }
+    string stateCountry = "";
+    //end of get address info
+
+    //ajax edit participant
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "general-panel",
+        OnFailure = "OnFailure",
+        //OnSuccess = "onSuccessToasterMsg(null,null,null,null,'Address has been successfully updated')",
+    };
+    //end of ajax edit participant
+}
+
+@using (Ajax.BeginForm("UpdateParticipantAddress", "Participant", options, new { id = "UpdateAddressParticipant", name = "UpdateAddressParticipant" }))
+{
+    <input type="hidden" value="@addressGUID" id="addressGUID" name="addressGUID" />
+    <input type="hidden" value="@participantGUID" id="participantGUID" name="participantGUID" />
+
+    <label>Address Type<span>*</span></label>
+    <select id="addressType" name="addressType" data-content="required">
+        <option value='-1' default selected>Select an option:</option>
+        @foreach (var AddressType in ViewData["AddressType"] as IEnumerable<dynamic>)
+        {
+            if (@AddressInfo["AddressTypeID"] == @AddressType["AddressTypeID"])
+            {
+                stateCountry = " selected ";
+            }
+            <option @stateCountry value="@AddressType["AddressTypeID"]">@AddressType["Description"]</option>
+            // reset to empty
+            stateCountry = " ";
+        }
+    </select>
+
+    <div class="medium-6 columns reset-columns">
+        <label>
+            Address Line 1<span>*</span>
+            <input type="text" name="addressLine1" id="addressLine1" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharAddress))" value="@AddressInfo["AddressLine1"]" data-content="required" autocomplete="off" format="address" />
+        </label>
+        <label>
+            Address Line 2
+            <input type="text" name="addressLine2" id="addressLine2" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharAddress))" value="@AddressInfo["AddressLine2"]" autocomplete="off" format="address" />
+        </label>
+        <label>Country<span>*</span></label>
+        <select id="country" name="country" data-content="required" onchange="reps.countrySelection(this)">
+            <option value='-1' default>Select an option:</option>
+            @foreach (var country in ViewData["Countries"] as IEnumerable<dynamic>)
+            {
+                if (@country["CountryID"] == @AddressInfo["CountryID"])
+                {
+                    <option value="@country["CountryID"]" selected>@country["Description"]</option>
+                }
+                else
+                {
+                    <option value="@country["CountryID"]">@country["Description"]</option>
+                }
+
+            }
+        </select>
+    </div> <!-- End of medium-6 columns -->
+
+    <div class="medium-6 columns">
+        <label>
+            City
+            <input type="text" name="city" id="city" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharCity))" value="@AddressInfo["City"]" autocomplete="off" format="address" />
+        </label>
+        <label>
+            Postcode
+            <input type="text" name="zipCode" id="zipCode" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharPostalCode))" value="@AddressInfo["PostalCode"]" autocomplete="off" />
+        </label>
+        <div id="ProvinceFilter"></div><!--province filter if country is selected on change function-->
+        <div id="editProvince">
+            <!--province filter if country is selected by default-->
+            <label> Province</label>
+            <select id="province" name="province">
+                <option value='-1'>Select an option:</option>
+                @foreach (var province in ViewData["Province"] as IEnumerable<dynamic>)
+                {
+                    if (@province["ProvinceID"] == @AddressInfo["ProvinceID"])
+                    {
+                        <option value="@province["ProvinceID"]" selected>@province["Description"]</option>
+                    }
+                    else
+                    {
+                        <option value="@province["ProvinceID"]">@province["Description"]</option>
+                    }
+                }
+            </select>
+        </div>
+    </div> <!-- End of medium-6 columns -->
+
+}
+
+@section footer
+{
+    @Ajax.ActionLink("Back", "PopupAddress",
+    new { participantGUIDFormValue = @participantGUID },
+    new AjaxOptions { UpdateTargetId = "general-panel", InsertionMode = InsertionMode.Replace },
+    new { @class = "button align-left" })
+    <a id="save" class="button align-right dirty-disabled" href="#" onclick="FormObjectSubmit('#save', '#UpdateAddressParticipant', true);">Update Address</a>
+}
+@section script
+{
+    <script>
+        //dirty function used to check if event listener has been modified and call the updates function
+        $('#UpdateAddressParticipant').dirrty().on("dirty", function () {
+            $("#save").removeClass("dirty-disabled");//removed attribute if in case if anchor tag is used
+        }).on("clean", function () {
+            $("#save").addClass("dirty-disabled")//add attribute if in case if anchor tag is used
+        });
+        //end of dirty function used to check if event listener has been modified and call the updates function
+    </script>
+}

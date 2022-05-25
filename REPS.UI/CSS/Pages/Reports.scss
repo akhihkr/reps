@@ -1,0 +1,30 @@
+﻿@charset "UTF-8";
+@import "../Partials/GlobalVariables.scss";
+
+
+#between-dates {
+    display: block;
+    top: 4px;
+    left: 12px;
+    position: relative;
+}
+
+
+.deal-charts-reports {
+    border: 0;
+}
+
+.add-filters-padding {
+    padding: 10px;
+}
+
+.filter-buttons.button {
+    text-decoration: none;
+    width: 100%;
+    display: block;
+}
+
+.filter-buttons a {
+    text-decoration: none;
+}
+

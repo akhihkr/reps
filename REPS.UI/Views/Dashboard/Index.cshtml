@@ -1,0 +1,230 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/LayoutMain.cshtml";
+
+    //User roles
+    string role_view_dashboardlist = "DA_LI";
+    string role_view_dashboard5deals = "DA_DE";
+    string role_view_dashboardswapaccount = "DA_SW";
+
+    string role_view_dashboardpaymentdealtype = "DA_FP";
+    string role_view_dashboardmonthlyoverview = "DA_MP";
+
+    if (!Common.CArray.SearchInCookie(role_view_dashboardlist))
+    {
+        Response.Redirect(Url.Action("Index", "AdminUser"));
+    }
+
+    //variables
+    int dealsCount = 0;
+    var link = ViewData["links"].ToString();
+    //end of variables
+
+}
+@*@Scripts.Render("~/Bundles/Charts")
+    @Scripts.Render("~/Bundles/Scripts")*@
+<div class="row reset-row">
+    <div class="box-columns medium-12 large-7 columns reset-columns">
+        <div class="box add-box-padding limit-height">
+            <div class="box-descriptions">
+
+                <div class="small-12 medium-8 columns reset-columns">
+                    <h4><span id="greeting"></span>, @ViewData["username"]!</h4>
+                    @if (Common.CArray.SearchInCookie(role_view_dashboard5deals))
+                    {
+                        if (ViewData["dealsResult"] != null && (int.Parse((ViewData["dealsResult"] as IEnumerable<dynamic>).Count().ToString())) > 0)
+                        {
+                            <p class="hide-for-small-only hide-for-medium-only">
+                                Please find below the latest deals for your <span class="toggle-user-account">@link</span>.
+                            </p>
+                        }
+                    }
+                </div> <!-- End of medium-10 columns reset-columns -->
+
+                <div class="small-12 medium-4 columns">
+                    <ul class="dropdown menu switch-account" data-dropdown-menu>
+                        <li>
+                            @if (Common.CArray.SearchInCookie(role_view_dashboardswapaccount))
+                            {
+                                <a href="#">Switch @(link == "Account" ? "Account" : "Company" ) </a>
+                                <ul class="menu">
+                                    <li>@Html.ActionLink("Company", "Index", "Dashboard", null)</li>
+                                    <li>@Html.ActionLink("Account", "User", "Dashboard", null)</li>
+                                    @*<li>@(link == "Account" ? Html.ActionLink("Company", "Index", "Dashboard", null) : Html.ActionLink("Account", "User", "Dashboard", null) ) </li>*@
+                                </ul>
+                            }
+                        </li>
+                    </ul>
+                </div> <!-- End of medium-2 columns -->
+                @*@Html.ActionLink(@link, @methodName, "Dashboard", null, new { @class = "button toggle-user-account-btn hide-on-mobile hide-on-tablet" })*@
+
+            </div> <!-- End of table-headings -->
+
+            @{
+                if (Common.CArray.SearchInCookie(role_view_dashboard5deals))
+                {
+                    if (ViewData["dealsResult"] != null && (int.Parse((ViewData["dealsResult"] as IEnumerable<dynamic>).Count().ToString())) > 0)
+                    {
+                        <div class="table-scroll">
+                            <table style="border-spacing: 0" class="deals-table dashboard-table" id="dashboard-deals-table">
+                                <thead>
+                                    <tr id="table-head">
+                                        <th> Client </th>
+                                        <th class="hide-row-mobile">Type</th>
+                                        <th class="hide-row-mobile">Participants</th>
+                                        <th class="hide-row-mobile">Created</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+
+                                <tbody class='hover'>
+                                    @foreach (var deal in ViewData["dealsResult"] as IEnumerable<dynamic>)
+                                    {
+                                        dealsCount = dealsCount + 1;
+                                        <tr>
+                                            <td>
+                                                @if (deal["ClientReference"].ToString().Length > 40)
+                                                {
+                                                    string SeeMoreString = deal["ClientReference"].ToString().Substring(0, 40);
+                                                    @Html.Raw(@SeeMoreString + "... <a onclick = \"CallPopupPanel('Dashboard', 'GetDashboardDetails', 'general-panel',{objID: '" + @deal["UniqueReference"] + "'})\">See more</a>");
+                                                }
+                                                else
+                                                {
+                                                    @deal["ClientReference"]
+                                                }
+                                            </td>
+                                            <td class="hide-row-mobile"> @deal["DealType"] </td>
+                                            <td class="hide-row-mobile">@deal["Participants"]</td>
+                                            <td class="hide-row-mobile">@deal["DateCreated"].ToString("dd/MM/yyyy")</td>
+                                            <td><a href="@Url.Action("ViewDeal", "Deal", new { URef = @deal["UniqueReference"] })">View</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div> <!-- End of table-scroll -->
+                    }
+                    else
+                    {
+                        <div class="no-deal-section">
+                            <i class="material-icons">new_releases</i>
+                            <p>No deals added yet.</p>
+                        </div> <!-- End of no-participant-section -->
+                    }
+                }
+            }
+
+        </div> <!-- End of box (Main Table)-->
+    </div> <!-- End of large-7 columns -->
+
+    @if (Common.CArray.SearchInCookie(role_view_dashboardpaymentdealtype))
+    {
+    <div class="box-columns medium-12 large-5 columns remove-padding-right">
+        <div id="boxCanvas" class="box add-box-padding limit-height">
+            <!-- 4 Get report name where order = 4 and location = dashboard -->
+            @{
+                if (ViewData["getReportDetails"] != null && ViewData["DashboardChartsDetails"] != null)
+                {
+                    foreach (var reportDetails in ViewData["getReportDetails"] as IEnumerable<dynamic>)
+                    {
+                        if (@reportDetails["Order"] == 2)
+                        {
+                            <h4>@reportDetails["Description"]</h4>
+                            <div class="fee-chart-container" id="chart-container">
+
+                                @{
+                                    foreach (var dashboardChartsDetail in ViewData["DashboardChartsDetails"] as Dictionary<string, object>)
+                                    {
+                                        int currentOrder = Convert.ToInt32(dashboardChartsDetail.Key.Split('_')[1]);
+                                        if (currentOrder == 2)
+                                        {
+                                            if (dashboardChartsDetail.Value.ToString() == Common.CString.GetEnumDescription(Global.Enums.NullValues.NullString))
+                                            {
+                                                <div class="no-deal-section">
+                                                    <i class="material-icons">new_releases</i>
+                                                    <p>No payments added yet.</p>
+                                                </div> <!-- End of no-participant-section -->
+                                            }
+                                            else
+                                            {
+                                                Html.RenderPartial("PartialChartTable", new ViewDataDictionary(ViewData) { { "chartName", @reportDetails["ChartName"] }, { "chartType", dashboardChartsDetail.Key.Split('_')[2] }, { "dashboardChartDes", dashboardChartsDetail.Value }, { "chartId", dashboardChartsDetail.Key } });
+                                            }
+                                        }
+
+                                    }
+                                }
+                            </div>
+                                                }
+                                            }
+                                        }
+                                    }
+            <!-- End of form charts-->
+        </div> <!-- End of box add-box-padding -->
+    </div> <!-- End of large-5 columns -->
+    }
+
+    @if (Common.CArray.SearchInCookie(role_view_dashboardmonthlyoverview))
+    {
+    <div class="box-columns small-12 columns reset-columns remove-padding-right">
+        <div class="box add-box-padding">
+            <!-- 1 Get report name where order = 1 and location = dashboard -->
+            @{
+                if (ViewData["getReportDetails"] != null && ViewData["DashboardChartsDetails"] != null)
+                {
+                    foreach (var reportDetails in ViewData["getReportDetails"] as IEnumerable<dynamic>)
+                    {
+                        if (@reportDetails["Order"] == 1)
+                        {
+                            <h4>@reportDetails["Description"]</h4>
+                                foreach (var dashboardChartsDetail in ViewData["DashboardChartsDetails"] as Dictionary<string, object>)
+                                {
+                                    int currentOrder = Convert.ToInt32(dashboardChartsDetail.Key.Split('_')[1]);
+                                    if (currentOrder == 1)
+                                    {
+                                        if (dashboardChartsDetail.Value.ToString() == "null")
+                                        {
+                                        <div class="no-deal-section">
+                                            <i class="material-icons">new_releases</i>
+                                            <p>No payments added yet.</p>
+                                        </div> <!-- End of no-participant-section -->
+                                        }
+                                        else
+                                        {
+                                        <div class="monthly-payment-overview-chart-container">
+                                            @{
+                                                Html.RenderPartial("PartialChartTable", new ViewDataDictionary(ViewData) { { "chartName", @reportDetails["ChartName"] }, { "chartType", dashboardChartsDetail.Key.Split('_')[2] }, { "dashboardChartDes", dashboardChartsDetail.Value }, { "chartId", dashboardChartsDetail.Key } });
+                                            }
+                                        </div> <!-- End of monthly-payment-chart-container -->
+
+                                                                            }
+                                                                        }
+
+                                                                    }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+            <!-- End of form charts-->
+        </div> <!-- End of box add-box-padding -->
+    </div> <!-- End of small-12 columns -->
+    }
+</div> <!-- End of row reset-row -->
+<!---------------------------- CHARTS ------------------------------------->
+@*@Scripts.Render("~/Bundles/Paging")*@
+
+<script type="text/javascript">
+
+    var myvar = getURLParameter('error');
+    if (myvar == "true") {
+        toastr.warning("<button type='button' id='confirmationRevertYes' class='send-error-report-button clear'>Send Error Report</button>", 'An error has occured!',
+        {
+            closeButton: false, timeOut: 999999999,
+            allowHtml: true,
+            onShown: function (toast) {
+                $("#confirmationRevertYes").click(function () {
+                    var url = globaljsPath + 'ErrorHandling/ErrorForm?errorMsg=null';
+                    window.location.href = url;
+                });
+            }
+        });
+    }
+</script>

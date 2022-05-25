@@ -1,0 +1,186 @@
+﻿@{
+    int dealsCount = 0;
+
+    /// Call WCF to get all active deals for header tab by User
+    object allActiveDeals = REPS.UI.Models.HeaderTabModel.GetUserActiveDeals(Request.Cookies["REPS_AspNetUsersId"].Value.ToString());
+    ViewData["ActiveHeaderTabs"] = allActiveDeals;
+
+    /// Call WCF to get all active deals for notification bar by User
+    object allActiveDealsNotificationBar = REPS.UI.Models.HeaderTabModel.GetUserActiveDealsNotificationBar(Request.Cookies["REPS_AspNetUsersId"].Value.ToString());
+    ViewData["ActiveDealsNotifBarHeaderTabs"] = allActiveDealsNotificationBar;
+
+    string UniqueReference = string.Empty;
+    if (Request.IsAjaxRequest())
+    {
+        if (Request.UrlReferrer.Query != null)
+        {
+            UniqueReference = Common.CUniqueReference.GetUniqueReferenceAjaxRequest(Request.UrlReferrer.Query);
+        }
+    }
+    else
+    {
+        if (Request.Url.Query != null)
+        {
+            UniqueReference = Common.CUniqueReference.GetUniqueReferenceAjaxRequest(Request["URef"]);
+            if ((UniqueReference == "Invalid") && (Request.Url.Query.ToString().ToLower().Contains("uref")))
+            {
+                UniqueReference = Common.CUniqueReference.GetUniqueReferenceAjaxRequest(Request.Url.Query);
+            }
+        }
+    }
+}
+
+@foreach (var activeDealTab in ViewData["ActiveHeaderTabs"] as IEnumerable<dynamic>)
+{
+    dealsCount++;
+    if (UniqueReference != Global.Enums.UniqueReference.Invalid.ToString())
+    {
+        if (activeDealTab["IsActive"] == true) // if current deal is active
+        {
+            <div class="header-tab hide-on-mobile hide-on-tablet" id="header-tab-selected">
+                <i class="material-icons tab-icon">tab</i>
+                <h1>@activeDealTab["ClientReference"]</h1>
+
+                <a tabindex="-1" href="@Url.Action("DeleteCurrentActiveUserDeals", "HeaderTab", new { CloseURef = activeDealTab["UniqueReference"]})">
+                    <span class="close-tab-a">x</span>
+                </a>
+            </div> <!-- End of header-tab hide-on-mobile hide-on-tablet -->
+        }
+        else // if not active deal
+        {
+            using (Html.BeginForm("DealRedirection", "HeaderTab", new { UniqueReference = activeDealTab["UniqueReference"], RedirectLink = activeDealTab["LastViewName"] }, FormMethod.Post, new { name = "headerTabForm", id = "headerTabForm" + dealsCount }))
+            {
+                <a class="header-anchor" onclick="$('@MvcHtmlString.Create("#headerTabForm" + @dealsCount)').submit()">
+                    <div class="header-tab hide-on-mobile hide-on-tablet">
+                        <i class="material-icons tab-icon">tab</i>
+                        <h1>@activeDealTab["ClientReference"]</h1>
+                    </div> <!-- End of header-tab hide-on-mobile hide-on-tablet -->
+
+                    <!-- Close Button (X)-->
+                    @Ajax.ActionLink("x", "DeleteUserDeals", "HeaderTab",
+                    new { CloseURef = activeDealTab["UniqueReference"] },
+                    new AjaxOptions
+                    {
+                        HttpMethod = "Post",
+                        InsertionMode = InsertionMode.Replace,
+                        UpdateTargetId = "header-tabs-section",
+                        OnSuccess = "onSuccessToasterMsg('HeaderTab', 'UpdateMoreTabsHeader', 'more-tabs-panel', null, null)",
+                    },
+                    new { @class = "close-tab-a header-close-tab hide-on-mobile hide-on-tablet" })
+                    <!-- End of Close Button (X) -->
+                </a>
+            }
+        }
+    }
+    else
+    {
+        using (Html.BeginForm("DealRedirection", "HeaderTab", new { UniqueReference = activeDealTab["UniqueReference"], RedirectLink = activeDealTab["LastViewName"] }, FormMethod.Post, new { name = "headerTabForm", id = "headerTabForm" + dealsCount }))
+        {
+            <a class="header-anchor" onclick="$('@MvcHtmlString.Create("#headerTabForm" + @dealsCount)').submit()">
+                <div class="header-tab hide-on-mobile hide-on-tablet">
+                    <i class="material-icons tab-icon">tab</i>
+                    <h1>@activeDealTab["ClientReference"]</h1>
+                </div> <!-- End of header-tab hide-on-mobile hide-on-tablet -->
+
+                @Ajax.ActionLink("x", "DeleteUserDeals", "HeaderTab",
+                    new { CloseURef = activeDealTab["UniqueReference"] },
+                    new AjaxOptions
+                    {
+                        HttpMethod = "Post",
+                        InsertionMode = InsertionMode.Replace,
+                        UpdateTargetId = "header-tabs-section",
+                        OnSuccess = "onSuccessToasterMsg('HeaderTab', 'UpdateMoreTabsHeader', 'more-tabs-panel', null, null)",
+                    },
+                    new { @class = "close-tab-a header-close-tab hide-on-mobile hide-on-tablet" })
+            </a>
+
+        }
+    }
+}
+
+ <!-- in case no deals show dashboad or deal -->
+ @if (dealsCount < 1)
+ {
+     string tabName = string.Empty;
+     dynamic editDealInfo = null;
+     if (ViewData["dealEdit"] != null && (int.Parse((ViewData["dealEdit"] as IEnumerable<dynamic>).Count().ToString()) != 0))
+     {
+         editDealInfo = (ViewData["dealEdit"] as IEnumerable<dynamic>).FirstOrDefault();
+         tabName = @editDealInfo["ClientReference"];
+     }
+     else
+     {
+         if (ViewData["SelectedTab"] != null)
+         {
+             tabName = ViewData["SelectedTab"].ToString();
+         }
+         else
+         {
+             tabName = Global.Enums.PageNames.Dashboard.ToString();
+         }
+     }
+    <div class="mobile-menu">
+        <i class="material-icons">menu</i>
+        <span id="">Menu</span>
+    </div> <!-- End of mobile-menu -->
+    <!-- Header Tabs Section Starts Here-->
+    <div class="header-tabs-section" id="header-tabs-section">
+        <a tabindex="-1" class="">
+            <div class="header-tab hide-on-mobile hide-on-tablet" id="header-tab-selected">
+                <h1>@tabName</h1>
+            </div> <!-- End of header-tab -->
+        </a>
+    </div> <!-- End of header-tabs-section -->
+ }
+ <!-- end in case no deals show dashboad or deal -->
+
+<div id="more-tabs-container" class="hide-on-mobile hide-on-tablet">
+    @if (int.Parse((ViewData["ActiveDealsNotifBarHeaderTabs"] as IEnumerable<dynamic>).Count().ToString()) > 0)
+    {
+
+            <!-- More Tabs Dropdown -->
+            <div class="more-tabs" title="More Tabs" data-toggle="more-tabs-dropdown-toggle">
+                <a href="#">
+                    <i class="material-icons">more_vert</i>
+                </a>
+            </div> <!-- End of more-tabs -->
+
+            <div class="dropdown-pane more-tabs-dropdown bottom float-left" id="more-tabs-dropdown-toggle" data-hover="false" data-dropdown data-close-on-click="true">
+
+                <div class="dropdown-more-tabs">
+                    @foreach (var activeDealTabNotifBar in ViewData["ActiveDealsNotifBarHeaderTabs"] as IEnumerable<dynamic>)
+                {
+                    dealsCount++;
+                    using (Html.BeginForm("DealRedirection", "HeaderTab", new { UniqueReference = activeDealTabNotifBar["UniqueReference"], RedirectLink = activeDealTabNotifBar["LastViewName"] }, FormMethod.Post, new { name = "moreHeaderTabForm", id = "moreHeaderTabForm" + dealsCount }))
+                    {
+
+                            <a onclick="$('@MvcHtmlString.Create("#moreHeaderTabForm" + @dealsCount)').submit()">
+                                <div class="additional-tab-content">
+                                    <i class="material-icons tab-icon">tab</i>
+                                    <h1>@activeDealTabNotifBar["ClientReference"]</h1>
+                                </div> <!-- End of additional-tab-content -->
+                            </a>
+
+                            @Ajax.ActionLink("x", "DeleteUserDeals", "HeaderTab",
+                    new { CloseURef = activeDealTabNotifBar["UniqueReference"] },
+                    new AjaxOptions
+                    {
+                        HttpMethod = "Post",
+                        InsertionMode = InsertionMode.Replace,
+                        UpdateTargetId = "header-tabs-section",
+                        OnSuccess = "onSuccessToasterMsg('HeaderTab', 'UpdateMoreTabsHeader', 'more-tabs-panel', null, null)",
+                    },
+                    new { @class = "close-more-tab-a" })
+                        }
+                    }
+                </div> <!-- End of dropdown-more-tabs -->
+
+
+                <a href="@Url.Action("DeleteAllUserDeals", "HeaderTab")" class="clear-all-tabs" tabindex="-1" onclick="return confirm('Are you sure you want to clear all tabs?')">
+                    Clear all tabs
+                </a>
+
+            </div> <!-- End of dropdown-pane -->
+            <!-- End More Tabs Dropdown -->
+    }
+</div> <!-- End of more-tabs-container -->

@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "Add Workflow Step";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+    string reportPresent = "";//variables
+
+    //ajax
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "documentTemplate",
+        OnFailure = "OnFailure",
+        OnComplete = "onComplete",
+    };
+}
+
+@using (Ajax.BeginForm("AddWorkflowTask", "AdminDocuments", options, new { @id = "saveWorkflowTaskForm" }))
+{
+    <input type="text" id="TemplateDocumentID" name="TemplateDocumentID" value="@(TempData["DocumentTypeID"].ToString())" />
+    <label> Workflow Task</label>
+    <select id="WorkflowID" name="WorkflowID" data-content="required">
+        <option value='-1' default selected>Select an option:</option>
+        @{
+            if (ViewData["WorkflowsList"] != null || (ViewData["CurrentDealWorkflow"] != null))
+            {
+                foreach (var workflowList in ViewData["WorkflowsList"] as IEnumerable<dynamic>)
+                {
+                    foreach (var currentDealWorkflow in ViewData["CurrentDealWorkflow"] as IEnumerable<dynamic>)
+                    {
+                        if (@workflowList["WorkflowTaskGUID"].ToString().Trim() == @currentDealWorkflow["WorkflowTaskGUID"].ToString().Trim())
+                        {
+                            reportPresent = " selected ";
+                        }
+                    }
+                    <option @reportPresent value="@workflowList["WorkflowTaskGUID"]">@workflowList["TaskName"]</option>
+                    // reset to empty
+                    reportPresent = " ";
+                }
+            }
+        }
+    </select>
+
+    <label>
+        Workflow Task
+        <select id="workflowTaskID" name="workflowTaskID" data-content="required" onchange="reps.workflowTaskList(this)">
+            <option value='-1' default selected>Select an option:</option>
+            @{
+                if (ViewData["workflowList"] != null)
+                {
+                    foreach (var workflowList in ViewData["workflowList"] as IEnumerable<dynamic>)
+                    {
+                        <option selected value="@workflowList["WorkflowTaskID"]">@workflowList["TaskName"]</option>
+                    }
+                }
+            }
+        </select>
+    </label>
+
+        <div id="WorkflowTaskList"></div><!--WorkflowTaskList filter if workflow task is selected on change function-->
+                }
+
+@section footer
+{
+    @Ajax.ActionLink("Back", "NewDocumentTemplate",
+        new { objectTypeID = Convert.ToInt32(TempData["DocumentTypeID"].ToString()) },
+        new AjaxOptions { UpdateTargetId = "general-panel", InsertionMode = InsertionMode.Replace },
+        new { @class = "button align-left" })
+
+    <a tabindex="7" class="button align-right" id="btn-saved" href="#" onclick="FormObjectSubmit('#btn-saved', '#saveWorkflowTaskForm', true)">Save Workflow Task</a>
+}

@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Bank Details";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    //User roles
+    string role_view_bankdelete = "BA_DE";
+
+    //participant variables
+    string participantGUID = ViewData["participantGUID"].ToString();
+    //end of participant variable
+
+    //messages display
+    if (TempData["ToasterMsgBank"] != null)
+    {
+        <script type="text/javascript">
+            @Html.Raw(TempData["ToasterMsgBank"])
+        </script>
+    }
+    //end of messages display
+}
+
+<div id="editBankFormResult">
+
+    <table>
+        <thead>
+            <tr>
+                <td><label>Bank Name</label></td>
+                <td><label>Account Type</label></td>
+                <td><label>Account Holder</label></td>
+                <td width="10"></td>
+                <td width="10"></td>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var bankDetail in ViewData["ParticipantBanks"] as IEnumerable<dynamic>)
+            {
+                <tr>
+                    <td>@bankDetail["BankName"]</td>
+                    <td>@bankDetail["AccountType"]</td>
+                    <td>@bankDetail["AccountName"]</td>
+
+                    <td>
+                        @Ajax.ActionLink("Edit", "EditBank",
+                                new { participantBankDetailID = @bankDetail["ParticipantBankDetailID"], formParticipantGUID = @participantGUID },
+                                new AjaxOptions { UpdateTargetId = "general-panel", InsertionMode = InsertionMode.Replace, HttpMethod = "POST" })
+                    </td>
+
+                    <td>
+                        @if (Common.CArray.SearchInCookie(role_view_bankdelete))
+                        {
+                            @Ajax.ActionLink("Remove", "RemoveBankParticipant",
+                                new { participantBankDetailID = @bankDetail["ParticipantBankDetailID"], formParticipantGUID = @participantGUID },
+                                new AjaxOptions
+                                {
+                                    UpdateTargetId = "general-panel",
+                                    InsertionMode = InsertionMode.Replace,
+                                    HttpMethod = "POST",
+                                    Confirm = "Are you sure you want to remove this bank?",
+                                    OnSuccess = "onSuccessToasterMsg('Participant','ParticipantBankCard','participantBankInfoDetail',null,'Bank has been successfully removed')",
+                                    OnFailure = "OnFailure"
+                                }, new { @class = "remove-template" })
+                        }
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+
+
+@section footer
+{
+    @Ajax.ActionLink("Add Bank", "PopupAddBank",
+            new { participantGUID = @participantGUID },
+            new AjaxOptions { UpdateTargetId = "general-panel", InsertionMode = InsertionMode.Replace },
+            new { @class = "button align-right" })
+
+}

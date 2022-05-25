@@ -1,0 +1,73 @@
+﻿
+@{
+
+    ViewBag.Title = "Upload File";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    //initiate variables for DocumentTemplateID
+    int DocumentTemplateID = 0;
+    int workflowStepId = 0;
+    //end of initiate variables for DocumentTemplateID
+    //get DocumentTemplateID if not null
+    if (ViewData["DocumentTemplateID"] != null)
+    {
+        DocumentTemplateID = Convert.ToInt32(ViewData["DocumentTemplateID"]);
+    }
+    //end of get DocumentTemplateID if not null
+    //get workflowStepId if not null
+    if (ViewData["workflowStepId"] != null)
+    {
+        workflowStepId = Convert.ToInt32(ViewData["workflowStepId"]);
+    }
+    //end of get workflowStepId if not null
+
+    //User roles
+    string role_view_printlistuploadsigned = "PL_SI";
+    string role_view_printlistuploadstandard = "PL_ST";
+
+}
+
+ 
+@using (Ajax.BeginForm("UploadDocument", "Documents", null, new { name = "UploadDocumentsForm", id = "UploadDocumentsForm", enctype = "multipart/form-data" }))
+{
+    <input type="hidden" id="DocumentTemplateID" name="DocumentTemplateID" value="@DocumentTemplateID" />
+    <input type="hidden" id="workflowStepId" name="workflowStepId" value="@workflowStepId" />
+    <div class="row reset-row ">
+        <div class="small-12 columns reset-columns">
+            <label>
+                <select id="UploadOption" name="UploadOption">
+                    @if (Common.CArray.SearchInCookie(role_view_printlistuploadstandard))
+                    {
+                        <option id="Standard" value="standard">Standard Upload</option>
+                    }
+                    @if (Common.CArray.SearchInCookie(role_view_printlistuploadsigned))
+                    {
+                        <option id="Signed" value="signed">Signed Upload</option>
+                    }
+                </select>
+            </label>
+            <input id="UploadFileDocument" type="file" name="UploadFile" value="upload" data-content="required" />
+        </div> <!-- End of small-6 columns-->
+    </div> <!-- End of row -->
+}
+
+@section footer
+{ 
+    <a class="button align-right" id="uploadFile" href="#">Upload File</a>
+}
+
+@section script
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#uploadFile').on('click', function () {
+
+                var validation = reps.checkOnSubmit('#UploadDocumentsForm');
+                if (validation) {
+                    SaveForm('#UploadFileDocument', '#UploadDocumentsForm', 'Documents', 'UploadDocument', 'ReturnToPartialDocument', 'partialDocumentFrm', '#uploadFile', null,null);
+                }
+            });
+        });
+
+    </script>
+}

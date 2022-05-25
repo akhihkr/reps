@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:54738/ReportService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Common" />
+  <xs:import schemaLocation="http://localhost:54738/ReportService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="GetReportNames">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="location" nillable="true" type="xs:anyType" />
+        <xs:element minOccurs="0" name="chartName" nillable="true" type="xs:anyType" />
+        <xs:element minOccurs="0" name="chartType" nillable="true" type="xs:anyType" />
+        <xs:element minOccurs="0" name="description" nillable="true" type="xs:anyType" />
+        <xs:element minOccurs="0" name="startRow" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="endRow" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReportNamesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetReportNamesResult" nillable="true" type="q1:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReports">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="parameters" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="storedProcedureName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="formObjects" nillable="true" type="q2:ArrayOfKeyValueOfstringanyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReportsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetReportsResult" nillable="true" type="q3:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReportFilters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="reportId" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="startRow" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="endRow" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReportFiltersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetReportFiltersResult" nillable="true" type="q4:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDropDownFilters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="parameters" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="storedProcedureName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="formObjects" nillable="true" type="q5:ArrayOfKeyValueOfstringanyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDropDownFiltersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetDropDownFiltersResult" nillable="true" type="q6:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

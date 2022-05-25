@@ -1,0 +1,16 @@
+﻿@{
+    Layout = null;
+
+    if (ViewData["Province"] != null)
+    {
+        <label>Province</label>
+        <select id="province" name="province">
+            <option value='-1' default selected>Select an option:</option>
+            @foreach (var province in ViewData["Province"] as IEnumerable<dynamic>)
+                {
+                <option value="@province["ProvinceID"]">@province["Description"]</option>
+            }
+        </select>
+    }
+
+}

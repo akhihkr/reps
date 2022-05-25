@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Address Details";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    //User roles
+    string role_view_addressdelete = "AD_DE";
+
+    //participant variables
+    string participantGUID = ViewData["participantGUID"].ToString();
+    //end of participant variable
+
+    //messages display
+    if (TempData["ToasterParticipantMsg"] != null)
+    {
+        <script type="text/javascript">
+            @Html.Raw(TempData["ToasterParticipantMsg"]);
+        </script>
+    }
+    //end of message display
+}
+
+<div id="editAddressFormResult">
+    <table>
+        <thead>
+            <tr>
+                <td><label>Address</label></td>
+                <td><label>Address Type</label></td>
+                <td><label>Postcode</label></td>
+                <td width="10"></td>
+                <td width="10"></td>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var addressDetail in ViewData["AddressInfo"] as IEnumerable<dynamic>)
+            {
+                <tr>
+                    <td>@addressDetail["AddressLine1"]</td>
+                    <td>@addressDetail["State"]</td>
+                    <td>@addressDetail["PostalCode"]</td>
+                    <td>
+                        @Ajax.ActionLink("Edit", "EditAddress",
+                                new { addressGUID = @addressDetail["AddressGUID"], participantGUIDFormValue = @participantGUID },
+                                new AjaxOptions { UpdateTargetId = "general-panel", InsertionMode = InsertionMode.Replace, HttpMethod = "POST", OnFailure = "OnFailure" })
+                    </td>
+
+                    <td>
+                        @if (Common.CArray.SearchInCookie(role_view_addressdelete))
+                        {
+                            @Ajax.ActionLink("Remove", "RemoveAddressParticipant",
+                                 new { addressGUID = @addressDetail["AddressGUID"], participantGUIDFormValue = @participantGUID },
+                                 new AjaxOptions
+                                 {
+                                     UpdateTargetId = "general-panel",
+                                     InsertionMode = InsertionMode.Replace,
+                                     HttpMethod = "POST",
+                                     Confirm = "Are you sure you want to remove this address?",
+                                     OnSuccess = "onSuccessToasterMsg('Participant','ParticipantBankCard','participantBankInfoDetail',null,'Address has been successfully removed')",
+                                     OnFailure = "OnFailure"
+                                 }, new { @class = "remove-template" })
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div> <!-- End of editAddressFormResult -->
+
+@section footer
+{
+    @Ajax.ActionLink("Add Address", "PopupAddAddress",
+            new { participantGUID = @participantGUID },
+            new AjaxOptions { UpdateTargetId = "general-panel", InsertionMode = InsertionMode.Replace },
+            new { @class = "button align-right" })
+}

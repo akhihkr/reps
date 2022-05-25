@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="1b64200c-0e55-4dca-a35d-2e1ea1f2ae82" ChangeDateTime="01/06/2017 04:55:50">
+    <Property Name="ElementName" Value="[dbo].[Deal].[DealStatusID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Deal]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="WorkflowTaskID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2d8eed5b-b69c-4dd6-840b-9d5e9662abfc" ChangeDateTime="01/26/2017 08:02:02">
+    <Property Name="ElementName" Value="[dbo].[FinancialInstrument].[IntrumentGUID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[FinancialInstrument]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="InstrumentGUID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b766074a-f248-4a5f-958a-a6177b28f73b" ChangeDateTime="06/29/2017 04:06:51">
+    <Property Name="ElementName" Value="[dbo].[DocumentWorkflow].[DocumentTemplateID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DocumentWorkflow]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DocumentVersionID" />
+  </Operation>
+</Operations>

@@ -1,0 +1,119 @@
+﻿
+@{
+    ViewBag.Title = "Edit Bank";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    //variables
+    int participantBankDetailID = 0;
+    if (ViewData["ParticipantBankDetailID"] != null)
+    {
+        participantBankDetailID = Convert.ToInt32(ViewData["ParticipantBankDetailID"]);
+    }
+
+    string participantGUID = ViewData["participantGUID"].ToString();
+    //end of variables
+
+    //ajax edit participant
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "general-panel",
+        OnFailure = "OnFailure",
+    };
+    //end of ajax edit participant
+}
+
+@using (Ajax.BeginForm("UpdateParticipantBank", "Participant", options, new { id = "EditBankForm", name = "EditBankForm" }))
+{
+    <input type="hidden" value="@participantBankDetailID" id="participantBankDetailID" name="participantBankDetailID" />
+    <input type="hidden" value="@participantGUID" id="participantGUID" name="participantGUID" />
+
+    foreach (var bankDetail in ViewData["ParticipantBanks"] as IEnumerable<dynamic>)
+    {
+        if (bankDetail["ParticipantBankDetailID"] == Convert.ToInt32(ViewData["ParticipantBankDetailID"]))
+        {
+
+            <div class="small-12 columns reset-columns">
+                <label>
+                    Bank Name <span>*</span>
+                </label>
+
+                <select tabindex="1" id="bankName" name="bankName" data-content="required">
+                    <option value='-1' default selected>Select an option:</option>
+                    @foreach (var bank in ViewData["Banks"] as IEnumerable<dynamic>)
+                    {
+                        if (Convert.ToInt32(bank["BankID"]) == Convert.ToInt32(bankDetail["BankID"]))
+                        {
+                            <option value="@bank["BankID"]" selected>@bank["BankName"]</option>
+                        }
+                        else
+                        {
+                            <option value="@bank["BankID"]">@bank["BankName"]</option>
+                        }
+
+                    }
+                </select>
+            </div> <!-- End of small-12 columns reset-columns -->
+
+            <div class="medium-6 columns reset-columns">
+                <label>
+                    Account Type <span>*</span>
+                </label>
+                <select tabindex="2" id="accountType" name="accountType" data-content="required">
+                    <option value='-1' default selected>Select an option:</option>
+                    @foreach (var accountType in ViewData["AccountType"] as IEnumerable<dynamic>)
+                    {
+                        if (Convert.ToInt32(accountType["AccountTypeID"]) == Convert.ToInt32(bankDetail["AccountTypeID"]))
+                        {
+                            <option value="@accountType["AccountTypeID"]" selected>@accountType["Description"]</option>
+                        }
+                        else
+                        {
+                            <option value="@accountType["AccountTypeID"]">@accountType["Description"]</option>
+                        }
+
+                    }
+                </select>
+
+                <label>
+                    Account Number <span>*</span>
+                    <input tabindex="4" type="text" name="accountNum" id="accountNum" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharAccount))" value="@bankDetail["AccountNumber"]" data-content="required" autocomplete="off" format="number" />
+                </label>
+            </div> <!-- End of medium-6 columns reset-columns -->
+
+            <div class="medium-6 columns">
+                <label>
+                    Account Holder <span>*</span>
+                    <input tabindex="3" type="text" name="accountHolder" id="accountHolder" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharName))" value="@bankDetail["AccountName"]" data-content="required" autocomplete="off" format="text" />
+                </label>
+
+                <label>
+                    Branch Code <span>*</span>
+                    <input tabindex="5" type="text" name="branchCode" id="branchCode" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharAccount))" value="@bankDetail["SortCode"]" data-content="required" autocomplete="off" format="number" />
+                </label>
+            </div> <!-- End of medium-6 columns -->
+        }
+    }
+}
+
+@section footer
+{
+    @Ajax.ActionLink("Back", "PopupBank",
+    new { participantGUIDFormValue = @participantGUID },
+    new AjaxOptions { UpdateTargetId = "general-panel", InsertionMode = InsertionMode.Replace },
+    new { @class = "button align-left" })
+    <a tabindex="5" id="save" class="button align-right dirty-disabled" href="#" onclick="FormObjectSubmit('#save', '#EditBankForm', true);">Update Bank</a>
+}
+@section script
+{
+    <script>
+        //dirty function used to check if event listener has been modified and call the updates function
+        $('#EditBankForm').dirrty().on("dirty", function () {
+            $("#save").removeClass("dirty-disabled");//removed attribute if in case if anchor tag is used
+        }).on("clean", function () {
+            $("#save").addClass("dirty-disabled")//add attribute if in case if anchor tag is used
+        });
+        //end of dirty function used to check if event listener has been modified and call the updates function
+    </script>
+}

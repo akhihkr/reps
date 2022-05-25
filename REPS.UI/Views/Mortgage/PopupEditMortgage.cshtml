@@ -1,0 +1,160 @@
+﻿
+@{
+    ViewBag.Title = "Edit Mortgage";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    //User roles
+    string role_view_mortgagedelete = "MO_DE";
+
+    //mortgage edit details
+    dynamic MortageInfo = null;
+    if (ViewData["Mortgages"] != null)
+    {
+        MortageInfo = (ViewData["Mortgages"] as IEnumerable<dynamic>).FirstOrDefault();
+    }
+    //end of mortgage edit details
+
+    //mortgage ajax option
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "mortgageInfoDetail",
+        OnSuccess = "SuccessResult(data,'Mortgage','UpdateMortgageSum','matter-mortgage-price',null,'Mortgage has been successfully updated')",
+        OnFailure = "OnFailure",
+        OnComplete = "onComplete",
+    };
+    //end of mortgage ajax option
+
+}
+
+@using (Ajax.BeginForm("EditMortgage", "Mortgage", options, new { id = "mortgageEditForm" }))
+{
+    <div class="row reset-row">
+        <div class="medium-6 columns reset-columns">
+            <input type="hidden" name="instrumentGUID" id="instrumentGUID" value="@MortageInfo["InstrumentGUID"]" />
+            
+            @{
+                <label>Participant<span>*</span></label>
+                <select tabindex="1" id="participantID" name="participantGUID" data-content="required">
+                    <option value='-1' default selected>Select an option:</option>
+                    @foreach (var participant in ViewData["participantBankAddressCount"] as IEnumerable<dynamic>)
+                    {
+                        if (@MortageInfo["ParticipantID"] == @participant["participantID"])
+                        {
+                            <option selected value="@participant["ParticipantGUID"]">@(participant["Company"] == null ? participant["Individual"] : participant["Company"])</option>
+                        }
+                        else
+                        {
+                            <option value="@participant["ParticipantGUID"]">@(participant["Company"] == null ? participant["Individual"] : participant["Company"])</option>
+                        }
+                    }
+                </select>
+            }
+
+            <label>Mortgage Lender<span>*</span></label>
+            <select tabindex="3" id="mortgageLender" name="mortgageLender" data-content="required">
+                <option value='-1' default selected>Select an option:</option>
+                @{
+                    /// MortgageLender
+                    foreach (var MortLender in ViewData["MortgageLender"] as IEnumerable<dynamic>)
+                    {
+                        if (MortLender["ID"] == MortageInfo["LenderID"])
+                        {
+                            <option value="@MortLender["ID"]" selected>@MortLender["Name"]</option>
+                        }
+                        else
+                        {
+                            <option value="@MortLender["ID"]">@MortLender["Name"]</option>
+                        }
+
+                    }
+                }
+            </select>
+
+            <label>Mortgage Type<span>*</span></label>
+            <select tabindex="5" id="mortgageType" name="mortgageType" data-content="required">
+                <option value='-1' default selected>Select an option:</option>
+                @{
+                    /// MortgageType
+                    foreach (var MortType in ViewData["MortgageType"] as IEnumerable<dynamic>)
+                    {
+                        if (MortType["InstrumentTypeID"] == MortageInfo["InstrumentTypeID"])
+                        {
+                            <option value="@MortType["InstrumentTypeID"]" selected>@MortType["Description"]</option>
+                        }
+                        else
+                        {
+                            <option value="@MortType["InstrumentTypeID"]">@MortType["Description"]</option>
+                        }
+                    }
+                }
+            </select>
+
+            <label>Deposit Amount<span>*</span></label>
+            <input tabindex="7" type="text" name="depositAmount" id="depositAmount" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.decimalValue))" value="@MortageInfo["Deposit"].ToString("0.#")" data-content="required" autocomplete="off" format="amount" />
+        </div>
+
+        <div class="medium-6 columns">
+            <label>Term of Loan<span>*</span></label>
+            <input tabindex="2" type="text" name="termOfLoan" id="termOfLoan" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharMax))" value="@MortageInfo["Term"]" data-content="required" autocomplete="off" />
+
+            <label>Loan Amount<span>*</span></label>
+            <input tabindex="4" type="text" name="loanAmount" id="loanAmount" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.decimalValue))" value="@MortageInfo["Value"].ToString("0.#")" data-content="required" autocomplete="off" format="amount" />
+
+            <label>Interest Type<span>*</span></label>
+            <select tabindex="6" id="interestType" name="interestType" data-content="required">
+                <option value='-1' default selected>Select an option:</option>
+                @{
+                    /// InterestType
+                    foreach (var InterType in ViewData["InterestType"] as IEnumerable<dynamic>)
+                    {
+                        if (InterType["InterestTypeID"] == MortageInfo["InterestTypeID"])
+                        {
+                            <option value="@InterType["InterestTypeID"]" selected>@InterType["Description"]</option>
+                        }
+                        else
+                        {
+                            <option value="@InterType["InterestTypeID"]">@InterType["Description"]</option>
+                        }
+                    }
+                }
+            </select>
+            <label>Interest Rate<span>*</span></label>
+            <input tabindex="8" type="text" name="interestRate" id="interestRate" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.decimalValue))" value="@MortageInfo["InterestRate"].ToString("0.#")" data-content="required" autocomplete="off" format="amount" />
+        </div>
+    </div>
+}
+
+@section footer
+{
+    @if (Common.CArray.SearchInCookie(role_view_mortgagedelete))
+    {
+        @Ajax.ActionLink("Remove", "RemoveMortgage",
+            new { mortgageGUID = @MortageInfo["InstrumentGUID"] },
+            new AjaxOptions
+            {
+                UpdateTargetId = "mortgageInfoDetail",
+                InsertionMode = InsertionMode.Replace,
+                HttpMethod = "POST",
+                Confirm = "Are you sure you want to remove this mortgage?",
+                OnSuccess = "onSuccessToasterMsg('Mortgage','UpdateMortgageSum','matter-mortgage-price',null,'Mortgage has been successfully removed')",
+                OnFailure = "OnFailure",
+                OnComplete = "onComplete",
+            }, new { @class = "button align-left remove-button" })
+    }
+    <a tabindex="9" class="button align-right dirty-disabled" id="btn-saved" href="#" onclick="FormObjectSubmit('#btn-saved', '#mortgageEditForm', true);">Update Mortgage</a>
+}
+
+@section script
+{
+    <script>
+        //dirty function used to check if event listener has been modified and call the updates function
+        $('#mortgageEditForm').dirrty().on("dirty", function () {
+            $("#btn-saved").removeClass("dirty-disabled");//removed attribute if in case if anchor tag is used
+        }).on("clean", function () {
+            $("#btn-saved").addClass("dirty-disabled")//add attribute if in case if anchor tag is used
+        });
+        //end of dirty function used to check if event listener has been modified and call the updates function
+    </script>
+}

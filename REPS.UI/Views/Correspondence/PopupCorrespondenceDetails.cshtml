@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Correspondence Details";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+}
+
+<div class="row reset-row manage-workflows">
+    <div class="small-12 columns reset-columns">
+        @foreach (var Details in ViewData["CorrespondenceDetails"] as IEnumerable<dynamic>)
+        {
+            <p>@Html.Raw(Details["Html"].Replace("\r\n", "<br/>").Replace("\"", @"'"))</p>
+        }
+    </div> <!-- End of small-6 columns-->
+</div> <!-- End of row -->

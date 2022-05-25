@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:54738/RoleService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Common" />
+  <xs:element name="GetUserRoleActions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="roleId" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="userId" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="startRow" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="endRow" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserRoleActionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetUserRoleActionsResult" nillable="true" type="q1:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRoles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="roleId" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="startRow" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="endRow" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRolesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetRolesResult" nillable="true" type="q2:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AssignRoleActionToRole">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="roleId" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="UserActionID" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="isActive" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AssignRoleActionToRoleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="AssignRoleActionToRoleResult" nillable="true" type="q3:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddRole">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="roleName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddRoleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="AddRoleResult" nillable="true" type="q4:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateRole">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="roleID" type="xs:int" />
+        <xs:element minOccurs="0" name="roleName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateRoleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="UpdateRoleResult" nillable="true" type="q5:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LogoutUserOnRoleChange">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="roleID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LogoutUserOnRoleChangeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="LogoutUserOnRoleChangeResult" nillable="true" type="q6:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllRoleActions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="roleID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllRoleActionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetAllRoleActionsResult" nillable="true" type="q7:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,37 @@
+﻿@{ 
+    Layout = null;
+    object documentTypeID = "";
+    object documentTemplateID = "";
+
+    foreach (var DocumentTemplate in ViewData["DocumentTemplateDetails"] as IEnumerable<dynamic>)
+    {
+        documentTypeID = Convert.ToInt32(@DocumentTemplate["DocumentTypeID"]);
+        documentTemplateID = Convert.ToInt32(@DocumentTemplate["DocumentTemplateID"]);
+    }
+}
+
+@{
+    <ul class="edit-action-files-link">
+        @if (ViewData["GetDocumentWorkflowTaskStep"] != null)
+        {
+            foreach (var documentWorkflowTaskStep in ViewData["GetDocumentWorkflowTaskStep"] as IEnumerable<dynamic>)
+            {
+                <li id="documentWorkflow:@(documentWorkflowTaskStep["workflowDocumentID"])">
+                    <a href="#" name="@documentWorkflowTaskStep["WorkflowStepID"]">@documentWorkflowTaskStep["DisplayName"]</a>
+
+
+                    @Ajax.ActionLink("x", "RemoveAdminDocumentWorkflow",
+                                                             new { documentTemplateID = @documentTemplateID, documentWorkflowID = @documentWorkflowTaskStep["workflowDocumentID"], documentTypeID = @documentTypeID },
+                                                             new AjaxOptions
+                                                             {
+                                                                 UpdateTargetId = "documentWorkflowList",
+                                                                 InsertionMode = InsertionMode.Replace,
+                                                                 HttpMethod = "POST",
+                                                                 Confirm = "Are you sure you want to remove this Document Workflow?",
+                                                                 OnFailure = "OnFailure"
+                                                             }, new { @class = "remove-file-uploaded" })
+                </li>
+            }
+        }
+    </ul><!-- End of workflowStepTaskList existing-->
+}

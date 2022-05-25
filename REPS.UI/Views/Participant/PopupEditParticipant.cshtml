@@ -1,0 +1,340 @@
+﻿@using Common;
+@using System.Globalization;
+@{
+    ViewBag.Title = "Edit Participant";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    //User roles
+    string role_view_participantdelete = "PA_DE";
+
+    ///Participant Infomation
+    #region Participant Infomation
+    dynamic ParticipantInfo = null;
+    dynamic ParticipantType = null;
+    if (ViewData["ParticipantInfo"] != null)
+    {
+        ParticipantInfo = (ViewData["ParticipantInfo"] as IEnumerable<dynamic>).FirstOrDefault();
+    }
+
+    if (ViewData["PartType"] != null)
+    {
+        foreach (var partType in ViewData["PartType"] as IEnumerable<dynamic>)
+        {
+            if (@ParticipantInfo["ParticipantTypeID"] == @partType["ParticipantTypeID"])
+            {
+                ParticipantType = @partType["ParticipantTypeID"];
+            }
+        }
+    }
+
+    #endregion end Participant Infomation
+    ///end Participant Infomation
+
+    //ajax of individual
+    AjaxOptions individual = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "participantBankInfoDetail",
+        OnFailure = "OnFailure",
+        //OnSuccess = "onSuccessToasterMsg(null,null,null,null,'Participant has been successfully updated')",
+        OnComplete = "onComplete",
+    };
+
+    //ajax of company
+    AjaxOptions company = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "participantBankInfoDetail",
+        OnFailure = "OnFailure",
+        //OnSuccess = "onSuccessToasterMsg(null,null,null,null,'Participant has been successfully updated')",
+        OnComplete = "onComplete",
+    };
+}
+
+<!-- Edit PARTICIPANT -->
+<div class="" id="create-new-participant-section">
+        <!-- Top Filter -->
+        <div class="medium-12 columns reset-columns">
+            <label>
+                Participant Type
+            </label>
+            <select tabindex="1" id="participantType" name="participantType" onchange="reps.dropdownParticipantType(this);" disabled>
+                @{
+                    if (ViewData["PartType"] != null)
+                    {
+                        foreach (var partType in ViewData["PartType"] as IEnumerable<dynamic>)
+                        {
+                            if (@ParticipantInfo["ParticipantTypeID"] == @partType["ParticipantTypeID"])
+                            {
+                                <option value="@partType["ParticipantTypeID"]" selected>@partType["Description"]</option>
+                                ViewData["PartTypeID"] = @partType["ParticipantTypeID"];
+                            }
+                        }
+                    }
+                }
+            </select>
+        </div> <!-- End of medium-6 columns reset-columns-->
+
+        <!-- End of Top Filter -->
+        
+
+        @if (ParticipantType == 10)
+            {
+                using (Ajax.BeginForm("SaveParticipant", "Participant", individual, new { @id = "updatedParticipantIndividual" }))
+                {
+                <input type="hidden" name="ParticipantGUID" id="ParticipantGUID" value="@ParticipantInfo["ParticipantGUID"]" />
+                <input type="hidden" name="PersonID" id="PersonID" value="@ParticipantInfo["PersonID"]" />
+
+
+                <div class="medium-12 columns reset-columns roles">
+                    <label>
+                        Participant Role<span>*</span>
+                    </label>
+                    <select id="ptRoleexist" name="ptRoleexist" data-content="required">
+                        <option tabindex="2" value="-1" default>Select an option:</option>
+                        @{
+                            /// ParticipantRoles
+                            foreach (var partRole in ViewData["PartRole"] as IEnumerable<dynamic>)
+                            {
+                                if (ParticipantInfo["ParticipantRoleID"] == partRole["ParticipantRoleID"])
+                                {
+                                    <option value="@partRole["ParticipantRoleID"]" selected>@partRole["Description"]</option>
+                                }
+                                else
+                                {
+                                    <option value="@partRole["ParticipantRoleID"]">@partRole["Description"]</option>
+                                }
+                            }
+                        }
+                    </select>
+                </div><!--ParticipantRoles--> 
+
+               <!-- Left Column -->
+                <div class="medium-6 columns reset-columns remove-padding-left">
+                    <label>
+                        Name<span>*</span>
+                        <input tabindex="3" type="text" name="participantName" id="participantName" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharName))" value="@(ParticipantInfo == null ? null : ParticipantInfo["GivenName"])" data-content="required" autocomplete="off" format="text" />
+                    </label>
+
+                    <label>
+                        Date of Birth<span>*</span>
+                        <input class="date-input" tabindex="5" type="text" id="birthDate" name="birthDate" value="@(ParticipantInfo == null ? null : TimeZone.CurrentTimeZone.ToLocalTime(ParticipantInfo["BirthDate"]).ToString("dd/MM/yyyy"))" data-modal="true" data-content="required" data-large-mode="true" data-large-default="true" data-theme="reps-datedropper" data-init-set="false" data-min-year="1970" data-format="d/m/Y" data-lock="to">
+                    </label>
+
+                    <label>
+                        Contact Number<span>*</span>
+                        <input tabindex="7" type="text" name="participantContactNum" id="participantContactNum" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharTelephone))" value="@(ParticipantInfo == null ? null : ParticipantInfo["Telephone"])" data-content="required" autocomplete="off" format="number" />
+                    </label>
+
+                    <label>
+                        Income Tax Number
+                        <input tabindex="9" type="text" name="taxNum" id="taxNum" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar20))" value="@(ParticipantInfo == null ? null : ParticipantInfo["TaxID"])" autocomplete="off" format="number" />
+                    </label>
+                </div> <!-- End of medium-6 columns -->
+
+
+                <!-- Right Column -->
+                <div class="medium-6 columns remove-padding-right">
+
+                   <label>
+                        Surname<span>*</span>
+                        <input tabindex="4" type="text" name="participantFamilyName" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharName))" id="participantFamilyName" value="@(ParticipantInfo == null ? null : ParticipantInfo["FamilyName"])" data-content="required" autocomplete="off" format="text" />
+                    </label>
+                    <label>
+                        Email Address<span>*</span>
+                        <input tabindex="6" type="text" name="participantEmail" id="participantEmail" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar100))" autocomplete="off" format="email" value="@(ParticipantInfo == null ? null : ParticipantInfo["Email"])" data-content="required" />
+                    </label>
+                    <label>
+                        Mobile Number
+                        <input tabindex="8" type="text" name="mobileNum" id="mobileNum" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharTelephone))" value="@(ParticipantInfo == null ? null : ParticipantInfo["MobileNumber"])" autocomplete="off" format="number" />
+                    </label>
+                    <label>
+                        Identity Number
+                        <input tabindex="10" type="text" name="identityNum" id="identityNum" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar20))" value="@(ParticipantInfo == null ? null : ParticipantInfo["IdentityNumber"])" autocomplete="off" format="alphanum" />
+                    </label>
+                </div> <!-- End of medium-6 columns -->
+                    }
+                }
+
+                else if (ParticipantType == 20)
+                {
+                    using (Ajax.BeginForm("UpdateOrganisation", "Participant", company, new { @id = "updatedParticipantCompany" }))
+                    {
+                        <div class="medium-6 columns remove-padding-left">
+                            <input type="hidden" name="ParticipantGUID" id="ParticipantGUID" value="@ParticipantInfo["ParticipantGUID"]" />
+                            <input type="hidden" name="OrganizationID" id="OrganizationID" value="@ParticipantInfo["OrganizationID"]" />
+                            <div class="medium-12 columns reset-columns roles">
+                                <label>
+                                    Participant Role<span>*</span>
+                                    <select id="ptRoleExistOrg" name="ptRoleExistOrg" data-content="required">
+                                        <option value='-1' default selected>Select an option:</option>
+                                        @{
+                                            /// ParticipantRoles
+                                            foreach (var partRole in ViewData["PartRole"] as IEnumerable<dynamic>)
+                                            {
+                                                if (@ParticipantInfo["ParticipantRoleID"] == @partRole["ParticipantRoleID"])
+                                                {
+                                                    <option value="@partRole["ParticipantRoleID"]" selected>@partRole["Description"]</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@partRole["ParticipantRoleID"]">@partRole["Description"]</option>
+                                                }
+
+                                            }
+                                        }
+                                    </select>
+                                </label>
+                            </div>
+
+                            <label>
+                                Organisation Name<span>*</span>
+                                <input tabindex="13" type="text" name="organizationName" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharName))" id="organizationName" value="@(ParticipantInfo == null ? null : ParticipantInfo["Name"])" data-content="required" autocomplete="off" format="text" />
+                            </label>
+
+                            <label>
+                                Email Address<span>*</span>
+                                <input tabindex="15" type="text" name="email" id="email" autocomplete="off" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharEmail))" format="email" value="@(ParticipantInfo == null ? null : ParticipantInfo["EmailOrg"])" data-content="required" />
+                            </label>
+
+                            <label>
+                                Telephone Number<span>*</span>
+                                <input tabindex="17" type="text" name="tellNum" id="tellNum" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharTelephone))" value="@(ParticipantInfo == null ? null : ParticipantInfo["TelephoneOrg"])" data-content="required" autocomplete="off" format="number" />
+                            </label>
+                        </div> <!-- End of medium-6 columns remove-padding-left -->
+
+                        <div class="medium-6 columns remove-padding-right">                    
+                            <label>
+                                Organisation Type<span>*</span>
+                                <select tabindex="11" id="organisationType" name="organisationType">
+                                    @{
+                                        /// ParticipantOrganisationTypes
+                                        foreach (var organisationID in ViewData["OrganisationDetails"] as IEnumerable<dynamic>)
+                                        {
+                                            if (@organisationID["OrganizationID"] == @ParticipantInfo["OrganizationID"])
+                                            {
+                                                foreach (var organisationType in ViewData["OrganizationTypes"] as IEnumerable<dynamic>)
+                                                {
+                                                    if (@organisationType["OrganizationTypeID"] == @organisationID["OrganizationTypeID"])
+                                                    {
+                                                        <option defult selected value="@organisationType["OrganizationTypeID"]">@organisationType["Description"]</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@organisationType["OrganizationTypeID"]">@organisationType["Description"]</option>
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                </select>
+                            </label>
+
+                            <label>
+                                Legal Name<span>*</span>
+                                <input tabindex="14" type="text" name="legalName" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharName))" id="legalName" value="@(ParticipantInfo == null ? null : ParticipantInfo["LegalName"])" data-content="required" autocomplete="off" format="text" />
+                            </label>
+
+                            @{
+                                if (ViewData["OrganisationDetails"] != null)
+                                {
+                                    foreach (var organisationID in ViewData["OrganisationDetails"] as IEnumerable<dynamic>)
+                                    {
+                                        if (@ParticipantInfo["OrganizationID"] == @organisationID["OrganizationID"])
+                                        {
+                                            <label>
+                                                Registration Number<span>*</span>
+                                                <input tabindex="16" type="text" name="registrationNum" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.VarcharRegistrationNumber))" id="registrationNum" value="@(organisationID == null ? null : organisationID["RegistrationNumber"])" autocomplete="off" format="alphanum" />
+                                            </label>
+
+                                            <label>
+                                                Fax Number
+                                                <input tabindex="18" type="text" name="faxNumOrg" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharFax))" id="faxNumOrg" value="@(organisationID == null ? null : organisationID["FaxNumber"])" autocomplete="off" format="number" />
+                                            </label>
+                                        }
+
+                                    }
+                                }
+                            }
+                        </div> <!-- End of medium-6 columns remove-padding-right -->
+                                    }
+                                }
+
+    </div> <!-- End of row -->
+
+@section footer
+{
+    @if (ParticipantType == 10)
+    {
+        if (Common.CArray.SearchInCookie(role_view_participantdelete))
+        {
+            @Ajax.ActionLink("Remove", "RemoveParticipant",
+                new { participantGUID = @ParticipantInfo["ParticipantGUID"] },
+                new AjaxOptions
+                {
+                    UpdateTargetId = "participantBankInfoDetail",
+                    InsertionMode = InsertionMode.Replace,
+                    HttpMethod = "POST",
+                    Confirm = "Are you sure you want to remove this participant?",
+                    OnSuccess = "onSuccessToasterMsg(null,null,null,null,'Parcipant has been successfully removed')",
+                    OnFailure = "OnFailure",
+                    OnComplete = "onComplete",
+                }, new { @class = "button align-left remove-button" })
+        }
+
+        <a class="button align-right dirty-disabled" id="update-participant-individual-footer-btn" href="#" onclick="FormObjectSubmit('#update-participant-individual-footer-btn', '#updatedParticipantIndividual', true);">Update Individual</a>
+    }
+    else if (ParticipantType == 20)
+    {
+        if (Common.CArray.SearchInCookie(role_view_participantdelete))
+        {
+        @Ajax.ActionLink("Remove", "RemoveParticipant",
+                         new { participantGUID = @ParticipantInfo["ParticipantGUID"] },
+                         new AjaxOptions
+                         {
+                             UpdateTargetId = "participantBankInfoDetail",
+                             InsertionMode = InsertionMode.Replace,
+                             HttpMethod = "POST",
+                             Confirm = "Are you sure you want to remove this participant?",
+                             OnSuccess = "onSuccessToasterMsg(null,null,null,null,'Parcipant has been successfully removed')",
+                             OnFailure = "OnFailure",
+                             OnComplete = "onComplete",
+                         }, new { @class = "button align-left remove-button" })
+        }
+
+        <a class="button align-right dirty-disabled" id="update-participant-company-footer-btn" href="#" onclick="FormObjectSubmit('#update-participant-company-footer-btn', '#updatedParticipantCompany', true);">Update Company</a>
+    }
+}
+
+
+@section script
+{
+    <script>
+        //for individual part
+        $("div.datedropper").remove();//to clear all divs for dropper rendered using class datedropper
+        // date of birth range date picker
+        $("#birthDate").dateDropper();
+        //end of date of birth range date picker
+
+        //dirty function used to check if event listener has been modified and call the updates function
+        $('#updatedParticipantIndividual').dirrty().on("dirty", function () {
+            $("#update-participant-individual-footer-btn").removeClass("dirty-disabled");//removed attribute if in case if anchor tag is used
+        }).on("clean", function () {
+            $("#update-participant-individual-footer-btn").addClass("dirty-disabled")//add attribute if in case if anchor tag is used
+        });
+        //end of dirty function used to check if event listener has been modified and call the updates function
+        //end of invidiual part
+
+        //for company part
+        //dirty function used to check if event listener has been modified and call the updates function
+        $('#updatedParticipantCompany').dirrty().on("dirty", function () {
+            $("#update-participant-company-footer-btn").removeClass("dirty-disabled");//removed attribute if in case if anchor tag is used
+        }).on("clean", function () {
+            $("#update-participant-company-footer-btn").addClass("dirty-disabled")//add attribute if in case if anchor tag is used
+        });
+        //end of dirty function used to check if event listener has been modified and call the updates function
+        //end of company part
+    </script>
+}

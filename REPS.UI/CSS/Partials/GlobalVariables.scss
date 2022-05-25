@@ -1,0 +1,54 @@
+﻿@charset "UTF-8";
+
+/*------------------------------------*\
+	SASS Variables
+\*------------------------------------*/
+
+/* Main Colors */
+$primary-color: #2196f3;
+$primary-color-hover: #0a79d2;
+$secondary-color: #444;
+$link-color: $primary-color;
+$link-color-hover: $primary-color-hover;
+
+$body-background-color: #fff;
+$red: #F44336;
+$red-hover: #e4372b;
+$white: #fff;
+
+$border-radius: 2px;
+$border-color: #e6eaeb;
+
+$scrollbar-thumb-color: #c6c6c6;
+$scrollbar-background-color: #efefef;
+
+/* Header */
+$header-background: #fff;
+$header-font-color: #1a1a1a;
+
+/* Sidebar */
+$sidebar-background: #2e2e2e;
+$sidebar-text-color: #d4d7e4;
+$sidebar-selected-background: #2196f3;
+$sidebar-selected-text-color: #fff;
+$logo-background: #2e2e2e;
+
+/* Table */
+$table-head-background: #e3f2fd;
+
+/* Buttons */
+$btn-background-color: #f5f5f5;
+$btn-background-color-hover: #e6e6e6;
+
+/* Fonts */
+$heading-font: 'Reps';
+$body-font: 'Reps', Arial, Helvetica, sans-serif;
+$body-color: #9a9a9a;
+$heading-color: #1a1a1a;
+$text-color: #526071;
+
+/* Green Buttons */
+$green-btn-color: #4caf50;
+$green-btn-color-hover: #429846;
+$green-btn-text-color: #fff;
+$green-icon-color: #fff;

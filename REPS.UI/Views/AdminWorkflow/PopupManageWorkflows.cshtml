@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "Manage Workflows";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    //ajax
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "content-wrapper",
+        OnSuccess = "onSuccessToasterMsg(null,null,null,null,'Changes have been successfully saved');onSuccessToasterMsg('Dashboard','RefreshSidebar','sidebar',null,null);",
+        OnFailure = "OnFailure",
+        OnComplete = "onComplete",
+    };
+}
+
+<!-- Manage Workflows Content -->
+@{
+    if (ViewData["WorkflowsList"] != null && (int.Parse((ViewData["WorkflowsList"] as IEnumerable<dynamic>).Count().ToString()) != 0))
+    {
+        <div class="row reset-row manage-workflows">
+
+            @using (Ajax.BeginForm("SaveWorkflowChanges", "AdminWorkflow", new { WorkflowID = @ViewData["WorkflowID"], TaskID = @ViewData["TaskID"] }, options, new { name = "EditWorkflowAdmin", id = "EditWorkflowAdmin", enctype = "multipart/form-data" }))
+                {
+                <div id="EditWorkflowAdminDiv">
+                    @foreach (var Workflow in ViewData["WorkflowsList"] as IEnumerable<dynamic>)
+                    {
+                        <div class="workflow-input-section">
+                            <div class="small-9 medium-10 columns">
+                                <input id="Edit:WorkflowName:@Workflow["TaskID"]:@Workflow["TaskName"]" name="Edit:@Workflow["TaskID"]" type="text" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar255))" placeholder="" value="@Workflow["TaskName"]" />
+                            </div> <!-- End of small-6 columns -->
+
+                            <div class="small-3 medium-2 columns">
+                            @if (int.Parse((ViewData["WorkflowsList"] as IEnumerable<dynamic>).Count().ToString()) == 1)
+                            {
+                                <a href="#" onclick="alert('You cannot remove the last workflow!');" class="remove-workflow">Remove</a>
+                            }
+                            else
+                            {
+                                @Ajax.ActionLink("Remove", "DeleteWorkflow",
+                                new { workflowID = @Workflow["TaskWorkflowID"], indexWorkflowID = @ViewData["WorkflowID"], taskID = @ViewData["TaskID"] },
+                                new AjaxOptions
+                                {
+                                    UpdateTargetId = "general-panel",
+                                    InsertionMode = InsertionMode.Replace,
+                                    HttpMethod = "POST",
+                                    Confirm = "Are you sure you want to remove this workflow?",
+                                    OnSuccess = "onSuccessToasterMsg('AdminWorkflow','Index','content-admin',{'partial': true},'Workflow has been successfully removed');onSuccessToasterMsg('Dashboard','RefreshSidebar','sidebar',null,null);",
+                                    OnFailure = "OnFailure"
+                                }, new { @class = "remove-workflow" });
+                            }
+                            </div> <!-- End of small-6 columns -->
+                        </div> <!-- End of workflow-input-section -->
+                    }
+                </div> <!-- End of EditWorkflowAdminDiv -->
+            }
+        </div> <!-- End of row -->
+    }
+}
+<!-- End of Manage Workflows Content -->
+
+
+@section footer {
+    <a id="add-workflow-admin-btn" href="#" class="button add-workflow add-workflow-admin-btn">
+        Add Workflow
+    </a>
+
+    <a id="btn-add-workflow" onclick="FormObjectSubmit('#btn-add-workflow', '#EditWorkflowAdmin', true);" class="button align-right" href="#">Save</a>
+}
+@section script
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //append workflow admin
+            $('.add-workflow-admin-btn').on('click', function () {
+                $('#EditWorkflowAdminDiv').append("<div class='workflow-input-section'><div class='small-9 medium-10 columns'><input type='text' id='Add:WorkflowName:" + ($("#EditWorkflowAdminDiv").find($("input")).length + 1) + "' name='NewWorkflow" + ($("#EditWorkflowAdminDiv").find($("input")).length + 1) + "' placeholder='Workflow Name' /></div><div class='small-3 medium-2 columns'></div></div>");
+                $('#EditWorkflowAdmin').dirrty();
+
+                $('[id^="Add:WorkflowName"]').blur(function () {
+                    CheckIfNameExists($(this), '#btn-add-workflow', '#EditWorkflowAdmin', null, '@Global.Enums.FieldNameCheck.WorkflowName', null, false, null);
+                });
+            });
+        });
+
+        $('[id^="Edit:WorkflowName"]').blur(function () {
+            CheckIfNameExists($(this), '#btn-add-workflow', '#EditWorkflowAdmin', $(this).attr('id').split(":")[3], '@Global.Enums.FieldNameCheck.WorkflowName', null, false, null);
+        });
+
+        //dirty function used to check if event listener has been modified and call the updates function
+        $('#EditWorkflowAdmin').dirrty().on("dirty", function () {
+            $("#edit-workflow-admin-btn").removeClass("dirty-disabled");//removed attribute if in case if anchor tag is used
+        }).on("clean", function () {
+            $("#edit-workflow-admin-btn").addClass("dirty-disabled")//add attribute if in case if anchor tag is used
+        });
+        //end of dirty function used to check if event listener has been modified and call the updates function
+    </script>
+}

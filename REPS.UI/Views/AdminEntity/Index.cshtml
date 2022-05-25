@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Admin Entity";
+    Layout = ViewBag.PageLayoutPath;
+
+    //User roles
+    string role_view_adminlist = "AD_LI";
+
+    if (!Common.CArray.SearchInCookie(role_view_adminlist))
+    {
+        Response.Redirect(Url.Action("Index", "Dashboard"));
+    }
+
+    if (ViewBag.PageLayoutPath == null)
+    {
+        @Html.Partial("PartialHeaderAdmin", null, new ViewDataDictionary { { "SelectedTab", "Entity" } })
+    }
+}
+<div class="@( ViewBag.PageLayoutPath == null ? "content" : null )" id="content-admin">
+    @Html.Partial("PartialAdminEntityList")
+</div>
+
+<!-- Scripts -->
+<script type="text/javascript">
+    $(document).ready(function () {
+         
+        //Hemraj
+        //Clear all params in the query when changing div so that search param does not go to another div
+        // get the string following the ?
+        var query = window.location.search.substring(1)
+
+        // is there anything there ?
+        if (query.length) {
+            // are the new history methods available ?
+            if (window.history != undefined && window.history.pushState != undefined) {
+                // if pushstate exists, add a new state the the history, this changes the url without reloading the page
+                window.history.pushState({}, document.title, window.location.pathname);
+            }
+        }
+
+        //call dynatable plugin search when document is ready
+        DynatableSearch('#table-data', '#table-result-search-data', '#search-table')
+        //end of call dynatable plugin search when document is ready
+    });
+    
+</script>

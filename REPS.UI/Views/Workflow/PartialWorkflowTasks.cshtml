@@ -1,0 +1,49 @@
+﻿@{
+    var WorkflowTasks = ViewData["WorkflowTasksList"];
+    ViewData["SavedSelectedTaskID"] = Convert.ToInt32(ViewData["SelectedTaskID"]);
+}
+
+
+<!-- Workflow Tasks (Tab)-->
+<div class="workflow-tab-section remove-on-mobile">
+
+    <ul>
+    @{
+        if (ViewData["WorkflowTasksList"] != null)
+        {
+            foreach (var workflowTask in WorkflowTasks as IEnumerable<dynamic>)
+            {
+                <a onclick="AjaxControllerCaller('Workflow', 'WorkflowTaskTab', 'deal-content-wrapper',{taskID : @workflowTask["WorkflowTaskID"]})">
+                    <li class="@( (Convert.ToInt32(ViewData["SelectedTaskID"]) == workflowTask["WorkflowTaskID"]) ? "workflow-tab-selected" : ""  )" >
+                        <i class="material-icons">@workflowTask["TaskDisplayIcon"]</i>
+                        <p>@workflowTask["TaskName"]</p>
+                    </li>
+                </a>
+            }
+        }
+    }
+    </ul>
+</div> <!-- End of workflow-tab-section -->
+
+<!-- Need to make the following dynamic as the workflow tab section -->
+<div class="workflow-tab-section-mobile">
+    <select id="mobile-workflow-nav" class="mobile-select-navigation workflow-mobile-nav" onchange="eval($('#mobile-workflow-nav').val())">
+        @{
+        if (ViewData["WorkflowTasksList"] != null)
+            {
+                foreach (var workflowTask in WorkflowTasks as IEnumerable<dynamic>)
+                {
+                    if (Convert.ToInt32(ViewData["SelectedTaskID"]) == workflowTask["WorkflowTaskID"])
+                    {
+                        <option value="AjaxControllerCaller('Workflow', 'WorkflowTaskTab', 'deal-content-wrapper',{taskID : @workflowTask["WorkflowTaskID"]})" selected>@workflowTask["TaskName"]</option>
+                    }
+                    else
+                    {
+                        <option value="AjaxControllerCaller('Workflow', 'WorkflowTaskTab', 'deal-content-wrapper',{taskID : @workflowTask["WorkflowTaskID"]})">@workflowTask["TaskName"]</option>
+                    }
+                }
+            }
+        }
+    </select>
+</div> <!-- End of workflow-tab-section-mobile -->
+<!-- End of Workflow Tasks (Tab) -->

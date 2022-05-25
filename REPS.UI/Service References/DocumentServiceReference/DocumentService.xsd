@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:54738/DocumentService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Common" />
+  <xs:import schemaLocation="http://localhost:54738/DocumentService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="GetDocumentTypeList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="workflowName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDocumentTypeListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetDocumentTypeListResult" nillable="true" type="q1:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDocumentType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="workflowID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDocumentTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetDocumentTypeResult" nillable="true" type="q2:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDocumentTemplateList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="workflowName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dealID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDocumentTemplateListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetDocumentTemplateListResult" nillable="true" type="q3:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDocumentTemplateDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="workflowID" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="dealID" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDocumentTemplateDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetDocumentTemplateDetailsResult" nillable="true" type="q4:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GenerateDocuments">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="formObjects" nillable="true" type="q5:ArrayOfKeyValueOfstringanyType" />
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="DocumentListID" nillable="true" type="q6:ArrayOfanyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GenerateDocumentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GenerateDocumentsResult" nillable="true" type="q7:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadStandardDocuments">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="formObject" nillable="true" type="q8:ArrayOfKeyValueOfstringanyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadStandardDocumentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="UploadStandardDocumentsResult" nillable="true" type="q9:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadSignedDocuments">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="formObject" nillable="true" type="q10:ArrayOfKeyValueOfstringanyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadSignedDocumentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="UploadSignedDocumentsResult" nillable="true" type="q11:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBinaryDocument">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="documentID" type="xs:int" />
+        <xs:element minOccurs="0" name="dealID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBinaryDocumentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetBinaryDocumentResult" nillable="true" type="q12:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStaticDocumentTemplate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="documentTemplateID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStaticDocumentTemplateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetStaticDocumentTemplateResult" nillable="true" type="q13:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSignedBinaryDocument">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="documentID" type="xs:int" />
+        <xs:element minOccurs="0" name="dealID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSignedBinaryDocumentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetSignedBinaryDocumentResult" nillable="true" type="q14:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAdminDocumentCategoryList">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAdminDocumentCategoryListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetAdminDocumentCategoryListResult" nillable="true" type="q15:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAdminDocumentTemplateList">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAdminDocumentTemplateListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetAdminDocumentTemplateListResult" nillable="true" type="q16:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddDocumentCategory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FormObjects" nillable="true" type="q17:ArrayOfKeyValueOfstringanyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddDocumentCategoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="AddDocumentCategoryResult" nillable="true" type="q18:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddDocumentTemplate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FormObjects" nillable="true" type="q19:ArrayOfKeyValueOfstringanyType" />
+        <xs:element minOccurs="0" name="templateFile" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="documentTypeID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddDocumentTemplateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="AddDocumentTemplateResult" nillable="true" type="q20:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveDocumentTemplate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="documentTemplateID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveDocumentTemplateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="RemoveDocumentTemplateResult" nillable="true" type="q21:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEditDocumentTemplateFields">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="documentTemplateID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEditDocumentTemplateFieldsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetEditDocumentTemplateFieldsResult" nillable="true" type="q22:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDocumentWorkflowTaskStep">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="documentTemplateID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDocumentWorkflowTaskStepResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetDocumentWorkflowTaskStepResult" nillable="true" type="q23:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveDocumentTemplate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FormObjects" nillable="true" type="q24:ArrayOfKeyValueOfstringanyType" />
+        <xs:element minOccurs="0" name="templateFile" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="documentTemplateID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveDocumentTemplateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="SaveDocumentTemplateResult" nillable="true" type="q25:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDocumentTemplateAdmin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="documentTemplateID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDocumentTemplateAdminResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetDocumentTemplateAdminResult" nillable="true" type="q26:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveAdminDocumentWorkflow">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="documentTemplateID" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="documentWorkflowID" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveAdminDocumentWorkflowResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="RemoveAdminDocumentWorkflowResult" nillable="true" type="q27:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

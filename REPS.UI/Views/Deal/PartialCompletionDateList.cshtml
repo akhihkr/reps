@@ -1,0 +1,15 @@
+﻿@{
+    Layout = null;
+
+    //User roles
+    string role_view_registrationdate = "CM_EDIT";
+}
+
+<span class="deal-summary-status">@(ViewBag.CompletionDate == null ? "-" : ViewBag.CompletionDate)</span>
+
+@if (Common.CArray.SearchInCookie(role_view_registrationdate))
+{
+    <a href="#" class="button completion-date-btn" onclick="CallPopupPanel('Deal', 'PopupCompletionDate', 'general-panel')">
+        <i data-tooltip="bir60t-tooltip" aria-haspopup="true" title="Edit Registration Date" class="material-icons has-tip" aria-describedby="msputy-tooltip" data-yeti-box="msputy-tooltip" data-toggle="msputy-tooltip" data-resize="msputy-tooltip" data-events="resize">mode_edit</i>
+    </a>
+}

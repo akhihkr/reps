@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:54738/PropertyService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Common" />
+  <xs:import schemaLocation="http://localhost:54738/PropertyService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/REPS.DATA.Entity" />
+  <xs:element name="GetProperties">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="dealId" type="xs:int" />
+        <xs:element minOccurs="0" name="propertyId" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="startRow" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="endRow" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPropertiesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetPropertiesResult" nillable="true" type="q1:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPropertyTypes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="propertyTypeId" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="startRow" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="endRow" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPropertyTypesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetPropertyTypesResult" nillable="true" type="q2:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSizeTypes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sizeTypeId" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="startRow" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="endRow" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSizeTypesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetSizeTypesResult" nillable="true" type="q3:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddProperty">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/REPS.DATA.Entity" minOccurs="0" name="obj" nillable="true" type="q4:Property" />
+        <xs:element minOccurs="0" name="aspNetId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddPropertyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="AddPropertyResult" nillable="true" type="q5:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddPropertyDetail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/REPS.DATA.Entity" minOccurs="0" name="obj" nillable="true" type="q6:PropertyDetail" />
+        <xs:element minOccurs="0" name="dealID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddPropertyDetailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="AddPropertyDetailResult" nillable="true" type="q7:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPropertyDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="dealID" type="xs:int" />
+        <xs:element minOccurs="0" name="propertyId" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="startRow" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="endRow" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPropertyDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetPropertyDetailsResult" nillable="true" type="q8:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateProperty">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/REPS.DATA.Entity" minOccurs="0" name="obj" nillable="true" type="q9:Property" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdatePropertyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="UpdatePropertyResult" nillable="true" type="q10:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdatePropertyDetail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/REPS.DATA.Entity" minOccurs="0" name="obj" nillable="true" type="q11:PropertyDetail" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdatePropertyDetailResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="UpdatePropertyDetailResult" nillable="true" type="q12:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteProperty">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/REPS.DATA.Entity" minOccurs="0" name="obj" nillable="true" type="q13:Property" />
+        <xs:element minOccurs="0" name="dealID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeletePropertyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="DeletePropertyResult" nillable="true" type="q14:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPropertyIDByPropertyGUID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="propertyGUID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPropertyIDByPropertyGUIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetPropertyIDByPropertyGUIDResult" nillable="true" type="q15:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPropertyDetailIDByPropertyDetailGUID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="propertyDetailGUID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPropertyDetailIDByPropertyDetailGUIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetPropertyDetailIDByPropertyDetailGUIDResult" nillable="true" type="q16:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

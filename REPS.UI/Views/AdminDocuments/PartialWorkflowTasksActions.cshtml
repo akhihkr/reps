@@ -1,0 +1,31 @@
+﻿@{
+    Layout = null;
+
+    if (ViewData["workflowTaskList"] != null)
+    {
+        <label>
+            Workflow Task
+            <select id="workflowTaskID" name="workflowTaskID" data-content="required" onchange="reps.workflowTaskList(this)">
+                <option value='-1' default selected>Select an option:</option>
+                @foreach (var workflowList in ViewData["workflowTaskList"] as IEnumerable<dynamic>)
+                {
+                    <option selected value="@workflowList["WorkflowTaskID"]">@workflowList["TaskName"]</option>
+                }
+            </select>
+        </label>
+    }
+
+
+    if (ViewData["WorkflowTasksActionsList"] != null)
+    {
+        <label>Workflow Task Details</label>
+            <select id="workflowTaskListID" name="workflowTaskListID">
+                <option value='-1' default selected>Select an option:</option>
+                    @foreach (var workflowStepID in ViewData["WorkflowTasksActionsList"] as IEnumerable<dynamic>)
+                    {
+                        <option value="@workflowStepID["WorkflowActionID"]">@workflowStepID["DisplayName"]</option>
+                    }
+            </select>
+    }
+
+}

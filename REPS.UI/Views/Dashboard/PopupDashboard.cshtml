@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Deal Information";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+}
+
+
+<div class="general-panel-content">
+    <div class="row reset-row manage-workflows">
+        <div class="small-12 columns reset-columns">
+            @foreach (var Details in ViewData["DashboardDetails"] as IEnumerable<dynamic>)
+            {
+                <p>Client : @Html.Raw(Details["ClientReference"])</p>
+                <p>Client Reference : @Html.Raw(Details["UniqueReference"])</p>
+            }
+        </div> <!-- End of small-6 columns-->
+    </div> <!-- End of row -->
+</div> <!-- End of general-panel-content -->

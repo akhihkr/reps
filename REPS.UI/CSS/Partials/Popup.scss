@@ -1,0 +1,227 @@
+﻿@charset "UTF-8";
+@import "../Partials/GlobalVariables.scss";
+
+
+
+.popup-headings {
+    margin-bottom: 10px;
+}
+
+.general-panel {
+    width: 650px;
+    height: auto;
+    overflow: auto;
+    overflow-y: hidden;
+    position: fixed;
+    z-index: 2500;
+    margin: 0 auto;
+    background: #fff;
+    top: 54px;
+    left: 50%;
+    margin-left: -325px;
+    display: none;
+    position: absolute;
+    /*border: solid 1px #dbdedf;
+    box-shadow: 0 5px 15px -5px #bbb;*/
+
+    h1 {
+        color: #000;
+        font-size: 16px;
+        float: left;
+        margin-bottom: 6px;
+    }
+
+    h4 {
+        color: #000;
+        font-size: 16px;
+        float: left;
+        margin-bottom: 6px;
+    }
+
+    input {
+        font-size: 13px;
+    }
+
+    i {
+        color: #000;
+        float: right;
+        cursor: pointer;
+
+        &:hover {
+            color: $primary-color;
+        }
+    }
+
+    p {
+        clear: both;
+    }
+
+    form {
+        display: block;
+    }
+}
+
+.general-panel.show {
+    display: block;
+}
+
+.general-panel-border {
+    border: solid 1px #dbdedf;
+    box-shadow: 0 5px 15px -5px #bbb ;
+}
+
+.general-panel-title {
+    display: block;
+    clear: both;
+    width: 100%;
+    overflow: auto;
+    padding: 15px 20px;
+    padding-bottom: 13px;
+    border-bottom: 1px solid $border-color;
+    background: $secondary-color;
+
+    h4 {
+        color: #fff;
+    }
+
+    i {
+        color: #fff;
+
+        &:hover {
+            color: $red;
+        }
+    }
+}
+
+.general-panel-content {
+    padding: 20px;
+    max-height: calc(100vh - 220px);
+    overflow: auto;
+}
+
+.general-panel-content::-webkit-scrollbar {
+    width: 14px;
+    height: auto;
+    background: rgba(0,0,0,0.05);
+}
+
+.general-panel-content::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.2);
+}
+
+.general-panel-content::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0);
+}
+
+.general-panel-footer {
+    border-top: solid 1px #eee;
+    background: #f8f8f8;
+    width: 100%;
+    display: block;
+    height: 74px;
+    padding: 20px;
+    clear: both;
+
+    .blue-cta {
+        float: right;
+    }
+}
+
+#popup-unique-reference {
+    font-size: 12px;
+    margin-bottom: 10px;
+    color: #a5a5a5;
+}
+
+.loader {
+    position: fixed;
+    width: 180px;
+    text-align: center;
+    font-size: 12px;
+    background: #fffad7;
+    border: solid 1px #fff2a3;
+    color: #222;
+    font-weight: bold;
+    top: 55px;
+    left: 50%;
+    margin-left: -90px;
+    z-index: 2401;
+    padding: 5px 20px;
+    box-shadow: 0 5px 10px -7px #888;
+    display: none;
+}
+
+.loader.show {
+    display: block;
+}
+
+
+
+
+/*------------------------------------*\
+	Responsive
+\*------------------------------------*/
+
+/* ----------- Small ----------- */
+@media all and (min-width: 1px) and (max-width: 482px) {
+    .general-panel {
+        width: 290px;
+        margin-left: -145px;
+        top: 20px;
+    }
+
+    .general-panel-content {
+        max-height: calc(100vh - 220px);
+    }
+}
+
+
+
+/* ----------- Tablet ----------- */
+/* max-width: 64em */
+@media all and (min-width: 483px) and (max-width: 1024px) {
+    .general-panel {
+        width: 580px;
+        left: 50%;
+        margin-left: -285px;
+        top: 54px;
+    }
+
+    .general-panel-content {
+        max-height: calc(100vh - 220px);
+    }
+}
+
+
+/* ----------- 483px to 622px ----------- */
+@media all and (min-width: 483px) and (max-width: 622px) {
+    .general-panel {
+        top: 54px;
+        width: 430px;
+        margin-left: -215px;
+    }
+
+    .general-panel-content {
+        max-height: calc(100vh - 220px);
+    }
+}
+
+
+
+/* ----------- Laptop ----------- */
+@media only screen and (min-width: 64.063em) {
+
+}
+
+
+/* ----------- 820px to 1024px ----------- */
+@media only screen and (min-width: 820px) and (max-width: 1024px) {
+    .general-panel {
+        top: 2%;
+    }
+}
+
+/* ----------- 1024px to 1193px ----------- */
+@media all and (min-width: 1024px) and (max-width: 1193px) {
+
+}

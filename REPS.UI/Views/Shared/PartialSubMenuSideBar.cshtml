@@ -1,0 +1,39 @@
+﻿
+@{
+    Layout = null;
+    //get task workflow
+    int dealProcessTaskID = 0;
+    int dealWorkflowID = 0;
+    object taskIDWorkflowIDResult = REPS.UI.Models.WorkflowModel.GetWorkflowIDTaskID(Request.Cookies["REPS_TaskGUID"].Value.ToString());
+    int entityID = Convert.ToInt32(REPS.UI.Models.EntityModel.GetEntityIDByEntityGUID(Request.Cookies["REPS_EntityGUID"].Value.ToString()));
+    foreach (var resultID in taskIDWorkflowIDResult as Dictionary<string, dynamic>)
+    {
+        if (resultID.Key == "TaskID")
+        {
+            dealProcessTaskID = resultID.Value;
+        }
+        else if (resultID.Key == "TaskWorkflowID")
+        {
+            dealWorkflowID = resultID.Value;
+        }
+    }
+
+    //deals count
+    object[] dealsCount = REPS.UI.Models.WorkflowModel.GetWorkflowDealCount(null, dealWorkflowID, dealProcessTaskID, entityID); //inverse
+    ViewData["dealsCount"] = dealsCount;
+    //end of get task workflow
+}
+<li>
+    <a tabindex="-1" href="@Url.Action("Index", "Deal",new { taskStatus = Global.Constants.all })" class="@(Request.Params["taskStatus"] == Global.Constants.all ? "active" : null ) all-deals-text">All Deals</a>
+</li>
+@foreach (var sumNumber in ViewData["dealsCount"] as IEnumerable<dynamic>)
+{
+    <li>
+        <span class="count">@sumNumber["DealCount"]</span>
+
+        <a tabindex="-1" href="@Url.Action("Index", "Deal",new { taskStatus = @sumNumber["TaskGUID"]})"
+           class="@(Request.Params["taskStatus"] != null ?(Request.Params["taskStatus"].Contains(@sumNumber["TaskGUID"].Trim()) ? "active":null): null)">
+            @MvcHtmlString.Create(sumNumber["TaskName"] + " ")
+        </a>
+    </li>
+}

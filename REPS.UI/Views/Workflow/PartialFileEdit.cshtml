@@ -1,0 +1,61 @@
+﻿@{ Layout = null;}
+@{
+
+
+    var WFActionResultList = ViewData["WorkflowTasksActionsEditResult"];
+    var taskID = ViewData["taskID"];
+    var workflowActionID = ViewData["workflowActionID"];
+    bool hasFile = false;
+
+    // Check if has atleast 1 file uploaded
+    foreach (var WFActionResult in WFActionResultList as IEnumerable<dynamic>)
+    {
+        switch ((int)WFActionResult["WorkflowVariableID"])
+        {
+            case (int)Global.Enums.FieldType.File:
+                if (!String.IsNullOrEmpty(@WFActionResult["Value"]))
+                {
+                    hasFile = true;
+                }
+                break;
+        }
+    }
+
+
+    if (hasFile == true)
+    {
+        <label class="label-bold">File(s) attached:</label>
+    }
+
+
+    <ul class="edit-action-files-link">
+        @{
+            foreach (var WFActionResult in WFActionResultList as IEnumerable<dynamic>)
+            {
+                switch ((int)WFActionResult["WorkflowVariableID"])
+                {
+                    case (int)Global.Enums.FieldType.File:
+                        if (!String.IsNullOrEmpty(@WFActionResult["Value"]))
+                        {
+                            <li>
+                                <a href="@Url.Action("FileDownload", "Workflow",new { TransactionID = WFActionResult["TransactionID"] ,Filename = WFActionResult["Value"] })">@WFActionResult["Value"]</a>
+
+                                @Ajax.ActionLink("x", "RemoveTransactionImg",
+                                        new { transactionDetailIDGUID = WFActionResult["TransactionDetailGUID"], taskID = @taskID, workflowActionID = @workflowActionID },
+                                        new AjaxOptions
+                                        {
+                                            UpdateTargetId = "partialFileEdit",
+                                            InsertionMode = InsertionMode.Replace,
+                                            HttpMethod = "POST",
+                                            //OnSuccess = "onSuccessToasterMsg('Workflow','DivDataWorkflow','workflow-actions-wrapper',{TaskID:" + taskID + "}, null)",
+                                            Confirm = "Are you sure you want to remove this action?"
+                                        },
+                                        new { @class = "remove-file-uploaded" })
+                            </li>
+                        }
+                        break;
+                }
+            }
+        }
+    </ul> <!-- End of edit-action-files-link -->
+}

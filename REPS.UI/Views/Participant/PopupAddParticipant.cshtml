@@ -1,0 +1,236 @@
+﻿
+@{
+    ViewBag.Title = "Participant Details";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    ///Participant Infomation
+    #region Participant Infomation
+    dynamic ParticipantInfo = null;
+    if (ViewData["ParticipantInfo"] != null)
+    {
+        ParticipantInfo = (ViewData["ParticipantInfo"] as IEnumerable<dynamic>).FirstOrDefault();
+    }
+    #endregion end Participant Infomation
+    ///end Participant Infomation
+
+    //ajax of individual
+    AjaxOptions individual = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "participantBankInfoDetail",
+        OnComplete = "onComplete",
+    };
+
+    //ajax of company
+    AjaxOptions company = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "participantBankInfoDetail",
+        OnComplete = "onComplete",
+    };
+}
+
+<!-- Create New Participant -->
+<div id="newparticpant">
+    <div class="show" id="create-new-participant-section">
+
+        <!-- Select New/Existing Participant -->
+        <div class="medium-6 columns reset-columns">
+            <label>Add Participant</label>
+            <select tabindex="1" id="participantNewExist" name="participantNewExist" onchange="reps.dropdownParticipantNewExist(this);">
+                <option value="0" default selected>New Participant</option>
+                <option value="-1">Add From Existing</option>
+            </select>
+        </div>
+        <!-- End of Select New/Existing Participant -->
+        <!-- Participant Types -->
+        <div class="medium-6 columns reset-columns">
+            <label>Participant Types<span>*</span></label>
+            <select tabindex="2" id="participantType" name="participantType" onchange="reps.dropdownParticipantType(this);">
+                @{
+                    if (ViewData["PartType"] != null)
+                    {
+                        foreach (var partType in ViewData["PartType"] as IEnumerable<dynamic>)
+                        {
+                            <option value="@partType["ParticipantTypeID"]" selected>@partType["Description"]</option>
+                        }
+                    }
+                }
+            </select>
+        </div> <!-- End of medium-6 columns reset-columns -->
+        <!-- End of Participant Types -->
+
+
+        <!-- New Participant Form -->
+        @using (Ajax.BeginForm("SaveParticipant", "Participant", individual, new { @id = "participant-individual" }))
+        {
+            if (ParticipantInfo != null)        // Participant has been saved
+            {
+                <input type="hidden" name="ParticipantGUID" value="@ParticipantInfo["ParticipantGUID"]" />
+                <input type="hidden" name="PersonID" value="@ParticipantInfo["PersonID"]" />
+            }
+           <!-- Left Column -->
+            <div class="medium-12 columns reset-columns roles">
+                <label>Participant Role<span>*</span></label>
+                <select tabindex="3" id="ptRoleexist" name="ptRoleexist" data-content="required">
+                    <option value="-1" default selected>Select an option:</option>
+                    @{
+                        /// ParticipantRoles
+                        foreach (var partRole in ViewData["PartRole"] as IEnumerable<dynamic>)
+                        {
+                            <option value="@partRole["ParticipantRoleID"]">@partRole["Description"]</option>
+                        }
+                    }
+                </select>
+            </div>
+
+            <div class="medium-6 columns reset-columns roles">
+                <label>
+                    Name<span>*</span>
+                </label>
+                <input tabindex="4" type="text" name="participantName" id="participantName" value="" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharName))" data-content="required" autocomplete="off" format="text" />
+
+                <label>Date of Birth<span>*</span></label>
+                <input class="date-input" tabindex="6" type="text" id="birthDate" name="birthDate" value="" data-modal="true" data-content="required" data-large-mode="true" data-large-default="true" data-theme="reps-datedropper" data-init-set="false" data-min-year="1970" data-format="d/m/Y" data-lock="to">
+
+                <label>
+                    Contact Number<span>*</span>
+                </label>
+                <input tabindex="8" type="text" name="participantContactNum" id="participantContactNum" value="" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharTelephone))" data-content="required" autocomplete="off" format="number" />
+
+                @*<label>
+                    Fax Number
+                    </label>
+                    <input tabindex="10" type="text" name="faxNum" id="faxNum" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharFax))" autocomplete="off" format="number" value="" />*@
+
+                <label>
+                    Income Tax Number
+                </label>
+                <input tabindex="10" type="text" name="taxNum" id="taxNum" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar20))" autocomplete="off" format="number" value="" />
+            </div> <!-- End of medium-6 columns -->
+                    <!-- End of Left Column -->
+
+            <!-- Right Column -->
+            <div class="medium-6 columns remove-padding-right">
+                <label>
+                    Surname<span>*</span>
+                </label>
+                <input tabindex="5" type="text" name="participantFamilyName" id="participantFamilyName" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharName))" value="" data-content="required" autocomplete="off" format="text" />
+
+                <label>
+                    Email Address<span>*</span>
+                </label>
+                <input tabindex="7" type="text" name="participantEmail" id="participantEmail" value="" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar100))" data-content="required" autocomplete="off" format="email" />
+
+                <label>
+                    Mobile Number
+                </label>
+                <input tabindex="9" type="text" autocomplete="off" format="number" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharTelephone))" name="mobileNum" id="mobileNum" value="" />
+
+                <label>
+                    Identity Number
+                </label>
+                <input tabindex="11" type="text" name="identityNum" id="identityNum" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar20))" autocomplete="off" format="alphanum" value="" />
+            </div> <!-- End of medium-6 columns -->
+            }
+        <!-- End of New Participant Form -->
+        <!-- Company Form -->
+        @using (Ajax.BeginForm("SaveOrganisation", "Participant", company, new { @id = "participant-company" }))
+        {
+            <div class="company-form" style="display:none;">
+                <!-- Left Column -->
+                <div class="medium-12 columns reset-columns">
+                    <label>Participant Role<span>*</span></label>
+                    <select tabindex="12" id="ptRoleExistOrg" name="ptRoleExistOrg" data-content="required">
+                        <option value="-1" default selected>Select an option:</option>
+                        @{
+                            /// ParticipantRoles
+                            foreach (var partRole in ViewData["PartRole"] as IEnumerable<dynamic>)
+                            {
+                                <option value="@partRole["ParticipantRoleID"]">@partRole["Description"]</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="medium-6 columns reset-columns roles">
+
+                    <label>
+                        Organisation Name<span>*</span>
+                        <input tabindex="13" type="text" name="organizationName" id="organizationName" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharName))" value="" data-content="required" autocomplete="off" format="alphanum" />
+                    </label>
+
+                    <label>
+                        Email Address<span>*</span>
+                        <input tabindex="15" type="text" name="email" id="email" autocomplete="off" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharEmail))" format="email" value="" data-content="required" />
+                    </label>
+
+                    <label>
+                        Telephone Number<span>*</span>
+                        <input tabindex="17" type="text" name="tellNum" id="tellNum" value="" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharTelephone))" data-content="required" autocomplete="off" format="number" />
+                    </label>
+
+                    <label>
+                        Fax Number
+                        <input tabindex="19" type="text" name="faxNumOrg" id="faxNumOrg" value="" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharFax))" autocomplete="off" format="number" />
+                    </label>
+                </div> <!-- End of medium-6 columns remove-padding-left -->
+                <!-- End of Left Column -->
+                <!-- Right Column -->
+                <div class="medium-6 columns remove-padding-right">
+                    <label>Organisation Type<span>*</span></label>
+                    <select tabindex="14" id="organisationType" name="organisationType" data-content="required">
+                        <option value="-1" default selected>Select an option:</option>
+                        @{
+                            /// Participant Organisation Types
+                            foreach (var organisationType in ViewData["OrganizationTypes"] as IEnumerable<dynamic>)
+                            {
+                                <option value="@organisationType["OrganizationTypeID"]">@organisationType["Description"]</option>
+                            }
+                        }
+                    </select>
+                    <label>
+                        Legal Name<span>*</span>
+                        <input tabindex="16" type="text" name="legalName" id="legalName" value="" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharName))" data-content="required" autocomplete="off" format="alphanum" />
+                    </label>
+
+                    <label>
+                        Registration Number<span>*</span>
+                        <input tabindex="18" type="text" name="registrationNum" id="registrationNum" value="" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.VarcharRegistrationNumber))" data-content="required" autocomplete="off" format="alphanum" />
+                    </label>
+                    
+                </div> <!-- End of medium-6 columns remove-padding-right -->
+
+            </div> <!-- End of company-form -->
+                            }
+        <!-- End of company form-->
+    </div> <!-- End of create-new-participant-section -->
+</div>
+<!-- End of Create New Participant -->
+
+
+<div id="existingparticipant" style="display:none">
+    @Html.Partial("PartialAddExistingParticipant")
+</div>
+
+@section footer
+{
+    <div id="newParticipant-footer-btn">
+        <a class="button align-right" id="participant-individual-footer-btn" href="#" onclick="FormObjectSubmit('#participant-individual-footer-btn', '#participant-individual', true);">Save Individual</a>
+        <a class="button align-right" id="participant-company-footer-btn" style="display:none" href="#" onclick="FormObjectSubmit('#participant-company-footer-btn', '#participant-company', true);">Save Company</a>
+    </div>
+    <div id="existParticipant-footer-btn" style="display:none">
+        <a class="button align-right" id="participant-existed-footer-btn" href="#" onclick="FormExistingParticipantSubmit('#suggestion-box', '#participant-existed-footer-btn', '#existParticipantForm', true);">Save Participant</a>
+    </div>
+}
+@section script
+{
+    <script>
+        $("div.datedropper").remove();//to clear all divs for dropper rendered using class datedropper
+        // date of birth range date picker
+        $("#birthDate").dateDropper();
+        //end of date of birth range date picker
+    </script>
+}

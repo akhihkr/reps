@@ -1,0 +1,147 @@
+﻿
+@{
+
+    string workflowTaskName = null;
+    string workflowTaskNameID = null;
+
+    foreach (var dealProcess in ViewData["DealProcesses"] as IEnumerable<dynamic>)
+    {
+        if (Request.Cookies["REPS_TaskGUID"].Value.ToString() == @dealProcess["TaskGUID"].ToString())
+        {
+            workflowTaskName = @dealProcess["TaskName"];
+            workflowTaskNameID = @dealProcess["TaskID"].ToString();
+        }
+    }
+
+    ViewBag.Title = "Update Deal (" + workflowTaskName + ")";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    //User roles
+    string role_view_dealworkflowedit = "DW_ED";
+    string role_view_clientrefedit = "DC_ED";
+    string role_view_dealtypeedit = "DT_ED";
+
+    string workflowEditClass = string.Empty;
+    string clientEdit = string.Empty;
+    string dealTypeEdit = string.Empty;
+
+    if (!Common.CArray.SearchInCookie(role_view_dealworkflowedit))
+    {
+        workflowEditClass = "disabled";
+    }
+
+    if (!Common.CArray.SearchInCookie(role_view_clientrefedit))
+    {
+        clientEdit = "disabled";
+    }
+
+    if (!Common.CArray.SearchInCookie(role_view_dealtypeedit))
+    {
+        dealTypeEdit = "disabled";
+    }
+
+    #region if edit deal info is not null or empty
+    ///variables for deal edit info
+    dynamic editDealInfo = null;
+    ///end variables for deal edit info
+    if (ViewData["dealEdit"] != null && (int.Parse((ViewData["dealEdit"] as IEnumerable<dynamic>).Count().ToString()) != 0))
+    {
+        editDealInfo = (ViewData["dealEdit"] as IEnumerable<dynamic>).FirstOrDefault();
+    }
+    #endregion end if edit deal info is not null or empty
+
+    //ajax
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "summary-header-details",
+        OnSuccess = "UpdateTabs('Deal','GeneralTabsSession','subTabs','HeaderTab', 'UpdateTabsHeaderDealEdit','header-tabs-section')",
+        OnComplete = "onComplete",
+    };
+}
+
+@using (Ajax.BeginForm("UpdateDeal", "Deal", options, new { @id = "EditDealFormPopup" }))
+{
+        <!-- Unique Identifier-->
+    <input type="text" id="UniqueReference" name="UniqueReference" value="@editDealInfo["UniqueReference"]" readonly="">
+
+
+    <div class="row reset-row">
+        <!-- Deal workFLow Process -->
+        @*<div class="medium-4 columns reset-columns">
+            <label>
+                Workflow
+            </label>
+
+            <select id="DealProcessTaskID" name="DealProcessTaskID" data-content="required" @workflowEditClass disabled>
+                <option value='-1' default selected>Select an option:</option>
+                @{
+                    /// Deal Process -> Buyer Seller  DealProcessTaskID
+                    foreach (var dealProcess in ViewData["DealProcesses"] as IEnumerable<dynamic>)
+                    {
+                        if (Convert.ToInt32(@dealProcess["TaskID"]) == Convert.ToInt32(@editDealInfo["DealProcessTaskID"]))
+                        {
+                            <option selected value="@dealProcess["TaskID"]">@dealProcess["TaskName"]</option>
+                        }
+                        else
+                        {
+                            <option value="@dealProcess["TaskID"]">@dealProcess["TaskName"]</option>
+                        }
+                    }
+                }
+            </select>
+
+        </div>*@
+        <!-- END Deal workFLow Process -->
+        <input type="hidden" id="DealProcessTaskID" name="DealProcessTaskID" value="@workflowTaskNameID" readonly>
+        <div class="medium-8 columns">
+            <label>
+                Client<span>*</span>
+                <input type="text" id="clientRef" name="clientRef" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar1000))" class="" value="@editDealInfo["ClientReference"]" data-content="required" @clientEdit>
+            </label>
+        </div> <!-- End of medium-4 columns -->
+        <div class="medium-4 columns">
+            <label>
+                Deal Type<span>*</span>
+            </label>
+            <select id="DealTypeID" name="DealTypeID" data-content="required" @dealTypeEdit>
+                <option value='-1' default selected>Select an option:</option>
+                @{
+                    /// DealTypes
+                    foreach (var dealType in ViewData["DealType"] as IEnumerable<dynamic>)
+                    {
+                        if (@dealType["DealTypeID"] == @editDealInfo["DealTypeID"])
+                        {
+                            <option selected value="@dealType["DealTypeID"]">@dealType["Description"]</option>
+                        }
+                        else
+                        {
+                            <option value="@dealType["DealTypeID"]">@dealType["Description"]</option>
+                        }
+                    }
+                }
+            </select>
+        </div> <!-- End of medium-4 columns -->
+    </div> <!-- End of row reset-row -->
+                    }<!-- End of form Deal-->
+
+
+@section footer
+{
+    <a href="#" class="button align-right dirty-disabled" id="btn-saved" onclick="FormObjectSubmit('#btn-saved', '#EditDealFormPopup', true);">Update Deal</a>
+}
+
+
+@section script
+{
+    <script>
+        //dirty function used to check if event listener has been modified and call the updates function
+        $('#EditDealFormPopup').dirrty().on("dirty", function () {
+            $("#btn-saved").removeClass("dirty-disabled");//removed attribute if in case if anchor tag is used
+        }).on("clean", function () {
+            $("#btn-saved").addClass("dirty-disabled")//add attribute if in case if anchor tag is used
+        });
+        //end of dirty function used to check if event listener has been modified and call the updates function
+    </script>
+}

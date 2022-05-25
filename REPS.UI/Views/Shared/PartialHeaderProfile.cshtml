@@ -1,0 +1,25 @@
+﻿
+@{
+    Layout = null;
+}
+
+<header id="header-wrapper">
+    <div class="mobile-menu">
+        <i class="material-icons">menu</i>
+        <span id="">Menu</span>
+    </div> <!-- End of mobile-menu -->
+    <!-- Header Tabs Section Starts Here-->
+    <div class="header-tabs-section" id="header-tabs-section">
+        <a tabindex="-1" class="" onclick="AjaxControllerCaller('MyProfile', 'Index', 'content-wrapper')">
+            <div class="header-tab hide-on-mobile hide-on-tablet" id="@((ViewData.ContainsKey("SelectedTab") && ViewData["SelectedTab"].ToString() == Global.Enums.PageNames.Index.ToString() )? "header-tab-selected" : null)">
+                <h1>Basic Info</h1>
+            </div> <!-- End of header-tab -->
+        </a>
+
+        <a tabindex="-1" class="" onclick="AjaxControllerCaller('MyProfile', 'Security', 'content-wrapper')">
+            <div class="header-tab hide-on-mobile hide-on-tablet" id="@((ViewData.ContainsKey("SelectedTab") && ViewData["SelectedTab"].ToString() == Global.Enums.PageNames.Security.ToString())? "header-tab-selected" : null)">
+                <h1>Security</h1>
+            </div>
+        </a>
+    </div> <!-- End of header-tabs-section -->
+</header>

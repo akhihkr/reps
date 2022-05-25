@@ -1,0 +1,130 @@
+﻿
+@{
+    Layout = null;
+
+    //User roles
+    string role_view_generaltab = "GE_LI";
+    string role_view_workflowtab = "WF_LI";
+    string role_view_alertstab = "AL_LI";
+    string role_view_correspondencetab = "CO_LI";
+    string role_view_printlisttab = "PL_LI";
+    string role_view_audittab = "AU_LI";
+    string role_view_feestab = "FE_LI";
+}
+
+
+<!-- Sub Tabs Selection -->
+<div id="subTabs" class="sub-tabs-section">
+    <ul>
+        @if (Common.CArray.SearchInCookie(role_view_generaltab))
+        {
+            <li>
+                <a id="DealTab" name="0" onclick="AjaxControllerCaller('Deal', 'ViewDeal', 'deal-content-wrapper'); SetSelectedTabActive('DealTab')" class="@((ViewData.ContainsKey("SelectedTab") && ViewData["SelectedTab"].ToString() == Global.Enums.PageNames.Deal.ToString()) ? "sub-tabs-active" : null)">General</a>
+            </li>
+        }
+
+        @if (Common.CArray.SearchInCookie(role_view_workflowtab))
+        {
+            <li>
+                <a id="WorkflowTab" name="1" onclick="AjaxControllerCaller('Workflow', 'Index', 'deal-content-wrapper'); SetSelectedTabActive('WorkflowTab')" class="@((ViewData.ContainsKey("SelectedTab") && ViewData["SelectedTab"].ToString() == Global.Enums.PageNames.Workflow.ToString()) ? "sub-tabs-active" : null)">@(ViewData["CurrentDealWorkflow"] == null ? Request.Cookies["CurrentDealWorkflow"].Value.ToString() : ViewData["CurrentDealWorkflow"])</a>
+            </li>
+        }
+
+        @if (Common.CArray.SearchInCookie(role_view_alertstab))
+        {
+            <li>
+                <a id="AlertsTab" name="2" onclick="AjaxControllerCaller('Alerts', 'Index', 'deal-content-wrapper'); SetSelectedTabActive('AlertsTab')" class="@((ViewData.ContainsKey("SelectedTab") && ViewData["SelectedTab"].ToString() == Global.Enums.PageNames.Alerts.ToString()) ? "sub-tabs-active" : null)">Alerts</a>
+            </li>
+        }
+
+        @if (Common.CArray.SearchInCookie(role_view_correspondencetab))
+        {
+            <li>
+                <a id="CorrespondenceTab" name="3" onclick="AjaxControllerCaller('Correspondence', 'Index', 'deal-content-wrapper'); SetSelectedTabActive('CorrespondenceTab')" class="@((ViewData.ContainsKey("SelectedTab") && ViewData["SelectedTab"].ToString() == Global.Enums.PageNames.Correspondence.ToString()) ? "sub-tabs-active" : null)">Correspondence</a>
+            </li>
+        }
+
+        @if (Common.CArray.SearchInCookie(role_view_printlisttab))
+        {
+            <li>
+                <a id="DocumentsTab" name="4" onclick="AjaxControllerCaller('Documents', 'Index', 'deal-content-wrapper'); SetSelectedTabActive('DocumentsTab')" class="@((ViewData.ContainsKey("SelectedTab") && ViewData["SelectedTab"].ToString() == Global.Enums.PageNames.Documents.ToString()) ? "sub-tabs-active" : null)">Documents</a>
+            </li>
+        }
+
+        @if (Common.CArray.SearchInCookie(role_view_audittab))
+        {
+            <li>
+                <a id="AuditTab" name="5" onclick="AjaxControllerCaller('Audit', 'Index', 'deal-content-wrapper'); SetSelectedTabActive('AuditTab')" class="@((ViewData.ContainsKey("SelectedTab") && ViewData["SelectedTab"].ToString() == Global.Enums.PageNames.Audit.ToString()) ? "sub-tabs-active" : null)">Audit</a>
+            </li>
+        }
+
+        @if (Common.CArray.SearchInCookie(role_view_feestab))
+        {
+            <li>
+                <a id="PaymentsTab" name="6" onclick="AjaxControllerCaller('Payment', 'Index', 'deal-content-wrapper'); SetSelectedTabActive('PaymentsTab')" class="@((ViewData.ContainsKey("SelectedTab") && ViewData["SelectedTab"].ToString() == Global.Enums.PageNames.Payments.ToString()) ? "sub-tabs-active" : null)">Payments</a>
+            </li>
+        }
+    </ul>
+</div>
+
+
+
+<!-- Mobile Sub Tabs Selection -->
+<select id="mobile-subsection-nav" class="mobile-select-navigation" onchange="eval($('#mobile-subsection-nav').val())">
+    @if (Common.CArray.SearchInCookie(role_view_generaltab))
+    {
+        <option value="AjaxControllerCaller('Deal', 'ViewDeal', 'deal-content-wrapper')">General</option>
+    }
+    @if (Common.CArray.SearchInCookie(role_view_workflowtab))
+    {
+        <option value="AjaxControllerCaller('Workflow', 'Index', 'deal-content-wrapper')">@(ViewData["CurrentDealWorkflow"] == null ? Request.Cookies["CurrentDealWorkflow"].Value.ToString() : ViewData["CurrentDealWorkflow"])</option>
+    }
+    @if (Common.CArray.SearchInCookie(role_view_alertstab))
+    {
+        <option value="AjaxControllerCaller('Alerts', 'Index', 'deal-content-wrapper')">Alerts</option>
+    }
+    @if (Common.CArray.SearchInCookie(role_view_correspondencetab))
+    {
+        <option value="AjaxControllerCaller('Correspondence', 'Index', 'deal-content-wrapper')">Correspondence</option>
+    }
+    @if (Common.CArray.SearchInCookie(role_view_printlisttab))
+    {
+        <option value="AjaxControllerCaller('Documents', 'Index', 'deal-content-wrapper')">Documents</option>
+    }
+    @if (Common.CArray.SearchInCookie(role_view_audittab))
+    {
+        <option value="AjaxControllerCaller('Audit', 'Index', 'deal-content-wrapper')">Audit</option>
+    }
+    @if (Common.CArray.SearchInCookie(role_view_feestab))
+    {
+        <option value="AjaxControllerCaller('Payment', 'Index', 'deal-content-wrapper')">Payments</option>
+    }
+</select>
+
+<!-- Scripts -->
+<script type="text/javascript">
+    //<!--Scripts added so that deal's tab dropdown on smaller screen sizes reflect the selected page -->
+    var mqls = [ // list of window.matchmedia() queries
+                 window.matchMedia("(max-width: 754px)"),
+                 window.matchMedia("(min-width: 755px)")
+                ]
+
+    function mediaqueryresponse(mql) {
+        
+        if (mqls[0].matches) //Matches screen size as from 754px
+        {
+            mqls[0].toLocaleString(document.getElementById("mobile-subsection-nav").selectedIndex = $("ul li").find(".sub-tabs-active").attr("name")); //Set the selected index for mobile version to that of the fullscreen version
+        }
+        if (mqls[1].matches) //Matches screen size as from 755px and upwards
+        {
+                $("ul li").find(".sub-tabs-active").removeClass("sub-tabs-active"); //remove all class from header tab
+                var mobindex = document.getElementById("mobile-subsection-nav").selectedIndex; //Get the selected value of header for mobile version selected 
+                var t = document.getElementsByName(mobindex)[0].className = "sub-tabs-active"; //Set header value to selected for full screen version
+        }
+    }
+
+    for (var i = 0; i < mqls.length; i++) {
+        mediaqueryresponse(mqls[i]) // call action function explicitly at run time
+        mqls[i].addListener(mediaqueryresponse) // call action function whenever each media query is triggered
+    }
+</script>

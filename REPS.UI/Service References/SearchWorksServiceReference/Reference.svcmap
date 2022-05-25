@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="585aafbc-2e51-4854-a492-100a91972e2b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:54738/SearchWorksService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SearchWorksService.disco" MetadataType="Disco" ID="29683dfd-ccb9-4869-bee7-dd248494addc" SourceId="1" SourceUrl="http://localhost:54738/SearchWorksService.svc?disco" />
+    <MetadataFile FileName="SearchWorksService.xsd" MetadataType="Schema" ID="76f902dc-e61b-46f8-9846-b41d6c900894" SourceId="1" SourceUrl="http://localhost:54738/SearchWorksService.svc?xsd=xsd1" />
+    <MetadataFile FileName="SearchWorksService1.xsd" MetadataType="Schema" ID="2a0b642f-fd88-4c86-a910-5cfea018fa97" SourceId="1" SourceUrl="http://localhost:54738/SearchWorksService.svc?xsd=xsd0" />
+    <MetadataFile FileName="SearchWorksService2.xsd" MetadataType="Schema" ID="2f054303-6aad-45f8-9b13-6a63d1e51ba4" SourceId="1" SourceUrl="http://localhost:54738/SearchWorksService.svc?xsd=xsd2" />
+    <MetadataFile FileName="SearchWorksService.wsdl" MetadataType="Wsdl" ID="54ac7ab6-f8f0-4c5d-8f17-3ad1d583fc24" SourceId="1" SourceUrl="http://localhost:54738/SearchWorksService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

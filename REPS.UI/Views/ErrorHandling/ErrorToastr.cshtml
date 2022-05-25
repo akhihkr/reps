@@ -1,0 +1,29 @@
+﻿@{
+    if (ViewBag.PageLayoutPath == null)
+    {
+        Layout = null;
+    }
+    else
+    {
+        Layout = ViewBag.PageLayoutPath;
+    }
+
+}
+
+
+
+<div id="error-section">
+    <i class="material-icons">error_outline</i>
+    <h1>Error!</h1>
+    <p>
+        Something went wrong.
+    </p>
+
+    <a href="/ErrorHandling/ErrorForm?errorMsg=@TempData["ErrorMessage"]" class="button">Send error report</a>
+
+
+</div> <!-- End of error-section -->
+
+
+
+

@@ -1,0 +1,135 @@
+﻿
+@{
+    ViewBag.Title = "Edit Alert";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    //AjaxOptions
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "alerts-table",
+        OnSuccess = "SuccessResult(data,'Alerts', 'RenderPartialAlertsDiaryItems', 'notifications-panel', null, null);SuccessResult(data,'Alerts', 'UpdateNotificationCount', 'notifications', null, null);SuccessResult(data,null,null,null,null,'Alert has been successfully updated');",
+        OnComplete = "onComplete",
+    };
+    //end of AjaxOptions
+
+}
+
+@using (Ajax.BeginForm("EditEvent", "Alerts", new { filter = @ViewBag.Filter }, options, new { id = "EditAlertsForm" }))
+{
+    foreach (var alertEventDetails in ViewData["AlertEventDetails"] as IEnumerable<dynamic>)
+    {
+        DateTime myStartDate = TimeZone.CurrentTimeZone.ToLocalTime(alertEventDetails["StartDate"]);
+        DateTime myEndDate = TimeZone.CurrentTimeZone.ToLocalTime(alertEventDetails["EndDate"]);
+        string startDateInput = myStartDate.ToString("dd/MM/yyyy");
+        string startEndInput = myEndDate.ToString("dd/MM/yyyy");
+        <input type="hidden" name="EventGUID" id="EventGUID" value="@alertEventDetails["AlertsGUID"]" />
+
+        <label>
+            Alert Name:<span>*</span>
+            <input type="text" name="EditEventName" id="EditEventName" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar200))" data-content="required" value="@alertEventDetails["EventName"]" />
+        </label>
+        <label>
+            Location:<span>*</span>
+            <input type="text" name="EditLocation" id="EditLocation" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar2000))" data-content="required" value="@alertEventDetails["Location"]" />
+        </label>
+
+        <div class="row reset-row picker-sections">
+            <div class="small-12 medium-6 columns reset-columns">
+                <label>
+                    Starting Date<span>*</span>
+                    <input class="date-input" type="text" name="StartingDate" data-format="d/m/Y" id="datePickerEditEventStart" data-theme="reps-datedropper" data-modal="true" data-large-mode="true" data-large-default="true" data-init-set="false" data-content="required" value="@startDateInput" readonly>
+                </label>
+            </div>
+
+            <div class="small-12 medium-6 columns">
+                <label>
+                    End Date<span>*</span>
+                    <input class="date-input" type="text" name="EndDate" data-format="d/m/Y" id="datePickerEditEventEnd" data-theme="reps-datedropper" data-modal="true" data-large-mode="true" data-large-default="true" data-init-set="false" data-content="required" value="@startEndInput" readonly>
+                </label>
+            </div>
+
+            <div class="small-12 medium-6 columns reset-columns">
+                <label>
+                    Start Time<span>*</span>
+                    <input class="time-input" type="text" name="StartTime" id="timePickerEditEventStart" value="@(TimeZone.CurrentTimeZone.ToLocalTime(alertEventDetails["StartDate"]).ToString("HH:mm"))" />
+                </label>
+            </div>
+            <div class="small-12 medium-6 columns time-field">
+                <label>
+                    End Time<span>*</span>
+                    <input class="time-input" type="text" name="EndTime" id="timePickerEditEventEnd" value="@(TimeZone.CurrentTimeZone.ToLocalTime(alertEventDetails["EndDate"]).ToString("HH:mm"))" />
+                </label>
+            </div>
+        </div> <!-- End of row reset-row picker-sections -->
+        <label>
+            Description:<span>*</span>
+        </label>
+        <textarea id="EditDescription" name="EditDescription" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharMax))" data-content="required">@alertEventDetails["Comment"]</textarea>
+
+    }
+}
+@section footer
+{
+    <a class="button blue-cta dirty-disabled" id="save" href="#" onclick="CheckDateDifference();">Update Alert</a>
+}
+@section script{
+    <script type="text/javascript">
+
+        //dirty function used to check if event listener has been modified and call the updates function
+        $('#EditAlertsForm').dirrty().on("dirty", function () {
+            $("#save").removeClass("dirty-disabled");//removed attribute if in case if anchor tag is used
+        }).on("clean", function () {
+            $("#save").addClass("dirty-disabled")//add attribute if in case if anchor tag is used
+        });
+        //end of dirty function used to check if event listener has been modified and call the updates function
+
+        $(document).ready(function () {
+            $("#timePickerEditEventStart").timeDropper({ setCurrentTime: false });
+            $("#timePickerEditEventEnd").timeDropper({ setCurrentTime: false });
+            var currentYear = new Date().getFullYear();
+            var options = {
+                minYear: currentYear,
+                maxYear: currentYear + 1,
+                lock: "from",
+                setCurrentDate: false,
+            };
+            $("div.datedropper").remove();//to clear all divs for dropper rendered using class datedropper
+            $("#datePickerEditEventStart").dateDropper(options);
+            $("#datePickerEditEventEnd").dateDropper(options);
+
+            /*$("#timePickerEditEventStart").on("propertychange change keyup paste input", function () {
+                alert("changed");
+            });*/
+        });
+
+        function CheckDateDifference() {
+            var currentDate = new Date();
+            currentDate.setMinutes(currentDate.getMinutes() - 5);
+            var splitStartDate = $('#datePickerEditEventStart').val().split("/");
+            var splitStartTime = $('#timePickerEditEventStart').val().split(":");
+            //var startDateTime = splitStartDate[2] + '-' + splitStartDate[1] + '-' + splitStartDate[0] + ' ' + $('#timePickerEditEventStart').val() + ':00';
+            var formattedStartDateTime = new Date(splitStartDate[2], ((splitStartDate[1]) - 1), splitStartDate[0], splitStartTime[0], splitStartTime[1], 00);
+            //var formattedStartDateTime = new Date(startDateTime);
+
+            var splitEndDate = $('#datePickerEditEventEnd').val().split("/");
+            var splitEndTime = $('#timePickerEditEventEnd').val().split(":");
+            //var endDateTime = splitEndDate[2] + '-' + splitEndDate[1] + '-' + splitEndDate[0] + ' ' + $('#timePickerEditEventEnd').val() + ':00';
+            var formattedEndDateTime = new Date(splitEndDate[2], ((splitEndDate[1]) - 1), splitEndDate[0], splitEndTime[0], splitEndTime[1], 00);
+            //var formattedEndDateTime = new Date(endDateTime);
+            if (formattedStartDateTime < currentDate)
+            {
+                alert('You cannot create Alert with dates prior to the present date.');
+                return false;
+            }
+            if (formattedEndDateTime < formattedStartDateTime) {
+                alert('The end date/time you entered occurs before the start date/time.');
+                return false;
+            }
+            else {
+                FormObjectSubmit('#save', '#EditAlertsForm', true);
+            }
+        }
+    </script>
+}

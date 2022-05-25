@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:54738/WorkflowService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Common" />
+  <xs:import schemaLocation="http://localhost:54738/WorkflowService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:54738/WorkflowService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost:54738/WorkflowService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/REPS.DATA.Entity" />
+  <xs:element name="GetWorkFlowTasks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="workflowID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkFlowTasksResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetWorkFlowTasksResult" nillable="true" type="q1:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkFlowTasksActions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="taskID" type="xs:int" />
+        <xs:element minOccurs="0" name="dealID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkFlowTasksActionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetWorkFlowTasksActionsResult" nillable="true" type="q2:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTaskWorkflowID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="dealID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTaskWorkflowIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetTaskWorkflowIDResult" nillable="true" type="q3:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkFlowActionsAddFields">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="taskID" type="xs:int" />
+        <xs:element minOccurs="0" name="workflowActionID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkFlowActionsAddFieldsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetWorkFlowActionsAddFieldsResult" nillable="true" type="q4:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTaskWorkflowName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="dealID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTaskWorkflowNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetTaskWorkflowNameResult" nillable="true" type="q5:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkflowIDTaskID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="taskGUID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkflowIDTaskIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetWorkflowIDTaskIDResult" nillable="true" type="q6:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkflowDealCount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="workflowID" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="dealProcessTaskID" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="entityID" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkflowDealCountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetWorkflowDealCountResult" nillable="true" type="q7:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkflowsList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="workflowID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkflowsListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetWorkflowsListResult" nillable="true" type="q8:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkFlowTasksActionsList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="taskID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkFlowTasksActionsListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetWorkFlowTasksActionsListResult" nillable="true" type="q9:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertWorkflowActionValues">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="formObjects" nillable="true" type="q10:ArrayOfKeyValueOfstringanyType" />
+        <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FileObjects" nillable="true" type="q11:ArrayOfKeyValueOfstringanyType" />
+        <xs:element minOccurs="0" name="dealID" type="xs:int" />
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertWorkflowActionValuesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="InsertWorkflowActionValuesResult" nillable="true" type="q12:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkFlowActionsEditFields">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="dealID" type="xs:int" />
+        <xs:element minOccurs="0" name="taskID" type="xs:int" />
+        <xs:element minOccurs="0" name="workflowActionID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkFlowActionsEditFieldsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetWorkFlowActionsEditFieldsResult" nillable="true" type="q13:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateWorkflowActionValues">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="formObjects" nillable="true" type="q14:ArrayOfKeyValueOfstringanyType" />
+        <xs:element xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FileObjects" nillable="true" type="q15:ArrayOfKeyValueOfstringanyType" />
+        <xs:element minOccurs="0" name="dealID" type="xs:int" />
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateWorkflowActionValuesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="UpdateWorkflowActionValuesResult" nillable="true" type="q16:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveWorkflowChanges">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="formObjects" nillable="true" type="q17:ArrayOfKeyValueOfstringanyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveWorkflowChangesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="SaveWorkflowChangesResult" nillable="true" type="q18:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddWorkflow">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="formObjects" nillable="true" type="q19:ArrayOfKeyValueOfstringanyType" />
+        <xs:element minOccurs="0" name="workflowID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddWorkflowResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="AddWorkflowResult" nillable="true" type="q20:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllTasks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="processID" type="xs:int" />
+        <xs:element minOccurs="0" name="workflowID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllTasksResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetAllTasksResult" nillable="true" type="q21:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkflowVariableList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="actionID" type="xs:int" />
+        <xs:element minOccurs="0" name="workflowTaskID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkflowVariableListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetWorkflowVariableListResult" nillable="true" type="q22:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkflowActionIsMandatory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="actionID" type="xs:int" />
+        <xs:element minOccurs="0" name="workflowTaskID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkflowActionIsMandatoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetWorkflowActionIsMandatoryResult" nillable="true" type="q23:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ToggleWorkflowVariable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="actionID" type="xs:int" />
+        <xs:element minOccurs="0" name="workflowVariableID" type="xs:int" />
+        <xs:element minOccurs="0" name="toggle" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ToggleWorkflowVariableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="ToggleWorkflowVariableResult" nillable="true" type="q24:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ToggleWorkflowVariableRequired">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="actionID" type="xs:int" />
+        <xs:element minOccurs="0" name="workflowVariableID" type="xs:int" />
+        <xs:element minOccurs="0" name="toggle" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ToggleWorkflowVariableRequiredResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="ToggleWorkflowVariableRequiredResult" nillable="true" type="q25:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ToggleActionMandatory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="actionID" type="xs:int" />
+        <xs:element minOccurs="0" name="toggle" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ToggleActionMandatoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="ToggleActionMandatoryResult" nillable="true" type="q26:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddNewAction">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="formObjects" nillable="true" type="q27:ArrayOfKeyValueOfstringanyType" />
+        <xs:element minOccurs="0" name="workflowTaskID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddNewActionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="AddNewActionResult" nillable="true" type="q28:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveActionChanges">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="formObjects" nillable="true" type="q29:ArrayOfKeyValueOfstringanyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveActionChangesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="SaveActionChangesResult" nillable="true" type="q30:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnAssignActionFromTask">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="workflowActionID" type="xs:int" />
+        <xs:element minOccurs="0" name="workflowTaskID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnAssignActionFromTaskResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="UnAssignActionFromTaskResult" nillable="true" type="q31:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AssignActionToTask">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="workflowActionID" type="xs:int" />
+        <xs:element minOccurs="0" name="workflowTaskID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AssignActionToTaskResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="AssignActionToTaskResult" nillable="true" type="q32:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnAssignTaskFromWorkflow">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="taskID" type="xs:int" />
+        <xs:element minOccurs="0" name="workflowID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnAssignTaskFromWorkflowResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="UnAssignTaskFromWorkflowResult" nillable="true" type="q33:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AssignTaskToWorkflow">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="taskID" type="xs:int" />
+        <xs:element minOccurs="0" name="workflowID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AssignTaskToWorkflowResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="AssignTaskToWorkflowResult" nillable="true" type="q34:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteTask">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="taskWorkflowID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteTaskResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="DeleteTaskResult" nillable="true" type="q35:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteWorkflow">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="workflowID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteWorkflowResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="DeleteWorkflowResult" nillable="true" type="q36:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SwitchUserWorkflowAfterDelete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="workflowToBeDeleted" type="xs:int" />
+        <xs:element minOccurs="0" name="workflowIDToBeReplacedWith" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SwitchUserWorkflowAfterDeleteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="SwitchUserWorkflowAfterDeleteResult" nillable="true" type="q37:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddNewTask">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="formObjects" nillable="true" type="q38:ArrayOfKeyValueOfstringanyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddNewTaskResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="AddNewTaskResult" nillable="true" type="q39:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTask">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="formObjects" nillable="true" type="q40:ArrayOfKeyValueOfstringanyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTaskResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="UpdateTaskResult" nillable="true" type="q41:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTransactionDetailIDByTransactionDetailGUID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="transactionDetailGUID" type="q42:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTransactionDetailIDByTransactionDetailGUIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetTransactionDetailIDByTransactionDetailGUIDResult" nillable="true" type="q43:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveTransactionImg">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/REPS.DATA.Entity" minOccurs="0" name="obj" nillable="true" type="q44:TransactionDetail" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveTransactionImgResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="RemoveTransactionImgResult" nillable="true" type="q45:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCurrentWorkflowsDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="taskID" type="xs:int" />
+        <xs:element minOccurs="0" name="taskWorkflowID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCurrentWorkflowsDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetCurrentWorkflowsDetailsResult" nillable="true" type="q46:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddWorkflowStep">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/REPS.DATA.Entity" minOccurs="0" name="obj" nillable="true" type="q47:DocumentWorkflow" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddWorkflowStepResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="AddWorkflowStepResult" nillable="true" type="q48:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTemplatePerWorkflowStep">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="documentVersionID" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="workflowStepID" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTemplatePerWorkflowStepResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetTemplatePerWorkflowStepResult" nillable="true" type="q49:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

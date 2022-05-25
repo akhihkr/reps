@@ -1,0 +1,92 @@
+﻿
+@{
+    Layout = null;
+
+    //User roles
+    string role_view_adminlist = "AD_LI";
+    string role_view_reportslist = "RE_LI";
+    
+    <!-- Change workflow codes -->
+    object WorkflowsList = REPS.UI.Models.WorkflowModel.GetWorkflowsList((int)Global.Enums.Wokflow.Process);
+    ViewData["WorkflowsList"] = WorkflowsList;
+    string taskGUID = Request.Cookies["REPS_TaskGUID"].Value;
+    string workflowName = string.Empty;
+    <!-- End Change workflow codes -->
+}
+
+<div id="sidebar-logo-section">
+    <a id="reps-logo" href="@Url.Action("Index", "Dashboard")">
+        <div>
+            &nbsp;
+        </div> <!-- End of reps-logo -->
+    </a>
+
+    <a id="logout" href="@Url.Action("Logout", "Login")">
+        <span class="icon ic-logout has-tip right" data-tooltip aria-haspopup="true" data-disable-hover="false" tabindex="-1" title="Log Out"></span>
+    </a>
+</div> <!-- End of sidebar-logo-section -->
+<!-- Sidebar Navigation Menus -->
+<a href="@Url.Action("Index", "Dashboard")">
+    <span class="icon ic-deals"></span>Dashboard
+</a>
+
+<ul id="sub-menu-side-bar" class="sub-menu">
+    @Html.Partial("PartialSubMenuSideBar")
+</ul>
+
+@if (Common.CArray.SearchInCookie(role_view_reportslist))
+{
+    <a href="@Url.Action("Index", "Reports")">
+        <span class="icon ic-report"></span>Reports
+    </a>
+}
+<a href="@Url.Action("Index", "MyProfile")">
+    <span class="icon ic-user"></span>My Profile
+</a>
+
+@if (Common.CArray.SearchInCookie(role_view_adminlist))
+{
+    <a href="@Url.Action("Index", "AdminEntity")">
+        <span class="icon ic-settings"></span>Administration
+    </a>
+}
+
+
+<ul class="vertical menu accordion-menu change-workflow" data-accordion-menu>
+    <li>
+        @foreach (var Workflow in ViewData["WorkflowsList"] as IEnumerable<dynamic>)
+        {
+            if (Workflow["TaskGUID"] == taskGUID)
+            {
+                workflowName = @Workflow["TaskName"];
+            }
+        }
+        <a href="#">@workflowName</a>
+
+        <ul class="menu vertical nested">
+            @foreach (var Workflow in ViewData["WorkflowsList"] as IEnumerable<dynamic>)
+            {
+                if (Workflow["TaskGUID"] == taskGUID)
+                {
+                    <li class="change-workflow-list"><a href="#" class="workflow-selected">@Workflow["TaskName"]</a></li>
+                }
+                else
+                {
+                    <li class="change-workflow-list"><a href="#" onclick="ChangeUserWorkflow('@Workflow["TaskGUID"]')">@Workflow["TaskName"]</a></li>
+                }
+            }
+        </ul>
+    </li>
+</ul>
+
+
+<!-- Mobile Log Out -->
+<div class="mobile-logout">
+    <ul>
+        <a href="@Url.Action("Logout", "Login")" tabindex="-1">
+            <li>
+                <p><i class="material-icons">power_settings_new</i> Log Out</p>
+            </li>
+        </a>
+    </ul>
+</div> <!-- End of mobile-logout -->

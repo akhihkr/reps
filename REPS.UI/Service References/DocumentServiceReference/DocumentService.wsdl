@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DocumentService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:54738/DocumentService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:54738/DocumentService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:54738/DocumentService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Common" />
+      <xsd:import schemaLocation="http://localhost:54738/DocumentService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IDocumentService_GetDocumentTypeList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentTypeList" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_GetDocumentTypeList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentTypeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_GetDocumentType_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentType" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_GetDocumentType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_GetDocumentTemplateList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentTemplateList" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_GetDocumentTemplateList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentTemplateListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_GetDocumentTemplateDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentTemplateDetails" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_GetDocumentTemplateDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentTemplateDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_GenerateDocuments_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenerateDocuments" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_GenerateDocuments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenerateDocumentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_UploadStandardDocuments_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadStandardDocuments" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_UploadStandardDocuments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadStandardDocumentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_UploadSignedDocuments_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadSignedDocuments" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_UploadSignedDocuments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadSignedDocumentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_GetBinaryDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBinaryDocument" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_GetBinaryDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBinaryDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_GetStaticDocumentTemplate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStaticDocumentTemplate" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_GetStaticDocumentTemplate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStaticDocumentTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_GetSignedBinaryDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSignedBinaryDocument" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_GetSignedBinaryDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSignedBinaryDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_GetAdminDocumentCategoryList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdminDocumentCategoryList" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_GetAdminDocumentCategoryList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdminDocumentCategoryListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_GetAdminDocumentTemplateList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdminDocumentTemplateList" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_GetAdminDocumentTemplateList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdminDocumentTemplateListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_AddDocumentCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddDocumentCategory" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_AddDocumentCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddDocumentCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_AddDocumentTemplate_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddDocumentTemplate" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_AddDocumentTemplate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddDocumentTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_RemoveDocumentTemplate_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveDocumentTemplate" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_RemoveDocumentTemplate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveDocumentTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_GetEditDocumentTemplateFields_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEditDocumentTemplateFields" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_GetEditDocumentTemplateFields_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEditDocumentTemplateFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_GetDocumentWorkflowTaskStep_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentWorkflowTaskStep" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_GetDocumentWorkflowTaskStep_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentWorkflowTaskStepResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_SaveDocumentTemplate_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveDocumentTemplate" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_SaveDocumentTemplate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveDocumentTemplateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_GetDocumentTemplateAdmin_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentTemplateAdmin" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_GetDocumentTemplateAdmin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentTemplateAdminResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_RemoveAdminDocumentWorkflow_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveAdminDocumentWorkflow" />
+  </wsdl:message>
+  <wsdl:message name="IDocumentService_RemoveAdminDocumentWorkflow_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveAdminDocumentWorkflowResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IDocumentService">
+    <wsdl:operation name="GetDocumentTypeList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDocumentService/GetDocumentTypeList" message="tns:IDocumentService_GetDocumentTypeList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDocumentService/GetDocumentTypeListResponse" message="tns:IDocumentService_GetDocumentTypeList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDocumentService/GetDocumentType" message="tns:IDocumentService_GetDocumentType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDocumentService/GetDocumentTypeResponse" message="tns:IDocumentService_GetDocumentType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentTemplateList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDocumentService/GetDocumentTemplateList" message="tns:IDocumentService_GetDocumentTemplateList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDocumentService/GetDocumentTemplateListResponse" message="tns:IDocumentService_GetDocumentTemplateList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentTemplateDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDocumentService/GetDocumentTemplateDetails" message="tns:IDocumentService_GetDocumentTemplateDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDocumentService/GetDocumentTemplateDetailsResponse" message="tns:IDocumentService_GetDocumentTemplateDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateDocuments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDocumentService/GenerateDocuments" message="tns:IDocumentService_GenerateDocuments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDocumentService/GenerateDocumentsResponse" message="tns:IDocumentService_GenerateDocuments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadStandardDocuments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDocumentService/UploadStandardDocuments" message="tns:IDocumentService_UploadStandardDocuments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDocumentService/UploadStandardDocumentsResponse" message="tns:IDocumentService_UploadStandardDocuments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadSignedDocuments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDocumentService/UploadSignedDocuments" message="tns:IDocumentService_UploadSignedDocuments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDocumentService/UploadSignedDocumentsResponse" message="tns:IDocumentService_UploadSignedDocuments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBinaryDocument">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDocumentService/GetBinaryDocument" message="tns:IDocumentService_GetBinaryDocument_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDocumentService/GetBinaryDocumentResponse" message="tns:IDocumentService_GetBinaryDocument_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStaticDocumentTemplate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDocumentService/GetStaticDocumentTemplate" message="tns:IDocumentService_GetStaticDocumentTemplate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDocumentService/GetStaticDocumentTemplateResponse" message="tns:IDocumentService_GetStaticDocumentTemplate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSignedBinaryDocument">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDocumentService/GetSignedBinaryDocument" message="tns:IDocumentService_GetSignedBinaryDocument_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDocumentService/GetSignedBinaryDocumentResponse" message="tns:IDocumentService_GetSignedBinaryDocument_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAdminDocumentCategoryList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDocumentService/GetAdminDocumentCategoryList" message="tns:IDocumentService_GetAdminDocumentCategoryList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDocumentService/GetAdminDocumentCategoryListResponse" message="tns:IDocumentService_GetAdminDocumentCategoryList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAdminDocumentTemplateList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDocumentService/GetAdminDocumentTemplateList" message="tns:IDocumentService_GetAdminDocumentTemplateList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDocumentService/GetAdminDocumentTemplateListResponse" message="tns:IDocumentService_GetAdminDocumentTemplateList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDocumentCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDocumentService/AddDocumentCategory" message="tns:IDocumentService_AddDocumentCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDocumentService/AddDocumentCategoryResponse" message="tns:IDocumentService_AddDocumentCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDocumentTemplate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDocumentService/AddDocumentTemplate" message="tns:IDocumentService_AddDocumentTemplate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDocumentService/AddDocumentTemplateResponse" message="tns:IDocumentService_AddDocumentTemplate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveDocumentTemplate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDocumentService/RemoveDocumentTemplate" message="tns:IDocumentService_RemoveDocumentTemplate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDocumentService/RemoveDocumentTemplateResponse" message="tns:IDocumentService_RemoveDocumentTemplate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEditDocumentTemplateFields">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDocumentService/GetEditDocumentTemplateFields" message="tns:IDocumentService_GetEditDocumentTemplateFields_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDocumentService/GetEditDocumentTemplateFieldsResponse" message="tns:IDocumentService_GetEditDocumentTemplateFields_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentWorkflowTaskStep">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDocumentService/GetDocumentWorkflowTaskStep" message="tns:IDocumentService_GetDocumentWorkflowTaskStep_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDocumentService/GetDocumentWorkflowTaskStepResponse" message="tns:IDocumentService_GetDocumentWorkflowTaskStep_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveDocumentTemplate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDocumentService/SaveDocumentTemplate" message="tns:IDocumentService_SaveDocumentTemplate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDocumentService/SaveDocumentTemplateResponse" message="tns:IDocumentService_SaveDocumentTemplate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentTemplateAdmin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDocumentService/GetDocumentTemplateAdmin" message="tns:IDocumentService_GetDocumentTemplateAdmin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDocumentService/GetDocumentTemplateAdminResponse" message="tns:IDocumentService_GetDocumentTemplateAdmin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveAdminDocumentWorkflow">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDocumentService/RemoveAdminDocumentWorkflow" message="tns:IDocumentService_RemoveAdminDocumentWorkflow_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDocumentService/RemoveAdminDocumentWorkflowResponse" message="tns:IDocumentService_RemoveAdminDocumentWorkflow_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="DocumentService" />
+</wsdl:definitions>

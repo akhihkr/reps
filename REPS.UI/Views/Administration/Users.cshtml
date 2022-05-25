@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/LayoutMain.cshtml";
+}
+
+
+<div class="box add-box-padding">
+
+    <div class="row reset-row">
+        <h4>Users</h4>
+        <p>Please find the list of users currently in the system.</p>
+        @*<a class="button align-right"  href="#">Add Entity</a>*@
+
+        <!-- Filter -->
+        <div class="filter-table">
+            <div class="medium-4 columns reset-columns">
+                <label>
+                    <select>
+                        <option>Search by</option>
+                        <option>Name</option>
+                        <option>Registration No</option>
+                        <option>Legal name</option>
+                    </select>
+                </label>
+            </div> <!-- End of medium-4 columns -->
+
+            <div class="medium-4 columns">
+                <label>
+                    <input id="search-box-ent" type="text" placeholder="Please enter your criteria...">
+                </label>
+            </div> <!-- End of medium-4 columns -->
+
+            <div class="medium-4 columns">
+                <div class="filter-buttons">
+                    <a class="secondary">Clear</a>
+                    <a class="primary">Search</a>
+                </div> <!-- End of filter-buttons -->
+            </div> <!-- End of medium-4 columns -->
+        </div> <!-- End of filter-table -->
+        <!-- End of Filter -->
+
+    </div> <!-- End of row reset-row -->
+
+
+    <div class="table-scroll entity-table">
+        <table class="deals-table">
+            <thead>
+                <tr id="table-head">
+                    <th width="100">Entity Name</th>
+                    <th width="100">Registration Number</th>
+                    <th class="hide-row-mobile" width="50">Telephone</th>
+                    <th class="hide-row-mobile" width="50">Fax Number</th>
+                    <th class="hide-row-mobile" width="50">Email</th>
+                    <th width="10"></th>
+                </tr>
+            </thead>
+            <tbody class="hover">
+                <tr>
+                    <td>COUZYNS INCORPORATED</td>
+                    <td>3214234234</td>
+                    <td class="hide-row-mobile">117880188</td>
+                    <td class="hide-row-mobile">866452407</td>
+                    <td class="hide-row-mobile">Adriaan.Badenhors@couzyns.co.za	</td>
+                    <td><a href="#">Edit</a></td>
+                </tr>
+
+                <tr>
+                    <td>COUZYNS INCORPORATED</td>
+                    <td>3214234234</td>
+                    <td class="hide-row-mobile">117880188</td>
+                    <td class="hide-row-mobile">866452407</td>
+                    <td class="hide-row-mobile">Adriaan.Badenhors@couzyns.co.za	</td>
+                    <td><a href="#">Edit</a></td>
+                </tr>
+
+                <tr>
+                    <td>COUZYNS INCORPORATED</td>
+                    <td>3214234234</td>
+                    <td class="hide-row-mobile">117880188</td>
+                    <td class="hide-row-mobile">866452407</td>
+                    <td class="hide-row-mobile">Adriaan.Badenhors@couzyns.co.za	</td>
+                    <td><a href="#">Edit</a></td>
+                </tr>
+
+                <tr>
+                    <td>COUZYNS INCORPORATED</td>
+                    <td>3214234234</td>
+                    <td class="hide-row-mobile">117880188</td>
+                    <td class="hide-row-mobile">866452407</td>
+                    <td class="hide-row-mobile">Adriaan.Badenhors@couzyns.co.za	</td>
+                    <td><a href="#">Edit</a></td>
+                </tr>
+
+                <tr>
+                    <td>COUZYNS INCORPORATED</td>
+                    <td>3214234234</td>
+                    <td class="hide-row-mobile">117880188</td>
+                    <td class="hide-row-mobile">866452407</td>
+                    <td class="hide-row-mobile">Adriaan.Badenhors@couzyns.co.za	</td>
+                    <td><a href="#">Edit</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div> <!-- End of table-scroll -->
+
+</div> <!-- End of box -->

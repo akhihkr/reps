@@ -1,0 +1,16 @@
+C:\MYProjectsShare\REPS\REPS.DATA.Entity\bin\Debug\REPS.DATA.Entity.dll.config
+C:\MYProjectsShare\REPS\REPS.DATA.Entity\bin\Debug\REPS.DATA.Entity.dll
+C:\MYProjectsShare\REPS\REPS.DATA.Entity\bin\Debug\REPS.DATA.Entity.pdb
+C:\MYProjectsShare\REPS\REPS.DATA.Entity\bin\Debug\EntityFramework.dll
+C:\MYProjectsShare\REPS\REPS.DATA.Entity\bin\Debug\EntityFramework.SqlServer.dll
+C:\MYProjectsShare\REPS\REPS.DATA.Entity\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\MYProjectsShare\REPS\REPS.DATA.Entity\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\MYProjectsShare\REPS\REPS.DATA.Entity\bin\Debug\EntityFramework.xml
+C:\MYProjectsShare\REPS\REPS.DATA.Entity\bin\Debug\EntityFramework.SqlServer.xml
+C:\MYProjectsShare\REPS\REPS.DATA.Entity\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\MYProjectsShare\REPS\REPS.DATA.Entity\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\MYProjectsShare\REPS\REPS.DATA.Entity\obj\Debug\REPS.DATA.Entity.csproj.AssemblyReference.cache
+C:\MYProjectsShare\REPS\REPS.DATA.Entity\obj\Debug\REPS.DATA.Entity.csproj.CoreCompileInputs.cache
+C:\MYProjectsShare\REPS\REPS.DATA.Entity\obj\Debug\REPS.DATA.Entity.csproj.CopyComplete
+C:\MYProjectsShare\REPS\REPS.DATA.Entity\obj\Debug\REPS.DATA.Entity.dll
+C:\MYProjectsShare\REPS\REPS.DATA.Entity\obj\Debug\REPS.DATA.Entity.pdb

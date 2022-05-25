@@ -1,0 +1,176 @@
+﻿@using Global;
+@{
+    ViewBag.Title = "Edit Payment";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    //User roles
+    string role_view_feedelete = "FE_DE";
+
+    //ajax
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "payments-table",
+        OnSuccess = "onSuccessToasterMsg(null,null,null,null,'Payment has been successfully updated')",
+        OnFailure = "OnFailure",
+        OnComplete = "onComplete",
+    };
+    string transactionGUID = string.Empty;
+}
+
+@using (Ajax.BeginForm("EditFee", "Fees", options, new { name = "EditFee", id = "EditFee" }))
+{
+    <!-- Edit Payment Content -->
+    <div class="row reset-row">
+        @foreach (var WFActionResult in TempData["EditFeeResult"] as IEnumerable<dynamic>)
+        {
+            transactionGUID = WFActionResult["TransactionDetailGUID"];
+            string datarequired, fieldrequired = null;
+            if (Convert.ToBoolean(WFActionResult["IsRequired"]) == true)
+            {
+                datarequired = "required";
+                fieldrequired = "*";
+            }
+            else
+            {
+                datarequired = null;
+                fieldrequired = null;
+            }
+
+            switch ((int)WFActionResult["WorkflowVariableID"])
+            {
+                case (int)Enums.FieldType.Type:
+                    <div class="medium-12 columns reset-columns">
+                        <label>Payment Type <span>@fieldrequired</span></label>
+                        <select tabindex="1" id="FeeType" name="FieldType:@WFActionResult["TransactionID"]:@WFActionResult["WorkflowActionVarID"]:@WFActionResult["WorkflowVariableID"]" data-content=@datarequired>
+                            <option selected value="-1">Select an option:</option>
+                            @foreach (var FeeType in TempData["FeeTypeList"] as IEnumerable<dynamic>)
+                            {
+                                if (Convert.ToInt32(WFActionResult["Value"]) == Convert.ToInt32(@FeeType["FeeTypeID"]))
+                                {
+                                    <option name="FieldType:@WFActionResult["TransactionID"]:@WFActionResult["WorkflowActionVarID"]:@WFActionResult["WorkflowVariableID"]" value="@FeeType["FeeTypeID"]" selected>@FeeType["Description"]</option>
+                                }
+                                else
+                                {
+                                    <option name="FieldType:@WFActionResult["TransactionID"]:@WFActionResult["WorkflowActionVarID"]:@WFActionResult["WorkflowVariableID"]" value="@FeeType["FeeTypeID"]">@FeeType["Description"]</option>
+                                }
+
+                            }
+                        </select>
+                    </div>
+                    break;
+                case (int)Enums.FieldType.Date:
+
+                    //Split into Date and Time fields
+                    string storeddate = null, storedtime = null;
+                    if (@WFActionResult["Value"] != null)
+                    {
+                        var retrievedData = Convert.ToString(@WFActionResult["Value"]).Split(' ');
+                        if (retrievedData.Length > 1)
+                        {
+                            storeddate = retrievedData[0];
+                            storedtime = retrievedData[1];
+                        }
+                        else
+                        {
+                            storeddate = retrievedData[0];
+                        }
+                    }
+
+                    <div class="small-12 medium-6 columns reset-columns">
+                        <label>
+                            Date <span>@fieldrequired</span>
+                            <input class="date-input" type="text" id="datePickerFeePanel" data-theme="reps-datedropper" data-format="d/m/Y" data-init-set="false" data-modal="true" data-large-mode="true" data-large-default="true" name="datePickerFeePanel:@WFActionResult["TransactionID"]:@WFActionResult["WorkflowActionVarID"]:@WFActionResult["WorkflowVariableID"]" value="@storeddate" data-content=@datarequired readonly />
+                        </label>
+                    </div>
+                    <div class="small-12 medium-6 columns reset-columns">
+                        <label>
+                            Time <span>@fieldrequired</span>
+                            <input tabindex="3" type="text" id="timePickerFeePanel" name="timePickerFeePanel:@WFActionResult["TransactionID"]:@WFActionResult["WorkflowActionVarID"]:@WFActionResult["WorkflowVariableID"]" value="@storedtime" data-content=@datarequired readonly />
+                        </label>
+                    </div>
+                    <input type="hidden" id="DateTimeValue" name="FieldType:@WFActionResult["TransactionID"]:@WFActionResult["WorkflowActionVarID"]:@WFActionResult["WorkflowVariableID"]" value="@WFActionResult["Value"]" />
+
+                    break;
+                case (int)Enums.FieldType.Comment:
+                    <div class="small-12 columns reset-columns">
+                        <label>
+                            Description <span>@fieldrequired</span>
+                            <textarea tabindex="5" id="@WFActionResult["WorkflowActionVarID"]" name="FieldType:@WFActionResult["TransactionID"]:@WFActionResult["WorkflowActionVarID"]:@WFActionResult["WorkflowVariableID"]" type="text" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharMax))" placeholder="" data-content=@datarequired>@WFActionResult["Value"]</textarea>
+                        </label>
+                    </div>
+                    break;
+                case (int)Enums.FieldType.Value:
+                    <div class="small-12 columns reset-columns">
+                        <label>
+                            Credit <span>@fieldrequired</span>
+                            <input tabindex="4" id="@WFActionResult["WorkflowActionVarID"]" name="FieldType:@WFActionResult["TransactionID"]:@WFActionResult["WorkflowActionVarID"]:@WFActionResult["WorkflowVariableID"]" type="text" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.decimalValue))" placeholder="" value="@Math.Round(@Convert.ToDouble(WFActionResult["Value"]), 2, MidpointRounding.AwayFromZero)" data-content=@datarequired format="amount" />
+                        </label>
+                    </div>
+                    break;
+                default:
+                    break;
+            }
+
+        }
+    </div> <!-- End of row reset-row picker-sections -->
+    <!-- End of Edit Payment Content -->
+}
+
+@section footer
+{
+    @*<a class="" href="#" onclick="removePayment('@transactionGUID');">Remove</a>*@
+    @if (Common.CArray.SearchInCookie(role_view_feedelete))
+    {
+        @Ajax.ActionLink("Remove", "RemovePayment",
+                new { transactionGUID = @transactionGUID },
+                new AjaxOptions
+                {
+                    UpdateTargetId = "payments-table",
+                    InsertionMode = InsertionMode.Replace,
+                    HttpMethod = "POST",
+                    Confirm = "Are you sure you want to remove this payment?",
+                    OnSuccess = "onSuccessToasterMsg(null,null,null,null,'Payment has been successfully removed')",
+                    OnFailure = "OnFailure",
+                    OnComplete = "onComplete",
+                }, new { @class = "button left remove-button" })
+    }
+
+    <a class="button blue-cta dirty-disabled" id="EditPaymentSaveBtn" href="#" onclick="FormatFeeDatePS(); FormObjectSubmit('#EditPaymentSaveBtn', '#EditFee', true);">Update Payment</a>
+}
+
+@section script
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#timePickerFeePanel").timeDropper({ setCurrentTime: false });
+            var currentYear = new Date().getFullYear();
+            var options = {
+                minYear: currentYear,
+                maxYear: currentYear + 1,
+                lock: "from",
+                setCurrentDate: false,
+            };
+            $("div.datedropper").remove();//to clear all divs for dropper rendered using class datedropper
+            $("#datePickerFeePanel").dateDropper(options);
+        });
+
+        function FormatFeeDatePS() {
+            $('#DateTimeValue').val($('#datePickerFeePanel').val() + " " + $('#timePickerFeePanel').val());      // store date and time formatted to db
+        };
+
+        $('#AddPaymentSaveBtn').on('click', function () {
+            FormatFeeDatePS();
+        });
+
+
+        //dirty function used to check if event listener has been modified and call the updates function
+        $('#EditFee').dirrty().on("dirty", function () {
+            $("#EditPaymentSaveBtn").removeClass("dirty-disabled");//removed attribute if in case if anchor tag is used
+        }).on("clean", function () {
+            $("#EditPaymentSaveBtn").addClass("dirty-disabled")//add attribute if in case if anchor tag is used
+        });
+        //end of dirty function used to check if event listener has been modified and call the updates function
+    </script>
+}

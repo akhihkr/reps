@@ -1,0 +1,83 @@
+﻿
+@{
+    string workflowTaskName = null;
+    string workflowTaskNameID = null;
+
+    foreach (var dealProcess in ViewData["DealProcesses"] as IEnumerable<dynamic>)
+    {
+        if (Request.Cookies["REPS_TaskGUID"].Value.ToString() == @dealProcess["TaskGUID"].ToString())
+        {            
+            workflowTaskName = @dealProcess["TaskName"];
+            workflowTaskNameID = @dealProcess["TaskID"].ToString();
+        }
+    }
+
+
+    ViewBag.Title = "Create Deal (" + workflowTaskName + ")";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    //ajax
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        OnSuccess = "OnSuccessDealCreated",
+    };
+}
+    @using (Ajax.BeginForm("SaveDeal", "Deal", options, new { @id = "AddDealFormPopup", name = "AddDealFormPopup" }))
+    {
+    <div class="row reset-row">
+        <h1 id="popup-unique-reference">@ViewData["UniqueReference"]</h1>
+    </div> <!-- End of row row-reset-->
+
+    <div class="row reset-row">
+        <!-- Deal workFLow Process -->
+        @*<div class="medium-4 columns reset-columns">
+
+            <select id="DealProcessTaskID" name="DealProcessTaskID" readonly>
+                    @{
+                        /// Deal Process -> Buyer Seller
+                        foreach (var dealProcess in ViewData["DealProcesses"] as IEnumerable<dynamic>)
+                        {
+                            if (Request.Cookies["REPS_TaskGUID"].Value.ToString() == @dealProcess["TaskGUID"].ToString())
+                            {
+                                <option selected value="@dealProcess["TaskID"]">@dealProcess["TaskName"]</option>
+                            }
+                        }
+                    }
+                </select>
+</div>*@
+        <!-- End Deal workFLow Process -->
+        <!-- End of medium-4 columns -->
+        <input type="hidden" id="DealProcessTaskID" name="DealProcessTaskID" value="@workflowTaskNameID" readonly>
+        <input type="hidden" id="UniqueReference" name="UniqueReference" value=@ViewData["UniqueReference"] readonly>
+        <div class="medium-8 columns">
+            <label>
+                Client<span>*</span>
+                <input type="text" id="clientRef" name="clientRef" class="" value="" data-content="required">
+            </label>
+        </div> <!-- End of medium-4 columns -->
+        <div class="medium-4 columns">
+            <label>
+                Deal Type<span>*</span>
+            </label>
+            <select id="DealTypeID" name="DealTypeID" data-content="required">
+                <option value='-1' default selected>Select an option:</option>
+                @{
+                    /// DealTypes
+                    foreach (var dealType in ViewData["DealTypes"] as IEnumerable<dynamic>)
+                    {
+
+                        <option value="@dealType["DealTypeID"]">@dealType["Description"]</option>
+                    }
+                }
+            </select>
+        </div> <!-- End of medium-4 columns -->
+    </div> <!-- End of row reset-row -->
+                    }<!-- End of form Deal-->
+
+
+
+@section footer
+{
+    <a href="#" class="button align-right" id="btn-saved" onclick="FormObjectSubmit('#btn-saved', '#AddDealFormPopup', true);">Save</a>
+}

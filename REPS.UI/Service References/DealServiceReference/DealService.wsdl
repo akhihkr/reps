@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DealService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:54738/DealService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:54738/DealService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:54738/DealService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/REPS.DATA.Entity" />
+      <xsd:import schemaLocation="http://localhost:54738/DealService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Common" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IDealService_AddDeal_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddDeal" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_AddDeal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddDealResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetUserID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserID" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetUserID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetDeal_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeal" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetDeal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetDealTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealTypes" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetDealTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetDealIDByDealUniqueRef_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealIDByDealUniqueRef" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetDealIDByDealUniqueRef_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealIDByDealUniqueRefResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_UpdateDeal_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDeal" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_UpdateDeal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDealResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_EditCompletionDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditCompletionDate" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_EditCompletionDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditCompletionDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetCompletionDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompletionDate" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetCompletionDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompletionDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetCompletedActionsByWorkflowID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompletedActionsByWorkflowID" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetCompletedActionsByWorkflowID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompletedActionsByWorkflowIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetMandatoryActionsList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMandatoryActionsList" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetMandatoryActionsList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMandatoryActionsListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetDealLastActionBy_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealLastActionBy" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetDealLastActionBy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealLastActionByResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetCurrentWorkflowStep_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentWorkflowStep" />
+  </wsdl:message>
+  <wsdl:message name="IDealService_GetCurrentWorkflowStep_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentWorkflowStepResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IDealService">
+    <wsdl:operation name="AddDeal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDealService/AddDeal" message="tns:IDealService_AddDeal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDealService/AddDealResponse" message="tns:IDealService_AddDeal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDealService/GetUserID" message="tns:IDealService_GetUserID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDealService/GetUserIDResponse" message="tns:IDealService_GetUserID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDealService/GetDeal" message="tns:IDealService_GetDeal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDealService/GetDealResponse" message="tns:IDealService_GetDeal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDealTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDealService/GetDealTypes" message="tns:IDealService_GetDealTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDealService/GetDealTypesResponse" message="tns:IDealService_GetDealTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDealIDByDealUniqueRef">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDealService/GetDealIDByDealUniqueRef" message="tns:IDealService_GetDealIDByDealUniqueRef_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDealService/GetDealIDByDealUniqueRefResponse" message="tns:IDealService_GetDealIDByDealUniqueRef_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateDeal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDealService/UpdateDeal" message="tns:IDealService_UpdateDeal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDealService/UpdateDealResponse" message="tns:IDealService_UpdateDeal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditCompletionDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDealService/EditCompletionDate" message="tns:IDealService_EditCompletionDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDealService/EditCompletionDateResponse" message="tns:IDealService_EditCompletionDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompletionDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDealService/GetCompletionDate" message="tns:IDealService_GetCompletionDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDealService/GetCompletionDateResponse" message="tns:IDealService_GetCompletionDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompletedActionsByWorkflowID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDealService/GetCompletedActionsByWorkflowID" message="tns:IDealService_GetCompletedActionsByWorkflowID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDealService/GetCompletedActionsByWorkflowIDResponse" message="tns:IDealService_GetCompletedActionsByWorkflowID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMandatoryActionsList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDealService/GetMandatoryActionsList" message="tns:IDealService_GetMandatoryActionsList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDealService/GetMandatoryActionsListResponse" message="tns:IDealService_GetMandatoryActionsList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDealLastActionBy">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDealService/GetDealLastActionBy" message="tns:IDealService_GetDealLastActionBy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDealService/GetDealLastActionByResponse" message="tns:IDealService_GetDealLastActionBy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentWorkflowStep">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDealService/GetCurrentWorkflowStep" message="tns:IDealService_GetCurrentWorkflowStep_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDealService/GetCurrentWorkflowStepResponse" message="tns:IDealService_GetCurrentWorkflowStep_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="DealService" />
+</wsdl:definitions>

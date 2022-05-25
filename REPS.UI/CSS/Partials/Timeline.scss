@@ -1,0 +1,13 @@
+﻿@charset "UTF-8";
+@import "../Partials/GlobalVariables.scss";
+
+
+div.timeline-event {
+    -moz-box-sizing: border-box;
+    background-color: $primary-color !important;
+    border-color: none;
+    box-sizing: border-box;
+    color: $white !important;
+    display: inline-block;
+    font-size: 13px;
+}

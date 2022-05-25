@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewBag.Title = "Edit Role";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    //AjaxOptions property
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "content-admin",
+        OnSuccess = "SuccessResult(data,null,null,null,null,'Role has been successfully updated');",
+        OnFailure = "OnFailure",
+        OnComplete = "onComplete",
+    };
+    //end of AjaxOptions property
+
+    IEnumerable<dynamic> userInfo = REPS.UI.Models.UserModel.GetUserInfo(null, Request.Cookies["REPS_AspNetUsersId"].Value.ToString());
+    string roleID = userInfo.FirstOrDefault()["RoleID"].ToString();
+}
+
+@Scripts.Render("~/Bundles/MultiSelect")
+
+@using (Ajax.BeginForm("EditRole", "AdminRoles", new { roleID = ViewData["RoleID"] }, options, new { name = "EditRole", id = "EditRole", enctype = "multipart/form-data" }))
+{
+    <div class="row reset-row manage-workflows">
+        <input type="hidden" name="roleID" id="roleID" value="@ViewData["RoleID"]" />
+        <label>
+            Role Name <span>*</span>
+            <input type="text" id="RoleName" name="RoleName" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar255))" data-content="required" value="@ViewData["RoleName"]" />
+        </label>
+
+        <select id="optgroup" multiple="multiple" style="position: absolute; left: -9999px;" name="RoleAction">
+            @foreach (var RoleAction in ViewData["RoleActionsList"] as IEnumerable<dynamic>)
+            {
+                if (Convert.ToInt32(RoleAction["Assigned"]) == 1)
+                {
+                    <option value='@RoleAction["UserActionID"]' selected>@RoleAction["Description"]</option>
+                }
+                else
+                {
+                    <option value='@RoleAction["UserActionID"]'>@RoleAction["Description"]</option>
+                }
+            }
+        </select>
+    </div> <!-- End of row reset-row manage-workflows -->
+}
+
+@section footer
+{
+    <a class="button align-right dirty-disabled" id="btn-edit-saved" onclick="CheckIfNameExists('#RoleName', '#btn-edit-saved', '#EditRole', '@ViewData["RoleName"]', '@Global.Enums.FieldNameCheck.AdminRoleName', '@ViewData["RoleID"]', true, '@roleID');" href="#">Update Role</a>
+}
+@section script
+{
+    <script>
+        var options = [];
+        $('.dropdown-menu a').on('click', function (event) {
+
+            var $target = $(event.currentTarget),
+                val = $target.attr('data-value'),
+                $inp = $target.find('input'),
+                idx;
+
+            if ((idx = options.indexOf(val)) > -1) {
+                options.splice(idx, 1);
+                setTimeout(function () { $inp.prop('checked', false) }, 0);
+            } else {
+                options.push(val);
+                setTimeout(function () { $inp.prop('checked', true) }, 0);
+            }
+
+            $(event.target).blur();
+
+            console.log(options);
+            return false;
+        });
+
+        $(document).ready(function () {
+            $('#optgroup').multiSelect(
+           {
+               selectableHeader: "<div class='custom-header'>Not Assigned</div>",
+               selectionHeader: "<div class='custom-header'>Assigned</div>",
+               selectableOptgroup: true,
+               keepOrder: true,
+
+               afterSelect: function (actionID) {
+                   var RoleID = $('#roleID').val();
+                   AssignRoleActionToRole(actionID[0], RoleID, true);
+               },
+               afterDeselect: function (actionID) {
+                   var RoleID = $('#roleID').val();
+                   AssignRoleActionToRole(actionID[0], RoleID, false);
+               }
+           })}
+        );
+        //dirty function used to check if event listener has been modified and call the updates function
+        $('#EditRole').dirrty().on("dirty", function () {
+            $("#btn-edit-saved").removeClass("dirty-disabled");//removed attribute if in case if anchor tag is used
+        }).on("clean", function () {
+            $("#btn-edit-saved").addClass("dirty-disabled")//add attribute if in case if anchor tag is used
+        });
+        //end of dirty function used to check if event listener has been modified and call the updates function
+    </script>
+}

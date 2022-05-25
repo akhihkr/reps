@@ -1,0 +1,823 @@
+﻿@charset "UTF-8";
+@import "../Partials/GlobalVariables.scss";
+
+/*------------------------------------*\
+	Matters
+\*------------------------------------*/
+
+.deal-section {
+    padding: 18px 16px;
+    margin-bottom: 0;
+}
+
+.deal-general-details {
+    border-right: 1px solid #e5e5e5;
+    height: 75px;
+    display: block;
+    float: left;
+    padding-left: 0.6%;
+    padding-right: 1.5%;
+}
+
+.deal-general-details ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    line-height: 20px;
+}
+
+.deal-general-details a {
+    font-size: 13px;
+}
+
+#client-unique-identifier {
+    font-size: 11px;
+    color: #a4a7a9;
+    margin-top: -5px;
+    position: relative;
+    display: block;
+}
+
+#client-reference {
+    font-family: $heading-font;
+    font-size: 14px;
+    max-width: 125px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
+
+#deal-type {
+    font-size: 13px;
+    color: #49aa4d;
+}
+
+.deal-summary-title {
+    font-size: 12px;
+    color: #7a7a7a;
+    margin-top: -2px;
+    display: block;
+}
+
+.deal-summary-status {
+    font-family: $heading-font;
+    font-size: 16px;
+}
+
+#deal-summary {
+    height: 75px;
+    float: left;
+    margin-left: 10px;
+}
+
+.deal-summary-box {
+    float: left;
+    display: block;
+    height: 75px;
+    margin-right: 33px;
+}
+
+.deal-summary-box:first-child {
+    margin-left: 0;
+}
+
+.deal-summary-box:last-child {
+    margin-right: 0;
+}
+
+.deal-summary-box ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+    line-height: 20px;
+}
+
+.deal-summary-box li {}
+
+.deal-summary-box i {
+    font-size: 28px;
+    display: inline-block;
+}
+
+.deal-summary-title {
+    font-size: 12px;
+    color: $body-color;
+    margin-top: -2px;
+    display: block;
+}
+
+.deal-summary-status {
+    font-family: $heading-font;
+    font-size: 14px;
+}
+
+
+/* Percentage Bar */
+
+.progress-percentage {
+    width: 80px;
+    height: 80px;
+    float: left;
+    text-align: center;
+}
+
+.progress-bar .progress-active {
+    position: relative;
+    top: -281px;
+}
+
+.progress-bar {
+    width: 75px;
+    height: 75px;
+}
+
+.progress-bar p {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 75px;
+    top: -541px;
+    font-size: 19px;
+    font-weight: 600;
+    text-align: center;
+    color: $green-btn-color;
+}
+
+#progressControllerContainer {
+    position: absolute;
+    display: none;
+    top: 320px;
+    padding: 10px 80px;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    margin: 38px 0;
+    width: 100%;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 20px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: #ffffff;
+    border-radius: 0px;
+    border: 1px solid #e6e6e6;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    border: 1px solid #d6d6d6;
+    height: 38px;
+    width: 20px;
+    border-radius: 5px;
+    background: #e1e1e1;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -10px;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ffffff;
+}
+
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 20px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: #ffffff;
+    border-radius: 0px;
+    border: 1px solid #e6e6e6;
+}
+
+input[type=range]::-moz-range-thumb {
+    border: 1px solid #d6d6d6;
+    height: 38px;
+    width: 20px;
+    border-radius: 5px;
+    background: #e1e1e1;
+    cursor: pointer;
+}
+
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 20px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: transparent;
+    border-color: transparent;
+    border-width: 20px 0;
+    color: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+    background: #f2f2f2;
+    border: 1px solid #e6e6e6;
+    border-radius: 0px;
+}
+
+input[type=range]::-ms-fill-upper {
+    background: #ffffff;
+    border: 1px solid #e6e6e6;
+    border-radius: 0px;
+}
+
+input[type=range]::-ms-thumb {
+    border: 1px solid #d6d6d6;
+    height: 38px;
+    width: 20px;
+    border-radius: 5px;
+    background: #e1e1e1;
+    cursor: pointer;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+    background: #ffffff;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+    background: #ffffff;
+}
+
+
+/* Completion Date */
+
+a.button.completion-date-btn {
+    background: none;
+    color: #fff;
+    padding: 0;
+    position: relative;
+    display: inline;
+    top: 0;
+    border: 0;
+    box-shadow: none;
+}
+
+.button.completion-date-btn i {
+    font-size: 15px;
+    float: none;
+    color: $primary-color;
+    top: 0;
+    left: 2px;
+    transition: .2s ease color;
+}
+
+.button.completion-date-btn i:hover {
+    color: #0a79d2;
+    transition: .2s ease color;
+    cursor: pointer;
+}
+
+
+/* Deal Columns */
+
+.no-deal-section {
+    height: 133px;
+    padding-top: 0px;
+    clear: both;
+    margin-top: 54px;
+}
+
+.no-deal-section i {
+    font-size: 65px;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    display: block;
+    color: #d8d8d8;
+    margin-bottom: 10px;
+}
+
+.no-deal-section p {
+    text-align: center;
+    font-size: 13px;
+    color: #aaabad;
+}
+
+.participant-columns .button {
+    font-size: 0.6rem !important;
+}
+
+.participant-title-section {
+    background: #fff;
+    height: 60px;
+    padding-top: 18px;
+    padding-left: 12px;
+    padding-right: 12px;
+    .button {
+        float: right;
+        padding: 10px 10px;
+        display: inline-block;
+        margin: 0;
+        margin-top: -30px;
+        position: relative;
+    }
+}
+
+.no-participant-section {
+    height: 133px;
+    padding-top: 0px;
+    clear: both;
+}
+
+.participant-title-section h1 {
+    font-size: 18px;
+    text-align: left;
+    color: $header-font-color;
+}
+
+.no-participant-section p {
+    text-align: center;
+    font-size: 13px;
+    color: #aaabad;
+}
+
+.no-participant-section i {
+    font-size: 65px;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    display: block;
+    color: #d8d8d8;
+}
+
+
+/* Properties Card Title */
+
+.properties-title-section {
+    background: #fff;
+    height: 60px;
+    padding-top: 18px;
+    padding-left: 12px;
+    padding-right: 12px;
+    .button {
+        float: right;
+        padding: 10px 10px;
+        display: inline-block;
+        margin: 0;
+        margin-top: -30px;
+        position: relative;
+    }
+}
+
+.properties-title-section h1 {
+    font-size: 18px;
+    text-align: left;
+    color: $header-font-color;
+}
+
+.no-property-section {
+    height: 133px;
+    padding-top: 0px;
+    clear: both;
+}
+
+.no-property-section i {
+    font-size: 65px;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    display: block;
+    color: #d8d8d8;
+}
+
+.no-property-section p {
+    text-align: center;
+    font-size: 13px;
+    color: #aaabad;
+}
+
+
+/* Mortgage Card Title */
+
+.mortgage-title-section {
+    background: #fff;
+    height: 60px;
+    padding-top: 18px;
+    padding-left: 12px;
+    padding-right: 12px;
+    .button {
+        float: right;
+        padding: 10px 10px;
+        display: inline-block;
+        margin: 0;
+        margin-top: -30px;
+        position: relative;
+    }
+}
+
+.mortgage-title-section h1 {
+    font-size: 18px;
+    text-align: left;
+    color: $header-font-color;
+}
+
+.no-mortgage-section {
+    height: 133px;
+    padding-top: 0px;
+    clear: both;
+}
+
+.no-mortgage-section i {
+    font-size: 65px;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    display: block;
+    color: #d8d8d8;
+}
+
+.matter-columns-content {
+    padding: 12px;
+    padding-top: 0;
+    margin-top: 0;
+    padding-bottom: 20px;
+}
+
+.no-mortgage-section p {
+    text-align: center;
+    font-size: 13px;
+    color: #aaabad;
+}
+
+#create-new-participant-section h4 {
+    margin-bottom: 18px;
+}
+
+.matters-btn {
+    display: block;
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 20px;
+}
+
+.matters-btn i {
+    display: block;
+    margin-top: -5px;
+}
+
+.card-matter {
+    padding: 16px;
+    padding-bottom: 0;
+    padding-top: 12px;
+    background: #f9f9f9;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 8px 0 rgba(3, 9, 24, 0.15);
+}
+
+.matter-columns-content .card-matter:last-child {
+    margin-bottom: 0;
+}
+
+.card-matter-top {
+    display: block;
+    clear: both;
+    position: relative;
+}
+
+.card-matter-top-title {
+    float: left;
+    display: block;
+    min-height: 49px;
+    max-height: 49px;
+    max-width: 118px;
+    margin-top: -4px;
+}
+
+.card-matter-top h1 {
+    font-size: 13px;
+    max-width: 160px;
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card-matter-top-title p {
+    font-size: 12px;
+    color: $body-color;
+    max-width: 120px;
+    overflow: hidden;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card-matter-top-links {
+    float: right;
+}
+
+.card-matter-top-links a {
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.card-matter-bottom {
+    border-top: 1px solid $border-color;
+    display: block;
+    clear: both;
+    height: 84px;
+    padding-top: 10px;
+}
+
+.card-matter i {
+    font-size: 28px;
+    float: left;
+    color: #7a7e8e;
+    margin-right: 0;
+    position: relative;
+    left: -5px;
+    margin-top: -4px;
+}
+
+.card-matter-bottom-split {
+    border-right: 1px solid #e5e5e5;
+    width: 50%;
+    float: left;
+    display: block;
+    height: auto;
+    text-align: center;
+}
+
+.card-matter-bottom .card-matter-bottom-split:last-child {
+    border-right: 0;
+}
+
+.card-matter-bottom-split h1 {
+    font-size: 13px;
+    color: $green-btn-color;
+    max-width: 137px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.card-matter-bottom-split p {
+    margin-bottom: 0;
+    font-size: 12px;
+    color: $body-color;
+    font-weight: 400;
+}
+
+.card-matter-bottom-split a {
+    font-size: 13px;
+    margin-top: -10px;
+    font-weight: normal;
+}
+
+
+/*------------------------------------*\
+	Participant Card
+\*------------------------------------*/
+
+
+/* Add from existing */
+
+#suggestion-box {
+    border: 1px solid $border-color;
+    padding: 10px;
+    height: auto;
+    overflow: auto;
+}
+
+#suggestion-box ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+#suggestion-box li {
+    font-size: 13px;
+    border: 1px solid $border-color;
+    padding: 10px;
+    float: left;
+    display: block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+#suggestion-box li:hover {
+    background: $border-color;
+    transition: 0.2s ease background;
+    color: #fff;
+}
+
+
+/*------------------------------------*\
+	Responsive
+\*------------------------------------*/
+
+
+/* ----------- Small ----------- */
+
+@media all and (min-width: 1px) and (max-width: 482px) {
+    #client-reference {
+        margin: 0 auto;
+    }
+
+    .progress-percentage {
+        width: 80px;
+        height: 80px;
+        float: none;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .deal-general-details {
+        border-right: 0;
+        height: auto;
+        display: block;
+        float: none;
+        padding-left: 0;
+        padding-right: 0;
+        margin: 0 auto;
+        width: 150px;
+        border: 0;
+        clear: both;
+        text-align: center;
+        margin-top: 8px;
+    }
+    #deal-summary {
+        display: none;
+    }
+    .matter-general-info {
+        overflow: hidden;
+    }
+}
+
+
+/* ----------- Tablet ----------- */
+
+@media only screen and (min-width: 483px) and (max-width: 64em) {
+    .progress-percentage {
+        width: 80px;
+        height: 80px;
+        float: left;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .deal-general-details {
+        border-right: 1px solid #e5e5e5;
+        height: 75px;
+        display: block;
+        float: left;
+        padding-left: 0.6%;
+        padding-right: 1.5%;
+        text-align: left;
+        clear: none;
+        width: auto;
+    }
+    #deal-summary {
+        height: 75px;
+        float: left;
+        margin-left: 20px;
+        display: block;
+    }
+    .deal-summary-box {
+        margin-right: 26px;
+    }
+    #matter-mortgage-price {
+        display: none;
+    }
+    #last-action-by {
+        display: none;
+    }
+    .deal-summary-status {
+        font-size: 14px;
+    }
+}
+
+
+/* ----------- 642px to 780px ----------- */
+
+@media all and (min-width: 483px) and (max-width: 622px) {
+    #client-reference {
+        margin: 0 auto;
+    }
+
+    .progress-percentage {
+        width: 80px;
+        height: 80px;
+        float: none;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .deal-general-details {
+        border-right: 0;
+        height: auto;
+        display: block;
+        float: none;
+        padding-left: 0;
+        padding-right: 0;
+        margin: 0 auto;
+        width: 150px;
+        border: 0;
+        clear: both;
+        text-align: center;
+        margin-top: 8px;
+    }
+    #last-action-by {
+        display: none;
+    }
+    #deal-summary {
+        height: 75px;
+        float: none;
+        margin-left: 10px;
+        display: block;
+        margin: 0 auto;
+        clear: both;
+        text-align: center;
+        margin-top: 16px;
+        width: 317px;
+    }
+    .deal-summary-status {
+        font-size: 14px;
+    }
+    .deal-summary-box {
+        float: left;
+        display: block;
+        height: 75px;
+        margin-right: 22px;
+    }
+}
+
+
+/* ----------- Laptop ----------- */
+
+@media only screen and (min-width: 64.063em) {
+    .progress-percentage {
+        width: 80px;
+        height: 80px;
+        float: left;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .deal-general-details {
+        border-right: 1px solid #e5e5e5;
+        height: 75px;
+        display: block;
+        float: left;
+        padding-left: 0.6%;
+        padding-right: 1.5%;
+        text-align: left;
+        clear: none;
+        width: auto;
+    }
+    #deal-summary {
+        display: block;
+    }
+    .deal-summary-box {
+        margin-right: 40px;
+    }
+}
+
+
+/* ----------- 820px to 751px ----------- */
+
+@media only screen and (min-width: 623px) and (max-width: 751px) {
+    /*.mobile-select-navigation {
+        display: block;
+    }*/
+    .sub-tabs-section {
+        display: none;
+    }
+    #client-unique-identifier {
+        display: none !important;
+    }
+}
+
+
+/* ----------- 820px to 1024px ----------- */
+
+@media only screen and (min-width: 820px) and (max-width: 1024px) {
+    #matter-mortgage-price {
+        display: block;
+    }
+    #last-action-by {
+        display: block;
+    }
+    #client-unique-identifier {
+        display: none !important;
+    }
+}
+
+
+/* ----------- 1024px to 1193px ----------- */
+
+@media all and (min-width: 1024px) and (max-width: 1193px) {
+    .deal-summary-box {
+        margin-right: 24px;
+    }
+
+    #client-unique-identifier {
+        display: none !important;
+    }
+}

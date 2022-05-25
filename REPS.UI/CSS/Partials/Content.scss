@@ -1,0 +1,160 @@
+﻿@charset "UTF-8";
+@import "GlobalVariables.scss";
+
+/*#region Columns */
+.first-half {
+    padding-left: 0 !important;
+}
+
+.second-half {
+    padding-right: 0 !important;
+}
+
+.split-2 {
+    width: 50%;
+    margin: 0;
+}
+
+/*#endregion*/
+
+/*#region Box */
+.box {
+    width: 100%;
+    height: auto;
+    background: #fff;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+    border: solid 1px #e6eaeb;
+    box-shadow: 0 1px 0 0 #e9e9e9;
+    border-radius: $border-radius;
+}
+
+.box:last-child {
+    margin-right: 0;
+}
+
+    .box h4 {
+        font-size: 18px;
+    }
+
+
+.box-descriptions h4 {
+    float: left;
+}
+
+.box-descriptions p {
+    clear: left;
+    margin: 0;
+}
+
+.box-header {
+    background: none;
+    border-bottom: 1px solid #d3d5dc;
+    padding-bottom: 10px;
+    overflow: auto;
+}
+
+    .box-header h4 {
+        float: left;
+    }
+
+.box-content {
+    display: block;
+    clear: both;
+    min-height: 300px;
+    margin-bottom: 20px;
+}
+
+.add-box-padding {
+    padding: 20px;
+    padding-top: 20px;
+}
+
+
+.box-right {
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+.box-left {
+    margin-right: 10px;
+}
+/*#endregion*/
+
+/*#region Content Wrapper */
+#wrapper {
+    height: 100%;
+    width: 100%;
+}
+
+.content {
+    padding: 10px;
+    /*min-width: 1192px;*/
+    min-width: 100%;
+    margin-right: 0;
+}
+
+#content-wrapper {
+    margin-left: 200px;
+    min-height: 100%;
+    margin-top: 0;
+    /*overflow-y: visible;
+    overflow-x: hidden;*/
+    width: auto;
+    display: block;
+    transform: translateX(0px);
+    transition: 0.2s ease transform;
+}
+
+#content-wrapper.clicked {
+    transform: translateX(200px);
+    transition: 0.2s ease transform;
+}
+
+#content-wrapper.alerts-clicked {
+    transform: translateX(-279px);
+    transition: 0.2s ease transform;
+    overflow: hidden;
+}
+/*#endregion*/
+
+
+/*------------------------------------*\
+	Responsive
+\*------------------------------------*/
+
+/* ----------- Small ----------- */
+@media all and (min-width: 1px) and (max-width: 482px) {
+    #content-wrapper {
+        margin-left: 0;
+    }
+
+    .content {
+        padding: 10px;
+        margin-top: 0;
+    }
+}
+
+/* ----------- Tablet ----------- */
+@media only screen and (min-width: 483px) and (max-width: 64em) {
+    #content-wrapper {
+        margin-left: 0;
+    }
+
+    .content {
+        margin-top: 0;
+    }
+}
+
+/* ----------- Laptop ----------- */
+@media only screen and (min-width: 64.063em) {
+    #content-wrapper {
+        margin-left: 200px;
+    }
+
+    .content {
+    }
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1cff77c7-5d74-484d-8230-9704f8804216" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:54738/AddressService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AddressService1.xsd" MetadataType="Schema" ID="3843f579-185c-478f-9bb6-7af1124630bd" SourceId="1" SourceUrl="http://localhost:54738/AddressService.svc?xsd=xsd0" />
+    <MetadataFile FileName="AddressService.xsd" MetadataType="Schema" ID="dbbde112-0df8-4d12-83f7-c5fce34864fb" SourceId="1" SourceUrl="http://localhost:54738/AddressService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AddressService2.xsd" MetadataType="Schema" ID="290d3bcd-5379-4f84-9e88-448a6a99b1f4" SourceId="1" SourceUrl="http://localhost:54738/AddressService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AddressService3.xsd" MetadataType="Schema" ID="15c97bf1-c0b1-4512-9880-2393c838553e" SourceId="1" SourceUrl="http://localhost:54738/AddressService.svc?xsd=xsd3" />
+    <MetadataFile FileName="AddressService.wsdl" MetadataType="Wsdl" ID="31fc3708-f327-4f68-9d00-8cba5dfed60d" SourceId="1" SourceUrl="http://localhost:54738/AddressService.svc?wsdl" />
+    <MetadataFile FileName="AddressService.disco" MetadataType="Disco" ID="6e3e40fd-25dc-474a-aa1a-6a37e1030255" SourceId="1" SourceUrl="http://localhost:54738/AddressService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

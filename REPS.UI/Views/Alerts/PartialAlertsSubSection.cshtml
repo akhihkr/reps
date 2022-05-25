@@ -1,0 +1,54 @@
+﻿
+@{
+    Layout = null;
+
+    //User roles
+    string role_view_alertslist = "AL_LI";
+}
+
+
+<div class="workflow-tab-section correspondence-tab">
+    <ul>
+        <a onclick="AjaxControllerCaller('Alerts', 'FilterPartialView', 'alerts-table', { filter: 'all' }); SetSelectedTabActiveCorrespondence('AllTab')">
+            <li class="@((ViewData.ContainsKey("SelectedTab") && ViewData["SelectedTab"].ToString() == Global.Enums.PageNames.AllAlerts.ToString()  )? "workflow-tab-selected" : null)" id="AllTab">
+                <i class="material-icons">list</i><p>All</p>
+            </li>
+        </a>
+
+        <a onclick="AjaxControllerCaller('Alerts', 'FilterPartialView', 'alerts-table', { filter: 'today' }); SetSelectedTabActiveCorrespondence('TodayTab')">
+            <li class="@((ViewData.ContainsKey("SelectedTab") && ViewData["SelectedTab"].ToString() ==Global.Enums.PageNames.TodayAlerts.ToString() )? "workflow-tab-selected" : null)" id="TodayTab">
+                <i class="material-icons">today</i><p>Today</p>
+            </li>
+        </a>
+
+        <a onclick="AjaxControllerCaller('Alerts', 'FilterPartialView', 'alerts-table', { filter: 'coming' }); SetSelectedTabActiveCorrespondence('ComingTab')">
+            <li class="@((ViewData.ContainsKey("SelectedTab") && ViewData["SelectedTab"].ToString() == Global.Enums.PageNames.ComingAlerts.ToString() )? "workflow-tab-selected" : null)" id="ComingTab">
+                <i class="material-icons">update</i><p>Coming Up</p>
+            </li>
+        </a>
+
+        <a onclick="AjaxControllerCaller('Alerts', 'FilterPartialView', 'alerts-table', { filter: 'archive' }); SetSelectedTabActiveCorrespondence('ArchiveTab')">
+            <li class="@((ViewData.ContainsKey("SelectedTab") && ViewData["SelectedTab"].ToString() ==  Global.Enums.PageNames.ArchiveAlerts.ToString()  )? "workflow-tab-selected" : null)" id="ArchiveTab">
+                <i class="material-icons">delete</i><p>Archive</p>
+            </li>
+        </a>
+    </ul>
+
+    @if (Common.CArray.SearchInCookie(role_view_alertslist))
+    {
+        <a href="#" onclick="CallPopupPanel('Alerts', 'PopupCreateEvent', 'general-panel')" class="button create-event-btn">Create Alert</a>
+    }
+</div>
+
+
+
+<!-- Mobile Sub Tabs Selection -->
+@*<select id="mobile-subsection-nav" class="mobile-select-navigation" onchange="eval($('#mobile-subsection-nav').val())">
+        <option value="AjaxControllerCaller('Deal', 'ViewDeal', 'deal-content-wrapper')">General</option>
+        <option value="AjaxControllerCaller('Workflow', 'Index', 'deal-content-wrapper')">Buyer Workflow</option>
+        <option value="AjaxControllerCaller('Alerts', 'Index', 'deal-content-wrapper')">Alerts</option>
+        <option value="AjaxControllerCaller('Correspondence', 'Index', 'deal-content-wrapper')">Correspondence</option>
+        <option value="AjaxControllerCaller('Documents', 'Index', 'deal-content-wrapper')">Documents</option>
+        <option value="AjaxControllerCaller('Audit', 'Index', 'deal-content-wrapper')">Audit</option>
+        <option value="AjaxControllerCaller('Payments', 'Index', 'deal-content-wrapper')">Payments</option>
+    </select>*@

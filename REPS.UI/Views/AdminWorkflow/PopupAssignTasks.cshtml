@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "Assign Tasks";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    //ajax
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "content-wrapper",
+        OnSuccess = "onSuccessToasterMsg(null,null,null,null,'Changes have been successfully saved')",
+        OnFailure = "OnFailure",
+        OnComplete = "onComplete",
+    };
+}
+
+@Scripts.Render("~/Bundles/MultiSelect")
+
+@using (Ajax.BeginForm("Index", "AdminWorkflow", new { WorkflowID = @ViewData["WorkflowID"], TaskID = @ViewData["TaskID"] }, options, new { name = "ManageTaskAdmin", id = "ManageTaskAdmin", enctype = "multipart/form-data" }))
+{
+    <div class="row reset-row manage-workflows">
+
+        <div class="small-12 columns reset-columns">
+            <input type="text" id="TaskWorkflowID" name="TaskWorkflowID" value="@ViewData["TaskWorkflowID"]" style="display:none" />
+
+            <!-- Test Here -->
+            <select id='optgroup' multiple='multiple' style="position: absolute; left: -9999px;" >
+                @foreach (var Task in ViewData["TasksList"] as IEnumerable<dynamic>)
+                {
+                    if (Convert.ToInt32(Task["Assigned"]) == 1)
+                    {
+                        <option value='@Task["TaskID"]' selected>@Task["TaskName"]</option>
+                    }
+                    else
+                    {
+                        <option value='@Task["TaskID"]'>@Task["TaskName"]</option>
+                    }
+                }
+            </select>
+
+            <!-- End Test -->
+        </div> <!-- End of small-6 columns-->
+    </div> <!-- End of row -->
+}
+
+
+@section footer
+{
+    @*<a href="@Url.Action("Index", "AdminWorkflow",new { WorkflowID = @ViewData["WorkflowID"] })" class="button blue-cta">Save</a>*@
+    <a id="btn-save" onclick="FormObjectSubmit('#btn-save', '#ManageTaskAdmin', true);" class="button align-right dirty-disabled">Close</a>
+}
+
+@section script
+{
+    <script>
+
+        $('#optgroup').multiSelect({
+            selectableHeader: "<div class='custom-header'>Not Assigned</div>",
+            selectionHeader: "<div class='custom-header'>Assigned</div>",
+            selectableOptgroup: true,
+            keepOrder: true,
+
+            afterSelect: function (taskID) {
+                if ($("#optgroup :selected").length < 9) {                  // Maximum of 8 Tasks
+                    var TaskWorflowID = $('#TaskWorkflowID').val();
+                    AssignTaskToWorkflow(taskID[0], TaskWorflowID);
+                    //alert("Selected value: " + taskID + TaskWorflowID);
+                } else {
+                    //toastr.error('Maximum 8 tasks allowed!');
+                    displayMessage('Maximum 8 tasks allowed!', 'error');
+                }
+
+            },
+            afterDeselect: function (taskID) {
+                var TaskWorflowID = $('#TaskWorkflowID').val();
+                UnAssignTaskFromWorkflow(taskID[0], TaskWorflowID);
+                //alert("Deselected value: " + taskID + TaskWorflowID);
+            }
+        });
+
+
+        //dirty function used to check if event listener has been modified and call the updates function
+        $('#ManageTaskAdmin').dirrty().on("dirty", function () {
+            $("#btn-save").removeClass("dirty-disabled");//removed attribute if in case if anchor tag is used
+        }).on("clean", function () {
+            $("#btn-save").addClass("dirty-disabled")//add attribute if in case if anchor tag is used
+        });
+        //end of dirty function used to check if event listener has been modified and call the updates function
+    </script>
+}

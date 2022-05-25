@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Workflow Admin";
+    Layout = ViewBag.PageLayoutPath;
+
+    if (ViewBag.PageLayoutPath == null)
+    {
+        @Html.Partial("PartialHeaderAdmin", null, new ViewDataDictionary { { "SelectedTab", "Workflow" } })
+    }
+}
+
+<div class="content" id="content-admin">
+    @Html.Partial("PartialAdminWorkflowList")
+</div> <!-- End of content -->

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b94d779b-0707-4054-944c-838c8dd80ebe" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:54738/MortgageService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MortgageService.disco" MetadataType="Disco" ID="458a0f92-9c14-4740-928f-8aaf4388ff9a" SourceId="1" SourceUrl="http://localhost:54738/MortgageService.svc?disco" />
+    <MetadataFile FileName="MortgageService.wsdl" MetadataType="Wsdl" ID="ebbd9296-46a8-456f-88c8-eb71e5a9c747" SourceId="1" SourceUrl="http://localhost:54738/MortgageService.svc?wsdl" />
+    <MetadataFile FileName="MortgageService1.xsd" MetadataType="Schema" ID="84a2a65b-7ba0-4629-825d-e19b0ee57af3" SourceId="1" SourceUrl="http://localhost:54738/MortgageService.svc?xsd=xsd2" />
+    <MetadataFile FileName="MortgageService2.xsd" MetadataType="Schema" ID="3c52e090-5800-48c9-a519-85dced9d93c3" SourceId="1" SourceUrl="http://localhost:54738/MortgageService.svc?xsd=xsd1" />
+    <MetadataFile FileName="MortgageService3.xsd" MetadataType="Schema" ID="b84337c4-c61c-4ce9-9360-4ab8d7e51b1f" SourceId="1" SourceUrl="http://localhost:54738/MortgageService.svc?xsd=xsd3" />
+    <MetadataFile FileName="MortgageService.xsd" MetadataType="Schema" ID="5c595379-b1a2-497c-ae3d-8c1c91d51e35" SourceId="1" SourceUrl="http://localhost:54738/MortgageService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

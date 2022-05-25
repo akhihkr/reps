@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Add Category";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    //AjaxOptions property
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "content-admin",
+        OnFailure = "OnFailure",
+        OnComplete = "onComplete",
+    };
+    //end of AjaxOptions property
+}
+
+@using (Ajax.BeginForm("AddDocumentCategory", "AdminDocuments", options, new { name = "AddDocumentCategory", id = "AddDocumentCategory"}))
+{
+    <label>
+        Document Category Name
+        <input type="text" id="CategoryName" name="CategoryName" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharMax))" data-content="required">
+    </label>
+}
+
+@section footer
+{
+    <a class="button align-right dirty-disabled" id="btn-saved" onclick="FormObjectSubmit('#btn-saved', '#AddDocumentCategory', true);" href="#">Save Category</a>
+}
+
+@section script
+{
+    <script>
+        //dirty function used to check if event listener has been modified and call the updates function
+        $('#AddDocumentCategory').dirrty().on("dirty", function () {
+            $("#btn-saved").removeClass("dirty-disabled");//removed attribute if in case if anchor tag is used
+        }).on("clean", function () {
+            $("#btn-saved").addClass("dirty-disabled")//add attribute if in case if anchor tag is used
+        });
+        //end of dirty function used to check if event listener has been modified and call the updates function
+    </script>
+}

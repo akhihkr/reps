@@ -1,0 +1,15 @@
+﻿@{
+    Layout = null;
+}
+
+<ul>
+    <li>
+        <i class="material-icons">monetization_on</i>
+    </li>
+    <li>
+        <span class="deal-summary-title">Loan Value</span>
+    </li>
+    <li>
+        <span class="deal-summary-status">@(ViewBag.PriceMortgageSumValue.ToString() == "0.00" ? "-" : Common.CString.GetEnumDescription(Global.Enums.Currency.ZAR) + ViewBag.PriceMortgageSumValue)</span>
+    </li>
+</ul>

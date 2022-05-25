@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:54738/DealService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/REPS.DATA.Entity" />
+  <xs:import schemaLocation="http://localhost:54738/DealService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Common" />
+  <xs:element name="AddDeal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/REPS.DATA.Entity" minOccurs="0" name="obj" nillable="true" type="q1:Deal" />
+        <xs:element minOccurs="0" name="AspNetUsersId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddDealResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="AddDealResult" nillable="true" type="q2:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="aspNetUserId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetUserIDResult" nillable="true" type="q3:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDeal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/REPS.DATA.Entity" minOccurs="0" name="obj" nillable="true" type="q4:Deal" />
+        <xs:element minOccurs="0" name="taskID" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="entityID" type="xs:int" />
+        <xs:element minOccurs="0" name="startRow" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="endRow" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDealResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetDealResult" nillable="true" type="q5:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDealTypes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="dealTypeId" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="startRow" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="endRow" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDealTypesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetDealTypesResult" nillable="true" type="q6:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDealIDByDealUniqueRef">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="dealUniqueRef" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDealIDByDealUniqueRefResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetDealIDByDealUniqueRefResult" nillable="true" type="q7:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateDeal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/REPS.DATA.Entity" minOccurs="0" name="obj" nillable="true" type="q8:Deal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateDealResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="UpdateDealResult" nillable="true" type="q9:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditCompletionDate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="dealID" type="xs:int" />
+        <xs:element minOccurs="0" name="newDate" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditCompletionDateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="EditCompletionDateResult" nillable="true" type="q10:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCompletionDate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DealID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCompletionDateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetCompletionDateResult" nillable="true" type="q11:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCompletedActionsByWorkflowID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="dealID" type="xs:int" />
+        <xs:element minOccurs="0" name="workflowID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCompletedActionsByWorkflowIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetCompletedActionsByWorkflowIDResult" nillable="true" type="q12:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMandatoryActionsList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="workflowID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMandatoryActionsListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetMandatoryActionsListResult" nillable="true" type="q13:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDealLastActionBy">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="dealID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDealLastActionByResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetDealLastActionByResult" nillable="true" type="q14:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCurrentWorkflowStep">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="dealID" type="xs:int" />
+        <xs:element minOccurs="0" name="workflowID" type="xs:int" />
+        <xs:element minOccurs="0" name="userID" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="entityID" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="startDate" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="endDate" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCurrentWorkflowStepResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetCurrentWorkflowStepResult" nillable="true" type="q15:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

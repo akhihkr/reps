@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>REPS.DATA.REPSDB</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{129e8d3d-333f-46c1-a4f5-86c7c21a23e2}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>REPS.DATA.REPSDB</RootNamespace>
+    <AssemblyName>REPS.DATA.REPSDB</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'MAU|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'local|AnyCPU' ">
+    <OutputPath>bin\local\</OutputPath>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Stored Procedures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\WorkflowVariable.sql" />
+    <Build Include="dbo\Tables\WorkflowTransaction.sql" />
+    <Build Include="dbo\Tables\WorkflowTask.sql" />
+    <Build Include="dbo\Tables\WorkflowProgress.sql" />
+    <Build Include="dbo\Tables\WorkflowActionVariable.sql" />
+    <Build Include="dbo\Tables\WorkflowActionMap.sql" />
+    <Build Include="dbo\Tables\WorkflowAction.sql" />
+    <Build Include="dbo\Tables\Workflow.sql" />
+    <Build Include="dbo\Tables\VariableType.sql" />
+    <Build Include="dbo\Tables\UserRoleAction.sql" />
+    <Build Include="dbo\Tables\UserRole.sql" />
+    <Build Include="dbo\Tables\UserDocument.sql" />
+    <Build Include="dbo\Tables\UserDeal.sql" />
+    <Build Include="dbo\Tables\UserAction.sql" />
+    <Build Include="dbo\Tables\User.sql" />
+    <Build Include="dbo\Tables\TransactionType.sql" />
+    <Build Include="dbo\Tables\TransactionStatus.sql" />
+    <Build Include="dbo\Tables\TransactionDocuments.sql" />
+    <Build Include="dbo\Tables\TransactionDetail.sql" />
+    <Build Include="dbo\Tables\Transaction.sql" />
+    <Build Include="dbo\Tables\Township.sql" />
+    <Build Include="dbo\Tables\Title.sql" />
+    <Build Include="dbo\Tables\Task.sql" />
+    <Build Include="dbo\Tables\SizeType.sql" />
+    <Build Include="dbo\Tables\Role.sql" />
+    <Build Include="dbo\Tables\Reports.sql" />
+    <Build Include="dbo\Tables\ReportLocation.sql" />
+    <Build Include="dbo\Tables\ReportHeaders.sql" />
+    <Build Include="dbo\Tables\ReportFilters.sql" />
+    <Build Include="dbo\Tables\Province.sql" />
+    <Build Include="dbo\Tables\PropertyType.sql" />
+    <Build Include="dbo\Tables\PropertyDetail.sql" />
+    <Build Include="dbo\Tables\Property.sql" />
+    <Build Include="dbo\Tables\Person.sql" />
+    <Build Include="dbo\Tables\ParticipantType.sql" />
+    <Build Include="dbo\Tables\ParticipantRole.sql" />
+    <Build Include="dbo\Tables\ParticipantBankDetail.sql" />
+    <Build Include="dbo\Tables\Participant.sql" />
+    <Build Include="dbo\Tables\OrganizationType.sql" />
+    <Build Include="dbo\Tables\Organization.sql" />
+    <Build Include="dbo\Tables\NotificationType.sql" />
+    <Build Include="dbo\Tables\Notification.sql" />
+    <Build Include="dbo\Tables\MimeType.sql" />
+    <Build Include="dbo\Tables\MetaData.sql" />
+    <Build Include="dbo\Tables\MessageStatus.sql" />
+    <Build Include="dbo\Tables\MessageQueue.sql" />
+    <Build Include="dbo\Tables\Lenders.sql" />
+    <Build Include="dbo\Tables\JobTitle.sql" />
+    <Build Include="dbo\Tables\InterestVariation.sql" />
+    <Build Include="dbo\Tables\InterestType.sql" />
+    <Build Include="dbo\Tables\InstrumentType.sql" />
+    <Build Include="dbo\Tables\IdentityType.sql" />
+    <Build Include="dbo\Tables\FinancialTransaction.sql" />
+    <Build Include="dbo\Tables\FinancialObligationDetail.sql" />
+    <Build Include="dbo\Tables\FinancialObligation.sql" />
+    <Build Include="dbo\Tables\FinancialInstrumentDetail.sql" />
+    <Build Include="dbo\Tables\FinancialInstrument.sql" />
+    <Build Include="dbo\Tables\FeeType.sql" />
+    <Build Include="dbo\Tables\Entity.sql" />
+    <Build Include="dbo\Tables\DocumentWorkflow.sql" />
+    <Build Include="dbo\Tables\DocumentVersion.sql" />
+    <Build Include="dbo\Tables\DocumentType.sql" />
+    <Build Include="dbo\Tables\DocumentTemplate.sql" />
+    <Build Include="dbo\Tables\Document.sql" />
+    <Build Include="dbo\Tables\DiscountType.sql" />
+    <Build Include="dbo\Tables\DealType.sql" />
+    <Build Include="dbo\Tables\DealStatus.sql" />
+    <Build Include="dbo\Tables\Deal.sql" />
+    <Build Include="dbo\Tables\CurrencyType.sql" />
+    <Build Include="dbo\Tables\Country.sql" />
+    <Build Include="dbo\Tables\Correspondence.sql" />
+    <Build Include="dbo\Tables\BillingTaxRate.sql" />
+    <Build Include="dbo\Tables\BillingRateDetail.sql" />
+    <Build Include="dbo\Tables\BillingRate.sql" />
+    <Build Include="dbo\Tables\BillingDiscount.sql" />
+    <Build Include="dbo\Tables\Billing.sql" />
+    <Build Include="dbo\Tables\BankorCreditUnion.sql" />
+    <Build Include="dbo\Tables\AuditDetail.sql" />
+    <Build Include="dbo\Tables\Audit.sql" />
+    <Build Include="dbo\Tables\AspNetUsers.sql" />
+    <Build Include="dbo\Tables\AspNetUserRoles.sql" />
+    <Build Include="dbo\Tables\AspNetUserLogins.sql" />
+    <Build Include="dbo\Tables\AspNetUserClaims.sql" />
+    <Build Include="dbo\Tables\AspNetRoles.sql" />
+    <Build Include="dbo\Tables\AlertType.sql" />
+    <Build Include="dbo\Tables\AlertStatus.sql" />
+    <Build Include="dbo\Tables\Alerts.sql" />
+    <Build Include="dbo\Tables\AddressType.sql" />
+    <Build Include="dbo\Tables\Address.sql" />
+    <Build Include="dbo\Tables\AccountType.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetBanks.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_AddAddress.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_AddOrganisation.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_AddDeal.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_AddParticipant.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_AddParticipantBankDetail.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_AddProperty.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_AddPropertyDetail.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_AddUserRole.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_AddDocumentTemplate.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_AddEntity.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_AddNewAction.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_AddNewDocumentCategory.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_AddNewTask.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_AddRole.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_AddUser.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_AddWorkflow.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_AssignActionToTask.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_AssignTaskToWorkflow.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_AssignRoleActionToRole.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_DeleteEntity.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_DeleteTask.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_DeleteWorkflow.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_DownloadTemplate.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_GetAllActions.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_GetAllRoleActions.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_GetAllTasksPerProcess.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_GetDocumentCategoryList.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_GetDocumentTemplateList.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_GetDocumentVersionByTemplateID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_GetEditDocumentTemplateFields.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_GetWorkflowActionIsMandatory.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_GetWorkflowsList.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_AddPerson.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_GetWorkFlowTasksActionsByTaskID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_RemoveDocumentTemplate.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_GetWorkflowVariableList.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_SaveDocumentTemplate.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_ToggleActionMandatory.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_ToggleWorkflowVariable.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_ToggleWorkflowVariableRequired.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_UnAssignActionFromTask.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_UnAssignTaskFromWorkflow.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_UpdateActionName.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_UpdateReactivateUser.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_UpdateRole.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_UpdateTask.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_UpdateWorkflowName.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ArchiveFeesByTransactionID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ArchiveWorkflowActionsByTransactionID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_AutoSearchDeal.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_AutoSearchParticipant.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_DeleteAddress.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_DeleteParticipant.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_DeleteParticipantBank.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_DeleteProperty.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_DeleteUser.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_DocXML_ClientCareLetter.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_DocXML_MortgageLetter.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_DocXML_SearchReportLetter.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_DownloadStaticTemplate.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GeneralSearchDeal.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetAccountTypes.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetAddPaymentFields.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetAddress.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetAddressTypes.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetAlerts_ByAlertID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetAlerts_ByUserID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetAuditDetails_ByDealID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetBankAddressCountByParticpantID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetBankDetailsPerParticipant.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetClientReferenceByDealID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetCompletedActionsByWorkflowID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetCorrespondence_ByCorrespondenceID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetCorrespondence_ByUserID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetCorrespondenceAttachmentByID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetCorrespondenceEmailAutocomplete_ByDealID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetCorrespondenceNumberAutocomplete_ByDealID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetCountries.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetCurrentDealReference_ByDealID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetCurrentWorkflowStep_ByDealIDTransactionTypeID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetDealCompletionDate_ByDealID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetDealFinalised.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetDealLastActionBy.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetDeals.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetDealsDashboard.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetDealSumByTask.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetDealTypes.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetDiaryItems_ByUserID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetDocumentIDbyDocumentTemplateID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetDocumentTemplateByID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetDocumentTemplateListByWorkflow.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetDocumentTemplateXMLByID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetDocumentTypeListByWorkflow.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetDocumentVersionByTemplateID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetFileNameFromTemplateDescription.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetMortgageLender.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetMortgages_ByDealID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetMortgageType.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetOrganisation.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetOrganisationTypes.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetParticipantBankDetails.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetParticipants.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetParticipantTypes.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetProperties.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetPropertiesWithDetails.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetPropertyTypes.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetProvince.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetRoles.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetSizes.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetStoredDocumentByID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetStoredSignedDocumentByID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetTaskWorkflowIDByDealID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetTaskWorkflowNameByDealID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetUserInfo.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetWorkFlowActionsAddFields.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetWorkFlowActionsEditFieldsValues.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetWorkflowProgress.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetWorkFlowTasks.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetWorkFlowTasksActions.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_AddAlerts.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_AddCorrespondence.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_AddFinancialInstrument.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_AddFinancialTransaction.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_AddWorkflowActionValues.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_UpdateAddress.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_UpdateDeal.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_UpdateDealApprove.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_UpdateDealCompletionDate_ByDealID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_UpdateEntity.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_UpdateFinancialInstrument.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_UpdateFinancialTransaction.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_UpdateLastActiveView_ByDealGUIDUserGUID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_UpdateMortgageStatus.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_UpdateOrganisation.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_UpdateOrganisationTypeID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_UpdateParticipant.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_UpdateParticipantBankDetail.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_UpdatePerson.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_UpdateProperty.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_UpdatePropertyDetail.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_UpdateUser.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_UpdateUser_WorkflowID_ByUserID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetWorkflowDealCount.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetUserID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_UpdateDealStatusInWorkflowProgress.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_LogTransaction.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_AddUserDeals.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_DeleteAllTabsForUser_ByUserGUID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetHeaderTabNotificationBarActiveDeals_ByUserGUID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetHeaderTabUserActiveDeals_ByUserGUID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetEntityID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetWorkflowGUIDTaskGUID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetUsers.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_UpdateUserToken.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetEntities.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GETDealIDByDealGUID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetParticipantRoles.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetUserIDByAspNetUserID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetParticipantIDByParticipantGUID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetPropertyIDByPropertyGUID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetPropertyDetailIDByPropertyDetailGUID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetAddressIDByAddressGUID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetInterestType.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetMortgagePurchasePrice.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetReportName.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetMortgageIDByMortgageGUID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ReportWorkflowDealPerCount.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ReportMonthlyPaymentChart.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ReportMonthlyPaymentTable.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ReportWorkflowDealPerCountTable.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ReportSumPerFeeTypeGenerated.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ReportSumPerFeeDescriptionTable.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ReportSumPerFeeDescriptionChart.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ReportFeePerDealChart.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ReportWorkflowStatus.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ReportGetUsers.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ReportFilterFeeTypesListDropDown.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetReportFilters.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_UpdateAlerts_ByAlertID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_UpdateAlertsStatus_ByAlertID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetTitles.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_AddWorkflowActionNewTransaction.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetAlertsIDByAlertsGUID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_UpdateWorkflowActionValues.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetMandatoryActionsList.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetUsersByAspId.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_AddGeneratedDocument.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_Template_Client_Care_Letter.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_AddUploadedStandardDocument.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_AddUploadedSignedDocument.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetEditPaymentFields.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetPaymentList.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetPaymentTypeList.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ArchivePaymentByTransactionID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_UpdatePayment.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_AddPaymentTransaction.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_AddPayment.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_VerifyIndividualExist.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetTransactionDetailsIDByTransactionDetailsGUID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_DeletePaymentByTransactionID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetUserDeletedStatus.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetTransactionDetailByTransactionDetailGUID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_DeleteTransactionImg.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetUserRoleActions.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetDealIDByAlertsGUID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetCurrentWorkflowDetails.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_UpdateUser_ToggleHeaderTab_ByUserID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_AddWorkflowStepToDocumentTemplate.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_GetDocumentWorkflowTaskList.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_UpdateDocumentVersionDocumentTemplate.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_UpdateDocumentWorkflow.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_UpdateDocumentTemplate.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_GetTemplateFilename.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_DeleteDocumentWorkflow.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetDocumentType.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetDocumentTemplateDetails.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_UpdateDocumentTemplate.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ReportFeePerDealTable.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_DeleteUserFromDeletedEntity.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetExistingUser.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GETCorrespondenceIDByCorrespondenceGUID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetTemplatePerWorkflowStep.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_SwitchUserWorkflowID.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_ADM_UpdateLogoutUserOnRoleChange.sql" />
+    <Build Include="dbo\Tables\FirmDetails.sql" />
+    <Build Include="dbo\Stored Procedures\REPS_GetWorkFlowAction.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PreDeploy Include="PrefillScript.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="REPS.DATA.REPSDB.refactorlog" />
+  </ItemGroup>
+</Project>

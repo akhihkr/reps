@@ -1,0 +1,2 @@
+C:\MYProjectsShare\REPS\REPS.UI\obj\Debug\REPS.UI.csproj.AssemblyReference.cache
+C:\MYProjectsShare\REPS\REPS.UI\obj\Debug\REPS.UI.csproj.CoreCompileInputs.cache

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:54738/ParticipantService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Common" />
+  <xs:import schemaLocation="http://localhost:54738/ParticipantService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/REPS.DATA.Entity" />
+  <xs:import schemaLocation="http://localhost:54738/ParticipantService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:element name="GetParticipantTypes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="participantTypeId" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="startRow" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="endRow" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetParticipantTypesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetParticipantTypesResult" nillable="true" type="q1:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetParticipantRoles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="participantRoleId" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="startRow" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="endRow" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetParticipantRolesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetParticipantRolesResult" nillable="true" type="q2:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddParticipant">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/REPS.DATA.Entity" minOccurs="0" name="obj" nillable="true" type="q3:Participant" />
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddParticipantResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="AddParticipantResult" nillable="true" type="q4:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetParticipants">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="dealId" type="xs:int" />
+        <xs:element minOccurs="0" name="participantId" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="givenName" nillable="true" type="xs:anyType" />
+        <xs:element minOccurs="0" name="familyName" nillable="true" type="xs:anyType" />
+        <xs:element minOccurs="0" name="identityNumber" nillable="true" type="xs:anyType" />
+        <xs:element minOccurs="0" name="participantTypeId" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="startRow" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="endRow" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetParticipantsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetParticipantsResult" nillable="true" type="q5:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateParticipant">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/REPS.DATA.Entity" minOccurs="0" name="obj" nillable="true" type="q6:Participant" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateParticipantResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="UpdateParticipantResult" nillable="true" type="q7:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteParticipant">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/REPS.DATA.Entity" minOccurs="0" name="obj" nillable="true" type="q8:Participant" />
+        <xs:element minOccurs="0" name="dealID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteParticipantResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="DeleteParticipantResult" nillable="true" type="q9:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyIndividualExist">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/REPS.DATA.Entity" minOccurs="0" name="objParticipant" nillable="true" type="q10:Participant" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/REPS.DATA.Entity" minOccurs="0" name="objPerson" nillable="true" type="q11:Person" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerifyIndividualExistResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="VerifyIndividualExistResult" nillable="true" type="q12:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddParticipantBankDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/REPS.DATA.Entity" minOccurs="0" name="obj" nillable="true" type="q13:ParticipantBankDetail" />
+        <xs:element minOccurs="0" name="dealID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddParticipantBankDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="AddParticipantBankDetailsResult" nillable="true" type="q14:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateParticipantBankDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/REPS.DATA.Entity" minOccurs="0" name="obj" nillable="true" type="q15:ParticipantBankDetail" />
+        <xs:element minOccurs="0" name="dealID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateParticipantBankDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="UpdateParticipantBankDetailsResult" nillable="true" type="q16:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteParticipantBank">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/REPS.DATA.Entity" minOccurs="0" name="obj" nillable="true" type="q17:ParticipantBankDetail" />
+        <xs:element minOccurs="0" name="dealID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteParticipantBankResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="DeleteParticipantBankResult" nillable="true" type="q18:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetParticipantInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="dealID" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="participantId" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetParticipantInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetParticipantInfoResult" nillable="true" type="q19:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetParticipantAutosearch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="searchResult" nillable="true" type="xs:anyType" />
+        <xs:element minOccurs="0" name="entityID" type="xs:int" />
+        <xs:element minOccurs="0" name="startRow" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="endRow" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetParticipantAutosearchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetParticipantAutosearchResult" nillable="true" type="q20:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetParticipantIDByParticipantGUID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="participantGUID" type="q21:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetParticipantIDByParticipantGUIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetParticipantIDByParticipantGUIDResult" nillable="true" type="q22:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetParticipantBankAccountCount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="dealID" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="participantId" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetParticipantBankAccountCountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetParticipantBankAccountCountResult" nillable="true" type="q23:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

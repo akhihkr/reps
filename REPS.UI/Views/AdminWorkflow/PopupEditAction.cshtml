@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Edit Action";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    string toggleName = null, RequiredDiv = null;
+    bool IsMandatory = Convert.ToBoolean(ViewData["IsMandatory"]);
+    int WorkflowActionMapID = (int)ViewData["WorkflowActionMapID"];
+}
+
+@foreach (var Variable in ViewData["VariableList"] as IEnumerable<dynamic>)
+{
+    <div class="edit-action-section">
+        <h4>@Variable["DisplayName"]</h4>
+        <hr />
+
+        <div class="action-field">
+            <label class="switch switch-enabler">
+                @{
+                    if (Variable["ID"] != null)
+                    {
+                        toggleName = "ActionVariableToggle" + Variable["ID"];
+                    }
+                }
+                <input type="checkbox" class="switch-input" id="@toggleName" name="@toggleName" onclick="ToggleAction(@ViewData["ActionID"],@Variable["ID"])" @( Variable["Assigned"] == "1" ? "checked" : null )>
+                <span class="switch-label enable-label" data-on="Enable" data-off="Disable"></span>
+                <span class="switch-handle"></span>
+            </label>
+
+        </div> <!-- End of action-field -->
+
+        @if (Variable["ID"] != null)
+                {
+                    RequiredDiv = "IsRequiredDiv" + Variable["ID"];
+                }
+        <div id="@RequiredDiv" class="action-required" @( Variable["Assigned"] == "1" ? "style=display:block" : "style=display:none" )>
+            <label class="switch switch-required">
+                @{
+                    if (Variable["ID"] != null)
+                    {
+                        toggleName = "ActionVariableRequiredToggle" + Variable["ID"];
+                    }
+                }
+                <input type="checkbox" class="switch-input" id="@toggleName" name="@toggleName" onclick="ToggleActionRequired(@ViewData["ActionID"],@Variable["ID"])" @( Variable["IsRequired"] == true ? "checked" : null )>
+                <span class="switch-label required-label" data-on="Required" data-off="Not Required"></span>
+                <span class="switch-handle"></span>
+            </label>
+        </div> <!-- End of action-required -->
+    </div> <!-- End of edit-action-section -->
+}
+
+@section footer
+{
+    <div class="action-mandatory-section">
+        @*<span>Make Action Mandatory?</span>*@
+        <label class="switch switch-mandatory">
+            <input type="checkbox" class="switch-input" id="ActionMandatoryToggle" name="ActionMandatoryToggle" onclick="ToggleActionMandatory(@WorkflowActionMapID)" @( IsMandatory == true ? "checked" : null )>
+            <span class="switch-label mandatory-label" data-on="Mandatory" data-off="Not Mandatory"></span>
+            <span class="switch-handle"></span>
+        </label>
+
+    </div>
+
+    <a id="edit-workflow-admin-btn" onclick="CloseAdminEditActionPopup()" class="button blue-cta">
+        Save
+    </a>
+}

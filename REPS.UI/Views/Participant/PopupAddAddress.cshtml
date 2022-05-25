@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Add Address";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    string participantGUID = ViewData["participantGUID"].ToString();
+
+    //ajax
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "participantBankInfoDetail",
+        OnFailure = "OnFailure",
+        OnComplete = "onComplete",
+    };
+}
+
+@using (Ajax.BeginForm("AddParticipantAddress", "Participant", options, new { @id = "saveAddressForm" }))
+{
+    <input type="hidden" name="participantGUID" id="participantGUID" value="@participantGUID" />
+    <label>Address Type<span>*</span></label>
+    <select tabindex="1" id="addressType" name="addressType" data-content="required">
+        <option value='-1' default selected>Select an option:</option>
+        @foreach (var AddressType in ViewData["AddressType"] as IEnumerable<dynamic>)
+        {
+            <option value="@AddressType["AddressTypeID"]">@AddressType["Description"]</option>
+        }
+    </select>
+
+
+    <div class="row reset-row">
+        <div class="medium-6 columns reset-columns">
+            <label>
+                Address Line 1<span>*</span>
+                <input tabindex="2" type="text" name="addressLine1" id="addressLine1" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharAddress))" value="" data-content="required" autocomplete="off" format="address" />
+            </label>
+
+            <label>
+                Address Line 2
+                <input tabindex="3" type="text" name="addressLine2" id="addressLine2" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharAddress))" value="" autocomplete="off" format="address" />
+            </label>
+
+            <label> Country<span>*</span> </label>
+            <select tabindex="4" id="country" name="country" data-content="required" onchange="reps.countrySelection(this)">
+                <option value='-1' default selected>Select an option:</option>
+                @foreach (var country in ViewData["Countries"] as IEnumerable<dynamic>)
+                {
+                    <option value="@country["CountryID"]">@country["Description"]</option>
+                }
+            </select>
+        </div> <!-- End of medium-6 columns -->
+
+        <div class="medium-6 columns">
+            <label>
+                City
+                <input tabindex="5" type="text" name="city" id="city" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharCity))" value="" autocomplete="off" format="address" />
+            </label>
+
+            <label>
+                Postcode
+                <input tabindex="6" type="text" name="zipCode" id="zipCode" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharPostalCode))" value="" autocomplete="off" />
+            </label>
+
+            <div id="ProvinceFilter"></div><!--province filter if country is selected-->
+        </div> <!-- End of medium-6 columns -->
+    </div> <!-- End of row -->
+}
+
+@section footer
+{
+    <a tabindex="7" class="button align-right" id="btn-saved" href="#" onclick="FormObjectSubmit('#btn-saved', '#saveAddressForm', true)">Save Address</a>
+}

@@ -1,0 +1,124 @@
+﻿@{
+    Layout = null;
+
+    //User roles
+    string role_view_participantedit = "PA_ED";
+    string role_view_banklist = "BA_LI";
+    string role_view_bankadd = "BA_AD";
+    string role_view_addresslist = "ADR_LI";
+    string role_view_addressadd = "AD_AD";
+
+    //messages display
+    if (TempData["ToasterMsgBank"] != null)
+    {
+        <script type="text/javascript">
+            @Html.Raw(TempData["ToasterMsgBank"])
+        </script>
+    }
+    if (TempData["ToasterParticipantMsg"] != null)
+    {
+        <script type="text/javascript">
+            @Html.Raw(TempData["ToasterParticipantMsg"]);
+        </script>
+    }
+    if (TempData["ToasterParticipantMsgOrg"] != null)
+    {
+        <script type="text/javascript">
+            @Html.Raw(TempData["ToasterParticipantMsgOrg"]);
+        </script>
+    }
+    //end of messages display
+
+    //reload the last div id
+    if (ViewData["LastActionBy"] != null)
+    {
+        <script>
+            $("#lastActionBy").load(location.href + " #lastActionBy");
+        </script>
+    }
+    //end of reload the last div id
+
+}
+
+
+@{
+    //Check if there exist any participant
+    if ((int.Parse((ViewData["participantBankAddressCount"] as IEnumerable<dynamic>).Count().ToString())) != 0)
+    {
+        foreach (var participant in ViewData["participantBankAddressCount"] as IEnumerable<dynamic>)
+        {
+            <div class="card-matter">
+                <input type="hidden" value="@participant["ParticipantGUID"]" name="ParticipantGUID" id="ParticipantGUID" />
+                <input type="hidden" value="@participant["Deleted"]" name="Deleted" id="Deleted" />
+
+                <div class="card-matter-top">
+                    <i class="material-icons">account_box</i>
+                    <div class="card-matter-top-title">
+                        <h1>@(participant["Individual"] == null ? participant["Company"] : participant["Individual"]  )</h1>
+                        <p>@participant["Role"]</p>
+                    </div> <!-- End of card-matter-top-title -->
+
+                    <div class="card-matter-top-links">
+                        @if (Common.CArray.SearchInCookie(role_view_participantedit))
+                        {
+                            <a href="#" onclick="CallPopupPanel('Participant', 'PopupEditParticipant', 'general-panel', {participantGUID:'@participant["ParticipantGUID"]'}, 'participant-panel')" class="float-right">Edit</a>
+                        }
+                    </div> <!-- card-matter-top-links -->
+                </div> <!-- End of card-matter-top -->
+
+                <div class="card-matter-bottom">
+
+                    @if (Common.CArray.SearchInCookie(role_view_banklist))
+                    {
+                        <div class="card-matter-bottom-split">
+                            <h1>@participant["BankCount"]</h1>
+                            <p>Bank</p>
+                            @if (Convert.ToInt32(@participant["BankCount"]) == 0)
+                            {
+                                if (Common.CArray.SearchInCookie(role_view_bankadd))
+                                {
+                                    <a href="#" onclick="CallPopupPanel('Participant', 'PopupAddBank', 'general-panel', { participantGUID:'@participant["ParticipantGUID"]'})">Add Bank</a>
+                                }
+                            }
+                            else
+                            {
+                                <a href="#" onclick="CallPopupPanel('Participant', 'PopupBank', 'general-panel', { participantGUIDFormValue:'@participant["ParticipantGUID"]'})">View Bank</a>
+                            }
+                        </div> <!-- End of card-matter-bottom-split -->
+                    }
+                    @if (Common.CArray.SearchInCookie(role_view_addresslist))
+                    {
+                        <div class="card-matter-bottom-split">
+                            <h1>@participant["AddressCount"]</h1>
+                            <p>Address</p>
+                            @{
+                                if (Convert.ToInt32(@participant["AddressCount"]) == 0)
+                                {
+                                    if (Common.CArray.SearchInCookie(role_view_addressadd))
+                                    {
+                                        <a href="#" onclick="CallPopupPanel('Participant', 'PopupAddAddress', 'general-panel', {participantGUID:'@participant["ParticipantGUID"]'})">Add Address</a>
+                                    }
+                                }
+                                else
+                                {
+                                    <a href="#" onclick="CallPopupPanel('Participant', 'PopupAddress', 'general-panel', {participantGUIDFormValue:'@participant["ParticipantGUID"]'})">View Address</a>
+                                }
+                            }
+                        </div> <!-- End of card-matter-bottom-split -->
+                                }
+                </div> <!-- End of card-matter-bottom -->
+            </div> <!-- End of card-matter -->
+                                    }
+                                }  //End of check if there exist any participant
+
+                                //If no participant set icon "no participant" by default
+                                else
+                                {
+                                    <div class="no-participant-section">
+                                        <i class="material-icons">account_box</i>
+                                        <p>No Participant added.</p>
+                                    </div> <!-- End of no-participant-section -->
+                                }
+                                //End of if no participant set icon "no participant" by default
+}
+

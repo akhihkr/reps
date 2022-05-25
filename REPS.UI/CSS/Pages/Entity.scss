@@ -1,0 +1,78 @@
+﻿@charset "UTF-8";
+@import "../Partials/GlobalVariables.scss";
+
+
+
+.custom-select {
+    display: inline-block;
+    background: #fcfcfc;
+    border: solid 1px #e6eaeb;
+    margin: 7px 10px 7px 0;
+    padding: 0;
+    border-radius: 2px;
+}
+
+.custom-select select {
+    background: none;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    vertical-align: middle;
+    display: inline-block;
+    padding: 8px;
+    width: 150px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+#filter-box a {
+    text-decoration: underline;
+}
+
+a.secondary {
+    color: #aab4b5;
+    margin: 0 15px 0 0;
+}
+
+a.primary {
+    color: #2196f3;
+    margin: 3px 15px 0 0;
+}
+
+/* Filter Table */
+.filter-table {
+    display: block;
+    overflow: auto;
+
+    a {
+        text-decoration: underline;
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+}
+
+.filter-buttons {
+    margin-top: 2px;
+}
+
+
+
+/*------------------------------------*\
+	Responsive
+\*------------------------------------*/
+
+/* ----------- Small ----------- */
+@media all and (min-width: 1px) and (max-width: 482px) {
+    .filter-table {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
+/* ----------- 483px to 622px ----------- */
+@media all and (min-width: 483px) and (max-width: 622px) {
+    .filter-table {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}

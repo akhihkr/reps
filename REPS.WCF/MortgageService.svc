@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="REPS.WCF.MortgageService" CodeBehind="MortgageService.svc.cs" %>

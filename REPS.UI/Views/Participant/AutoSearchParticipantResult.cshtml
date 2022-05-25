@@ -1,0 +1,35 @@
+﻿@{
+    Layout = null;
+
+
+    var resultSearch = ViewData["AutoSearchResult"].ToString().Contains("[]");
+
+    if (resultSearch != true)
+    {
+        var autoSearchParticipantResult = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<dynamic>(ViewData["AutoSearchResult"] as string);
+        <ul id="participant-existing-list">
+            @foreach (var item in autoSearchParticipantResult as IEnumerable<dynamic>)
+            {
+                if (@item["PersonID"] != null)
+                {
+                    <li onclick="reps.participantsNames('@item["GivenName"] @item["FamilyName"] @HtmlTextWriter.SemicolonChar @item["ParticipantTypeID"] @HtmlTextWriter.SemicolonChar @item["PersonID"]');" value="@item["PersonID"]">
+                        <h1>@item["GivenName"] @item["FamilyName"]</h1>
+                        <p>@MvcHtmlString.Create("Tel:") @item["PersonTelephone"]</p>
+                        <p>@item["Description"]</p>
+                    </li>
+                }
+                else if (@item["OrganizationID"] != null)
+                {
+                    <li onclick="reps.participantsNames('@item["LegalName"]  @item["Name"] @HtmlTextWriter.SemicolonChar @item["ParticipantTypeID"] @HtmlTextWriter.SemicolonChar @item["OrganizationID"]');" value="@item["OrganizationID"]"> @item["LegalName"] @item["Name"] <br /> @MvcHtmlString.Create("Tel:") @item["ORGTelephone"] <br /> @item["Description"] <hr /></li>
+                }
+            }
+        </ul>
+    }
+    else
+    {
+        <ul id="participant-existing-list">
+            <li value="-1">No Result Found</li>
+        </ul>
+    }
+}
+

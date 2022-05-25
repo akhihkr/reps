@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = ViewBag.PageLayoutPath;
+
+    if (ViewBag.PageLayoutPath != null)
+    {
+        @Html.Partial("PartialSubSection", null, new ViewDataDictionary { { "SelectedTab", "Alerts" } })
+    }
+
+    //User roles
+    string role_view_alertslist = "AL_LI";
+    string role_view_alertsadd = "AL_AD";
+
+    if (!Common.CArray.SearchInCookie(role_view_alertslist))
+    {
+        Response.Redirect(Url.Action("Index", "Dashboard"));
+    }
+}
+
+<div id="deal-content-wrapper">
+    <!-- Alerts Content -->
+    <div class="box alerts-table-box box-deal">
+
+        @Html.Partial("PartialAlertsSubSection")
+
+        <div class="mobile-tabs-with-cta workflow-tab-section-mobile">
+            <select id="mobile-subsection-nav-alerts" class="mobile-select-navigation workflow-mobile-nav" onchange="eval($('#mobile-subsection-nav-alerts').val())">
+                <option value="AjaxControllerCaller('Alerts', 'FilterPartialView', 'alerts-table', { filter: 'all' }); SetSelectedTabActiveCorrespondence('AllTab');">All</option>
+                <option value="AjaxControllerCaller('Alerts', 'FilterPartialView', 'alerts-table', { filter: 'today' }); SetSelectedTabActiveCorrespondence('TodayTab');">Today</option>
+                <option value="AjaxControllerCaller('Alerts', 'FilterPartialView', 'alerts-table', { filter: 'coming' }); SetSelectedTabActiveCorrespondence('ComingTab');">Coming Up</option>
+                <option value="AjaxControllerCaller('Alerts', 'FilterPartialView', 'alerts-table', { filter: 'archive' }); SetSelectedTabActiveCorrespondence('ArchiveTab');">Archive</option>
+            </select>
+            @if (Common.CArray.SearchInCookie(role_view_alertsadd))
+            {
+                <a href="#" onclick="CallPopupPanel('Alerts', 'PopupCreateEvent', 'general-panel')" class="button create-event-btn">Create Alert</a>
+            }
+        </div> <!-- End of mobile-tabs-with-cta -->
+
+        <div class="alerts-table" id="alerts-table">
+            @Html.Partial("AlertsList")
+        </div> <!-- End of alerts-table -->
+    </div> <!-- End of box -->
+</div>

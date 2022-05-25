@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "Add Mortgage";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    //ajax
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "mortgageInfoDetail",
+        //OnSuccess = "onSuccessToasterMsg('Mortgage','UpdateMortgageSum','matter-mortgage-price',null,'Mortgage has been successfully added')",
+        OnSuccess = "SuccessResult(data,'Mortgage','UpdateMortgageSum','matter-mortgage-price',null,'Mortgage has been successfully added')",
+        OnFailure = "OnFailure",
+        OnComplete = "onComplete",
+    };
+}
+
+@using (Ajax.BeginForm("SaveNewMortgage", "Mortgage", options, new { id = "mortgageSubmit" }))
+{
+    <div class="row reset-row">
+        <div class="medium-6 columns reset-columns">
+            <label>Participants<span>*</span></label>
+            @{
+                if (ViewData["participantBankAddressCount"] != null)
+                {
+                    <select tabindex="1" id="participantID" name="participantID" data-content="required">
+                        <option value='-1' default selected>Select an option:</option>
+                        @foreach (var participant in ViewData["participantBankAddressCount"] as IEnumerable<dynamic>)
+                        {
+                            <option value="@participant["participantID"]">@(participant["Company"] == null ? participant["Individual"] : participant["Company"])</option>
+                        }
+                    </select>
+                }
+            }
+
+            <label>Mortgage Lenders<span>*</span></label>
+            <select tabindex="3" id="mortgageLender" name="mortgageLender" data-content="required">
+                <option value='-1' default selected>Select an option:</option>
+                @{
+                    /// MortgageLender
+                    foreach (var MortLender in ViewData["MortgageLender"] as IEnumerable<dynamic>)
+                    {
+                        <option value="@MortLender["ID"]">@MortLender["Name"]</option>
+                    }
+                }
+            </select>
+
+            <label>Mortgage Types<span>*</span></label>
+            <select tabindex="5" id="mortgageType" name="mortgageType" data-content="required">
+                <option value='-1' default selected>Select an option:</option>
+                @{
+                    /// MortgageType
+                    foreach (var MortType in ViewData["MortgageType"] as IEnumerable<dynamic>)
+                    {
+                        <option value="@MortType["InstrumentTypeID"]">@MortType["Description"]</option>
+                    }
+                }
+            </select>
+
+            <label>Deposit Amount<span>*</span></label>
+            <input tabindex="7" type="text" name="depositAmount" id="depositAmount" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.decimalValue))" value="" data-content="required" autocomplete="off" format="amount" />
+
+            
+        </div> <!-- End of medium-6 columns reset-columns -->
+
+        <div class="medium-6 columns">
+            <label>Terms of Loan<span>*</span></label>
+            <input tabindex="2" type="text" name="termOfLoan" id="termOfLoan" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharMax))" value="" data-content="required" autocomplete="off" />
+
+            <label>Loan Amount<span>*</span></label>
+            <input tabindex="4" type="text" name="loanAmount" id="loanAmount" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.decimalValue))" value="" data-content="required" autocomplete="off" format="amount" />
+
+            <label>Interest Types<span>*</span></label>
+            <select tabindex="6" id="interestType" name="interestType" data-content="required">
+                <option value='-1' default selected>Select an option:</option>
+                @{
+                    /// InterestType
+                    foreach (var InterType in ViewData["InterestType"] as IEnumerable<dynamic>)
+                    {
+                        <option value="@InterType["InterestTypeID"]">@InterType["Description"]</option>
+                    }
+                }
+            </select>
+
+            <label>Interest Rates<span>*</span></label>
+            <input tabindex="8" type="text" name="interestRate" id="interestRate" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.decimalValue))" value="" data-content="required" autocomplete="off" format="amount" />
+        </div> <!-- End of medium-6 columns -->
+    </div> <!-- End of row reset-row -->
+                    }
+
+@section footer
+{
+    <a tabindex="9" class="button align-right" id="btn-saved" href="#" name="mortgageSubmit" onclick="FormObjectSubmit('#btn-saved', '#mortgageSubmit', true);">Save Mortgage</a>
+}

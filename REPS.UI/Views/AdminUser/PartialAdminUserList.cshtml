@@ -1,0 +1,25 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="box add-box-padding">
+    <div class="row reset-row">
+        <div class="medium-8 small-12 columns reset-columns">
+            <h4>User</h4>
+            <p>Please find the list of users currently in the system.</p>
+        </div> <!-- End of medium-6 small-12 reset-columns -->
+
+        <div class="medium-4 small-12 columns">
+            <div class="filter-table">
+                <input type="text" id="search-table" name="search" style="" placeholder="Search">
+            </div>
+        </div> <!-- End of medium-6 small-12 -->
+    </div> <!-- End of row reset-row -->
+
+
+    <div id="user-details">
+        @Html.Partial("~/Views/AdminUser/PartialUserDetails.cshtml")
+    </div>
+
+
+</div> <!-- End of box -->

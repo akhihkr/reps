@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Add Bank";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    string participantGUID = ViewData["participantGUID"].ToString();
+
+    //ajax
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "participantBankInfoDetail",
+        OnFailure = "OnFailure",
+        OnComplete = "onComplete",
+    };
+}
+
+@using (Ajax.BeginForm("AddParticipantBankDetail", "Participant", options, new { @id = "saveBankForm" }))
+{
+
+    <div class="small-12 columns reset-columns remove-padding-right">
+        <input type="hidden" name="participantGUID" id="participantGUID" value="@participantGUID" />
+        <label>
+            Bank Name<span>*</span>
+        </label>
+        <select tabindex="1" id="bankName" name="bankName" data-content="required">
+            <option value='-1' default selected>Select an option:</option>
+            @foreach (var bank in ViewData["Banks"] as IEnumerable<dynamic>)
+                {
+                <option value="@bank["BankID"]">@bank["BankName"]</option>
+            }
+        </select>
+
+        <div class="medium-6 columns first-half">
+            <label>
+                Account Type<span>*</span>
+            </label>
+            <select tabindex="2" id="accountType" name="accountType" data-content="required">
+                <option value='-1' default selected>Select an option:</option>
+                @foreach (var accountType in ViewData["AccountType"] as IEnumerable<dynamic>)
+                {
+                    <option value="@accountType["AccountTypeID"]">@accountType["Description"]</option>
+                }
+            </select>
+
+            <label>
+                Account Number<span>*</span>
+                <input tabindex="4" type="text" name="accountNum" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharAccount))" id="accountNum" value="" data-content="required" autocomplete="off" format="number" />
+            </label>
+        </div> <!-- End of medium-6 columns -->
+        <div class="medium-6 columns second-half">
+            <label>
+                Account Holder<span>*</span>
+                <input tabindex="3" type="text" name="accountHolder" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharName))" id="accountHolder" value="" data-content="required" autocomplete="off" format="text" />
+            </label>
+            <label>
+                Branch Code<span>*</span>
+                <input tabindex="5" type="text" name="branchCode" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharAccount))" id="branchCode" value="" data-content="required" autocomplete="off" format="number" />
+            </label>
+        </div> <!-- End of medium-6 columns -->
+    </div> <!-- End of small-6 columns-->
+}
+@section footer
+{
+    <a tabindex="6" class="button align-right" id="btn-saved" href="#" onclick="FormObjectSubmit('#btn-saved', '#saveBankForm', true);">Save Bank</a>
+}

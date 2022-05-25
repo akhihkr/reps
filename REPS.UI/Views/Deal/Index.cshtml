@@ -1,0 +1,107 @@
+﻿@using Common;
+@{
+    ViewBag.Title = "deal";
+    Layout = ViewBag.PageLayoutPath;
+ 
+}
+
+<div class="box view-all-matters-box add-box-padding">
+    <div class="box-descriptions">        
+        <h4>@(ViewData["TaskName"] == null ? "All " + Resource.Deal+"s" : ViewData["TaskName"].ToString())</h4>
+    </div> <!-- End of table-headings -->
+    <!-- Filter -->
+
+    <div class="row reset-row">
+        <div class="medium-8 small-12 columns reset-columns">
+            <p>Please find the list of entities currently in the system.</p>
+        </div> <!-- End of medium-6 small-12 reset-columns -->
+
+        <div class="medium-4 small-12 columns">
+            <div class="filter-table">
+                <input type="text" id="search-table" name="search" style="" placeholder="Search">
+            </div>
+        </div> <!-- End of medium-6 small-12 -->
+    </div> <!-- End of row reset-row -->
+    @*<div class="filter-table">
+            <div class="medium-4 columns reset-columns">
+                <label>
+                    <select>
+                        <option>Search by</option>
+                        <option>Client Reference</option>
+                        <option>Deal Type</option>
+                        <option>Status</option>
+                        <option>Date Created</option>
+                        <option>Participants</option>
+                    </select>
+                </label>
+            </div> <!-- End of medium-4 columns -->
+
+            <div class="medium-4 columns">
+                <label>
+                    <input type="text" id="search-table" name="search" placeholder="Please enter your criteria...">
+                </label>
+            </div> <!-- End of medium-4 columns -->
+
+            <div class="medium-4 columns">
+                <div class="filter-buttons">
+                    <a class="secondary">Clear</a>
+                    <a class="primary">Search</a>
+                </div> <!-- End of filter-buttons -->
+            </div> <!-- End of medium-4 columns -->
+        </div> <!-- End of filter-table -->*@
+    <!-- End of Filter -->
+    <!-- End of table-headings -->
+    <div class="all-deals-table">
+
+        <table id="deals-table" class="deals-table view-all-matters-thead">
+            <thead>
+                <tr id="table-head">
+                    <th width="100">Client Reference</th>
+                    <th width="50">@Resource.Deal Type</th>
+                    <th class="hide-row-mobile" width="50">Status</th>
+                    <th class="hide-row-mobile" width="50">Participants</th>
+                    <th class="hide-row-mobile" width="50">Date Created</th>
+                    <th width="10"></th>
+                </tr>
+            </thead>
+            <tbody class="hover view-all-matters-tbody">
+                @foreach (var deal in ViewData["Deals"] as IEnumerable<dynamic>)
+                {
+                    <tr>
+                        <td>
+                            @if (deal["ClientReference"].Trim().ToString().Length > 20)
+                            {
+                                @(deal["ClientReference"].Trim().ToString().Substring(0, 20) + MvcHtmlString.Create("..."));
+                            }
+                            else
+                            {
+                                @deal["ClientReference"].Trim()
+                            }
+                        </td>
+                        <td>@deal["DealType"]</td>
+                        <td class="hide-row-mobile">@deal["Status"]</td>
+                        <td class="hide-row-mobile">@deal["Participants"]</td>
+                        @{
+                            DateTime dealDateCreated = TimeZone.CurrentTimeZone.ToLocalTime(deal["DateCreated"]);
+                        }
+                        <td class="hide-row-mobile">@dealDateCreated.ToString("dd/MM/yyyy")</td>
+                        <td><a href="@Url.Action("ViewDeal", "Deal", new { URef = @deal["UniqueReference"] })">View</a></td>
+                    </tr>
+                            }
+            </tbody>
+        </table>
+    </div><!-- End of table-scroll -->
+    <div id="table-result-search-data"></div>
+</div>
+<!-- End of box (Main Table)-->
+<!-- End of row -->
+@*@Scripts.Render("~/Bundles/Scripts")*@
+
+
+<script type="text/javascript">
+    //call dynatable plugin search when document is ready
+    $(document).ready(function () {
+        DynatableSearch('#deals-table', '#table-result-search-data', '#search-table')
+    });
+    //end of call dynatable plugin search when document is ready
+</script>

@@ -1,0 +1,71 @@
+﻿@{
+    Layout = null;
+}
+
+<header id="header-wrapper">
+    <div class="mobile-menu">
+        <i class="material-icons">menu</i>
+        <span id="">Menu</span>
+    </div> <!-- End of mobile-menu -->
+    <!-- Header Tabs Section Starts Here-->
+    <div class="header-tabs-section" id="header-tabs-section">
+        <a tabindex="-1" class="" onclick="AjaxControllerCaller('AdminEntity', 'Index', 'content-wrapper')">
+            <div class="header-tab admin-header-tab" id="@((ViewData.ContainsKey("SelectedTab") && ViewData["SelectedTab"].ToString() == Global.Enums.PageNames.Entity.ToString() )? "header-tab-selected" : null)">
+                <h1>Entity</h1>
+            </div> <!-- End of header-tab -->
+        </a>
+
+        <a tabindex="-1" class="" onclick="AjaxControllerCaller('AdminUser', 'Index', 'content-wrapper')">
+            <div class="header-tab admin-header-tab" id="@((ViewData.ContainsKey("SelectedTab") && ViewData["SelectedTab"].ToString() == Global.Enums.PageNames.Users.ToString())? "header-tab-selected" : null)">
+                <h1>Users</h1>
+            </div>
+        </a>
+
+        <a tabindex="-1" class="" onclick="AjaxControllerCaller('AdminRoles', 'Index', 'content-wrapper')">
+            <div class="header-tab admin-header-tab" id="@((ViewData.ContainsKey("SelectedTab") && ViewData["SelectedTab"].ToString() == Global.Enums.PageNames.Roles.ToString() )? "header-tab-selected" : null)">
+                <h1>Roles</h1>
+            </div>
+        </a>
+
+        <a tabindex="-1" class="" onclick="AjaxControllerCaller('AdminDocuments', 'Index', 'content-wrapper')">
+            <div class="header-tab admin-header-tab" id="@((ViewData.ContainsKey("SelectedTab") && ViewData["SelectedTab"].ToString() == Global.Enums.PageNames.Documents.ToString()  )? "header-tab-selected" : null)">
+                <h1>Documents</h1>
+            </div>
+        </a>
+
+        <a tabindex="-1" class="" onclick="AjaxControllerCaller('AdminWorkflow', 'Index', 'content-wrapper')"> 
+            <div class="header-tab admin-header-tab" id="@((ViewData.ContainsKey("SelectedTab") && ViewData["SelectedTab"].ToString() == Global.Enums.PageNames.Workflow.ToString() )? "header-tab-selected" : null)">
+                <h1>Workflow</h1>
+            </div>
+        </a>
+    </div> <!-- End of header-tabs-section -->
+    <!-- RightHeaderTabPartial -->
+    <div class="header-right-section">
+        @{
+            if (ViewData.ContainsKey("SelectedTab"))
+            {
+                if (ViewData["SelectedTab"].ToString() == Global.Enums.PageNames.Entity.ToString())
+                {
+                    <a href="#" class="button green-btn" onclick="CallPopupPanel('AdminEntity', 'PopupAddEntity', 'general-panel')">
+                        Add Entity
+                    </a>
+                }
+                if (ViewData["SelectedTab"].ToString() == Global.Enums.PageNames.Users.ToString())
+                {
+                    <a href="#" class="button green-btn" onclick="CallPopupPanel('AdminUser', 'PopupAddUser', 'general-panel')">
+                        Add User
+                    </a>
+                }
+            }
+
+        }
+    </div> <!-- End of header-right-section -->
+</header>
+
+<select id="mobile-subsection-nav" class="mobile-select-navigation admin-select-navigation" onchange="eval($('#mobile-subsection-nav').val())">
+    <option value="AjaxControllerCaller('AdminEntity', 'Index', 'content-admin', { partial: 'true' })">Entity</option>
+    <option value="AjaxControllerCaller('AdminUser', 'Index', 'content-admin', { partial: 'true' })">Users</option>
+    <option value="AjaxControllerCaller('AdminRoles', 'Index', 'content-admin', { partial: 'true' })">Roles</option>
+    <option value="AjaxControllerCaller('AdminDocuments', 'Index', 'content-admin', { partial: 'true' })">Documents</option>
+    <option value="AjaxControllerCaller('AdminWorkflow', 'Index', 'content-admin', { partial: 'true' })">Workflow</option>
+</select>

@@ -1,0 +1,74 @@
+﻿@{
+    Layout = null;
+
+    //User roles
+    string role_view_editproperty = "PR_ED";
+
+
+    //reload the last div id
+    if (ViewData["LastActionBy"] != null)
+    {
+        <script>
+            $("#lastActionBy").load(location.href + " #lastActionBy");
+        </script>
+    }
+    //end of reload the last div id
+}
+@{
+    int counterProperties = 0;
+    if ((int.Parse((ViewData["Properties"] as IEnumerable<dynamic>).Count().ToString())) != 0)
+    {
+        counterProperties = int.Parse((ViewData["Properties"] as IEnumerable<dynamic>).Count().ToString());
+
+        int propertyCount = 0;
+
+
+        foreach (var property in ViewData["Properties"] as IEnumerable<dynamic>)
+        {
+            propertyCount++;
+            string classEnd = string.Empty;
+            if (propertyCount == counterProperties)
+            {
+                classEnd = "end";
+            }
+
+            string divID = "prop" + propertyCount;
+
+            <div class="card-matter">
+                <input type="hidden" value="@property["PropertyGUID"]" name="PropertyGUID" id="PropertyGUID" />
+                <input type="hidden" value="@property["Deleted"]" name="Deleted" id="Deleted" />
+                <div class="card-matter-top">
+                    <i class="material-icons">location_city</i>
+                    <div class="card-matter-top-title">
+                        <h1>@property["PropertyDescription"]</h1>
+                        <p>@property["PropertyDetails"]</p>
+                    </div> <!-- End of card-matter-top-title -->
+                    @if (Common.CArray.SearchInCookie(role_view_editproperty))
+                    {
+                        <div class="card-matter-top-links">
+                            <a href="#" onclick="CallPopupPanel('Property', 'PopupEditProperty', 'general-panel', { propertyGUID :'@property["PropertyGUID"]',propertyDetailGUID :'@property["PropertyDetailGUID"]',addressGUID: '@property["AddressGUID"]'})" class="float-right">Edit</a>
+                        </div> <!-- card-matter-top-links -->
+                    }
+                </div> <!-- End of card-matter-top -->
+                <div class="card-matter-bottom">
+                    <div class="card-matter-bottom-split">
+                        <h1>@property["Geo"]</h1>
+                        <p>Coordinates</p>
+                    </div> <!-- End of card-matter-bottom-split -->
+                    <div class="card-matter-bottom-split">
+                        <h1>@property["PropertyAddress"]</h1>
+                        <p>Address</p>
+                    </div> <!-- End of card-matter-bottom-split -->
+                </div> <!-- End of card-matter-bottom -->
+            </div> <!-- End of small-3 columns -->
+        }
+
+    }
+    else
+    {
+        <div class="no-property-section">
+            <i class="material-icons">location_city</i>
+            <p>No Property added.</p>
+        </div> <!-- End of no-participant-section -->
+    }
+}

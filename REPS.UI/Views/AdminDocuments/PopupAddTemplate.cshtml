@@ -1,0 +1,182 @@
+﻿
+@{
+    ViewBag.Title = "Add Template";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+    //string reportPresent = "";//variables 
+
+}
+
+<!-- Tabs content -->
+@*<ul class="tabs" data-tabs id="example-tabs">
+    <li class="tabs-title is-active" ><a href="#panel1" aria-selected="true">Add Template</a></li>
+    <li class="tabs-title is-active" onclick="workflowStepTemplate( '#footerDocument', '#footerWorkflowstep',false)"><a href="#panel1" aria-selected="true">Add Template</a></li>
+    <li class="tabs-title" onclick="workflowStepTemplate( '#footerDocument', '#footerWorkflowstep',true)"><a href="#panel2">Associate To Workflow Action</a></li>
+</ul>*@
+
+@*<div class="tabs-content" data-tabs-content="example-tabs">*@
+    <!-- Panel 1 -->
+    @using (Ajax.BeginForm("AddDocumentTemplate", "AdminDocuments", null, new { name = "AddDocumentTemplate", id = "AddDocumentTemplate" }))
+    {
+        @*<div class="tabs-panel is-active" id="panel1">*@
+            <input type="hidden" id="documentTypeID" name="documentTypeID" value="@ViewData["DocumentTypeID"]" />
+            <div class="small-12 medium-8 columns reset-columns">
+                <label>
+                    Template Name
+                    <input type="text" id="TemplateName" name="TemplateName" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharMax))" data-content="required" />
+                </label>
+            </div> <!-- End of small-12 medium-8 columns -->
+
+            <div class="small-12 medium-4 columns remove-padding-right">
+                <label>
+                    Version<span>*</span>
+                    <input type="text" id="TemplateVersion" name="TemplateVersion" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar50))" data-content="required" />
+                </label>
+            </div> <!-- End of small-12 medium-8 columns -->
+
+            <label>
+                Stored Procedure Name
+                <input type="text" id="TemplateSPROC" name="TemplateSPROC" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar50))" />
+            </label>
+
+            <label>Document Template<span id="isRequiredFile"></span></label>
+                <input type="file" id="fileUploadEdit" onchange="addFileData(this)" name="TemplateFile" />
+            
+
+
+            <div id="workflowStepResult" class="row reset-row"> </div>
+
+            <div class="row reset-row">
+                <div class="small-6 medium-3 columns reset-columns add-margin-bottom">
+                    <label>
+                        DocFusion Template
+                    </label>
+                    <label class="switch">
+                        <input type="checkbox" name="IsDocFusionTemplate" class="switch-input" value="IsDocFusionTemplate" id="IsDocFusionTemplate" onclick="ToggleFileTemplateRequired(this)">
+                        <span class="switch-label" data-on="Yes" data-off="No"></span>
+                        <span class="switch-handle"></span>
+                    </label>
+                </div> <!-- End of small-3 columns -->
+
+
+                <div class="small-6 medium-3 columns reset-columns add-margin-bottom">
+                    <label>
+                        eSignable
+                    </label>
+                    <label class="switch">
+                        <input type="checkbox" name="TemplateESign" class="switch-input" value="TemplateESign" id="TemplateESign" onclick="ToggleFileTemplateRequired(this)">
+                        <span class="switch-label" data-on="Yes" data-off="No"></span>
+                        <span class="switch-handle"></span>
+                    </label>
+                </div> <!-- End of small-3 columns -->
+
+                <div class="small-6 medium-3 columns reset-columns add-margin-bottom">
+                    <label>
+                        Static Document
+                    </label>
+                    <label class="switch">
+                        <input type="checkbox" name="IsStaticDocument" class="switch-input" id="IsStaticDocument" value="IsStaticDocument" onclick="ToggleFileTemplateRequired(this)">
+                        <span class="switch-label" data-on="Yes" data-off="No"></span>
+                        <span class="switch-handle"></span>
+                    </label>
+                </div> <!-- End of small-3 columns -->
+
+                <div class="small-6 medium-3 columns reset-columns add-margin-bottom">
+                    <label>Active</label>
+                    <label class="switch">
+                        <input type="checkbox" name="IsActive" class="switch-input" id="IsActive" value="IsActive" onclick="">
+                        <span class="switch-label" data-on="Yes" data-off="No"></span>
+                        <span class="switch-handle"></span>
+                    </label>
+                </div> <!-- End of small-3 columns -->
+
+            </div> <!-- End of row reset-row -->
+
+        @*</div>*@ <!-- End of Panel 1-->
+    @*<!-- Panel 2 -->
+        <div class="tabs-panel" id="panel2">
+            <div id="workflowTaskFormId">
+                <label> Workflow </label>
+                <select id="WorkflowID" name="WorkflowID" data-content="required" onchange="reps.workflowList(this)">
+                    <option value='-1' default selected>Select an option:</option>
+                    @{
+                        if (ViewData["workflowsList"] != null || (ViewData["currentWorkflowList"] != null))
+                        {
+                            foreach (var workflowList in ViewData["workflowsList"] as IEnumerable<dynamic>)
+                            {
+                                foreach (var currentWorkflowList in ViewData["currentWorkflowList"] as IEnumerable<dynamic>)
+                                {
+                                    if (@workflowList["WorkflowTaskGUID"].ToString().Trim() == @currentWorkflowList["WorkflowTaskGUID"].ToString().Trim())
+                                    {
+                                        reportPresent = " selected ";
+                                    }
+                                }
+                                <option @reportPresent value="@workflowList["TaskWorkflowID"]">@workflowList["TaskName"]</option>
+                                // reset to empty
+                                reportPresent = " ";
+                            }
+                        }
+                    }
+                </select>
+
+                <div id="WorkflowList">
+                    @if (ViewData["workflowTaskList"] != null)
+                {
+                        <label>
+                            Workflow Task
+                            <select id="workflowTaskID" name="workflowTaskID" data-content="required" onchange="reps.workflowTaskList(this)">
+                                <option value='-1' default selected>Select an option:</option>
+                                @foreach (var workflowList in ViewData["workflowTaskList"] as IEnumerable<dynamic>)
+                                {
+                                    <option selected value="@workflowList["WorkflowTaskID"]">@workflowList["TaskName"]</option>
+                                }
+                            </select>
+                        </label>
+                    }
+                </div><!--WorkflowTaskList filter if workflow task is selected on change function-->
+
+                <div id="WorkflowTaskList"></div><!--WorkflowTaskList filter if workflow task is selected on change function-->
+
+
+                <div id="workflowStepTaskList" style="display:none">
+                    <label class="workflow-steps-label">Workflow Steps</label>
+                    <ul class="edit-action-files-link" id="workflowStepTaskUL">
+                        <li>
+                            <a href="#"></a>
+                            @*<a class="remove-file-uploaded" data-ajax="true" data-ajax-confirm="Are you sure you want to remove?" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-update="#general-panel" href="#">x</a>*@
+                            @*<a class="remove-file-uploaded" Onclick="ConfirmDelete(this)" href="#">x</a>
+                        </li>
+                    </ul>
+                </div> <!-- End of workflowStepTaskList-->
+
+            </div> <!-- End of workflowTaskFormId-->
+        </div> <!-- End of Panel 2-->*@
+                        }
+@*</div> <!-- End of tabs-content -->*@
+<!-- End of Tabs content -->
+
+@section footer
+{
+    <div id="footerDocument">
+        @*<a class="button align-right" href="#" id="save" onclick="FormObjectSubmit('#save', '#AddDocumentTemplate', true);">Save Template</a>*@
+        <a class="button align-right" href="#" id="save">Save Template</a>
+    </div>
+    @*<div id="footerWorkflowstep" style="display:none;">
+        <a tabindex="7" class="button align-left" id="btn-saved"  href="#">Add Workflow Task</a>
+        <a tabindex="7" class="button align-right" id="btn-saved" onclick="workflowStepSaveToDocument('#footerDocument', '#footerWorkflowstep', '#workflowStepResult', '#workflowTaskListID');" href="#">Save Workflow Task</a>
+    </div>*@
+
+}
+
+@section script
+{
+    <script>
+        //$(document).foundation();
+
+        $('#save').on('click', function () {
+            var validation = reps.checkOnSubmit('#AddDocumentTemplate');
+            if (validation) {
+                SaveForm('#fileUploadEdit', '#AddDocumentTemplate', 'AdminDocuments', 'AddDocumentTemplate', 'Index', 'content-admin', '#save', { partial: true }, 'Document Template has been successfully added');
+            }
+        });
+    </script>
+}

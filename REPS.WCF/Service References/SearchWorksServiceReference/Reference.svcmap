@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="126bf760-b0f3-4e4e-a8fd-7dd6d57fc18b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://uatapi.searchworks.co.za/SearchWorksAPI/SearchWorksAPIService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SearchWorksAPIService.xsd" MetadataType="Schema" ID="597723fe-9ef2-45ea-b3ae-0bbdba7a53fb" SourceId="1" SourceUrl="https://uatapi.searchworks.co.za/SearchWorksAPI/SearchWorksAPIService.svc?xsd=xsd0" />
+    <MetadataFile FileName="SearchWorksAPIService1.xsd" MetadataType="Schema" ID="f9fb753f-e1e2-4f27-8c6b-551d32090d59" SourceId="1" SourceUrl="https://uatapi.searchworks.co.za/SearchWorksAPI/SearchWorksAPIService.svc?xsd=xsd6" />
+    <MetadataFile FileName="SearchWorksAPIService2.xsd" MetadataType="Schema" ID="0e223949-72b7-40d2-a407-d40dad396a99" SourceId="1" SourceUrl="https://uatapi.searchworks.co.za/SearchWorksAPI/SearchWorksAPIService.svc?xsd=xsd2" />
+    <MetadataFile FileName="SearchWorksAPIService3.xsd" MetadataType="Schema" ID="be3b44c6-0558-4226-8a0f-841edc1710a4" SourceId="1" SourceUrl="https://uatapi.searchworks.co.za/SearchWorksAPI/SearchWorksAPIService.svc?xsd=xsd3" />
+    <MetadataFile FileName="SearchWorksAPIService4.xsd" MetadataType="Schema" ID="3d3c5817-af66-48ef-ae61-fb762162da20" SourceId="1" SourceUrl="https://uatapi.searchworks.co.za/SearchWorksAPI/SearchWorksAPIService.svc?xsd=xsd4" />
+    <MetadataFile FileName="SearchWorksAPIService.wsdl" MetadataType="Wsdl" ID="c7208eee-ff26-445a-a990-dc13c14fef95" SourceId="1" SourceUrl="https://uatapi.searchworks.co.za/SearchWorksAPI/SearchWorksAPIService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="SearchWorksAPIService5.xsd" MetadataType="Schema" ID="b5ee4a43-8d69-49bd-8b51-96f9076d16c2" SourceId="1" SourceUrl="https://uatapi.searchworks.co.za/SearchWorksAPI/SearchWorksAPIService.svc?xsd=xsd5" />
+    <MetadataFile FileName="SearchWorksAPIService6.xsd" MetadataType="Schema" ID="dbd31541-bd69-40c7-b115-e9a32e775fc2" SourceId="1" SourceUrl="https://uatapi.searchworks.co.za/SearchWorksAPI/SearchWorksAPIService.svc?xsd=xsd1" />
+    <MetadataFile FileName="SearchWorksAPIService1.wsdl" MetadataType="Wsdl" ID="0ca7cfb2-0889-4252-8e7c-3977b8ef5fbf" SourceId="1" SourceUrl="https://uatapi.searchworks.co.za/SearchWorksAPI/SearchWorksAPIService.svc?wsdl" />
+    <MetadataFile FileName="SearchWorksAPIService.disco" MetadataType="Disco" ID="f242a1af-b094-4a4c-bb64-2f4a2ec2a570" SourceId="1" SourceUrl="https://uatapi.searchworks.co.za/SearchWorksAPI/SearchWorksAPIService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

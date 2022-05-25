@@ -1,0 +1,68 @@
+/*
+
+	INSTRUCTIONS ---------------------------------------------------------------------------------
+  
+  1. link this stylesheet in the head of your HTML
+  	 <link href="YOUR PATH/reps-datedropper.css" rel="stylesheet" type="text/css" />
+     
+  2. Set the file name as data-theme attribute on your input
+  	 <input data-theme="reps-datedropper" />
+     
+  3. That's it!
+  
+  When you run script the style will be automatically applied.
+
+*/
+div.datedropper.reps-datedropper {
+  border-radius: 2px;
+  width: 165px;
+}
+div.datedropper.reps-datedropper .picker {
+  border-radius: 2px;
+  box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.1);
+}
+div.datedropper.reps-datedropper .pick-l {
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+div.datedropper.reps-datedropper:before,
+div.datedropper.reps-datedropper .pick-submit,
+div.datedropper.reps-datedropper .pick-lg-b .pick-sl:before,
+div.datedropper.reps-datedropper .pick-m,
+div.datedropper.reps-datedropper .pick-lg-h {
+  background-color: #2196f3;
+}
+div.datedropper.reps-datedropper .pick-y.pick-jump,
+div.datedropper.reps-datedropper .pick li span,
+div.datedropper.reps-datedropper .pick-lg-b .pick-wke,
+div.datedropper.reps-datedropper .pick-btn {
+  color: #2196f3;
+}
+div.datedropper.reps-datedropper .picker,
+div.datedropper.reps-datedropper .pick-l {
+  background-color: #FFF;
+}
+div.datedropper.reps-datedropper .picker,
+div.datedropper.reps-datedropper .pick-arw,
+div.datedropper.reps-datedropper .pick-l {
+  color: #4D4D4D;
+}
+div.datedropper.reps-datedropper .pick-m,
+div.datedropper.reps-datedropper .pick-m .pick-arw,
+div.datedropper.reps-datedropper .pick-lg-h,
+div.datedropper.reps-datedropper .pick-lg-b .pick-sl,
+div.datedropper.reps-datedropper .pick-submit {
+  color: #FFF;
+}
+div.datedropper.reps-datedropper.picker-tiny:before,
+div.datedropper.reps-datedropper.picker-tiny .pick-m {
+  background-color: #FFF;
+}
+div.datedropper.reps-datedropper.picker-tiny .pick-m,
+div.datedropper.reps-datedropper.picker-tiny .pick-m .pick-arw {
+  color: #4D4D4D;
+}
+div.datedropper.reps-datedropper.picker-lkd .pick-submit {
+  background-color: #FFF;
+  color: #4D4D4D;
+}

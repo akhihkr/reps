@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "Create Alert";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    //AjaxOptions property
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "alerts-table",
+        OnSuccess = "onSuccessToasterMsg('Alerts', 'RenderPartialAlertsDiaryItems', 'notifications-panel', null, null); onSuccessToasterMsg('Alerts', 'UpdateNotificationCount', 'notifications', null, null); onSuccessToasterMsg(null,null,null,null,'Alert has been successfully added');",
+        OnComplete = "onComplete",
+    };
+    //end of AjaxOptions property
+
+}
+
+@using (Ajax.BeginForm("CreateEvent", "Alerts", options, new { id = "AlertsFormPopup" }))
+{
+    <label>
+        Alert Name<span>*</span>
+        <input type="text" name="EventName" id="EventName" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar200))" data-content="required">
+    </label>
+    <label>
+        Location<span>*</span>
+        <input type="text" name="Location" id="Location" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar2000))" data-content="required">
+    </label>
+    <div class="row reset-row picker-sections">
+        <div class="small-12 medium-6 columns reset-columns">
+            <label>
+                Starting Date<span>*</span>
+                <input class="date-input" type="text" name="StartingDate" data-format="d/m/Y" data-theme="reps-datedropper" id="datePickerEventStart" data-content="required" data-modal="true" data-large-mode="true" data-large-default="true" readonly>
+            </label>
+        </div>
+
+        <div class="small-12 medium-6 columns">
+            <label>
+                End Date<span>*</span>
+                <input class="date-input" type="text" name="EndDate" data-format="d/m/Y" data-theme="reps-datedropper" id="datePickerEventEnd" data-content="required" data-modal="true" data-large-mode="true" data-large-default="true" readonly>
+            </label>
+        </div>
+
+        <div class="small-12 medium-6 columns reset-columns">
+            <label>
+                Start Time<span>*</span>
+                <input class="time-input" type="text" name="StartTime" id="timePickerEventStart">
+            </label>
+        </div>
+        <div class="small-12 medium-6 columns time-field">
+            <label>
+                End Time<span>*</span>
+                <input class="time-input" type="text" name="EndTime" id="timePickerEventEnd">
+            </label>
+        </div>
+    </div> <!-- End of row reset-row picker-sections -->
+    <label>
+        Description<span>*</span>
+        <textarea id="myemailbody" name="Description" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharMax))" data-content="required"></textarea>
+    </label>
+}
+@section footer
+{
+    <a class="button blue-cta" href="#" id="btn-saved" onclick="CheckDateDifference();">Create Alert</a>
+}
+@section script {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#timePickerEventStart").timeDropper();
+            $("#timePickerEventEnd").timeDropper();
+            var currentYear = new Date().getFullYear();
+                var options = {
+                    minYear: currentYear,
+                    maxYear: currentYear + 1,
+                    lock: "from",
+                };
+                $("div.datedropper").remove();//to clear all divs for dropper rendered using class datedropper
+                $("#datePickerEventStart").dateDropper(options);
+                $("#datePickerEventEnd").dateDropper(options);
+        });
+
+        function CheckDateDifference()
+        {
+            var currentDate = new Date();
+            currentDate.setMinutes(currentDate.getMinutes() - 5);
+            var splitStartDate = $('#datePickerEventStart').val().split("/");
+            var splitStartTime = $('#timePickerEventStart').val().split(":");
+            //var startDateTime = splitStartDate[2] + '-' + splitStartDate[1] + '-' + splitStartDate[0] + ' ' + $('#timePickerEventStart').val() + ':00';
+            var formattedStartDateTime = new Date(splitStartDate[2], ((splitStartDate[1]) - 1), splitStartDate[0], splitStartTime[0], splitStartTime[1], 00);
+            //var formattedStartDateTime = new Date(startDateTime);
+
+            var splitEndDate = $('#datePickerEventEnd').val().split("/");
+            var splitEndTime = $('#timePickerEventEnd').val().split(":");
+            //var endDateTime = splitEndDate[2] + '-' + splitEndDate[1] + '-' + splitEndDate[0] + ' ' + $('#timePickerEventEnd').val() + ':00';
+            var formattedEndDateTime = new Date(splitEndDate[2], ((splitEndDate[1]) - 1), splitEndDate[0], splitEndTime[0], splitEndTime[1], 00);
+            //var formattedEndDateTime = new Date(endDateTime);
+
+            if (formattedStartDateTime < currentDate) {
+                alert('You cannot create Alert with dates prior to the present date.');
+                return false;
+            }
+            if (formattedEndDateTime < formattedStartDateTime)
+            {
+                alert('The end date/time you entered occurs before the start date/time.');
+                return false;
+            }
+            else
+            {
+                FormObjectSubmit('#btn-saved', '#AlertsFormPopup', true);
+            }
+        }
+    </script>
+}

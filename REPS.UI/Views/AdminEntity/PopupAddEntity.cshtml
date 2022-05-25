@@ -1,0 +1,144 @@
+﻿
+@{
+    ViewBag.Title = "Add Entity";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    //AjaxOptions property
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "content-admin",
+        //OnSuccess = "onSuccessToasterMsg(null,null,null,null,'Entity has been successfully added')",
+        OnSuccess = "SuccessResult(data,null,null,null,null,'Entity has been successfully added')",
+        OnComplete = "onComplete",
+    };
+    //end of AjaxOptions property
+}
+
+
+<!-- Add User -->
+<div class="popup-headings">
+    <h4>Entity Details</h4>
+    <p>Please make sure the user information supplied below is correct.</p>
+</div> <!-- End of popup-headings -->
+<!-- Entity -->
+
+@using (Ajax.BeginForm("AddEntity", "AdminEntity", options, new { id = "entityAddForm" }))
+{
+    <div class="row reset-row">
+        <div class="medium-6 columns reset-columns">
+            <label>Entity Name<span>*</span></label>
+            <input tabindex="1" type="text" name="entityName" id="entityName" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharName))" value="" data-content="required" autocomplete="off" format="alphanum">
+            <label>Organisation Type<span>*</span></label>
+            <select tabindex="3" id="organisationType" name="organisationType" data-content="required">
+                <option value="-1" default="">Select an option:</option>
+                @{
+                    ///OrganisationTypes
+                    foreach (var organisationType in ViewData["OrganizationTypes"] as IEnumerable<dynamic>)
+                    {
+                        <option value="@organisationType["OrganizationTypeID"]">@organisationType["Description"]</option>
+                    }
+                }
+            </select>
+
+            <label>Legal Name</label>
+            <input tabindex="5" type="text" name="legalName" id="legalName" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharName))" value="" autocomplete="off" format="alphanum">
+            <label>Telephone Number<span>*</span></label>
+            <input tabindex="7" type="text" name="telephone" id="telephone" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharTelephone))" value="" autocomplete="off" format="number" data-content="required">
+        </div> <!-- End of medium-6 columns reset-columns -->
+        <div class="medium-6 columns remove-padding-right">
+            <label>Parent Entity ID</label>
+            <select tabindex="2" id="parentEntityID" name="parentEntityID" >
+                <option value="-1" default="" selected="">Select an option:</option>
+                @{
+                    ///OrganisationTypes
+                    foreach (var parentEntityID in ViewData["AllEntitiesList"] as IEnumerable<dynamic>)
+                    {
+                        <option value="@parentEntityID["EntityID"]">@parentEntityID["Name"]</option>
+                    }
+                }
+            </select>
+            <label>Registration Number<span>*</span></label>
+            <input tabindex="4" type="text" name="registrationName" id="registrationName" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.VarcharRegistrationNumber))" value="" data-content="required" format="alphanum" autocomplete="off">
+            <label>Vat</label>
+            <input tabindex="6" type="text" name="vatID" id="vatID" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharVatID))" value="" autocomplete="off" format="alphanum">
+
+            <label>Fax Number</label>
+            <input tabindex="8" type="text" name="fax" id="fax" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharFax))" value="" autocomplete="off" format="number">
+        </div> <!-- End of medium-6 columns remove-padding-right -->
+    </div>
+    <div class="row reset-row add-margin-top">
+
+        <div class="popup-headings">
+            <h4>Contact Details</h4>
+            <p>Please make sure the user information supplied below is correct.</p>
+        </div> <!-- End of popup-headings -->
+
+
+        <div class="medium-6 columns reset-columns">
+            <label>Email</label>
+            <input tabindex="9" type="text" name="email" id="email" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharEmail))" value="" autocomplete="off" format="email">
+            <label>Address Line 1 <span>*</span></label>
+            <input tabindex="11" type="text" name="AddressLine1" id="AddressLine1" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharAddress))" value="" data-content="required" autocomplete="off" format="address">
+
+
+            <label>City<span>*</span></label>
+            <input tabindex="13" type="text" name="city" id="city" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharCity))" value="" autocomplete="off" format="address" data-content="required">
+
+
+            <label>Country</label>
+            <select tabindex="15" id="countryID" name="countryID" onchange="reps.countrySelection(this)">
+                @*<option value="-1" default="" selected="">Select an option:</option>*@
+                @{
+                    /// PropertyRoles
+                    foreach (var country in ViewData["Countries"] as IEnumerable<dynamic>)
+                    {
+                        <option value="@country["CountryID"]">@country["Description"]</option>
+                    }
+                }
+            </select>
+
+        </div> <!-- End of medium-6 columns reset-columns -->
+        <div class="medium-6 columns">
+            <label>Address Type<span>*</span></label>
+            <select tabindex="10" id="addressType" name="addressType" data-content="required">
+                <option value="-1" default="" selected="">Select an option:</option>
+                @foreach (var AddressType in ViewData["AddressType"] as IEnumerable<dynamic>)
+                {
+                    <option value="@AddressType["AddressTypeID"]">@AddressType["Description"]</option>
+                }
+            </select>
+
+            <label>Address Line 2 </label>
+            <input tabindex="12" type="text" name="AddressLine2" id="AddressLine2" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharAddress))" value="" autocomplete="off" format="address">
+ 
+            <label>Postal Code</label>
+            <input tabindex="14" type="text" name="postal" id="postal" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharPostalCode))" value="" format="alphanum" autocomplete="off">
+
+
+            <div id="ProvinceFilter"></div><!--province filter if country is selected on change function-->
+            <div id="editProvince">
+                <!--province filter if country is selected by default-->
+                <label> Province</label>
+                <select tabindex="16" id="province" name="province">
+                    <option value="-1">Select an option:</option>
+                    @foreach (var province in ViewData["Province"] as IEnumerable<dynamic>)
+                    {
+                        <option value="@province["ProvinceID"]">@province["Description"]</option>
+                    }
+                </select>
+            </div> <!-- End of editProvince -->
+        
+        </div> <!-- End of medium-6 columns reset-columns -->
+    </div> <!-- End of row -->
+                    }
+
+<!-- End of Entity -->
+
+
+
+
+@section footer {
+    <a id="btn-saved" class="button align-right" href="#" onclick="FormObjectSubmit('#btn-saved', '#entityAddForm', true);">Save Entity</a>
+}

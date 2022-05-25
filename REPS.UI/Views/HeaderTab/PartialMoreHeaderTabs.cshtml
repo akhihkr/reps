@@ -1,0 +1,46 @@
+﻿@{
+    int dealsCount = 0;
+
+    /// Call WCF to get all active deals for notification bar by User
+    object allActiveDealsNotificationBar = REPS.UI.Models.HeaderTabModel.GetUserActiveDealsNotificationBar(Request.Cookies["REPS_AspNetUsersId"].Value.ToString());
+    ViewData["ActiveDealsNotifBarHeaderTabs"] = allActiveDealsNotificationBar;
+}
+<div class="more-tabs-wrapper" tabindex="-1">
+    <div class="more-tabs-header">
+        <i class="material-icons sidebar-icons">more_vert</i>
+        <h1> More Tabs </h1>
+        <a href="@Url.Action("DeleteAllUserDeals", "HeaderTab")" class="clear-all-tabs" tabindex="-1" onclick="return confirm('Are you sure you want to clear all tabs?')">
+            Clear all tabs
+        </a>
+    </div> <!-- End of more-tabs-header -->
+    @foreach (var activeDealTabNotifBar in ViewData["ActiveDealsNotifBarHeaderTabs"] as IEnumerable<dynamic>)
+    {
+        dealsCount++;
+        using (Html.BeginForm("DealRedirection", "HeaderTab", new { UniqueReference = activeDealTabNotifBar["UniqueReference"], RedirectLink = activeDealTabNotifBar["LastViewName"] }, FormMethod.Post, new { name = "moreHeaderTabForm", id = "moreHeaderTabForm" + dealsCount }))
+        {
+
+            <a onclick="$('@MvcHtmlString.Create("#moreHeaderTabForm" + @dealsCount)').submit()">
+                <div class="additional-tab-content">
+                    <i class="material-icons tab-icon">tab</i>
+                    <h1>@activeDealTabNotifBar["ClientReference"]</h1>
+                </div> <!-- End of additional-tab-content -->
+            </a>
+
+            @Ajax.ActionLink("x", "DeleteUserDeals", "HeaderTab",
+                    new { CloseURef = activeDealTabNotifBar["UniqueReference"] },
+                    new AjaxOptions
+                    {
+                        HttpMethod = "Post",
+                        InsertionMode = InsertionMode.Replace,
+                        UpdateTargetId = "header-tabs-section",
+                        OnSuccess = "onSuccessToasterMsg('HeaderTab', 'UpdateMoreTabsHeader', 'more-tabs-panel', null, null)",
+                    },
+                    new { @class = "close-more-tab-a" })
+        }
+    }
+</div> <!-- End of more-tabs-wrapper -->
+
+
+<script>
+    $(document).foundation();
+</script>

@@ -1,0 +1,144 @@
+﻿@{
+    ViewBag.Title = "Add Property";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    //ajax to save property
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "PropertyInfoDetail",
+        //OnSuccess = "onSuccessToasterMsg(null,null,null,null,'Property has been successfully added')",
+        OnSuccess = "SuccessResult(data,null,null,null,null,'Property has been successfully added')",
+        OnFailure = "OnFailure",
+        OnComplete = "onComplete",
+    };
+
+    if (TempData["ToasterMsg"] != null)
+    {
+        <script type="text/javascript">
+            @Html.Raw(TempData["ToasterMsg"])
+        </script>
+    }
+
+}
+@using (Ajax.BeginForm("AddProperty", "Property", options, new { id = "propertyindividual" }))
+{
+    <div class="medium-6 columns reset-columns">
+
+        <div class="popup-headings">
+            <h4>Property Information</h4>
+            <p></p>
+        </div> <!-- End of popup-headings -->
+
+        <label>Property Type <span>*</span></label>
+        <select tabindex="1" id="propertyType" name="propertyType" data-content="required">
+            <option value='-1' default selected>Select an option:</option>
+            @{
+                /// PropertyRoles
+                foreach (var propertyType in ViewData["PropertyTypes"] as IEnumerable<dynamic>)
+                {
+                    <option value="@propertyType["PropertyTypeID"]">@propertyType["Description"]</option>
+                }
+            }
+        </select>
+
+        <label>Property Description <span>*</span></label>
+        <input tabindex="2" type="text" name="PropertyDescription" id="PropertyDescription" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharMax))" value="" data-content="required" autocomplete="off" format="alphanum" />
+
+        <label>Legal Description</label>
+        <input tabindex="3" type="text" name="LegalDescription" id="LegalDescription"  maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar100))" value="" autocomplete="off" />
+
+        <label>Size Type <span>*</span></label>
+        <select tabindex="4" id="SizeTypeID" name="SizeTypeID" data-content="required">
+            <option value='-1' default selected>Select an option:</option>
+            @{
+                foreach (var sizetype in ViewData["SizeTypes"] as IEnumerable<dynamic>)
+                {
+                    <option value="@sizetype["SizeTypeID"]">@sizetype["Description"]</option>
+                }
+            }
+        </select>
+
+        <label>Size</label>
+        <input tabindex="5" type="text" name="Size" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar50))" id="Size" value="" autocomplete="off" format="number" />
+
+        <label>Portion Number </label>
+        <input tabindex="6" type="text" name="PortionNumber" id="PortionNumber" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar100))" value="" autocomplete="off" format="number" />
+
+        <label>Plan Number </label>
+        <input tabindex="7" type="text" name="PlanNumber" id="PlanNumber" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar20))" value="" autocomplete="off" format="number" />
+        
+    </div> <!-- End of medium-6 columns reset-columns -->
+
+    <div class="medium-6 columns remove-padding-right">
+
+        <div class="popup-headings">
+            <h4>Street Address</h4>
+        <p></p>
+        </div> <!-- End of popup-headings -->
+
+        <label>Address Line 1 <span>*</span></label>
+        <input tabindex="8" type="text" name="AddressLine1" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharAddress))" id="AddressLine1" value="" data-content="required" autocomplete="off" format="address" />
+
+        <label>Address Line 2 </label>
+        <input tabindex="9" type="text" name="AddressLine2" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharAddress))" id="AddressLine2" value="" autocomplete="off" format="address" />
+
+        <label>City </label>
+        <input tabindex="10" type="text" name="City" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharCity))" id="City" value="" autocomplete="off" format="address" />    
+
+        <label>Country</label>
+        <select tabindex="11" id="CountryID" name="CountryID">
+            @{
+                /// PropertyRoles
+                foreach (var country in ViewData["Countries"] as IEnumerable<dynamic>)
+                {
+                    <option value="@country["CountryID"]">@country["Description"]</option>
+                }
+            }
+        </select>
+
+        <label>Postal Code </label>
+        <input tabindex="12" type="text" name="PostalCode" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharPostalCode))" id="PostalCode" value="" autocomplete="off" format="number" />
+
+        <label>Township <span>*</span></label>
+        <input  tabindex="13" type="text" name="township" id="township" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar100))" value="" onclick="townshipSearch('#propertyindividual', '#townshipForm', '#TownshipDetail')" data-content="required" autocomplete="off" readonly/>
+
+        <label>Coordinates <span>*</span></label>
+        <input tabindex="14" type="text" name="Coordinates" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar100))" id="Coordinates" value="" autocomplete="off" data-content="required" />
+
+    </div> <!-- End of medium-6 columns remove-padding-right -->
+                }
+@Html.Partial("~/Views/Property/PartialPropertyTownship.cshtml")
+
+@section footer
+{
+    <a tabindex="15" class="button align-right property-save" id="btn-saved" href="#" onclick="FormObjectSubmit('#btn-saved', '#propertyindividual', true);">Save Property</a>
+    <a class="button align-left" id="btn-back" href="#" onclick='townshipName("empty","#township","Property","PropertyPopupDetail","{dealID:@ViewData["DealIDSession"]}","#propertyindividual","#townshipForm", "#TownshipDetail")' style="display:none">Back</a>
+}
+@section script
+{
+    <script>
+        function townshipSearch(formID, textTownshipID, townsearchDetails) {
+            $(formID).hide();
+            $(townsearchDetails).show();
+            $(textTownshipID).css('display', 'block');
+            $('.property-save').hide();
+            $('#btn-back').show();
+        }
+        /*function to get the selectecd township name*/
+        function townshipName(townshipDetailsName, idTownShip, controllerName, methodName, parameters, formID, textTownshipID, townsearchDetails) {
+            $(formID).show();
+            $(textTownshipID).css('display', 'none');
+            $('.property-save').show();
+            $('#btn-back').hide();
+            $(townsearchDetails).hide();
+            if (townshipDetailsName != "empty") {
+                $(idTownShip).val(townshipDetailsName);
+            }
+            
+            //AjaxControllerCaller(controllerName, methodName, null, parameters)
+        }
+        /*end of function to get the selectecd township name*/
+    </script>
+}

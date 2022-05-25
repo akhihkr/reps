@@ -1,0 +1,105 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="box add-box-padding">
+
+    <div class="row reset-row">
+        <div class="medium-8 small-12 columns reset-columns">
+            <h4>Entity</h4>
+            <p>Please find the list of entities currently in the system.</p>
+        </div> <!-- End of medium-6 small-12 reset-columns -->
+
+        <div class="medium-4 small-12 columns">
+            <div class="filter-table">
+                <input type="text" id="search-table" name="search" style="" placeholder="Search">
+            </div>
+        </div> <!-- End of medium-6 small-12 -->
+    </div> <!-- End of row reset-row -->
+    @*<a class="button align-right"  href="#">Add Entity</a>*@
+
+    @*<!-- Filter -->
+        <div class="filter-table">
+            <div class="medium-4 columns reset-columns">
+                <label>
+                    <select>
+                        <option>Search by</option>
+                        <option>Name</option>
+                        <option>Registration No</option>
+                        <option>Legal name</option>
+                    </select>
+                </label>
+            </div> <!-- End of medium-4 columns -->
+
+            <div class="medium-4 columns">
+                <label>
+                    <input id="search-box-ent" type="text" placeholder="Please enter your criteria...">
+                </label>
+            </div> <!-- End of medium-4 columns -->
+
+            <div class="medium-4 columns">
+                <div class="filter-buttons">
+                    <a class="secondary">Clear</a>
+                    <a class="primary">Search</a>
+                </div> <!-- End of filter-buttons -->
+            </div> <!-- End of medium-4 columns -->
+        </div> <!-- End of filter-table -->
+        <!-- End of Filter -->*@
+
+    <div class="table-scroll entity-table">
+        <table class="deals-table" id="table-data">
+            <thead>
+                <tr id="table-head">
+                    <th width="100">Entity Name</th>
+                    <th width="100">Registration Number</th>
+                    <th width="50">Telephone</th>
+                    @*<th width="50">Fax Number</th>*@
+                    <th width="50">Email</th>
+                    <th width="10"></th>
+                    <th width="10"></th>
+                </tr>
+            </thead>
+            <tbody class="hover">
+                @{
+                    if (ViewData["EntitiesList"] != null)
+                    {
+                        foreach (var entitiesInfo in ViewData["EntitiesList"] as IEnumerable<dynamic>)
+                        {
+                            <tr>
+                                <td id="entityName">@entitiesInfo["Name"]</td>
+                                <td>@entitiesInfo["RegistrationNumber"]</td>
+                                <td>@entitiesInfo["Telephone"]</td>
+                                @*<td>@entitiesInfo["FaxNumber"]</td>*@
+                                <td>@entitiesInfo["Email"]</td>
+                                <td><a href="#" onclick="CallPopupPanel('AdminEntity', 'PopupEditEntity', 'general-panel', {entityGUID : '@entitiesInfo["EntityGUID"]'})">Edit</a></td>
+                                <td>
+                                    @{
+                                        if (ViewData["entityID"].ToString() != entitiesInfo["EntityID"].ToString())
+                                        {
+                                            @Ajax.ActionLink("Remove", "RemoveEntity", new { entityGUID = @entitiesInfo["EntityGUID"] },
+                                                                        new AjaxOptions
+                                                                        {
+                                                                            //UpdateTargetId = "general-panel",
+                                                                            UpdateTargetId = "content-admin",
+                                                                            InsertionMode = InsertionMode.Replace,
+                                                                            HttpMethod = "POST",
+                                                                            Confirm = "Are you sure you want to remove this entity?",
+                                                                            //OnSuccess = "onSuccessToasterMsg('AdminEntity','Index','content-wrapper',null,'Entity has been successfully removed')"
+                                                                            OnSuccess = "SuccessResult(data,'AdminEntity','Index','content-wrapper',null,'Entity has been successfully removed')",
+                                                                        }, new { @class = "remove-template" });
+                                        }
+          
+                                    }
+
+                                </td>
+                            </tr>
+                                            }
+                                        }
+                }
+            </tbody>
+        </table>
+    </div> <!-- End of table-scroll -->
+
+    <div id="table-result-search-data"></div>
+
+</div> <!-- End of box -->

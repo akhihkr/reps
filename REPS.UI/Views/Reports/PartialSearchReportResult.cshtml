@@ -1,0 +1,93 @@
+﻿@{
+    Layout = null;
+    string filename = null;
+    byte[] bytes = null;
+    string fileExtension = null;
+}
+
+@{
+
+    if (ViewData["fileTodownload"] != null)
+    {
+        //foreach (var fileInfo in ViewData["fileTodownload"] as Dictionary<string, object>)
+        //{
+
+        //}
+        @*<a href="@Url.Action("GetDownload", "Reports")">Download Report</a>*@
+        <iframe width="1" height="1" frameborder="0" src="[File location]"></iframe>
+        <a href="@Url.Action("GetDownloads", "Reports", new { file = @ViewData["fileTodownload"] })">Download</a>
+    }
+
+
+    if (ViewData["getReportDetail"] != null && ViewData["getDealReports"] != null && ViewData["ReportId"] != null)
+    {
+        if (ViewData["getDealTableReport"].ToString() == Common.CString.GetEnumDescription(Global.Enums.NullValues.NullString))
+        {
+            <!-- No reports section -->
+            <div class="box add-box-padding">
+                <div class="empty-section">
+                    <i class="material-icons">event</i>
+                    <p>Nothing found.</p>
+                </div> <!-- End of empty-section -->
+            </div> <!-- End of box -->
+        }
+    }
+    else if (ViewData["getDealTableReport"] == null || ViewData["getDealReports"] == null)
+    {
+            <!-- No reports section -->
+        <div class="box add-box-padding">
+            <div class="empty-section">
+                <i class="material-icons">event</i>
+                <p>Nothing found.</p>
+            </div> <!-- End of empty-section -->
+        </div> <!-- End of box -->
+    }
+}
+
+
+
+@if (ViewData["getReportDetail"] != null && ViewData["getDealReports"] != null && ViewData["ReportId"] != null)
+{
+    if (ViewData["getDealTableReport"].ToString() != Common.CString.GetEnumDescription(Global.Enums.NullValues.NullString))
+    {
+        <div class="box add-box-padding">
+            <div class="deal-charts-reports">
+                @foreach (var reportDetails in ViewData["getReportDetail"] as IEnumerable<dynamic>)
+                {
+                    if (Convert.ToInt32(ViewData["ReportId"]) == Convert.ToInt32(@reportDetails["ReportsId"]))
+                    {
+                        <h4>@reportDetails["Description"]</h4>
+                        <div id="chart-container" class="monthly-payment-overview-chart-container" style="height: auto;">
+                            @{
+                                Html.RenderPartial("PartialChartTable", new ViewDataDictionary(ViewData) { { "chartName", @reportDetails["ChartName"] }, { "chartType", @reportDetails["ChartType"] }, { "dashboardChartDes", ViewData["getDealReports"] as IEnumerable<dynamic> }, { "chartId", "chart_chart_chartType" } });
+                            }
+                        </div>
+                                    }
+                                }
+
+            </div>
+        </div> <!-- End of box add-box-padding -->
+                                    }
+                                }
+
+
+
+<!-- End of Chart Report Result -->
+
+
+
+@if (ViewData["getReportDetail"] != null && ViewData["getDealReports"] != null && ViewData["ReportId"] != null)
+{
+    if (ViewData["getDealTableReport"].ToString() != Common.CString.GetEnumDescription(Global.Enums.NullValues.NullString))
+    {
+        <!-- Table Reports Generation -->
+        <div  id="divTableDataHolder" class="box add-box-padding">
+            <div class="table-scroll entity-table">
+                @{
+                    Html.RenderPartial("PartialChartTable", new ViewDataDictionary(ViewData) { { "chartId", "table_chart_chartType" }, { "dealTableReport", ViewData["getDealTableReport"] as IEnumerable<dynamic> } });
+                }
+            </div>
+        </div>
+        <!-- End of Table Reports Generation -->
+                        }
+                    }

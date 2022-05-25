@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = ViewBag.PageLayoutPath;
+
+    if (ViewBag.PageLayoutPath != null)
+    {
+        @Html.Partial("PartialSubSection", null, new ViewDataDictionary { { "SelectedTab", "Correspondence" } })
+    }
+}
+
+<div id="deal-content-wrapper">
+    <div class="box alerts-table-box box-deal">
+        @Html.Partial("PartialCorrespondenceSubSection")
+
+        <div class="mobile-tabs-with-cta">
+            <select id="mobile-subsection-nav-correspondence" class="mobile-select-navigation" onchange="eval($('#mobile-subsection-nav-correspondence').val())">
+                <option value="AjaxControllerCaller('Correspondence', 'CorrespondenceList', 'alerts-table'); SetSelectedTabActiveCorrespondence('CorrespondenceListTab');">Correspondence List</option>
+                <option value="AjaxControllerCaller('Correspondence', 'SendEmail', 'alerts-table'); SetSelectedTabActiveCorrespondence('EmailTab');">Email</option>
+                <option value="AjaxControllerCaller('Correspondence', 'SendSMS', 'alerts-table'); SetSelectedTabActiveCorrespondence('SMSTab');">SMS</option>
+            </select>
+        </div> <!-- End of mobile-tabs-with-cta -->
+        @*<div class="alerts-no-events">
+                <i class="material-icons">event</i>
+                <p>No correspondence for this Deal.</p>
+            </div>*@ <!-- End of alerts-no-events -->
+
+        <div class="alerts-table" id="alerts-table">
+            @Html.Partial("CorrespondenceList")
+        </div> <!-- End of alerts-table -->
+
+    </div> <!-- End of box -->
+</div>

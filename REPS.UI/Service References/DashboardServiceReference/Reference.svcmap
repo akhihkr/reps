@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5a0751fc-7121-4e50-a108-d9d080472eaa" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:54738/DashboardService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DashboardService.xsd" MetadataType="Schema" ID="cb0e979c-b0c4-42ea-ad20-7dfa0a332208" SourceId="1" SourceUrl="http://localhost:54738/DashboardService.svc?xsd=xsd2" />
+    <MetadataFile FileName="DashboardService.wsdl" MetadataType="Wsdl" ID="207bf73b-09a8-412d-9b03-5952e453f2fb" SourceId="1" SourceUrl="http://localhost:54738/DashboardService.svc?wsdl" />
+    <MetadataFile FileName="DashboardService.disco" MetadataType="Disco" ID="58c7c0a7-dd16-4d9e-903c-eb9064b1e28a" SourceId="1" SourceUrl="http://localhost:54738/DashboardService.svc?disco" />
+    <MetadataFile FileName="DashboardService1.xsd" MetadataType="Schema" ID="b93b8d51-8995-4ab9-9a59-30a9e17b90ae" SourceId="1" SourceUrl="http://localhost:54738/DashboardService.svc?xsd=xsd1" />
+    <MetadataFile FileName="DashboardService2.xsd" MetadataType="Schema" ID="5aec297c-bf83-47d2-b3c6-cbe3f60adde6" SourceId="1" SourceUrl="http://localhost:54738/DashboardService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

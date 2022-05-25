@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CorrespondenceService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:54738/CorrespondenceService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:54738/CorrespondenceService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:54738/CorrespondenceService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:54738/CorrespondenceService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Common" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICorrespondenceService_InsertCorrespondence_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertCorrespondence" />
+  </wsdl:message>
+  <wsdl:message name="ICorrespondenceService_InsertCorrespondence_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertCorrespondenceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICorrespondenceService_GetCorrespondenceInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCorrespondenceInfo" />
+  </wsdl:message>
+  <wsdl:message name="ICorrespondenceService_GetCorrespondenceInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCorrespondenceInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICorrespondenceService_GetCorrespondenceDetails_ByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCorrespondenceDetails_ByID" />
+  </wsdl:message>
+  <wsdl:message name="ICorrespondenceService_GetCorrespondenceDetails_ByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCorrespondenceDetails_ByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICorrespondenceService_GetEmailAutocomplete_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmailAutocomplete" />
+  </wsdl:message>
+  <wsdl:message name="ICorrespondenceService_GetEmailAutocomplete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmailAutocompleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICorrespondenceService_GetTelephoneAutocomplete_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTelephoneAutocomplete" />
+  </wsdl:message>
+  <wsdl:message name="ICorrespondenceService_GetTelephoneAutocomplete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTelephoneAutocompleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICorrespondenceService_GetBinaryDocumentAttachment_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBinaryDocumentAttachment" />
+  </wsdl:message>
+  <wsdl:message name="ICorrespondenceService_GetBinaryDocumentAttachment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBinaryDocumentAttachmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICorrespondenceService_GetCorrespondenceIDByCorrespondenceGUID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCorrespondenceIDByCorrespondenceGUID" />
+  </wsdl:message>
+  <wsdl:message name="ICorrespondenceService_GetCorrespondenceIDByCorrespondenceGUID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCorrespondenceIDByCorrespondenceGUIDResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ICorrespondenceService">
+    <wsdl:operation name="InsertCorrespondence">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICorrespondenceService/InsertCorrespondence" message="tns:ICorrespondenceService_InsertCorrespondence_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICorrespondenceService/InsertCorrespondenceResponse" message="tns:ICorrespondenceService_InsertCorrespondence_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCorrespondenceInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICorrespondenceService/GetCorrespondenceInfo" message="tns:ICorrespondenceService_GetCorrespondenceInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICorrespondenceService/GetCorrespondenceInfoResponse" message="tns:ICorrespondenceService_GetCorrespondenceInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCorrespondenceDetails_ByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICorrespondenceService/GetCorrespondenceDetails_ByID" message="tns:ICorrespondenceService_GetCorrespondenceDetails_ByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICorrespondenceService/GetCorrespondenceDetails_ByIDResponse" message="tns:ICorrespondenceService_GetCorrespondenceDetails_ByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmailAutocomplete">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICorrespondenceService/GetEmailAutocomplete" message="tns:ICorrespondenceService_GetEmailAutocomplete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICorrespondenceService/GetEmailAutocompleteResponse" message="tns:ICorrespondenceService_GetEmailAutocomplete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTelephoneAutocomplete">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICorrespondenceService/GetTelephoneAutocomplete" message="tns:ICorrespondenceService_GetTelephoneAutocomplete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICorrespondenceService/GetTelephoneAutocompleteResponse" message="tns:ICorrespondenceService_GetTelephoneAutocomplete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBinaryDocumentAttachment">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICorrespondenceService/GetBinaryDocumentAttachment" message="tns:ICorrespondenceService_GetBinaryDocumentAttachment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICorrespondenceService/GetBinaryDocumentAttachmentResponse" message="tns:ICorrespondenceService_GetBinaryDocumentAttachment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCorrespondenceIDByCorrespondenceGUID">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICorrespondenceService/GetCorrespondenceIDByCorrespondenceGUID" message="tns:ICorrespondenceService_GetCorrespondenceIDByCorrespondenceGUID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICorrespondenceService/GetCorrespondenceIDByCorrespondenceGUIDResponse" message="tns:ICorrespondenceService_GetCorrespondenceIDByCorrespondenceGUID_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="CorrespondenceService" />
+</wsdl:definitions>

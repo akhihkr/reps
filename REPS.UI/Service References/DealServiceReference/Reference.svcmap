@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0b41462e-91b2-45e8-8e24-aaa840cb96e5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:54738/DealService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DealService2.xsd" MetadataType="Schema" ID="ec65229a-e31d-4539-9161-45cf01cc4aa7" SourceId="1" SourceUrl="http://localhost:54738/DealService.svc?xsd=xsd3" />
+    <MetadataFile FileName="DealService.disco" MetadataType="Disco" ID="7865cdf4-aed7-4121-9cb0-d88ab466ab9c" SourceId="1" SourceUrl="http://localhost:54738/DealService.svc?disco" />
+    <MetadataFile FileName="DealService.wsdl" MetadataType="Wsdl" ID="b18ad4fd-0c89-4fda-8156-48b6886c2bfe" SourceId="1" SourceUrl="http://localhost:54738/DealService.svc?wsdl" />
+    <MetadataFile FileName="DealService1.xsd" MetadataType="Schema" ID="b5f12d77-4216-4d66-8910-080aae87571f" SourceId="1" SourceUrl="http://localhost:54738/DealService.svc?xsd=xsd2" />
+    <MetadataFile FileName="DealService.xsd" MetadataType="Schema" ID="78e436e6-3765-4467-a324-d936e7fff89b" SourceId="1" SourceUrl="http://localhost:54738/DealService.svc?xsd=xsd1" />
+    <MetadataFile FileName="DealService3.xsd" MetadataType="Schema" ID="5bab9af6-f9c4-48de-81dd-332c6cdd38f3" SourceId="1" SourceUrl="http://localhost:54738/DealService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

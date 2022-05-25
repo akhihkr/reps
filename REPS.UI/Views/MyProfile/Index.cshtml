@@ -1,0 +1,205 @@
+﻿@{
+    ViewBag.Title = "My Profile";
+    Layout = ViewBag.PageLayoutPath;
+
+    if (ViewBag.PageLayoutPath == null)
+    {
+        @Html.Partial("PartialHeaderProfile", null, new ViewDataDictionary { { "SelectedTab", "Index" } })
+    }
+    //messages display
+    if (TempData["ToasterProfileMsg"] != null)
+    {
+        <script type="text/javascript">
+            @Html.Raw(TempData["ToasterProfileMsg"]);
+        </script>
+    }
+    //end of message display
+    //ajax to save profile
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "content-wrapper",
+        //OnSuccess = "onSuccessToasterMsg(data,null,null,null,null,'Profile has been successfully updated')",
+        OnFailure = "OnFailure",
+        //OnComplete = "onComplete",
+    };
+
+}
+
+
+<div class="@( ViewBag.PageLayoutPath == null ? "content" : null )">
+
+    <select id="profile-dropdown-link" class="mobile-content-page-navigation" onchange="eval($('#profile-dropdown-link').val())">
+        <option value="AjaxControllerCaller('MyProfile', 'Index', 'content-wrapper')" selected>Basic Info</option>
+        <option value="AjaxControllerCaller('MyProfile', 'Security', 'content-wrapper')">Security</option>
+    </select>
+    @{
+        if (ViewData["UserInfo"] != null)
+        {
+            foreach (var userprofile in ViewData["UserInfo"] as IEnumerable<dynamic>)
+            {
+                using (Ajax.BeginForm("UpdateUserProfile", "MyProfile", options, new { id = "UserProfile" }))
+                {
+                    <div class="box add-box-padding">
+                        <div class="row reset-row">
+
+                            <div class="box-descriptions">
+                                <h4>Basic Info</h4>
+                                <p>Please make sure your profile information supplied below is correct.</p>
+                            </div> <!-- End of box-description -->
+
+                            <div class="small-12 medium-6 columns reset-columns">
+                                <label>
+                                    First Name<span>*</span>
+                                    <input tabindex="1" type="text" id="FirstName" name="FirstName" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar100))" value="@userprofile["GivenName"]" data-content="required" format="text">
+                                </label>
+                                <label>
+                                    Identity Number<span>*</span>
+                                    <input tabindex="3" type="text" id="IdentityNumber"  maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar20))" name="IdentityNumber" value="@userprofile["IdentityNumber"]" data-content="required" format="alphanumid">
+                                </label>
+                                <label>
+                                    Country<span>*</span>
+                                    <select tabindex="5" id="PassportCountryID" name="PassportCountryID" data-content="required">
+                                        @*/// Countries list*@
+                                        <option value='-1' default selected>Select an option:</option>
+
+                                        @*<option value="" selected>Country Description</option>*@
+
+                                        @foreach (var country in ViewData["Countries"] as IEnumerable<dynamic>)
+                                        {
+                                            if (@country["CountryID"] == @userprofile["PassportCountryID"])
+                                            {
+                                                <option value="@country["CountryID"]" selected>@country["Description"]</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@country["CountryID"]">@country["Description"]</option>
+                                            }
+
+                                        }
+                                    </select>
+                                </label>
+
+                                <label>
+                                    Date of Birth<span>*</span>
+                                    <input tabindex="7" class="date-input" type="text" data-init-set="false" id="birthDateUser" name="BirthDate" value="@(TimeZone.CurrentTimeZone.ToLocalTime(userprofile["BirthDate"]).ToString("dd/MM/yyyy"))" data-modal="true" data-content="required" data-large-mode="true" data-large-default="true" data-theme="reps-datedropper" data-init-set="true" data-min-year="1970" data-format="d/m/Y" data-lock="to" />
+                                </label>
+
+                            </div> <!-- End of small-6 columns reset-columns -->
+                            <div class="small-12 medium-6 columns">
+                                <label>
+                                    Last Name<span>*</span>
+                                    <input tabindex="2" type="text" id="LastName" name="LastName" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar100))" value="@userprofile["FamilyName"]" data-content="required" format="text">
+                                </label>
+                                <label>
+                                    Passport Number
+                                    <input tabindex="4" type="text" id="PassportNumber" name="PassportNumber" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar100))" value="@userprofile["PassportNumber"]" format="alphanum">
+                                </label>
+
+                                <label>
+                                    Role
+                                    @{
+                                        if (@userprofile["RoleID"] != null)//to check if rold id exist
+                                        {
+                                            /// Role list
+                                            foreach (var Role in ViewData["RolesList"] as IEnumerable<dynamic>)
+                                            {
+                                                if (Role["RoleID"] == @userprofile["RoleID"])
+                                                {
+                                                    <input tabindex="6" type="text" id="RoleID" name="RoleID" placeholder="" value="@Role["Description"]" disabled>
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <input tabindex="6" type="text" id="RoleID" name="RoleID" placeholder="" value="-" disabled>
+                                        }
+                                    }
+
+                                </label>
+                            </div> <!-- End of small-12 medium-6 columns -->
+                        </div> <!-- End of row -->
+                    </div> <!-- End of box add-box-padding -->
+                                        <div class="box add-box-padding">
+
+                                            <div class="box-descriptions">
+                                                <h4 class="contact-details-header">Contact Details</h4>
+                                                <p>Please make sure your contact details supplied below is correct.</p>
+                                            </div> <!-- End of box-description -->
+
+                                            <div class="row reset-row">
+                                                <div class="small-12 medium-4 columns reset-columns">
+                                                    <label>
+                                                        Telephone Number
+                                                        <input tabindex="8" type="text" id="Telephone" name="Telephone" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharTelephone))" value="@userprofile["Telephone"]" format="telnumber">
+                                                    </label>
+                                                </div>
+                                                <div class="small-12 medium-4 columns">
+                                                    <label>
+                                                        Mobile Number
+                                                        <input tabindex="9" type="text" id="MobileNumber" name="MobileNumber" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharTelephone))" value="@userprofile["MobileNumber"]" format="telnumber">
+                                                    </label>
+                                                </div>
+                                                <div class="small-12 medium-4 columns">
+                                                    <label>
+                                                        Email Address<span>*</span>
+                                                        <input tabindex="10" type="text" id="Email" name="Email" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar100))" value="@userprofile["Email"]" data-content="required" format="email">
+                                                    </label>
+                                                </div>
+                                            </div> <!-- End of row reset-row -->
+                                        </div> <!-- End of box add-box-padding -->
+                                        }
+
+                                        <div class="box add-box-padding">
+                                            <h4 class="contact-details-header">Tab Configuration</h4>
+                                            <div class="row reset-row">
+                                                <label>
+                                                    Use tabs?
+                                                </label>
+                                                <label class="switch">
+                                                    @if (@userprofile["HeaderTabToggle"] == null)
+                                                    {
+                                                        <input type="checkbox" class="switch-input" id="HeaderTabToggle" name="HeaderTabToggle" onclick="ToggleTabHeader()">
+                                                    }
+                                                    else if (!@userprofile["HeaderTabToggle"])
+                                                    {
+                                                        <input type="checkbox" class="switch-input" id="HeaderTabToggle" name="HeaderTabToggle" onclick="ToggleTabHeader()">
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" class="switch-input" id="HeaderTabToggle" name="HeaderTabToggle" onclick="ToggleTabHeader()" checked>
+                                                    }
+                                                    <span class="switch-label" data-on="Yes" data-off="No"></span>
+                                                    <span class="switch-handle"></span>
+                                                </label>
+                                            </div> <!-- End of row reset-row -->
+                                        </div> <!-- End of box add-box-padding -->
+
+                                        }
+
+                                        <a id="save" tabindex="12" onclick="FormObjectSubmit('#save','#UserProfile', true);" href="#" class="button float-right dirty-disabled"> Update Profile</a>
+
+
+                                        }
+
+
+
+    }
+</div>
+
+<script>
+    //dirty function used to check if event listener has been modified and call the updates function
+    $('#UserProfile').dirrty().on("dirty", function () {
+        $("#save").removeClass("dirty-disabled");//removed attribute if in case if anchor tag is used
+    }).on("clean", function () {
+        $("#save").addClass("dirty-disabled")//add attribute if in case if anchor tag is used
+    });
+    //end of dirty function used to check if event listener has been modified and call the updates function
+
+    $("div.datedropper").remove();//to clear all divs for dropper rendered using class datedropper
+    // date of birth range date picker
+    $("#birthDateUser").dateDropper();
+    //end of date of birth range date picker
+
+</script>

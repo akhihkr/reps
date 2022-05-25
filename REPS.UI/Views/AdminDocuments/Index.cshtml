@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Admin Documents";
+    Layout = ViewBag.PageLayoutPath;
+
+
+    if (ViewBag.PageLayoutPath == null)
+    {
+        @Html.Partial("PartialHeaderAdmin", null, new ViewDataDictionary { { "SelectedTab", "Documents" } })
+    }
+
+}
+
+<div class="content" id="content-admin">
+    @Html.Partial("PartialAdminDocumentsList")
+</div> <!-- End of content -->

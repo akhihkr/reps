@@ -1,0 +1,139 @@
+﻿@{
+    Layout = null;
+
+    /// Call WCF to get all active deals for notification bar by User
+    object allActiveDealsNotificationBar = REPS.UI.Models.HeaderTabModel.GetUserActiveDealsNotificationBar(Request.Cookies["REPS_AspNetUsersId"].Value.ToString());
+    ViewData["ActiveDealsNotifBarHeaderTabs"] = allActiveDealsNotificationBar;
+
+
+    /// Call WCF to get all active deals for header tab by User
+    object allDiaryItems = REPS.UI.Models.AlertsModel.GetAlertsForDiaryItems(Request.Cookies["REPS_AspNetUsersId"].Value.ToString());
+    ViewData["DiaryItems"] = allDiaryItems;
+
+
+    #region get workflow tasks
+    /// Call WCF to get all Deal Processes
+    //object dealProcessesWorkflow = REPS.UI.Models.WorkflowModel.GetWorkflowTaskByWorkflowID((int)Global.Enums.Wokflow.Process);
+    object dealProcessesWorkflow = REPS.UI.Models.WorkflowModel.GetWorkflowsList((int)Global.Enums.Wokflow.Process);
+    ViewData["DealProcesses"] = dealProcessesWorkflow;
+    #endregion end of get workflow tasks
+}
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
+<meta http-equiv="x-ua-compatible" content="IE=Edge">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Payment Switch" />
+    <link rel="shortcut icon" type="image/png" href="~/Images/fav.png">
+    <title>REPS - Payment Switch</title>
+
+    @Styles.Render("~/CSS/CSS")
+    @*@Styles.Render("~/Fonts/Fonts")*@
+
+    <!-- datedropper.js for forms everywhere -->
+    <link rel="stylesheet" href="~/Javascripts/Datedropper3-master/datedropper.min.css">
+
+    <!-- timedropper.js for forms everywhere -->
+    <link rel="stylesheet" href="~/Javascripts/timedropper-master/timedropper.min.css">
+
+    <!-- datedropper.js for forms everywhere -->
+    <link rel="stylesheet" href="~/CSS/reps-datedropper.css">
+
+    <!-- Reps icons font -->
+    <link href="@Url.Content("~/CSS/icons.min.css")" rel='stylesheet' type='text/css'>
+
+    <!-- Google Material Icons font -->
+    <link rel="stylesheet" href="@Url.Content("~/CSS/MaterialIcons/material-icons.css")" type='text/css'>
+
+    <!-- multiselect.js for Admin Workflows-->
+    <link rel="stylesheet" href="~/CSS/multi-select.css">
+
+    <script type="text/javascript" src="~/Javascripts/vendor/jquery.js"></script>
+
+    <script type="text/javascript" src="~/Javascripts/dirrty.js"></script>
+
+    <script type="text/javascript">
+        var globaljsPath = '@Url.Content("~/")'; //global variables to know path when deploy
+        ///take a variable from web config for max allowed file size
+        var fileUploadSize =@(Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["UploadFileSize"]));
+    </script>
+
+    @Scripts.Render("~/Bundles/Scripts")
+
+</head>
+
+<body onload="Greeting()">
+    <iframe class="downloadiframe" Name="downloadiframe" style="display:none"> </iframe>
+    <!--general pop up panel-->
+    <div id="general-panel" class="general-panel"></div>
+    <!--end of general pop up panel-->
+
+    <div class="overlay"></div>
+    <div class="loader"> Loading, please wait... </div>
+    <div class="invisible-overlay"></div>
+
+    <div id="more-tabs-panel">
+        @if (int.Parse((ViewData["ActiveDealsNotifBarHeaderTabs"] as IEnumerable<dynamic>).Count().ToString()) > 0)
+        {
+            @Html.Partial("~/Views/HeaderTab/PartialMoreHeaderTabs.cshtml")
+        }
+    </div> <!-- End of more-tabs-panel -->
+    <!-- Alerts Panel -->
+    <div id="notifications-panel">
+        @Html.Partial("~/Views/Alerts/PartialAlertsDiaryItems.cshtml")
+    </div> <!-- End of notifications-panel -->
+    <!-- End of Alerts Panel -->
+
+    <div id="wrapper">
+        <div id="sidebar">
+            @Html.Partial("PartialSidebar")
+        </div> <!-- End of sidebar -->
+
+        <div id="content-wrapper">
+            <!-- Header Wrapper ( Contains data for Header and Tabs ) -->
+            @*<header id="header-wrapper">*@ <!-- Removed header tag because they are already included in the partial views -->
+            @{
+                if (ViewData["SelectedLayout"] != null && ViewData["SelectedLayout"] == "Reports")
+                {
+                    @Html.Partial("PartialHeaderReports")
+                }
+                else if (ViewData["SelectedLayout"] != null && ViewData["SelectedLayout"] == "Profile")
+                {
+                    @Html.Partial("PartialHeaderProfile", null, new ViewDataDictionary { { "SelectedTab", "Index" } })
+                }
+                else if (ViewData["SelectedLayout"] != null && ViewData["SelectedLayout"] == "Admin")
+                {
+                    @Html.Partial("PartialHeaderAdmin", null, new ViewDataDictionary { { "SelectedTab", "Entity" } })
+                }
+                else
+                {
+                    @Html.Partial("PartialHeader")
+                }
+            }
+            @*</header>*@
+            <!-- End Header Wrapper -->
+            <!-- Content Section ( Contains main data that would be refreshed ) -->
+            <div id="content-section">
+                <!-- Render your content here -->
+                <div class="content">
+                    @RenderBody()
+                </div> <!-- End of content-->
+            </div>
+            <!-- End Content Section -->
+
+            <footer>
+                <p>&copy; @DateTime.Now.Year Global BPO (Pty) Ltd -Ver @System.Configuration.ConfigurationManager.AppSettings["REPSVersion"].ToString()</p>
+            </footer>
+        </div> <!-- End of content-wrapper -->
+    </div> <!-- End of wrapper -->
+    <!-- Scripts -->
+    <!-- This is to initialise Foundation JS Plugins -->
+    <script type="text/javascript">
+        $(document).foundation();
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+﻿@{ 
+    Layout = null;
+}
+
+@{
+    <ul>
+        <li>
+            <i class="material-icons">history</i>
+        </li>
+        <li>
+            <span class="deal-summary-title">Last Action By</span>
+        </li>
+        <li>
+            <span id="lastActionBy" class="deal-summary-status">@(ViewData["LastActionBy"] == null ? "-" : ViewData["LastActionBy"])</span>
+        </li>
+    </ul>
+}

@@ -1,0 +1,26 @@
+﻿CREATE TABLE [dbo].[Entity] (
+    [EntityID]           INT           IDENTITY (1, 1) NOT NULL,
+    [OrganizationTypeID] INT           NOT NULL,
+    [Name]               VARCHAR (100) NOT NULL,
+    [RegistrationNumber] VARCHAR (20)  NOT NULL,
+    [LegalName]          VARCHAR (100) NULL,
+    [AlternateName]      VARCHAR (100) NULL,
+    [VatID]              VARCHAR (100) NULL,
+    [Telephone]          NUMERIC (18)  NOT NULL,
+    [FaxNumber]          NUMERIC (18)  NULL,
+    [Email]              VARCHAR (200) NULL,
+    [Verified]           BIT           NOT NULL,
+    [AddressTypeID]      INT           NOT NULL,
+    [AddressLine1]       VARCHAR (100) NOT NULL,
+    [AddressLine2]       VARCHAR (100) NULL,
+    [City]               VARCHAR (30)  NOT NULL,
+    [ProvinceID]         INT           NULL,
+    [CountryID]          INT           NOT NULL,
+    [PostalCode]         VARCHAR (10)  NULL,
+    [ParentEntityID]     INT           NOT NULL,
+    [Deleted]            BIT           DEFAULT ((0)) NOT NULL,
+    [DataVerification]   BIT           NULL,
+    [EntityGUID] UNIQUEIDENTIFIER NULL, 
+    CONSTRAINT [PK_Entity] PRIMARY KEY CLUSTERED ([EntityID] ASC)
+);
+

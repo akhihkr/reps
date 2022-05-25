@@ -1,0 +1,2 @@
+C:\MYProjectsShare\REPS\REPS.Authentication\obj\Debug\REPS.Authentication.csproj.AssemblyReference.cache
+C:\MYProjectsShare\REPS\REPS.Authentication\obj\Debug\REPS.Authentication.csproj.CoreCompileInputs.cache

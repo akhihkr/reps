@@ -1,0 +1,83 @@
+﻿@charset "UTF-8";
+@import "GlobalVariables.scss";
+
+/*#region Default Button */
+
+input.button {
+    border: 0 !important;
+}
+
+.button {
+    font-family: $body-font;
+    font-weight: normal;
+    text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
+    line-height: 1;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-transition: background-color 0.25s ease-out, color 0.25s ease-out;
+    -o-transition: background-color 0.25s ease-out, color 0.25s ease-out;
+    -webkit-transition: background-color 0.25s ease-out, color 0.25s ease-out;
+    transition: background-color 0.25s ease-out, color 0.25s ease-out;
+    vertical-align: middle;
+    border-radius: $border-radius;
+    padding: 13px 20px;
+    margin: 0 0 1rem 0;
+    font-size: 0.70rem;
+    background: $primary-color;
+    color: #fff;
+    -moz-transition: background 0.2s ease;
+    -o-transition: background 0.2s ease;
+    -webkit-transition: background 0.2s ease;
+    transition: background 0.2s ease;
+    box-shadow: 0;
+    text-decoration: none;
+}
+
+.button:hover, .button:focus {
+    background: $primary-color-hover;
+    -moz-transition: background 0.2s ease;
+    -o-transition: background 0.2s ease;
+    -webkit-transition: background 0.2s ease;
+    transition: background 0.2s ease;
+    color: #fff;
+}
+
+
+.green-btn {
+    margin: 0;
+    top: 10px;
+    position: relative;
+    vertical-align: middle;
+    z-index: 1;
+    background: #4caf50;
+    color: #fff;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 13px;
+    border-radius: 2px;
+    font-weight: normal;
+    border: 0;
+
+    &:hover {
+        background: #429846;
+        transition: 0.2s ease background;
+        color: #fff;
+    }
+}
+/*#endregion*/
+
+/*#region General Panel Footer Buttons */
+.general-panel-footer .button {
+    background: $primary-color;
+    color: #fff;
+    border: 0;
+}
+
+.general-panel-footer .button:hover {
+    background: $primary-color-hover;
+    color: #fff;
+    border: 0;
+}
+/*#endregion*/

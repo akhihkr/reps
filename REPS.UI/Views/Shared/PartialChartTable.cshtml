@@ -1,0 +1,464 @@
+﻿@using Global;
+@{
+    ///fetch parameter from index page
+    string chartId = this.ViewData.ContainsKey("chartId") ? this.ViewData["chartId"].ToString() : string.Empty;
+    string chartName = this.ViewData.ContainsKey("chartName") ? this.ViewData["chartName"].ToString() : string.Empty;
+    string chartType = this.ViewData.ContainsKey("chartType") ? this.ViewData["chartType"].ToString() : string.Empty;
+    ///end fetch parameter from index page
+
+    ///variable to collection header for table used
+    object headertable = new object();
+    ///end variable to collection header for table used
+
+    ///split chartId
+    string chart_table_Type = chartId.Split('_')[0];
+    /// end split chartId
+
+    ///intantiate value for object
+    var objectColors = new Constants();
+    ///end of intantiate value for object
+
+    ///check if table or charts
+    if (chart_table_Type == "chart")
+    {
+        ///set value and description data from object if data is not null
+        if (ViewData["dashboardChartDes"] != null)
+        {
+            ///variables
+            var firstelement = '[';
+            string x = "";
+            string y = "";
+            int count = 0;
+            ///end variables
+
+            object valuePassedIn = this.ViewData.ContainsKey("dashboardChartDes") ? this.ViewData["dashboardChartDes"] : string.Empty;
+            var viewdata = valuePassedIn as IEnumerable<dynamic>;
+
+            if (viewdata != null)
+            {
+                foreach (var item in viewdata)
+                {
+                    if (count == (viewdata.Count() - 1))
+                    {
+                        x = x + '"' + @item["label"] + '"';
+
+                        y = y + @item["value"];
+                    }
+                    else
+                    {
+                        x = x + '"' + @item["label"] + '"' + ',';
+                        y = y + (Convert.ToDecimal(@item["value"])) + ',';
+                    }
+                    count++;
+                }
+                string label = x;
+                string value = firstelement + y + ']';
+                ///end set value and description data from object if data is not null
+
+
+
+
+                switch (chartType)
+                {
+                    case "bar":
+                        /// div id charts
+                        <canvas id=@chartId></canvas>
+                        ///end div id charts
+                    <!--Chart.js Scripts-->
+                        <script>
+                            var ctx = document.getElementById("@MvcHtmlString.Create(chartId)");
+                            var myChart = new Chart(ctx, {
+                                type: 'bar',
+                                data:
+                                        {
+                                            labels:[@MvcHtmlString.Create(label)],
+                                            datasets: [{
+                                                label: '@MvcHtmlString.Create(chartName)',
+                                                data: @value,
+                                                @*backgroundColor: [@Html.Raw(objectColors.BarBackgroundColor())],
+                                            borderColor: [@Html.Raw(objectColors.BarBorderColor())],*@
+                                                backgroundColor: [
+                                                    'rgba(33, 150, 243, 0.5)',
+                                                    'rgba(33, 150, 243, 0.5)',
+                                                    'rgba(33, 150, 243, 0.5)',
+                                                    'rgba(33, 150, 243, 0.5)',
+                                                    'rgba(33, 150, 243, 0.5)',
+                                                    'rgba(33, 150, 243, 0.5)',
+                                                    'rgba(33, 150, 243, 0.5)',
+                                                    'rgba(33, 150, 243, 0.5)',
+                                                    'rgba(33, 150, 243, 0.5)',
+                                                    'rgba(33, 150, 243, 0.5)',
+                                                    'rgba(33, 150, 243, 0.5)',
+                                                    'rgba(33, 150, 243, 0.5)'
+                                                ],
+                                                borderColor: [
+                                                    'rgba(33, 150, 243, 0.6)',
+                                                    'rgba(33, 150, 243, 0.6)',
+                                                    'rgba(33, 150, 243, 0.6)',
+                                                    'rgba(33, 150, 243, 0.6)',
+                                                    'rgba(33, 150, 243, 0.6)',
+                                                    'rgba(33, 150, 243, 0.6)',
+                                                    'rgba(33, 150, 243, 0.6)',
+                                                    'rgba(33, 150, 243, 0.6)',
+                                                    'rgba(33, 150, 243, 0.6)',
+                                                    'rgba(33, 150, 243, 0.6)',
+                                                    'rgba(33, 150, 243, 0.6)',
+                                                    'rgba(33, 150, 243, 0.6)'
+                                                ],
+                                                borderWidth: 1,
+                                                pointRadius: 1
+                                            }]
+                                        },
+
+                                options:
+                                        {
+                                            scaleBeginAtZero: false,
+                                            //maintainAspectRatio :false,  //// Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+                                            responsive: true,
+                                            maintainAspectRatio: false,
+
+                                            scaleLabel : function (label) {
+                                                return Math.round(label.value);
+                                            },
+                                            scales:
+                                            {
+                                                xAxes: [{
+                                                    ticks: {
+                                                        callback: function(value) {
+                                                            return value.substr(0, 9)+'...';//truncate
+                                                        },
+                                                    }
+                                                }],
+                                                yAxes: [{
+                                                    ticks:
+                                                    {
+                                                        beginAtZero: true,
+                                                    }
+                                                }]
+                                            },
+                                            legend: {display: false},
+                                        }
+                            });
+
+
+                        </script><!--End of Chart.js Scripts-->
+                        break;
+                    case "doughnut":
+                        /// div id charts
+                        <canvas id=@chartId></canvas>
+                        @*<div id="legendDivdoughnut" class="chart-legend"></div>*@
+                        ///end div id charts
+                    <!--Chart.js Scripts-->
+                        <script>
+                            var data = {
+                                labels:[@MvcHtmlString.Create(label)],
+                                datasets: [
+                                     {
+                                         data: @value,
+                                         backgroundColor: [
+                                             "rgba(139,195,74,0.4)",
+                                             "rgba(233,30,99,0.4)",
+                                             "rgba(103,58,183,0.4)"
+                                         ],
+
+                                     }]
+                            };
+
+
+                            var chart = new Chart(document.getElementById("@MvcHtmlString.Create(chartId)"), {
+                                type: 'doughnut',
+                                data: data,
+                                options:
+                                {
+                                    maintainAspectRatio :false,
+                                    responsive: true,
+                                    legend:
+                                    {
+                                        display: true
+                                    }
+                                }
+                            });
+                            //document.getElementById('legendDivdoughnut').innerHTML = chart.generateLegend();
+                        </script> <!--End of Chart.js Scripts-->
+                        break;
+                    case "polarArea":
+                        /// div id charts
+                        <canvas id=@chartId></canvas>
+                        <div id="legendDivPolarArea" class="chart-legend"></div>
+                        ///end div id charts
+                    <!-- Chart.js Scripts-->
+                        <script>
+
+                            //deal piecharts
+                            var data = {
+                                datasets: [{
+                                    data: @value,
+                                    backgroundColor:[@Html.Raw(objectColors.BackgroundChartsColor())],
+                                    label: "@MvcHtmlString.Create(chartName)" // for legend
+                                }],
+                                labels: [@MvcHtmlString.Create(label)]
+                            };
+
+                            var chart = new Chart(document.getElementById("@MvcHtmlString.Create(chartId)"), {
+                                type: 'polarArea',
+                                data: data,
+                                options: {
+                                    responsive: true,
+                                    legend: { display: false },
+                                    scale: {
+                                        ticks: {
+                                            beginAtZero: true,
+                                            callback: function(value, index, values) {
+                                                return (Math.floor(value * 100) / 100);
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                            document.getElementById('legendDivPolarArea').innerHTML = chart.generateLegend();
+                        </script> <!-- End of Chart.js Scripts-->
+                        break;
+
+                    case "radar":
+                        /// div id charts
+                        <canvas id=@chartId></canvas>
+                        /// end div id charts
+                    <!-- Chart.js Scripts-->
+                        <script>
+                            var Data = {
+                                labels: [@MvcHtmlString.Create(label)],
+                                datasets: [
+                                    {
+                                        label: "@MvcHtmlString.Create(chartName)",
+                                        fillColor : "rgba(220,220,220,0.5)",
+                                        strokeColor : "rgba(220,220,220,1)",
+                                        pointColor: "rgba(102,45,145,1)",
+                                        pointStrokeColor: "#000",
+                                        borderColor: "rgba(179,181,198,1)",
+                                        pointBackgroundColor: "rgba(179,181,198,1)",
+                                        pointBorderColor: "#fff",
+                                        pointHoverBackgroundColor: "#fff",
+                                        pointHoverBorderColor: "rgba(179,181,198,1)",
+                                        borderWidth:1.5,
+                                        pointBorderWidth:2,
+                                        data:@value,
+                                    }
+                                ]
+                            };
+                            var chart = new Chart(document.getElementById("@MvcHtmlString.Create(chartId)"), {
+                                type: 'radar',
+                                data:Data,
+                                options: {
+                                    maintainAspectRatio :false,
+                                    responsive: true,
+                                    legend: {display: false},
+                                    scale: {
+                                        reverse: false,
+                                        ticks: {
+                                            beginAtZero: true,
+                                            callback: function(value, index, values) {
+                                                return (Math.floor(value * 100) / 100);
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+
+                        </script><!-- End of Chart.js Scripts-->
+                        break;
+
+                    case "pie":
+                        /// div id charts
+                        <canvas id=@chartId></canvas>
+                        @*<div id="legendDiv show-for-large-only" class="chart-legend"></div>*@
+                        ///end div id charts
+                            <!--Chart.js Scripts-->
+                        <script>
+
+                            var canvaspie = document.getElementById("@MvcHtmlString.Create(chartId)");
+
+                            var data = {
+                                labels:[@MvcHtmlString.Create(label)],
+                                datasets: [
+                                     {
+                                         data: @value,
+                                         backgroundColor:[@Html.Raw(objectColors.BackgroundChartsColor())],
+                                     }]
+                            };
+                            var chart = new Chart(document.getElementById("@MvcHtmlString.Create(chartId)"), {
+                                type: 'pie',
+                                data: data,
+                                //then you just need to generate the legend
+                                options:
+                                {
+
+                                    maintainAspectRatio :false,
+                                    responsive: true,
+                                    legend:
+                                    {
+                                        display: true
+                                    }
+                                },
+                                animation: {
+                                    animateRotate: false,
+                                    animateScale: false,
+                                }
+
+                            });
+
+                            //document.getElementById('legendDiv').innerHTML = chart.generateLegend();
+                        </script> <!--End of Chart.js Scripts-->
+                        break;
+
+                    case "line":
+                        /// div id charts
+                        <canvas id=@chartId></canvas>
+                        ///end div id charts
+                            <!--Chart.js Scripts-->
+                        <script>
+                            var data = {
+                                labels:[@MvcHtmlString.Create(label)],
+                                datasets: [
+                                     {
+                                         label: "@MvcHtmlString.Create(chartName)", // for legend
+                                         data: @value,
+                                         fill: false,
+                                         lineTension: 0,
+                                         backgroundColor: "rgba(75,192,192,0.4)",
+                                         borderColor: "rgba(75,192,192,1)",
+                                         borderCapStyle: 'butt',
+                                         borderDash: [],
+                                         borderDashOffset: 0.0,
+                                         borderJoinStyle: 'miter',
+                                         pointBorderColor: "rgba(75,192,192,1)",
+                                         pointBackgroundColor: "#fff",
+                                         pointBorderWidth: 1,
+                                         pointHoverRadius: 5,
+                                         pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                                         pointHoverBorderColor: "rgba(220,220,220,1)",
+                                         pointHoverBorderWidth: 2,
+                                         pointRadius: 1,
+                                         pointHitRadius: 10,
+                                         spanGaps: false,
+                                     }]
+                            };
+
+
+                            var chart = new Chart(document.getElementById("@MvcHtmlString.Create(chartId)"), {
+                                type: 'line',
+                                data: data,
+                                options:
+                                {
+                                    maintainAspectRatio :false, // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+                                    responsive: true,
+                                    tension : 10,
+                                    legend:
+                                    {
+                                        display: true
+                                    },
+                                }
+                            });
+                        </script> <!--End of Chart.js Scripts-->
+                        break;
+
+                    case "bubble":
+                        /// div id charts
+                        <canvas id=@chartId></canvas>
+                        ///end div id charts
+                            <!--Chart.js Scripts-->
+                        <script>
+                            var data = {
+                                datasets: [
+                                     {
+                                         label: "@MvcHtmlString.Create(chartName)", // for legend
+                                         data: @value,
+                                         backgroundColor:[@Html.Raw(objectColors.BackgroundChartsColor())],
+                                     }]
+                            };
+
+                            var chart = new Chart(document.getElementById("@MvcHtmlString.Create(chartId)"), {
+                                type: 'bubble',
+                                data: data,
+                                options:
+                                {
+                                    maintainAspectRatio :false,
+                                    responsive: true,
+                                    legend:
+                                    {
+                                        display: true
+                                    }
+                                }
+                            });
+                        </script> <!--End of Chart.js Scripts-->
+                        break;
+
+                }
+            }
+        }
+    }
+
+    else if (chart_table_Type == "table")
+    {
+        if (ViewData["dealTableReport"] != null)
+        {
+            var firstDeal = (ViewData["dealTableReport"] as IEnumerable<dynamic>).FirstOrDefault();
+
+            <table id="deals-table" class="deals-table">
+                <thead>
+                    <tr id="table-head">
+                        @foreach (var deal in firstDeal)
+                        {
+                            <th width="50">
+                                @deal.Key
+                            </th>
+                        }
+                    </tr>
+                </thead>
+                <tbody class="hover">
+                    @foreach (var deal in ViewData["dealTableReport"] as IEnumerable<dynamic>)
+                    {
+                        <tr>
+                            @foreach (var dealDetail in deal as Dictionary<string, dynamic>)
+                            {
+                                if (@dealDetail.Key == "Date Created")
+                                {
+                                    <td>@DateTime.Parse(@dealDetail.Value).ToString("MM/dd/yyyy")</td>
+                                }
+                                else
+                                {
+                                    <td>@dealDetail.Value</td>
+                                }
+
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <script>
+                $(document).ready(function () {
+                    var dynatable  = $('#deals-table').dynatable(
+                     {
+                         inputs: {pageText: ''},
+                         dataset: {
+                             perPageDefault: 4
+                         },
+                         features: {
+                             paginate: true,
+                             sort: true,
+                             pushState: false,
+                             search: false,
+                             recordCount: false,
+                             perPageSelect: false
+                         },
+                     }
+
+                     );
+                });
+
+            </script>
+        }
+
+    }///end set value and description data from object if data is not null
+
+}

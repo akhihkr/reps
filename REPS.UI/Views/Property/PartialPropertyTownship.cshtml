@@ -1,0 +1,125 @@
+﻿
+@{
+    Layout = null;
+    //ajax to display township info
+    AjaxOptions townshipDetails = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.InsertAfter,
+        UpdateTargetId = "TownshipDetail",
+    };
+    //end of ajax to display township info
+}
+@using (Ajax.BeginForm("SearchTownDetailForm", "Property", townshipDetails, new { id = "townshipForms" }))
+{
+    <div id="townshipForm" style="display: none;">
+
+        <!-- Add User -->
+        <div class="popup-headings">
+            <h4>Township</h4>
+            <p>Please select your township.</p>
+        </div> <!-- End of popup-headings -->
+
+        <div class="row reset-columns">
+            <div class="medium-6 columns reset-columns">
+
+                <label>Deeds Office</label>
+                <select id="deedsOfficeID" name="deedsOfficeID" data-content="required">
+                    <option value='-1' default selected>Select an option:</option>
+                    @{
+                        var deedsOfficeSerrialize = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<dynamic>(ViewData["deedsOffice"] as string);
+                        foreach (var deedsOffice in deedsOfficeSerrialize as IEnumerable<dynamic>)
+                        {
+                            <option value="@deedsOffice["ID"]">@deedsOffice["Name"]</option>
+                        }
+                    }
+                </select>
+
+            </div> <!-- End of medium-6 columns reset-columns -->
+
+            <div class="medium-6 columns">
+                <label>Township</label>
+                <input type="text" id="townname" name="townname" />
+                <a class="button align-right" href="#" onclick="$('#townshipForms').submit();$('#TownshipDetail').html('');">Search</a>
+                @*<a class="button align-right" id="SearchTownship" href="#" onclick="FormObjectSubmit('#SearchTownship', 'townshipForms', true);">Search</a>*@
+            </div> <!-- End of medium-6 columns -->
+
+
+
+        </div> <!-- End of row reset-columns -->
+
+    </div> <!-- End of townshipForm -->
+                        }
+
+
+
+
+<div id="TownshipDetail">
+    @{
+        //variables
+        string townshipDetailsName = null;
+        if (ViewData["townDetails"] != null)
+        {
+            var firstDeal = (ViewData["townDetails"] as IEnumerable<dynamic>).FirstOrDefault();
+            <table id="township-table" class="township-table">
+                <thead>
+                    <tr id="table-head">
+                        <th>Township Number</th>
+                        <th>Deeds office</th>
+                        <th>Municipality</th>
+                        <th>Province</th>
+                        <th>Town Name</th>
+                        <th>First ERF</th>
+                        <th>Last ERF</th>
+                    </tr>
+                </thead>
+                <tbody class="hover">
+                    @foreach (var township in ViewData["townDetails"] as IEnumerable<dynamic>)
+                    {
+                        foreach (var townshipNames in township as Dictionary<string, dynamic>)
+                        {
+                            if (@townshipNames.Key == "TownshipName")
+                            {
+                                townshipDetailsName = @townshipNames.Value;
+                            }
+                        }
+                        <tr>
+                            @foreach (var townshipDetail in township as Dictionary<string, dynamic>)
+                            {
+                                <td><a href="#" onclick='townshipName("@MvcHtmlString.Create(townshipDetailsName)","#township","Property","PropertyPopupDetail","{dealID:@ViewData["DealIDSession"]}","#propertyindividual","#townshipForm", "#TownshipDetail")'>@townshipDetail.Value </a></td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <script>
+                $(document).ready(function () {
+                    var dynatable = $('#township-table').dynatable(
+                     {
+                         inputs: { pageText: '' },
+                         dataset: {
+                             perPageDefault: 6
+                         },
+                         features: {
+                             paginate: true,
+                             sort: true,
+                             pushState: false,
+                             search: false,
+                             recordCount: false,
+                             perPageSelect: false
+                         },
+                     });
+                });
+            </script>
+        }
+        else if (ViewData["townDetailsNull"] != null)
+        {
+            <h1>No results found</h1>
+
+        }
+    }
+</div>
+
+
+ 

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AddressService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:54738/AddressService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:54738/AddressService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:54738/AddressService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Common" />
+      <xsd:import schemaLocation="http://localhost:54738/AddressService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/REPS.DATA.Entity" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IAddressService_GetAddressesTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAddressesTypes" />
+  </wsdl:message>
+  <wsdl:message name="IAddressService_GetAddressesTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAddressesTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAddressService_GetAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAddress" />
+  </wsdl:message>
+  <wsdl:message name="IAddressService_GetAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAddressService_AddAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddAddress" />
+  </wsdl:message>
+  <wsdl:message name="IAddressService_AddAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAddressService_UpdateAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAddress" />
+  </wsdl:message>
+  <wsdl:message name="IAddressService_UpdateAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAddressService_DeleteAddress_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAddress" />
+  </wsdl:message>
+  <wsdl:message name="IAddressService_DeleteAddress_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAddressService_GetAddressIDByAddressGUID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAddressIDByAddressGUID" />
+  </wsdl:message>
+  <wsdl:message name="IAddressService_GetAddressIDByAddressGUID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAddressIDByAddressGUIDResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IAddressService">
+    <wsdl:operation name="GetAddressesTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAddressService/GetAddressesTypes" message="tns:IAddressService_GetAddressesTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAddressService/GetAddressesTypesResponse" message="tns:IAddressService_GetAddressesTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAddressService/GetAddress" message="tns:IAddressService_GetAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAddressService/GetAddressResponse" message="tns:IAddressService_GetAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAddressService/AddAddress" message="tns:IAddressService_AddAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAddressService/AddAddressResponse" message="tns:IAddressService_AddAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAddressService/UpdateAddress" message="tns:IAddressService_UpdateAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAddressService/UpdateAddressResponse" message="tns:IAddressService_UpdateAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAddress">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAddressService/DeleteAddress" message="tns:IAddressService_DeleteAddress_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAddressService/DeleteAddressResponse" message="tns:IAddressService_DeleteAddress_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressIDByAddressGUID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAddressService/GetAddressIDByAddressGUID" message="tns:IAddressService_GetAddressIDByAddressGUID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAddressService/GetAddressIDByAddressGUIDResponse" message="tns:IAddressService_GetAddressIDByAddressGUID_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="AddressService" />
+</wsdl:definitions>

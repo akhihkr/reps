@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Edit Registration Date";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+    string registrationDateInput = string.Empty;
+
+    if (ViewBag.CompletionDate.ToString() != "-")
+    {
+        DateTime myDate = TimeZone.CurrentTimeZone.ToLocalTime(ViewBag.CompletionDate);
+        registrationDateInput = myDate.ToString("dd/MM/yyyy");
+    }
+
+    //AjaxOptions
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "completion-date-data",
+        OnSuccess = "onSuccessToasterMsg(null,null,null,null,'Registration Date has been successfully updated');",
+        OnComplete = "onComplete",
+    };
+    //end of AjaxOptions
+}
+
+@using (Ajax.BeginForm("EditCompletionDate", "Deal", options, new { id = "RegistrationDateForm" }))
+{
+    <input type="hidden" name="DealID" />
+        <p>Select Registration Date</p>
+        <label>
+            <input class="date-input" type="text" id="datePickerDealCompletionDate" data-init-set="false" data-format="d/m/Y" name="completionDate" data-modal="true" data-content="required" data-large-mode="true" data-large-default="true" data-theme="reps-datedropper" data-init-set="false" value="@registrationDateInput" />
+        </label>
+}
+<!-- End of completion-date-panel -->
+
+@section footer
+{
+    <a class="button align-right dirty-disabled" id="btn-saved" href="#" onclick="FormObjectSubmit('#btn-saved', '#RegistrationDateForm', false);">Update Date</a>
+}
+
+@section script
+{
+    <script>
+        $("div.datedropper").remove();//to clear all divs for dropper rendered using class datedropper
+        $("#datePickerDealCompletionDate").dateDropper();
+
+        //dirty function used to check if event listener has been modified and call the updates function
+        $('#RegistrationDateForm').dirrty().on("dirty", function () {
+            $("#btn-saved").removeClass("dirty-disabled");//removed attribute if in case if anchor tag is used
+        }).on("clean", function () {
+            $("#btn-saved").addClass("dirty-disabled")//add attribute if in case if anchor tag is used
+        });
+        //end of dirty function used to check if event listener has been modified and call the updates function
+    </script>
+}

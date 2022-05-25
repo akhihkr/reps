@@ -1,0 +1,20 @@
+﻿<div id="deal-content-wrapper">
+    <div class="box box-deal">
+
+        <!-- Workflow Tasks -->
+        <div id="workflow-tasks-wrapper">
+            @Html.Partial("PartialWorkflowTasks")
+        </div>
+
+
+        <!-- Workflow Action Lists -->
+        @*<div class="table-headings workflow-heading">
+                <h4>@ViewBag.actionTitle</h4>
+            </div>*@
+
+        <div id="workflow-actions-wrapper" class="workflow-actions-wrapper">
+            @Html.Partial("PartialWorkflowActions")
+        </div> <!-- End of workflow-actions-wrapper -->
+
+    </div> <!-- End of box -->
+</div>

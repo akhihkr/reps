@@ -1,0 +1,95 @@
+﻿@{
+    Layout = null;
+}
+<!-- Header part section-->
+<div id="general-panel-title" class="general-panel-title">
+    <h4>@ViewBag.Title</h4>
+    <i class="material-icons">close</i>
+</div>
+<!-- End of header part section-->
+<!-- Boby part section /*RenderBody()*/ -->
+<div class="general-panel-content">
+    @RenderBody()
+</div>
+<!-- End of oby part section-->
+<!-- General-panel-footer-->
+<div class="general-panel-footer">
+    @RenderSection("footer", false)
+</div>
+<!-- End of general-panel-footer-->
+<script type="text/javascript">
+    ///close button
+    $('.general-panel i').on('click', function () {
+        $('.general-panel').toggleClass('show');
+        //$('.overlay').toggleClass('show');
+        //HideLoader();
+        toogleOverlayHide();
+        // Clear popup content
+        $('.general-panel').html('');
+
+        // Remove no scroll from body
+        $('body').removeClass('noscroll');
+    });
+    ///end of close button
+
+
+
+    ////set text box green after data is filled (validation)
+    $(function () {
+        $('form input[type=text], form input[type=email],form select').bind("keypress click", function () {
+            var empty = false;
+            $('form input[type=text], form input[type=email],form select').each(function () {
+                //check if text box , select option, checkboxes is not null
+                if ($(this).val() == '' || $(this).val() == '-1' || $(this).val() == null) {
+                    empty = true;
+                }
+            });
+            if (!$('form input[type=checkbox]').is(':checked')) {
+                empty = true;
+            }
+            //set border green after input types is filled
+            if (empty) {
+                $('.validate-field').removeClass();
+            }
+        });
+    });
+    ////end of set text box green after data is filled (validation)
+
+
+
+
+
+
+
+
+    // When Esc key is presed
+    $(document).keydown(function (e) {
+        if (e.keyCode == 27 || e.which == 27) {
+
+            if ($('.overlay').hasClass('show')) {
+                /** Remove all the div for the datedropper when Esc is pressed **/
+                $("div.picker-modal-overlay").remove();
+                $("div.datedropper").remove();
+                $("div.td-clock").remove();
+
+                $('.general-panel').removeClass('show');
+
+                toogleOverlayHide();
+
+                // Clear popup content
+                $('.general-panel').html('');
+
+                // Remove no scroll from body
+                $('body').removeClass('noscroll');
+            }
+        }
+
+        if (e.keyCode === 10 || e.keyCode === 13) {
+            e.preventDefault();
+        }
+    });
+</script>
+
+<!-- General-panel-script-->
+@RenderSection("script", false)
+<!-- End of general-panel-script-->

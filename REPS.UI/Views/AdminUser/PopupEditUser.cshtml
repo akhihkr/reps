@@ -1,0 +1,220 @@
+﻿@using Global;
+@{
+ 
+    ViewBag.Title = "Edit User";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    //ajax
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "user-details",
+        //UpdateTargetId = "content-wrapper",
+        OnComplete = "onComplete",
+        OnSuccess = "onSuccessRedirect"
+    };
+}
+
+@{
+    IHtmlString cssLayout = null;
+    IHtmlString scriptLayout = null;
+    if (ViewData["SelectedTab"].ToString() == Enums.PageNames.Users.ToString())
+    {
+        cssLayout = Styles.Render("~/CSS/DateDropper");
+        scriptLayout = Scripts.Render("~/Bundles/DateDropper");
+    }
+    else
+    {
+        cssLayout = null;
+        scriptLayout = null;
+    }
+}
+
+@using (Ajax.BeginForm("UpdateUser", "AdminUser", new { userID = ViewData["UserID"] }, options, new { name = "EditUser", @id = "EditUser" }))
+{
+    foreach (var User in ViewData["UserInfo"] as IEnumerable<dynamic>)
+    {
+        <div class="row reset-row">
+
+            <label>
+                Role<span>*</span>
+                <select tabindex="1" id="RoleID" name="RoleID" data-content="required">
+                    <option value="-1" default>Select an option:</option>
+                    @{
+                        /// Role list
+                        foreach (var Role in ViewData["RolesList"] as IEnumerable<dynamic>)
+                        {
+                            if (Role["RoleID"] == @User["RoleID"])
+                            {
+                                <option value="@Role["RoleID"]" selected>@Role["Description"]</option>
+                            }
+                            else
+                            {
+                                <option value="@Role["RoleID"]">@Role["Description"]</option>
+                            }
+                        }
+                    }
+                </select>
+            </label>
+
+            <!-- Left -->
+            <div class="small-12 medium-6 columns reset-columns">
+                <label>
+                    Entity<span>*</span>
+                    <select tabindex="2" name="EntityID" id="entityID" data-content="required">
+                        <option value="-1" default>Select an option:</option>
+                        @foreach (var entity in ViewData["EntitiesList"] as IEnumerable<dynamic>)
+                        {
+                            if (@entity["EntityID"] == @User["EntityID"])
+                            {
+                                <option value="@entity["EntityID"]" selected>@entity["Name"]</option>
+                            }
+                            else
+                            {
+                                <option value="@entity["EntityID"]">@entity["Name"]</option>
+                            }
+
+                        }
+                    </select>
+                </label>
+
+                <label>
+                    First Name<span>*</span>
+                    <input tabindex="4" type="text" name="FirstName" id="FirstName" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar100))" placeholder="" value="@User["GivenName"]" data-content="required" format="text">
+                </label>
+
+                <label>
+                    Date of Birth<span>*</span>
+                    <input class="date-input" tabindex="6" type="text" id="BirthDate" name="BirthDate" value="@(TimeZone.CurrentTimeZone.ToLocalTime(User["BirthDate"]).ToString("dd/MM/yyyy"))" readonly data-modal="true" data-content="required" data-large-mode="true" data-large-default="true" data-theme="reps-datedropper" data-init-set="false" data-min-year="1970" data-format="d/m/Y" data-lock="to">
+                </label>
+
+                <label>
+                    Passport number<span>*</span>
+                    <input tabindex="8" type="text" name="PassportNumber" id="PassportNumber" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar20))" placeholder="" value="@User["PassportNumber"]" data-content="required" format="alphanum">
+                </label>
+
+                <label>
+                    Tax ID<span>*</span>
+                    <input tabindex="10" type="text" name="TaxID" id="TaxID" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar20))" placeholder="" value="@User["TaxID"]" data-content="required" format="alphanum">
+                </label>
+            </div> <!-- End of small-12 medium-6 columns reset-columns -->
+            <!-- Right -->
+            <div class="small-12 medium-6 columns">
+                <label>
+                    Title<span>*</span>
+                    <select tabindex="3" name="TitleID" id="titleID" data-content="required">
+                        @foreach (var title in ViewData["TitlesList"] as IEnumerable<dynamic>)
+                        {
+                            if (@title["TitleID"] == @User["TitleID"])
+                            {
+                                <option value="@title["TitleID"]" selected>@title["Description"]</option>
+                            }
+                            else
+                            {
+                                <option value="@title["TitleID"]">@title["Description"]</option>
+                            }
+                        }
+                    </select>
+                </label>
+
+                <label>
+                    Last Name<span>*</span>
+                    <input tabindex="5" type="text" name="LastName" id="LastName" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar100))" placeholder="" value="@User["FamilyName"]" data-content="required" format="text">
+                </label>
+
+                <label>
+                    Identity number<span>*</span>
+                    <input tabindex="7" type="text" id="IdentityNumber" name="IdentityNumber" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar20))" placeholder="" value="@User["IdentityNumber"]" data-content="required" format="alphanum">
+                </label>
+
+                <label>
+                    Passport Country
+                    <select tabindex="9" name="PassportCountryID">
+                        @*/// Countries list*@
+                        @foreach (var country in ViewData["Countries"] as IEnumerable<dynamic>)
+                        {
+                            if (@country["CountryID"] == @User["PassportCountryID"])
+                            {
+                                <option value="@country["CountryID"]" selected>@country["Description"]</option>
+                            }
+                            else
+                            {
+                                <option value="@country["CountryID"]">@country["Description"]</option>
+                            }
+                        }
+                    </select>
+
+                </label>
+
+                <label>
+                    Workflow Role<span>*</span>
+                    <select tabindex="11" name="DealProcessTaskID" id="DealProcessTaskID" data-content="required">
+                        @{
+                            <option value="-1" default>Select an option:</option>
+                            /// Deal Process -> Buyer Seller
+                            foreach (var dealProcess in ViewData["DealProcesses"] as IEnumerable<dynamic>)
+                            {
+                                if (@dealProcess["TaskID"] == @User["WorkflowID"])
+                                {
+                                    <option value="@dealProcess["TaskID"]" selected>@dealProcess["TaskName"]</option>
+                                }
+                                else
+                                {
+                                    <option value="@dealProcess["TaskID"]">@dealProcess["TaskName"]</option>
+                                }
+                            }
+                        }
+                    </select>
+                </label>
+            </div> <!-- End of small-12 medium-6 columns -->
+        </div> <!-- End of row -->
+
+        <!-- Add Contact Details -->
+                            <div class="popup-headings add-margin-top">
+                                <h4>Contact Details</h4>
+                                <p>Please make sure your contact details supplied below is correct.</p>
+                            </div> <!-- End of popup-headings -->
+
+                            <div class="small-12 medium-4 columns reset-columns">
+                                <label>
+                                    Telephone number
+                                    <input tabindex="12" type="text" name="TelephoneNumber" id="TelephoneNumber" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharTelephone))" placeholder="" value="@User["Telephone"]" format="number">
+                                </label>
+                            </div>
+                            <div class="small-12 medium-4 columns">
+                                <label>
+                                    Fax number
+                                    <input tabindex="13" type="text" name="FaxNumber" id="FaxNumber" placeholder="" value="@User["FaxNumber"]" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharFax))" format="number">
+                                </label>
+                            </div>
+                            <div class="small-12 medium-4 columns">
+                                <label>
+                                    Email <span>*</span>
+                                    <input tabindex="14" type="text" name="Email" id="Email" value="@User["Email"]" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharEmail))" readonly>
+                                </label>
+                            </div>
+                                }
+                            }
+
+@section footer {
+    <a tabindex="15" class="button align-right dirty-disabled" id="btn-saved" onclick="FormObjectSubmit('#btn-saved','#EditUser', true);">Update User</a>
+}
+
+@section script {
+<script>
+
+    //date of birth range date picker
+    $("div.datedropper").remove();//to clear all divs for dropper rendered using class datedropper
+    $("#BirthDate").dateDropper();
+    //end of date of birth range date picker
+
+    //dirty function used to check if event listener has been modified and call the updates function
+    $('#EditUser').dirrty().on("dirty", function () {
+        $("#btn-saved").removeClass("dirty-disabled");//removed attribute if in case if anchor tag is used
+    }).on("clean", function () {
+        $("#btn-saved").addClass("dirty-disabled")//add attribute if in case if anchor tag is used
+    });
+    //end of dirty function used to check if event listener has been modified and call the updates function
+</script>
+}

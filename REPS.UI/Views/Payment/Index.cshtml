@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = ViewBag.PageLayoutPath;
+
+    //User roles
+    string role_view_feeslist = "FE_LI";
+    
+    if (!Common.CArray.SearchInCookie(role_view_feeslist))
+    {
+        Response.Redirect(Url.Action("Index", "Dashboard"));
+    }
+
+    if (ViewBag.PageLayoutPath != null)
+    {
+        @Html.Partial("PartialSubSection", null, new ViewDataDictionary { { "SelectedTab", "Payments" } })
+    }
+}
+
+<div id="deal-content-wrapper">
+    <div class="box payments-table box-deal" id="payments-table">
+        @Html.Partial("PaymentList")
+    </div> <!-- End of box payments-table box-deal -->
+</div> <!-- End of deal-content-wrapper -->

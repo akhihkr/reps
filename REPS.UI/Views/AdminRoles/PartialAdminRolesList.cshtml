@@ -1,0 +1,50 @@
+﻿@{
+    Layout = null;
+}
+
+
+<div class="box add-box-padding">
+    <h4>Roles</h4>
+    <p>Please find the list of roles currently in the system.</p>
+
+    <div class="workflow-actions-wrapper remove-padding-left">
+
+        @foreach (var Role in ViewData["RolesList"] as IEnumerable<dynamic>)
+        {
+            <div class="action-wrapper">
+                <h1>@Role["Description"]</h1>
+                <div id="">
+                    <a href="#" class="button edit-admin-action" onclick="CallPopupPanel('AdminRoles', 'PopupEditRole', 'general-panel',{roleID:@Role["RoleID"],roleName:'@Convert.ToString(Role["Description"]).Trim()'})">Edit Role</a>
+                </div>
+            </div> <!-- End of action-wrapper -->
+        }
+
+        <div class="action-wrapper add-admin-action" onclick="CallPopupPanel('AdminRoles', 'PopupAddRole', 'general-panel')">
+            <i class="material-icons">add</i>
+            <h1>Add Role</h1>
+        </div> <!-- End of action-wrapper -->
+    </div> <!-- End of workflow-actions-wrapper -->
+
+</div> <!-- End of box -->
+
+
+@*<div class="box add-box-padding">
+    <h4>Roles</h4>
+    <p>Please find the list of roles currently in the system.</p>
+
+    <div class="workflow-actions-wrapper remove-padding-left">
+
+        <div class="action-wrapper">
+            <h1>Action Name</h1>
+            <div id="">
+                <a href="#" class="button edit-admin-action" onclick="CallPopupPanel('AdminRoles', 'PopupEditRole', 'general-panel')">Edit Role</a>
+            </div>
+        </div> <!-- End of action-wrapper -->
+
+        <div class="action-wrapper add-admin-action" onclick="CallPopupPanel('AdminRoles', 'PopupAddRole', 'general-panel')">
+            <i class="material-icons">add</i>
+            <h1>Add Role</h1>
+        </div> <!-- End of action-wrapper -->
+    </div> <!-- End of workflow-actions-wrapper -->
+
+</div> <!-- End of box -->*@

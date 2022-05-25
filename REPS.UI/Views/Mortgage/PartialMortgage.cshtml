@@ -1,0 +1,68 @@
+﻿@{
+    Layout = null;
+
+    //reload the last div id
+    if (ViewData["LastActionBy"] != null)
+    {
+        <script>
+            $("#lastActionBy").load(location.href + " #lastActionBy");
+        </script>
+    }
+    //end of reload the last div id
+
+    //User roles
+    string role_view_mortgageedit = "MO_ED";
+
+    /// Do we have mortgages
+    int counterMortgage = 0;
+    if ((int.Parse((ViewData["Mortgages"] as IEnumerable<dynamic>).Count().ToString())) != 0)
+    {
+        counterMortgage = int.Parse((ViewData["Mortgages"] as IEnumerable<dynamic>).Count().ToString());
+
+        int mortgageCount = 0;
+        foreach (var mortgage in ViewData["Mortgages"] as IEnumerable<dynamic>)
+        {
+            mortgageCount++;
+            string classEnd = string.Empty;
+            if (mortgageCount == counterMortgage)
+            {
+                classEnd = "end";
+            }
+            string divID = "mort" + mortgageCount;
+            <div class="card-matter">
+                <input type="hidden" value="@mortgage["InstrumentID"]" name="mortgageID" id="mortgageID" />
+                <div class="card-matter-top">
+                    <i class="material-icons">home</i>
+                    <div class="card-matter-top-title">
+                        <h1>@mortgage["LenderName"]</h1>
+                    </div> <!-- End of card-matter-top-title -->
+                    @if (Common.CArray.SearchInCookie(role_view_mortgageedit))
+                    {
+                        <div class="card-matter-top-links">
+                            <a href="#" onclick="CallPopupPanel('Mortgage', 'PopupEditMortgage', 'general-panel', { mortgageGUID :'@mortgage["InstrumentGUID"]'})" class="float-right">Edit</a>
+                        </div> <!-- card-matter-top-links -->
+                    }
+                </div> <!-- End of card-matter-top -->
+                <div class="card-matter-bottom">
+                    <div class="card-matter-bottom-split">
+                        <h1>@mortgage["Value"]</h1>
+                        <p>Value</p>
+                    </div> <!-- End of card-matter-bottom-split -->
+                    <div class="card-matter-bottom-split">
+                        <h1>@mortgage["Deposit"]</h1>
+                        <p>Deposit</p>
+                    </div> <!-- End of card-matter-bottom-split -->
+                </div> <!-- End of card-matter-bottom -->
+            </div> <!-- End of card-matter -->
+        }
+
+    }
+    else
+    {
+        <div class="no-mortgage-section">
+            <i class="material-icons">home</i>
+            <p>No Mortgage added.</p>
+        </div> <!-- End of no-participant-section -->
+    }
+    //}
+}

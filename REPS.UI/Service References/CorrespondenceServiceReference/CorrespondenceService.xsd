@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:54738/CorrespondenceService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:54738/CorrespondenceService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Common" />
+  <xs:element name="InsertCorrespondence">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DealID" type="xs:int" />
+        <xs:element minOccurs="0" name="Subject" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="Headers" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Html" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Body" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Status" type="xs:int" />
+        <xs:element minOccurs="0" name="DocumentTemplateID" type="xs:int" />
+        <xs:element minOccurs="0" name="mimeType" nillable="true" type="xs:string" />
+        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="formObjects" nillable="true" type="q1:ArrayOfKeyValueOfstringanyType" />
+        <xs:element minOccurs="0" name="saveAttachment" type="xs:boolean" />
+        <xs:element minOccurs="0" name="fileUpload" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertCorrespondenceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="InsertCorrespondenceResult" nillable="true" type="q2:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCorrespondenceInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="DealID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCorrespondenceInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetCorrespondenceInfoResult" nillable="true" type="q3:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCorrespondenceDetails_ByID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CorrespondenceID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCorrespondenceDetails_ByIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetCorrespondenceDetails_ByIDResult" nillable="true" type="q4:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEmailAutocomplete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DealID" type="xs:int" />
+        <xs:element minOccurs="0" name="Prefix" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEmailAutocompleteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetEmailAutocompleteResult" nillable="true" type="q5:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTelephoneAutocomplete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DealID" type="xs:int" />
+        <xs:element minOccurs="0" name="Prefix" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTelephoneAutocompleteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetTelephoneAutocompleteResult" nillable="true" type="q6:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBinaryDocumentAttachment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="documentID" type="xs:int" />
+        <xs:element minOccurs="0" name="dealID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBinaryDocumentAttachmentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetBinaryDocumentAttachmentResult" nillable="true" type="q7:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCorrespondenceIDByCorrespondenceGUID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="correspondenceGUID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCorrespondenceIDByCorrespondenceGUIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Common" minOccurs="0" name="GetCorrespondenceIDByCorrespondenceGUIDResult" nillable="true" type="q8:CValidator" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

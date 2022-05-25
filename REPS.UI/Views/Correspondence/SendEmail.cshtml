@@ -1,0 +1,114 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = ViewBag.PageLayoutPath;
+
+    if (ViewBag.PageLayoutPath != null)
+    {
+        @Html.Partial("PartialSubSection", null, new ViewDataDictionary { { "SelectedTab", "Correspondence" } })
+    }
+
+    //ajax
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "alerts-table",
+        OnSuccess = "onSuccessToasterMsg(null,null,null,null,'Email has been sent successfully')",
+        OnFailure = "OnFailure",
+    };
+}
+@Scripts.Render("~/Bundles/Correspondence")
+
+@*<script>
+  tinymce.init({
+      selector: '#myemailbody'
+  });
+</script>*@
+
+@using (Ajax.BeginForm("SendEmailAction", "Correspondence", options, new { name = "EmailForm", id = "EmailForm", @enctype = "multipart/form-data"}))
+{
+    <div class="row email">
+        <div class="small-12 medium-6 columns">
+            <label>
+                To:
+                <input type="text" name="To" id="to-email-address" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar2000))" data-content="required" format="multiple-emails">
+            </label>
+            <label>
+                CC (Separate with ;):
+                <input type="text" name="CC" id="email-cc" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar2000))" format="multiple-emails">
+            </label>
+            <label>
+                Subject:
+                <input type="text" name="Subject" id="email-subject" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar250))" data-content="required">
+            </label>
+            <label>
+                Save attachment?
+            </label>
+            <label class="switch">
+
+                    <input type="checkbox" class="switch-input" id="saveAttachementToggle" name="saveAttachementToggle" checked>
+
+                    <input type="checkbox" class="switch-input" id="saveAttachementToggle" name="saveAttachementToggle" disabled>
+
+                <span class="switch-label" data-on="Yes" data-off="No"></span>
+                <span class="switch-handle"></span>
+            </label>
+        </div>
+
+        <div class="small-12 medium-6 columns end">
+            <div class="file-upload">
+                <div class="image-upload-wrap">
+                    <input class="file-upload-input" id="file-upload-input" name="fileUploader" type="file" onchange="readURL(this)" />
+                    <div class="drag-text">
+                        <i class="material-icons">cloud_upload</i>
+                        <h3>Click to attach file</h3>
+                    </div>
+                </div>
+                <div class="file-upload-content">
+                    <div class="image-title-wrap">
+                        <button type="button" onclick="removeUpload()" class="button">Remove <span class="image-title">Uploaded Image</span></button>
+                    </div>
+                </div>
+            </div> <!-- End of file-upload -->
+        </div> <!-- End of small-12 medium-6 columns end -->
+
+        <div class="small-12 columns end">
+            <label>
+                Message:
+                <textarea id="myemailbody" name="Body" rows="10" data-content="required"></textarea>
+            </label>
+        </div>
+        <div class="small-12 columns end">
+            @*<a tabindex="9" class="button align-right" id="btn-send-email" href="#" name="emailSubmit" onclick="FormObjectSubmit('#btn-send-email', '#EmailForm', true);">Send Email</a>*@
+            <a tabindex="9" class="button align-right" id="btn-send-email" href="#" name="emailSubmit">Send Email</a>
+        </div>
+    </div> <!-- End of row row-reset -->
+}
+
+
+@{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            // executes when HTML-Document is loaded and DOM is ready
+
+            //dirty function used to check if event listener has been modified and call the updates function
+            $('#EmailForm').dirrty().on("dirty", function () {
+                $("#btn-send-email").removeClass("dirty-disabled");//removed attribute if in case if anchor tag is used
+            }).on("clean", function () {
+                $("#btn-send-email").addClass("dirty-disabled")//add attribute if in case if anchor tag is used
+            });
+            //end of dirty function used to check if event listener has been modified and call the updates function
+
+            $('#btn-send-email').on('click', function () {
+                FormatActionDatePS();
+                var validation = reps.checkOnSubmit('#EmailForm');
+                if (validation) {
+                    SetSelectedTabActiveCorrespondence('CorrespondenceListTab');
+                    SaveForm('#file-upload-input', '#EmailForm', 'Correspondence', 'SendEmailAction', 'Index', 'deal-content-wrapper', '#btn-send-email', '{partial:true}', null);
+                }
+            });
+
+        });
+    </script>
+}

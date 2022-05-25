@@ -1,0 +1,124 @@
+﻿@{
+    Layout = null;
+
+
+}
+<div class="box add-box-padding">
+    <div class="admin-documents-heading">
+        <h4>Documents</h4>
+        <p>Please find the list of documents currently in the system. You can add or remove document templates from the list below.</p>
+
+    </div>
+    <a href="#" onclick="CallPopupPanel('AdminDocuments', 'PopupAddCategory', 'general-panel')" class="button align-right">Add Category</a>
+</div> <!-- End of box add-box-padding -->
+
+
+@{
+    foreach (var DocType in ViewData["DocumentCategoryList"] as IEnumerable<dynamic>)
+    {
+        //declare variables
+        int TemplateCount = 0;
+        string CategoryName = null;
+        //end of declare variables
+
+        string[] DocTypeValue = Convert.ToString(DocType["Description"]).Split(' ');//split the description field name
+        CategoryName = DocTypeValue[0];
+
+        // Check if Document Category contains atleast 1 template (if new document is added)
+        foreach (var document in ViewData["DocumentTemplateList"] as IEnumerable<dynamic>)
+        {
+            if (@document["DocumentTypeID"] == @DocType["ID"])          // Same Document Type
+            {
+                TemplateCount = 1;
+            }
+        }
+        //END OF Check if Document Category contains atleast 1 template (if new document is added)
+
+        <div class="box add-box-padding">
+            @{
+                if (TemplateCount == 1)// atleast 1 template associated with the category (if new document is not added)
+                {
+                    <div class="box-descriptions remove-margin-bottom">
+                        <h4>@DocType["Description"]</h4>
+                        <a href="#" class="button admin-templates-buttons add-template-button" onclick="CallPopupPanel('AdminDocuments', 'NewDocumentTemplate', 'general-panel', {objectTypeID:@DocType["ID"] })">Add @CategoryName Template</a>
+                    </div> <!-- End of table-headings -->
+
+                    <div class="table-scroll">
+                        <table class="deals-table documents-list-table" id="dashboard-deals-table">
+                            <thead>
+                                <tr id="table-head">
+                                    <th width="400">Template Name</th>
+                                    <th width="50">Version</th>
+                                    <th width="50">Date Created</th>
+                                    <th width="180">Created By</th>
+                                    <th width="10"></th>
+                                    <th width="10"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="hover">
+                                @{
+                                    // Display documents info with templates
+                                    foreach (var document in ViewData["DocumentTemplateList"] as IEnumerable<dynamic>)
+                                    {
+                                        if (@document["DocumentTypeID"] == @DocType["ID"])          // Same Document Type
+                                        {
+                                            TemplateCount = 1;
+                                            <tr>
+                                                <td>@document["TemplateDisplayName"]</td>
+                                                <td>@document["VersionName"]</td>
+                                                <td>
+                                                    @{
+                                                        if (@document["DateCreated"] != null)
+                                                        {
+                                                            @Convert.ToDateTime(@document["DateCreated"]).ToString("dd/MM/yyyy");
+                                                        }
+                                                    }
+                                                </td>
+                                                <td>
+                                                    @{
+                                                        if (@document["CreatedByUser"] != null)
+                                                        {
+                                                            @document["CreatedByUser"]
+                                                        }
+                                                    }
+                                                </td>
+
+                                                <td><a id="@document["DocumentTemplateID"]" class="edit-admin-document" onclick="CallPopupPanel('AdminDocuments', 'PopupEditTemplate', 'general-panel', {objectTypeID:@document["DocumentTemplateID"] },'edit-template-admin')" href="#">Edit</a></td>
+                                                <td>
+                                                    @Ajax.ActionLink("Remove", "RemoveTemplate",
+                                                     new { id = @document["DocumentTemplateID"] },
+                                                     new AjaxOptions
+                                                     {
+                                                         HttpMethod = "POST",
+                                                         UpdateTargetId = "content-admin",
+                                                         InsertionMode = InsertionMode.Replace,
+                                                         Confirm = "Are you sure you want to remove this Template?",
+                                                         //OnSuccess = "onSuccessToasterMsg('AdminController','Index','content-admin',{partial:true},'Document Template has been successfully removed')",
+                                                         OnSuccess = "SuccessResult(data,'AdminDocuments','Index','content-admin',{partial:true},'Document Template has been successfully removed')",
+                                                         OnFailure = "OnFailure"
+                                                     }, new { @class = "remove-template remove-btn-template" })
+
+                                                </td>
+                                            </tr>
+                                                            }
+                                                        }
+                                }
+                            </tbody>
+                        </table>
+                    </div> <!-- End of table-scroll -->
+                                                        }
+                                                        else
+                                                        {
+                                                            // No templates found - display Add template icon
+                                                            <a id="@DocType["ID"]" href="#" class="button align-right admin-templates-buttons add-template-button" onclick="CallPopupPanel('AdminDocuments', 'NewDocumentTemplate', 'general-panel', {objectTypeID:@DocType["ID"] },'admin-template-popup')">Add @CategoryName Template</a>
+                                                            <div class="no-category-section">
+                                                                <i class="material-icons">insert_drive_file</i>
+                                                                <p>No template added.</p>
+                                                            </div> <!-- End of no-category-section -->
+                                                        }
+            }
+        </div>
+                                                        }
+
+}
+

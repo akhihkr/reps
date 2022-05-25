@@ -1,0 +1,162 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = ViewBag.PageLayoutPath;
+
+    if (ViewBag.PageLayoutPath != null)
+    {
+        @Html.Partial("PartialSubSection", null, new ViewDataDictionary { { "SelectedTab", "Correspondence" } })
+    }
+ 
+}
+ 
+@if (int.Parse((ViewData["CorrespondenceInfo"] as IEnumerable<dynamic>).Count().ToString()) == 0)
+{
+    <div class="alerts-no-events">
+        <i class="material-icons">event</i>
+        <p>No correspondence for this Deal.</p>
+    </div> <!-- End of alerts-no-events -->
+}
+else
+{
+    <div class="table-scroll">
+        <table class="correspondance-table" id="correspondance-table">
+            <thead>
+                <tr id="table-head">
+                    <th width="">Date & Time</th>
+                    <th width="">To</th>
+                    <th width="">CC</th>
+                    <th width="">Subject</th>
+                    <th width="">Status</th>
+                    <th width="" class="hide-row-mobile">Attachment</th>
+                </tr>
+            </thead>
+            <tbody class="hover">
+
+                @foreach (var Correspondence in ViewData["CorrespondenceInfo"] as IEnumerable<dynamic>)
+                {
+                    string ToPartOfString = string.Empty;
+                    string CCPartOfString = string.Empty;
+                    <tr>
+                        <td>
+                            @TimeZone.CurrentTimeZone.ToLocalTime(Correspondence["DateCreated"])
+                        </td>
+                        <td>
+                            @{ if (Correspondence["Headers"].ToString().Contains("TOSENDER:"))
+                                {
+                                    ToPartOfString = Correspondence["Headers"].ToString().Split(new string[] { "CCSENDER:" }, StringSplitOptions.None)[0].Replace("TOSENDER:", "").Replace("; ", ", <br />").Replace(";", "");
+                                }
+                                else if (Correspondence["Headers"].ToString().Contains("NUMBER:"))
+                                {
+                                    ToPartOfString = Correspondence["Headers"].ToString().Replace("NUMBER:", "");
+                                }
+                                else
+                                {
+                                    ToPartOfString = "-";
+                                }
+                            }
+                            @Html.Raw(ToPartOfString)
+                        </td>
+                        <td>
+                            @{
+                                if (Correspondence["Headers"].ToString().Contains("TOSENDER:"))
+                                {
+                                    CCPartOfString = Correspondence["Headers"].ToString().Split(new string[] { "CCSENDER:" }, StringSplitOptions.None)[1].Replace("; ", ", <br />").Replace(";", ", <br />");
+                                    if (CCPartOfString.Length == 0)
+                                    {
+                                        CCPartOfString = "-";
+                                    }
+                                }
+                                else
+                                {
+                                    CCPartOfString = "-";
+                                }
+                            }
+                            @Html.Raw(CCPartOfString)
+                        </td>
+                        <td>
+                            @*@Html.Raw("<a onclick=\"showCorrespondenceInfo('" + @Correspondence["CorrespondenceGUID"].ToString() + "')\">" + @Correspondence["Subject"] + "</a>")*@
+                            <a href="#" onclick="CallPopupPanel('Correspondence', 'GetCorrespondenceDetails', 'general-panel', {correspondenceGUID : '@Correspondence["CorrespondenceGUID"].ToString()'}, 'remove-popup-footer')">@Correspondence["Subject"]</a>
+                        </td>
+                        <td>
+                            @if (Correspondence["SmtpStatusID"].ToString() == "0")
+                            {
+                                <p>Sent</p>
+                            }
+                            else
+                            {
+                                <p>Error</p>
+                            }
+                        </td>
+                        <td class="hide-row-mobile">
+                            @if (Correspondence["AttachmentID"] == null)
+                            {
+                                <p>No attachment</p>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("DownloadAttachedtFile", "Correspondence", new { documentID = Correspondence["AttachmentID"] })">
+                                    Download
+                                </a>
+                            }
+                        </td>
+                    </tr>
+                                }
+
+            </tbody>
+        </table>
+    </div> <!-- End of table-scroll -->
+                                @*<span class="alerts-records">@((ViewData["CorrespondenceInfo"] as IEnumerable<dynamic>).Count()) record(s)</span>*@
+                                }
+
+<div id="table-result-search-data"></div>
+
+<!-- Scripts -->
+<script type="text/javascript">
+    //call dynatable plugin search when document is ready
+    DynatableSearch('#correspondance-table', '#table-result-search-data', '#search-table');
+    //end of call dynatable plugin search when document is ready
+</script>
+<!--
+
+    <div class="table-scroll">
+        <table class="correspondance-table">
+            <thead>
+                <tr id="table-head">
+                    <th width="">Date & Time</th>
+                    <th width="">To</th>
+                    <th width="">CC</th>
+                    <th width="">Subject</th>
+                    <th width="">Status</th>
+                    <th width="" class="hide-row-mobile">Attachment</th>
+                </tr>
+            </thead>
+            <tbody class="hover">
+
+                <tr>
+                    <td>
+                        Date Created
+                    </td>
+                    <td>
+                        Ipsum
+                    </td>
+                    <td>
+                        Ipsum
+                    </td>
+                    <td>
+                        Ipsum
+                    </td>
+                    <td>
+                        Status here?
+                    </td>
+                    <td class="hide-row-mobile">
+                        No Attachment
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <span class="alerts-records">Number of record(s) appears here...</span>
+
+
+-->

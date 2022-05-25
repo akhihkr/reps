@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = ViewBag.PageLayoutPath;
+
+    if (ViewBag.PageLayoutPath == null)
+    {
+        @Html.Partial("PartialHeaderProfile", null, new ViewDataDictionary { { "SelectedTab", "Security" } })
+    }
+
+    if (TempData["ToasterMsg"] != null)
+    {
+        <script type="text/javascript">
+            @Html.Raw(TempData["ToasterMsg"])
+        </script>
+    }
+
+    //ajax to save profile
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "content-wrapper",
+        //OnSuccess = "onSuccessToasterMsg(null,null,null,null,'Password has been successfully updated')",
+        OnFailure = "OnFailure",
+        //OnComplete = "onComplete",
+    };
+
+}
+
+@using (Ajax.BeginForm("UpdateUserProfileSecurity", "MyProfile", options, new { id = "UserProfileSecurity" }))
+{
+<div class="content">
+    <select id="profile-dropdown-link" class="mobile-content-page-navigation" onchange="eval($('#profile-dropdown-link').val())">
+        <option value="AjaxControllerCaller('MyProfile', 'Index', 'content-wrapper')">Basic Info</option>
+        <option value="AjaxControllerCaller('MyProfile', 'Security', 'content-wrapper')" selected>Security</option>
+    </select>
+
+
+    <!-- Security Page -->
+    <div class="box add-box-padding">
+        <div class="box-descriptions">
+            <h4>Security & Privacy</h4>
+            <p>You can change your password in the fields below.</p>
+        </div> <!-- End of box-description -->
+
+        <div class="row reset-row">
+            <div class="medium-4 columns reset-columns">
+                <label>
+                    Current Password<span>*</span>
+                    <input type="password" id="CurrentPassword" name="CurrentPassword" placeholder="" value="">
+                </label>
+            </div> <!-- End of medium-4 columns reset-columns -->
+
+            <div class="medium-4 columns">
+                <label>
+                    New Password<span>*</span>
+                    <input type="password" id="NewPassword" name="NewPassword" placeholder="" value="">
+                </label>
+            </div>
+
+            <div class="medium-4 columns">
+                <label>
+                    Confirm Password<span>*</span>
+                    <input type="password" id="ConfirmPassword" name="ConfirmPassword" placeholder="" value="">
+                    <span id="PasswordMessage"></span>
+                </label>
+            </div>
+
+        </div> <!-- End of row -->
+    </div> <!-- End of box add-box-padding -->
+    <a id="UpdatePasswordBtn" onclick="FormObjectSubmit('#UpdatePasswordBtn', '#UserProfileSecurity', false);" class="button float-right dirty-disabled"> Update Password</a>
+</div>
+}
+
+<script>
+    //dirty function used to check if event listener has been modified and call the updates function
+    $('#UserProfileSecurity').dirrty().on("dirty", function () {
+        $("#UpdatePasswordBtn").removeClass("dirty-disabled");//removed attribute if in case if anchor tag is used
+    }).on("clean", function () {
+        $("#UpdatePasswordBtn").addClass("dirty-disabled")//add attribute if in case if anchor tag is used
+    });
+    //end of dirty function used to check if event listener has been modified and call the updates function
+
+    /// Profile Validation
+    $('#NewPassword, #ConfirmPassword').on('keyup', function () {
+
+        if ($('#NewPassword').val() == $('#ConfirmPassword').val()) {
+            $('#PasswordMessage').html('Password Matched').css('color', '#4caf50');
+            if ($('#NewPassword').val().length > 0) {
+                $('#UpdatePasswordBtn').removeAttr('disabled');
+            }
+        } else {
+            $('#PasswordMessage').html('Password Not Matched').css('color', '#F44336');
+            $('#UpdatePasswordBtn').attr('disabled', 'disabled');
+        }
+    });
+</script>

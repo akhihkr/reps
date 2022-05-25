@@ -1,0 +1,1280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F1E5C8AF-3D22-4517-A18F-88B3049CC0C2}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>REPS.UI</RootNamespace>
+    <AssemblyName>REPS.UI</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="commons-lang-2.6, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\commons-lang-2.6.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelFuncs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\ExcelFuncs.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.5.1.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.5.1\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IKVM.OpenJDK.Core, Version=7.2.4630.5, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\IKVM.OpenJDK.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.1.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.1.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.1.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.1.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.1.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.1.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LibSassHost">
+      <HintPath>..\packages\LibSassHost.1.0.3\lib\net45\LibSassHost.dll</HintPath>
+    </Reference>
+    <Reference Include="BundleTransformer.Core">
+      <HintPath>..\packages\BundleTransformer.Core.1.9.152\lib\net40\BundleTransformer.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="BundleTransformer.SassAndScss">
+      <HintPath>..\packages\BundleTransformer.SassAndScss.1.9.154\lib\net40\BundleTransformer.SassAndScss.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Common.CValidator1.datasource" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <None Include="CSS\app.scss" />
+    <Content Include="CSS\app.css">
+      <DependentUpon>app.scss</DependentUpon>
+    </Content>
+    <Content Include="CSS\app.min.css">
+      <DependentUpon>app.css</DependentUpon>
+    </Content>
+    <Content Include="CSS\date.svg" />
+    <Content Include="CSS\fonts\rep.svg" />
+    <Content Include="CSS\foundation.css" />
+    <Content Include="CSS\foundation.min.css" />
+    <Content Include="CSS\icons.min.css" />
+    <Content Include="CSS\img\16\delete.png" />
+    <Content Include="CSS\img\16\moveleft.png" />
+    <Content Include="CSS\img\16\moveright.png" />
+    <Content Include="CSS\img\16\new.png" />
+    <Content Include="CSS\img\16\zoomin.png" />
+    <Content Include="CSS\img\16\zoomout.png" />
+    <Content Include="CSS\img\24\delete.png" />
+    <Content Include="CSS\img\24\moveleft.png" />
+    <Content Include="CSS\img\24\moveright.png" />
+    <Content Include="CSS\img\24\new.png" />
+    <Content Include="CSS\img\24\zoomin.png" />
+    <Content Include="CSS\img\24\zoomout.png" />
+    <Content Include="CSS\img\32\delete.png" />
+    <Content Include="CSS\img\32\moveleft.png" />
+    <Content Include="CSS\img\32\moveright.png" />
+    <Content Include="CSS\img\32\new.png" />
+    <Content Include="CSS\img\32\zoomin.png" />
+    <Content Include="CSS\img\32\zoomout.png" />
+    <Content Include="CSS\img\cluster_bg.png" />
+    <Content Include="CSS\img\deleteEvent.png" />
+    <Content Include="CSS\img\themeswitcher\buttonbg.png" />
+    <Content Include="CSS\img\themeswitcher\icon_color_arrow.gif" />
+    <Content Include="CSS\img\themeswitcher\menuhoverbg.png" />
+    <Content Include="CSS\img\themeswitcher\theme_90_black_matte.png" />
+    <Content Include="CSS\img\themeswitcher\theme_90_black_tie.png" />
+    <Content Include="CSS\img\themeswitcher\theme_90_blitzer.png" />
+    <Content Include="CSS\img\themeswitcher\theme_90_cupertino.png" />
+    <Content Include="CSS\img\themeswitcher\theme_90_dark_hive.png" />
+    <Content Include="CSS\img\themeswitcher\theme_90_dot_luv.png" />
+    <Content Include="CSS\img\themeswitcher\theme_90_eggplant.png" />
+    <Content Include="CSS\img\themeswitcher\theme_90_excite_bike.png" />
+    <Content Include="CSS\img\themeswitcher\theme_90_flick.png" />
+    <Content Include="CSS\img\themeswitcher\theme_90_hot_sneaks.png" />
+    <Content Include="CSS\img\themeswitcher\theme_90_humanity.png" />
+    <Content Include="CSS\img\themeswitcher\theme_90_le_frog.png" />
+    <Content Include="CSS\img\themeswitcher\theme_90_mint_choco.png" />
+    <Content Include="CSS\img\themeswitcher\theme_90_overcast.png" />
+    <Content Include="CSS\img\themeswitcher\theme_90_pepper_grinder.png" />
+    <Content Include="CSS\img\themeswitcher\theme_90_smoothness.png" />
+    <Content Include="CSS\img\themeswitcher\theme_90_south_street.png" />
+    <Content Include="CSS\img\themeswitcher\theme_90_start_menu.png" />
+    <Content Include="CSS\img\themeswitcher\theme_90_sunny.png" />
+    <Content Include="CSS\img\themeswitcher\theme_90_swanky_purse.png" />
+    <Content Include="CSS\img\themeswitcher\theme_90_trontastic.png" />
+    <Content Include="CSS\img\themeswitcher\theme_90_ui_dark.png" />
+    <Content Include="CSS\img\themeswitcher\theme_90_ui_light.png" />
+    <Content Include="CSS\img\themeswitcher\theme_90_windoze.png" />
+    <Content Include="CSS\MaterialIcons\material-icons-old.css" />
+    <Content Include="CSS\MaterialIcons\material-icons.css" />
+    <Content Include="CSS\MaterialIcons\MaterialIcons-Regular.svg" />
+    <Content Include="CSS\multi-select.css" />
+    <Content Include="CSS\paging.css" />
+    <Content Include="CSS\reps-datedropper.css" />
+    <Content Include="CSS\time.svg" />
+    <Content Include="CSS\timeline.css" />
+    <Content Include="CSS\toastr.min.css" />
+    <Content Include="CSS\vis.min.css" />
+    <Content Include="DLL\commons-lang-2.6.dll" />
+    <Content Include="DLL\IKVM.AWT.WinForms.dll" />
+    <Content Include="DLL\IKVM.OpenJDK.Beans.dll" />
+    <Content Include="DLL\IKVM.OpenJDK.Charsets.dll" />
+    <Content Include="DLL\IKVM.OpenJDK.Corba.dll" />
+    <Content Include="DLL\IKVM.OpenJDK.Core.dll" />
+    <Content Include="DLL\IKVM.OpenJDK.Jdbc.dll" />
+    <Content Include="DLL\IKVM.OpenJDK.Management.dll" />
+    <Content Include="DLL\IKVM.OpenJDK.Media.dll" />
+    <Content Include="DLL\IKVM.OpenJDK.Misc.dll" />
+    <Content Include="DLL\IKVM.OpenJDK.Naming.dll" />
+    <Content Include="DLL\IKVM.OpenJDK.Remoting.dll" />
+    <Content Include="DLL\IKVM.OpenJDK.Security.dll" />
+    <Content Include="DLL\IKVM.OpenJDK.SwingAWT.dll" />
+    <Content Include="DLL\IKVM.OpenJDK.Text.dll" />
+    <Content Include="DLL\IKVM.OpenJDK.Util.dll" />
+    <Content Include="DLL\IKVM.OpenJDK.XML.API.dll" />
+    <Content Include="DLL\IKVM.OpenJDK.XML.Bind.dll" />
+    <Content Include="DLL\IKVM.OpenJDK.XML.Parse.dll" />
+    <Content Include="DLL\IKVM.Runtime.dll" />
+    <Content Include="DLL\IKVM.Runtime.JNI.dll" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\fav.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\switch.png" />
+    <Content Include="Javascripts\app.js" />
+    <Content Include="Javascripts\foundation.dropdown.js" />
+    <Content Include="Javascripts\jquery-sortable.js" />
+    <Content Include="Javascripts\jquery.min.js" />
+    <Content Include="Javascripts\jsapi.js" />
+    <Content Include="Javascripts\audit-timeline.js" />
+    <Content Include="Javascripts\Chart.min.js" />
+    <Content Include="Javascripts\Datedropper3-master\datedropper.css" />
+    <Content Include="Javascripts\Datedropper3-master\datedropper.js" />
+    <Content Include="Javascripts\Datedropper3-master\datedropper.min.css" />
+    <Content Include="Javascripts\Datedropper3-master\datedropper.min.js" />
+    <Content Include="Javascripts\Datedropper3-master\src\datedropper.svg" />
+    <Content Include="Javascripts\dirrty.js" />
+    <Content Include="Javascripts\jquery-ui.js" />
+    <Content Include="Javascripts\jquery.multi-select.js" />
+    <Content Include="Javascripts\paging.js" />
+    <Content Include="Javascripts\timedropper-master\.gitattributes" />
+    <Content Include="Javascripts\timedropper-master\timedropper.css" />
+    <Content Include="Javascripts\timedropper-master\timedropper.js" />
+    <Content Include="Javascripts\timedropper-master\timedropper.min.css" />
+    <Content Include="Javascripts\timedropper-master\timedropper.min.js" />
+    <Content Include="Javascripts\Timeline.js" />
+    <Content Include="Javascripts\tinymce\jquery.tinymce.min.js" />
+    <Content Include="Javascripts\tinymce\license.txt" />
+    <Content Include="Javascripts\tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\bbcode\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\codesample\css\prism.css" />
+    <Content Include="Javascripts\tinymce\plugins\codesample\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\code\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\colorpicker\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\contextmenu\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\emoticons\img\smiley-cool.gif" />
+    <Content Include="Javascripts\tinymce\plugins\emoticons\img\smiley-cry.gif" />
+    <Content Include="Javascripts\tinymce\plugins\emoticons\img\smiley-embarassed.gif" />
+    <Content Include="Javascripts\tinymce\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
+    <Content Include="Javascripts\tinymce\plugins\emoticons\img\smiley-frown.gif" />
+    <Content Include="Javascripts\tinymce\plugins\emoticons\img\smiley-innocent.gif" />
+    <Content Include="Javascripts\tinymce\plugins\emoticons\img\smiley-kiss.gif" />
+    <Content Include="Javascripts\tinymce\plugins\emoticons\img\smiley-laughing.gif" />
+    <Content Include="Javascripts\tinymce\plugins\emoticons\img\smiley-money-mouth.gif" />
+    <Content Include="Javascripts\tinymce\plugins\emoticons\img\smiley-sealed.gif" />
+    <Content Include="Javascripts\tinymce\plugins\emoticons\img\smiley-smile.gif" />
+    <Content Include="Javascripts\tinymce\plugins\emoticons\img\smiley-surprised.gif" />
+    <Content Include="Javascripts\tinymce\plugins\emoticons\img\smiley-tongue-out.gif" />
+    <Content Include="Javascripts\tinymce\plugins\emoticons\img\smiley-undecided.gif" />
+    <Content Include="Javascripts\tinymce\plugins\emoticons\img\smiley-wink.gif" />
+    <Content Include="Javascripts\tinymce\plugins\emoticons\img\smiley-yell.gif" />
+    <Content Include="Javascripts\tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\example\dialog.html" />
+    <Content Include="Javascripts\tinymce\plugins\example\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\example_dependency\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\fullpage\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\hr\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\imagetools\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\image\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\legacyoutput\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\link\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\media\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\noneditable\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\paste\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\print\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\save\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\spellchecker\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\tabfocus\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\table\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\template\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\textcolor\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\textpattern\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\toc\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\visualblocks\css\visualblocks.css" />
+    <Content Include="Javascripts\tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="Javascripts\tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="Javascripts\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="Javascripts\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="Javascripts\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="Javascripts\tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="Javascripts\tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="Javascripts\tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="Javascripts\tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="Javascripts\tinymce\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="Javascripts\tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="Javascripts\tinymce\themes\inlite\theme.min.js" />
+    <Content Include="Javascripts\tinymce\themes\modern\theme.min.js" />
+    <Content Include="Javascripts\tinymce\tinymce.min.js" />
+    <Content Include="Javascripts\toastr.min.js" />
+    <Content Include="Javascripts\vendor\foundation.js" />
+    <Content Include="Javascripts\vendor\foundation.min.js" />
+    <Content Include="Javascripts\vendor\jquery.js" />
+    <Content Include="Javascripts\vendor\jquery.unobtrusive-ajax.js" />
+    <Content Include="Javascripts\vendor\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Javascripts\vendor\what-input.js" />
+    <Content Include="CSS\Partials\SubTabs.scss" />
+    <Content Include="CSS\Pages\Deal.scss" />
+    <Content Include="CSS\Partials\Popup.scss" />
+    <Content Include="CSS\Pages\Workflow.scss" />
+    <Content Include="CSS\Pages\Alerts.scss" />
+    <Content Include="CSS\Pages\Correspondence.scss" />
+    <Content Include="CSS\Pages\Documents.scss" />
+    <Content Include="CSS\Pages\Audit.scss" />
+    <Content Include="CSS\Pages\Payments.scss" />
+    <Content Include="Javascripts\tinymce\langs\readme.md" />
+    <Content Include="Javascripts\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="Javascripts\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="Javascripts\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="Javascripts\tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="Javascripts\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="Javascripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="CSS\Pages\Login.scss" />
+    <Content Include="CSS\Pages\Reports.scss" />
+    <Content Include="CSS\Pages\Entity.scss" />
+    <Content Include="CSS\Pages\AdminDocuments.scss" />
+    <Content Include="CSS\Pages\AdminWorkflow.scss" />
+    <Content Include="Javascripts\Datedropper3-master\package.json" />
+    <Content Include="Javascripts\Datedropper3-master\src\datedropper.eot" />
+    <Content Include="Javascripts\Datedropper3-master\src\datedropper.ttf" />
+    <Content Include="Javascripts\Datedropper3-master\src\datedropper.woff" />
+    <Content Include="Javascripts\timedropper-master\bower.json" />
+    <Content Include="Javascripts\timedropper-master\LICENSE" />
+    <Content Include="Javascripts\timedropper-master\README.md" />
+    <Content Include="CSS\Partials\RepsFonts.scss" />
+    <Content Include="CSS\fonts\rep.eot" />
+    <Content Include="CSS\fonts\rep.ttf" />
+    <Content Include="CSS\fonts\rep.woff" />
+    <Content Include="CSS\MaterialIcons\MaterialIcons-Regular.eot" />
+    <Content Include="CSS\MaterialIcons\MaterialIcons-Regular.ijmap" />
+    <Content Include="CSS\MaterialIcons\MaterialIcons-Regular.ttf" />
+    <Content Include="CSS\MaterialIcons\MaterialIcons-Regular.woff" />
+    <Content Include="CSS\MaterialIcons\MaterialIcons-Regular.woff2" />
+    <Content Include="CSS\fonts\NotoSans-Regular-webfont.eot" />
+    <Content Include="CSS\fonts\NotoSans-Regular-webfont.ttf" />
+    <Content Include="CSS\fonts\NotoSans-Regular-webfont.woff" />
+    <Content Include="CSS\fonts\NotoSans-Regular-webfont.woff2" />
+    <Content Include="CSS\fonts\NotoSans-Regular.ttf" />
+    <Content Include="CSS\Pages\ErrorPage.scss" />
+    <Content Include="CSS\Partials\Timeline.scss" />
+    <Content Include="CSS\Partials\Columns.scss" />
+    <None Include="Properties\PublishProfiles\REPS.pubxml" />
+    <None Include="Service References\AddressServiceReference\AddressService.wsdl" />
+    <None Include="Service References\AddressServiceReference\AddressService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AddressServiceReference\AddressService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AddressServiceReference\AddressService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AddressServiceReference\AddressService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AlertsServiceReference\AlertsService.wsdl" />
+    <None Include="Service References\AlertsServiceReference\AlertsService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AlertsServiceReference\AlertsService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AlertsServiceReference\AlertsService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AuditServiceReference\AuditService.wsdl" />
+    <None Include="Service References\AuditServiceReference\AuditService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AuditServiceReference\AuditService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AuditServiceReference\AuditService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AuthenticateServiceReference\AuthenticateService.disco" />
+    <None Include="Service References\AuthenticateServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\AuthenticateServiceReference\configuration.svcinfo" />
+    <None Include="Service References\AuthenticateServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\BankServiceReference\BankService.wsdl" />
+    <None Include="Service References\BankServiceReference\BankService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BankServiceReference\BankService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BankServiceReference\BankService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CorrespondenceServiceReference\CorrespondenceService.wsdl" />
+    <None Include="Service References\CorrespondenceServiceReference\CorrespondenceService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CorrespondenceServiceReference\CorrespondenceService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CorrespondenceServiceReference\CorrespondenceService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CorrespondenceServiceReference\CorrespondenceService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CountryServiceReference\CountryService.wsdl" />
+    <None Include="Service References\CountryServiceReference\CountryService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CountryServiceReference\CountryService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CountryServiceReference\CountryService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DashboardServiceReference\DashboardService.disco" />
+    <None Include="Service References\DashboardServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\DashboardServiceReference\configuration.svcinfo" />
+    <None Include="Service References\DashboardServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\DealServiceReference\DealService.wsdl" />
+    <None Include="Service References\DealServiceReference\DealService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DealServiceReference\DealService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DealServiceReference\DealService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DealServiceReference\DealService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DocumentServiceReference\DocumentService.wsdl" />
+    <None Include="Service References\DocumentServiceReference\DocumentService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DocumentServiceReference\DocumentService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DocumentServiceReference\DocumentService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DocumentServiceReference\DocumentService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EntityServiceReference\EntityService.wsdl" />
+    <None Include="Service References\EntityServiceReference\EntityService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EntityServiceReference\EntityService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EntityServiceReference\EntityService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\EntityServiceReference\EntityService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\HeaderTabsServiceReference\HeaderTabService.wsdl" />
+    <None Include="Service References\HeaderTabsServiceReference\HeaderTabService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\HeaderTabsServiceReference\HeaderTabService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\HeaderTabsServiceReference\HeaderTabService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MortgageServiceReference\MortgageService.wsdl" />
+    <None Include="Service References\MortgageServiceReference\MortgageService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MortgageServiceReference\MortgageService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MortgageServiceReference\MortgageService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MortgageServiceReference\MortgageService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrganizationServiceReference\OrganizationService.wsdl" />
+    <None Include="Service References\OrganizationServiceReference\OrganizationService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrganizationServiceReference\OrganizationService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrganizationServiceReference\OrganizationService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrganizationServiceReference\OrganizationService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ParticipantServiceReference\ParticipantService.wsdl" />
+    <None Include="Service References\ParticipantServiceReference\ParticipantService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ParticipantServiceReference\ParticipantService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ParticipantServiceReference\ParticipantService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ParticipantServiceReference\ParticipantService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PaymentServiceReference\PaymentService.wsdl" />
+    <None Include="Service References\PaymentServiceReference\PaymentService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PaymentServiceReference\PaymentService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PaymentServiceReference\PaymentService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PaymentServiceReference\PaymentService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PersonServiceReference\PersonService.wsdl" />
+    <None Include="Service References\PersonServiceReference\PersonService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PersonServiceReference\PersonService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PersonServiceReference\PersonService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PersonServiceReference\PersonService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PropertyServiceReference\PropertyService.wsdl" />
+    <None Include="Service References\PropertyServiceReference\PropertyService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PropertyServiceReference\PropertyService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PropertyServiceReference\PropertyService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\PropertyServiceReference\PropertyService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReportServiceReference\ReportService.wsdl" />
+    <None Include="Service References\ReportServiceReference\ReportService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReportServiceReference\ReportService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReportServiceReference\ReportService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReportServiceReference\ReportService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RoleServiceReference\RoleService.wsdl" />
+    <None Include="Service References\RoleServiceReference\RoleService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RoleServiceReference\RoleService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RoleServiceReference\RoleService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SearchWorksServiceReference\SearchWorksService.wsdl" />
+    <None Include="Service References\SearchWorksServiceReference\SearchWorksService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SearchWorksServiceReference\SearchWorksService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SearchWorksServiceReference\SearchWorksService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserServiceReference\UserService.disco" />
+    <None Include="Service References\UserServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\UserServiceReference\configuration.svcinfo" />
+    <None Include="Service References\UserServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\DealServiceReference\DealService.disco" />
+    <None Include="Service References\DealServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\DealServiceReference\configuration.svcinfo" />
+    <None Include="Service References\DealServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\UserServiceReference\UserService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WorkflowServiceReference\WorkflowService.disco" />
+    <None Include="Service References\WorkflowServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\WorkflowServiceReference\configuration.svcinfo" />
+    <None Include="Service References\WorkflowServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\HeaderTabsServiceReference\HeaderTabService.disco" />
+    <None Include="Service References\HeaderTabsServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\HeaderTabsServiceReference\configuration.svcinfo" />
+    <None Include="Service References\HeaderTabsServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\EntityServiceReference\EntityService.disco" />
+    <None Include="Service References\EntityServiceReference\configuration.svcinfo" />
+    <None Include="Service References\EntityServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ParticipantServiceReference\ParticipantService.disco" />
+    <None Include="Service References\ParticipantServiceReference\configuration.svcinfo" />
+    <None Include="Service References\ParticipantServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\OrganizationServiceReference\OrganizationService.disco" />
+    <None Include="Service References\OrganizationServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\OrganizationServiceReference\configuration.svcinfo" />
+    <None Include="Service References\OrganizationServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ParticipantServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\PersonServiceReference\PersonService.disco" />
+    <None Include="Service References\PersonServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\PersonServiceReference\configuration.svcinfo" />
+    <None Include="Service References\PersonServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\AddressServiceReference\AddressService.disco" />
+    <None Include="Service References\AddressServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\AddressServiceReference\configuration.svcinfo" />
+    <None Include="Service References\AddressServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\PropertyServiceReference\PropertyService.disco" />
+    <None Include="Service References\PropertyServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\PropertyServiceReference\configuration.svcinfo" />
+    <None Include="Service References\PropertyServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\CountryServiceReference\CountryService.disco" />
+    <None Include="Service References\CountryServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\CountryServiceReference\configuration.svcinfo" />
+    <None Include="Service References\CountryServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\BankServiceReference\BankService.disco" />
+    <None Include="Service References\BankServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\BankServiceReference\configuration.svcinfo" />
+    <None Include="Service References\BankServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="repsFiles\SystemFiles\EmailTemplate\logo.jpg" />
+    <Content Include="repsFiles\SystemFiles\EmailTemplate\WelcomeToReps.html" />
+    <Content Include="repsFiles\SystemFiles\EmailTemplate\PasswordResetSuccess.html" />
+    <Content Include="repsFiles\SystemFiles\EmailTemplate\ResetPassword.html" />
+    <None Include="Service References\MortgageServiceReference\MortgageService.disco" />
+    <None Include="Service References\MortgageServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\MortgageServiceReference\configuration.svcinfo" />
+    <None Include="Service References\MortgageServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\EntityServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\ReportServiceReference\ReportService.disco" />
+    <None Include="Service References\ReportServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\ReportServiceReference\configuration.svcinfo" />
+    <None Include="Service References\ReportServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\AlertsServiceReference\AlertsService.disco" />
+    <None Include="Service References\AlertsServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\AlertsServiceReference\configuration.svcinfo" />
+    <None Include="Service References\AlertsServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\AuditServiceReference\AuditService.disco" />
+    <None Include="Service References\AuditServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\AuditServiceReference\configuration.svcinfo" />
+    <None Include="Service References\AuditServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\RoleServiceReference\RoleService.disco" />
+    <None Include="Service References\RoleServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\RoleServiceReference\configuration.svcinfo" />
+    <None Include="Service References\RoleServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\DocumentServiceReference\DocumentService.disco" />
+    <None Include="Service References\DocumentServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\DocumentServiceReference\configuration.svcinfo" />
+    <None Include="Service References\DocumentServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\PaymentServiceReference\PaymentService.disco" />
+    <None Include="Service References\PaymentServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\PaymentServiceReference\configuration.svcinfo" />
+    <None Include="Service References\PaymentServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\SearchWorksServiceReference\SearchWorksService.disco" />
+    <None Include="Service References\SearchWorksServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\SearchWorksServiceReference\configuration.svcinfo" />
+    <None Include="Service References\SearchWorksServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\CorrespondenceServiceReference\CorrespondenceService.disco" />
+    <None Include="Service References\CorrespondenceServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\CorrespondenceServiceReference\configuration.svcinfo" />
+    <None Include="Service References\CorrespondenceServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminDocumentsController.cs" />
+    <Compile Include="Controllers\AdminEntityController.cs" />
+    <Compile Include="Controllers\AdministrationController.cs" />
+    <Compile Include="Controllers\AdminRolesController.cs" />
+    <Compile Include="Controllers\AdminUserController.cs" />
+    <Compile Include="Controllers\AdminWorkflowController.cs" />
+    <Compile Include="Controllers\AlertsController.cs" />
+    <Compile Include="Controllers\AuditController.cs" />
+    <Compile Include="Controllers\CorrespondenceController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\DealController.cs" />
+    <Compile Include="Controllers\DocumentsController.cs" />
+    <Compile Include="Controllers\ErrorHandlingController.cs" />
+    <Compile Include="Controllers\HeaderTabController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MortgageController.cs" />
+    <Compile Include="Controllers\MyProfileController.cs" />
+    <Compile Include="Controllers\ParticipantController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
+    <Compile Include="Controllers\PropertyController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\SwiftController.cs" />
+    <Compile Include="Controllers\WorkflowController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AddressModel.cs" />
+    <Compile Include="Models\AlertsModel.cs" />
+    <Compile Include="Models\AuditModel.cs" />
+    <Compile Include="Models\BankModel.cs" />
+    <Compile Include="Models\DashboardModel.cs" />
+    <Compile Include="Models\DealModel.cs" />
+    <Compile Include="Models\DocumentModel.cs" />
+    <Compile Include="Models\CorrespondenceModel.cs" />
+    <Compile Include="Models\PaymentModel.cs" />
+    <Compile Include="Models\EntityModel.cs" />
+    <Compile Include="Models\ErrorHandlingModel.cs" />
+    <Compile Include="Models\HeaderTabModel.cs" />
+    <Compile Include="Models\MortgageModel.cs" />
+    <Compile Include="Models\ParticipantModel.cs" />
+    <Compile Include="Models\PropertyModel.cs" />
+    <Compile Include="Models\ReportModel.cs" />
+    <Compile Include="Models\REPSMessageInspector.cs" />
+    <Compile Include="Models\RoleModel.cs" />
+    <Compile Include="Models\SwiftModel.cs" />
+    <Compile Include="Models\TokenAuthorizeAttribute.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\WorkflowModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\AddressServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\AlertsServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\AuditServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\AuthenticateServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\BankServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\CorrespondenceServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\CountryServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\DashboardServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\DealServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\DocumentServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\EntityServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\HeaderTabsServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\MortgageServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\OrganizationServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ParticipantServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\PaymentServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\PersonServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\PropertyServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ReportServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\RoleServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\SearchWorksServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\UserServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WorkflowServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="CSS\Partials\GlobalVariables.scss" />
+    <Content Include="CSS\Partials\Typography.scss" />
+    <Content Include="CSS\Partials\Buttons.scss" />
+    <Content Include="CSS\Partials\Sidebar.scss" />
+    <Content Include="CSS\Partials\Header.scss" />
+    <Content Include="CSS\Pages\Profile.scss" />
+    <Content Include="CSS\Partials\Content.scss" />
+    <Content Include="CSS\Partials\Table.scss" />
+    <Content Include="CSS\Partials\Footer.scss" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="CSS\Partials\Charts.scss" />
+    <None Include="Service References\AuthenticateServiceReference\AuthenticateService.wsdl" />
+    <None Include="Service References\AuthenticateServiceReference\AuthenticateService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AuthenticateServiceReference\AuthenticateService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DashboardServiceReference\DashboardService.wsdl" />
+    <None Include="Service References\DashboardServiceReference\DashboardService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DashboardServiceReference\DashboardService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DashboardServiceReference\DashboardService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Views\Deal\Index.cshtml" />
+    <Content Include="Views\Deal\ViewDeal.cshtml" />
+    <Content Include="Views\Shared\LayoutMain.cshtml" />
+    <Content Include="Views\Shared\PartialSidebar.cshtml" />
+    <Content Include="Views\Shared\PartialHeader.cshtml" />
+    <Content Include="Views\Alerts\Index.cshtml" />
+    <Content Include="Views\Audit\Index.cshtml" />
+    <Content Include="Views\Correspondence\Index.cshtml" />
+    <None Include="Service References\UserServiceReference\UserService.wsdl" />
+    <None Include="Service References\UserServiceReference\UserService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserServiceReference\UserService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserServiceReference\UserService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Views\Workflow\Index.cshtml" />
+    <Content Include="Views\Shared\LayoutPopupPanel.cshtml" />
+    <Content Include="Views\Deal\PopupCreateDeal.cshtml" />
+    <None Include="Service References\WorkflowServiceReference\WorkflowService.wsdl" />
+    <None Include="Service References\WorkflowServiceReference\WorkflowService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WorkflowServiceReference\WorkflowService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WorkflowServiceReference\WorkflowService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Views\Workflow\PartialWorkflowTasks.cshtml" />
+    <Content Include="Views\Workflow\PartialWorkflowActions.cshtml" />
+    <Content Include="Views\Deal\PopupEditDeal.cshtml" />
+    <Content Include="Views\Deal\PartialDealSummary.cshtml" />
+    <Content Include="Views\Correspondence\SendEmail.cshtml" />
+    <Content Include="Views\Correspondence\SendSMS.cshtml" />
+    <Content Include="Views\Documents\Index.cshtml" />
+    <Content Include="Views\Shared\PartialSubSection.cshtml" />
+    <Content Include="Views\Reports\Index.cshtml" />
+    <Content Include="Views\Workflow\PopupAddAction.cshtml" />
+    <Content Include="Views\Administration\Index.cshtml" />
+    <Content Include="Views\MyProfile\Index.cshtml" />
+    <Content Include="Views\MyProfile\Security.cshtml" />
+    <Content Include="Views\Administration\Users.cshtml" />
+    <Content Include="Views\Shared\PartialHeaderAdmin.cshtml" />
+    <Content Include="Views\Shared\PartialHeaderReports.cshtml" />
+    <Content Include="Views\Shared\PartialHeaderProfile.cshtml" />
+    <Content Include="Views\AdminUser\Index.cshtml" />
+    <Content Include="Views\AdminEntity\Index.cshtml" />
+    <Content Include="Views\AdminWorkflow\Index.cshtml" />
+    <Content Include="Views\AdminUser\PopupAddUser.cshtml" />
+    <Content Include="Views\AdminUser\PopupEditUser.cshtml" />
+    <Content Include="Views\AdminRoles\Index.cshtml" />
+    <Content Include="Views\Participant\PartialParticipant.cshtml" />
+    <Content Include="Views\AdminDocuments\Index.cshtml" />
+    <Content Include="Views\AdminEntity\PopupAddEntity.cshtml" />
+    <Content Include="Views\Participant\PopupAddParticipant.cshtml" />
+    <Content Include="Views\Participant\PartialAddExistingParticipant.cshtml" />
+    <Content Include="Views\AdminRoles\PopupAddRole.cshtml" />
+    <Content Include="Views\Property\PartialProperty.cshtml" />
+    <Content Include="Views\Property\PopupAddProperty.cshtml" />
+    <Content Include="Views\Property\PartialPropertyTownship.cshtml" />
+    <Content Include="Views\Participant\AutoSearchParticipantResult.cshtml" />
+    <Content Include="Views\Property\PopupEditProperty.cshtml" />
+    <Content Include="Views\Participant\PopupAddBank.cshtml" />
+    <Content Include="Views\Participant\PopupAddAddress.cshtml" />
+    <Content Include="Views\AdminWorkflow\PopupManageTasks.cshtml" />
+    <Content Include="Views\AdminWorkflow\PopupManageWorkflows.cshtml" />
+    <Content Include="Views\AdminWorkflow\PopupAssignTasks.cshtml" />
+    <Content Include="Views\AdminWorkflow\PopupAddAction.cshtml" />
+    <Content Include="Views\Participant\PartialProvince.cshtml" />
+    <Content Include="Views\HeaderTab\PartialHeaderTabs.cshtml" />
+    <Content Include="Views\HeaderTab\PartialMoreHeaderTabs.cshtml" />
+    <Content Include="Views\AdminEntity\PopupEditEntity.cshtml" />
+    <Content Include="Views\Documents\PopupUploadDocument.cshtml" />
+    <Content Include="Views\Participant\PopupBank.cshtml" />
+    <Content Include="Views\Participant\PopupAddress.cshtml" />
+    <Content Include="Views\Login\ForgotPassword.cshtml" />
+    <Content Include="Views\Mortgage\PopupAddMortgage.cshtml" />
+    <Content Include="Views\Deal\PopupCompletionDate.cshtml" />
+    <Content Include="Views\Alerts\PopupCreateEvent.cshtml" />
+    <Content Include="Views\Alerts\PopupEditEvent.cshtml" />
+    <Content Include="Views\Participant\EditBank.cshtml" />
+    <Content Include="Views\Participant\EditAddress.cshtml" />
+    <Content Include="Views\Mortgage\PopupEditMortgage.cshtml" />
+    <Content Include="Views\AdminRoles\PopupEditRole.cshtml" />
+    <Content Include="Views\AdminDocuments\PopupAddCategory.cshtml" />
+    <Content Include="Views\AdminDocuments\PopupAddTemplate.cshtml" />
+    <Content Include="Views\AdminDocuments\PopupEditTemplate.cshtml" />
+    <Content Include="Views\Login\ResetPasswordEmailSentPage.cshtml" />
+    <Content Include="Views\Login\ResetPassword.cshtml" />
+    <Content Include="Views\Participant\PopupEditParticipant.cshtml" />
+    <Content Include="Views\Mortgage\PartialMortgage.cshtml" />
+    <Content Include="Views\Shared\PartialChartTable.cshtml" />
+    <Content Include="Views\Reports\PartialFiltersDropdown.cshtml" />
+    <Content Include="Views\Correspondence\PartialCorrespondenceSubSection.cshtml" />
+    <Content Include="Views\Correspondence\CorrespondenceList.cshtml" />
+    <Content Include="Views\Reports\PartialSearchReportResult.cshtml" />
+    <Content Include="Views\Alerts\PartialAlertsSubSection.cshtml" />
+    <Content Include="Views\Alerts\AlertsList.cshtml" />
+    <None Include="Service References\WorkflowServiceReference\WorkflowService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Views\Workflow\PopupEditAction.cshtml" />
+    <Content Include="Views\Alerts\PartialAlertsDiaryItems.cshtml" />
+    <Content Include="Views\Alerts\PartialAlertsNotificationsCount.cshtml" />
+    <Content Include="Views\AdminWorkflow\PopupEditAction.cshtml" />
+    <Content Include="Views\AdminUser\PartialUserDetails.cshtml" />
+    <Content Include="Views\Shared\PartialSubMenuSideBar.cshtml" />
+    <Content Include="Views\ErrorHandling\ErrorPage.cshtml" />
+    <Content Include="Views\ErrorHandling\ErrorToastr.cshtml" />
+    <Content Include="Views\Documents\PartialDocument.cshtml" />
+    <Content Include="Views\Login\LinkExpiredPage.cshtml" />
+    <Content Include="Views\Documents\PopupGenerateDocumentExtention.cshtml" />
+    <Content Include="Views\Payment\PopupAddPayment.cshtml" />
+    <Content Include="Views\Payment\PopupEditPayment.cshtml" />
+    <Content Include="Views\Payment\Index.cshtml" />
+    <Content Include="Views\Payment\PaymentList.cshtml" />
+    <Content Include="Views\AdminEntity\PartialAdminEntityList.cshtml" />
+    <Content Include="Views\AdminUser\PartialAdminUserList.cshtml" />
+    <Content Include="Views\AdminWorkflow\PartialAdminWorkflowList.cshtml" />
+    <Content Include="Views\AdminRoles\PartialAdminRolesList.cshtml" />
+    <Content Include="Views\AdminDocuments\PartialAdminDocumentsList.cshtml" />
+    <None Include="Service References\WorkflowServiceReference\WorkflowService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Views\Deal\PartialCompletionDateList.cshtml" />
+    <Content Include="Views\AdminDocuments\PartialWorkflowTasksActions.cshtml" />
+    <Content Include="Views\AdminDocuments\PopupAddWorkflowTask.cshtml" />
+    <Content Include="Views\AdminDocuments\PopupEditDocumentWorkflowTemplate.cshtml" />
+    <Content Include="Views\Dashboard\PopupDashboard.cshtml" />
+    <Content Include="Views\Deal\PartialMortgagePriceSum.cshtml" />
+    <Content Include="Views\Correspondence\PopupCorrespondenceDetails.cshtml" />
+    <Content Include="Views\Workflow\PartialFileEdit.cshtml" />
+    <Content Include="Views\ErrorHandling\ErrorRemoveEntityMessage.cshtml" />
+    <Content Include="Views\AdminWorkflow\PopupDocumentWorkflow.cshtml" />
+    <Content Include="Views\Deal\PartialLastActionBy.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.local.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web.MAU.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="repsFiles\SystemFiles\ReportTemplate\" />
+    <Folder Include="repsFiles\SystemFiles\SwiftFilesFolder\" />
+    <Folder Include="repsFiles\SystemFiles\TemplatesFilesFolder\" />
+    <Folder Include="repsFiles\UserFiles\ActionsFilesFolder\" />
+    <Folder Include="repsFiles\UserFiles\CorrespondenceAttachmentFolder\" />
+    <Folder Include="repsFiles\UserFiles\DocumentsFilesFolder\" />
+    <Folder Include="repsFiles\UserFiles\ProfilePictureFolder\" />
+    <Folder Include="Views\Scripts\" />
+    <Folder Include="Views\Swift\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AddressServiceReference\" />
+    <WCFMetadataStorage Include="Service References\AlertsServiceReference\" />
+    <WCFMetadataStorage Include="Service References\AuditServiceReference\" />
+    <WCFMetadataStorage Include="Service References\AuthenticateServiceReference\" />
+    <WCFMetadataStorage Include="Service References\BankServiceReference\" />
+    <WCFMetadataStorage Include="Service References\CorrespondenceServiceReference\" />
+    <WCFMetadataStorage Include="Service References\CountryServiceReference\" />
+    <WCFMetadataStorage Include="Service References\DashboardServiceReference\" />
+    <WCFMetadataStorage Include="Service References\DealServiceReference\" />
+    <WCFMetadataStorage Include="Service References\DocumentServiceReference\" />
+    <WCFMetadataStorage Include="Service References\EntityServiceReference\" />
+    <WCFMetadataStorage Include="Service References\HeaderTabsServiceReference\" />
+    <WCFMetadataStorage Include="Service References\MortgageServiceReference\" />
+    <WCFMetadataStorage Include="Service References\OrganizationServiceReference\" />
+    <WCFMetadataStorage Include="Service References\ParticipantServiceReference\" />
+    <WCFMetadataStorage Include="Service References\PaymentServiceReference\" />
+    <WCFMetadataStorage Include="Service References\PersonServiceReference\" />
+    <WCFMetadataStorage Include="Service References\PropertyServiceReference\" />
+    <WCFMetadataStorage Include="Service References\ReportServiceReference\" />
+    <WCFMetadataStorage Include="Service References\RoleServiceReference\" />
+    <WCFMetadataStorage Include="Service References\SearchWorksServiceReference\" />
+    <WCFMetadataStorage Include="Service References\UserServiceReference\" />
+    <WCFMetadataStorage Include="Service References\WorkflowServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{2f920600-67f0-411e-b27a-19c85fdbf12e}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Global\Global.csproj">
+      <Project>{9598107c-e809-4cff-bad2-fe2d20970002}</Project>
+      <Name>Global</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\REPS.DATA.Entity\REPS.DATA.Entity.csproj">
+      <Project>{6e640648-68d7-4aa9-b901-a81bc07f2278}</Project>
+      <Name>REPS.DATA.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'MAU|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'local|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>57275</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:57275/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+    <MonoDevelop>
+      <Properties>
+        <XspParameters Port="8080" Address="127.0.0.1" SslMode="None" SslProtocol="Default" KeyType="None" CertFile="" KeyFile="" PasswordOptions="None" Password="" Verbose="True" />
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

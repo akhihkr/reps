@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f38b3ae9-2fe7-4b74-a466-de181d0ca73d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:54738/AlertsService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AlertsService.xsd" MetadataType="Schema" ID="f403ca91-22b5-4348-b6a7-c520950b8144" SourceId="1" SourceUrl="http://localhost:54738/AlertsService.svc?xsd=xsd2" />
+    <MetadataFile FileName="AlertsService.wsdl" MetadataType="Wsdl" ID="1c80d914-8237-4df1-91c7-9cab80f31863" SourceId="1" SourceUrl="http://localhost:54738/AlertsService.svc?wsdl" />
+    <MetadataFile FileName="AlertsService1.xsd" MetadataType="Schema" ID="a043a031-8800-4f82-8171-e1168e2d4ad5" SourceId="1" SourceUrl="http://localhost:54738/AlertsService.svc?xsd=xsd0" />
+    <MetadataFile FileName="AlertsService2.xsd" MetadataType="Schema" ID="acf6e605-8b60-4eed-8584-db525501c31a" SourceId="1" SourceUrl="http://localhost:54738/AlertsService.svc?xsd=xsd1" />
+    <MetadataFile FileName="AlertsService.disco" MetadataType="Disco" ID="0624241e-ecf8-4ddb-bdb7-dce25b6e9b93" SourceId="1" SourceUrl="http://localhost:54738/AlertsService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

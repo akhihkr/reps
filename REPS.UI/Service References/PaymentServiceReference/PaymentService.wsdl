@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="PaymentService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:54738/PaymentService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:54738/PaymentService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:54738/PaymentService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Common" />
+      <xsd:import schemaLocation="http://localhost:54738/PaymentService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IPaymentService_GetAddPaymentFields_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAddPaymentFields" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentService_GetAddPaymentFields_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAddPaymentFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentService_GetPaymentEditFields_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentEditFields" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentService_GetPaymentEditFields_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentEditFieldsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentService_GetPaymentList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentList" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentService_GetPaymentList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentService_GetPaymentTypeList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentTypeList" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentService_GetPaymentTypeList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentTypeListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentService_UpdatePayment_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePayment" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentService_UpdatePayment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentService_InsertPayment_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPayment" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentService_InsertPayment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertPaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentService_GetTransactionDetailsIDByTransactionDetailsGUID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactionDetailsIDByTransactionDetailsGUID" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentService_GetTransactionDetailsIDByTransactionDetailsGUID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactionDetailsIDByTransactionDetailsGUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentService_RemovePayment_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemovePayment" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentService_RemovePayment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemovePaymentResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IPaymentService">
+    <wsdl:operation name="GetAddPaymentFields">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentService/GetAddPaymentFields" message="tns:IPaymentService_GetAddPaymentFields_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentService/GetAddPaymentFieldsResponse" message="tns:IPaymentService_GetAddPaymentFields_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentEditFields">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentService/GetPaymentEditFields" message="tns:IPaymentService_GetPaymentEditFields_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentService/GetPaymentEditFieldsResponse" message="tns:IPaymentService_GetPaymentEditFields_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentService/GetPaymentList" message="tns:IPaymentService_GetPaymentList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentService/GetPaymentListResponse" message="tns:IPaymentService_GetPaymentList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentTypeList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentService/GetPaymentTypeList" message="tns:IPaymentService_GetPaymentTypeList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentService/GetPaymentTypeListResponse" message="tns:IPaymentService_GetPaymentTypeList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePayment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentService/UpdatePayment" message="tns:IPaymentService_UpdatePayment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentService/UpdatePaymentResponse" message="tns:IPaymentService_UpdatePayment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertPayment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentService/InsertPayment" message="tns:IPaymentService_InsertPayment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentService/InsertPaymentResponse" message="tns:IPaymentService_InsertPayment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionDetailsIDByTransactionDetailsGUID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentService/GetTransactionDetailsIDByTransactionDetailsGUID" message="tns:IPaymentService_GetTransactionDetailsIDByTransactionDetailsGUID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentService/GetTransactionDetailsIDByTransactionDetailsGUIDResponse" message="tns:IPaymentService_GetTransactionDetailsIDByTransactionDetailsGUID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemovePayment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentService/RemovePayment" message="tns:IPaymentService_RemovePayment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentService/RemovePaymentResponse" message="tns:IPaymentService_RemovePayment_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="PaymentService" />
+</wsdl:definitions>

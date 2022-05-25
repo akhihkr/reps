@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/LightStone" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/LightStone" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="DeedsOfficeID">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="All" />
+      <xs:enumeration value="Bloemfontein" />
+      <xs:enumeration value="CapeTown" />
+      <xs:enumeration value="Johannesburg" />
+      <xs:enumeration value="Kimberley" />
+      <xs:enumeration value="KingWilliamsTown" />
+      <xs:enumeration value="Pietermaritzburg" />
+      <xs:enumeration value="Pretoria" />
+      <xs:enumeration value="Vryburg" />
+      <xs:enumeration value="Umtata" />
+      <xs:enumeration value="Mpumalanga" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DeedsOfficeID" nillable="true" type="tns:DeedsOfficeID" />
+</xs:schema>

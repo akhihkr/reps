@@ -1,0 +1,185 @@
+﻿@{
+    ViewBag.Title = "Report";
+    Layout = "~/Views/Shared/LayoutMain.cshtml";
+
+    //User roles
+    string role_view_reportslist = "RE_LI";
+    string role_view_reportstartdate = "RE_SD";
+    string role_view_reportenddate = "RE_ED";
+    //string role_view_reportgenerate = "RE_GR";
+
+    string role_view_reporttype = "RE_TY";
+
+    string reportTypeStatus = string.Empty;
+    if (!Common.CArray.SearchInCookie(role_view_reporttype))
+    {
+        reportTypeStatus = "disabled";
+    }
+
+
+    if (!Common.CArray.SearchInCookie(role_view_reportslist))
+    {
+        Response.Redirect(Url.Action("Index", "Dashboard"));
+    }
+
+    //ajax report
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "report-filter-result",
+
+    };
+    //end of ajax report
+}
+
+<div class="row reset-row">
+    <div class="small-12 medium-4 columns reset-columns">
+        <div class="box add-filters-padding">
+            <div class="filter-table">
+                @using (Ajax.BeginForm("GetFilters", "Report",  options, new { name = "selectReport", @id = "selectReport", enctype = "multipart/form-data" }))
+                {
+                    if (Common.CArray.SearchInCookie(role_view_reportstartdate))
+                    {
+                        <div class="small-12 medium-12 large-6 columns reset-columns">
+                            <label>Start Date</label>
+                            <input class="date-input" type="text" id="startDate" name="startDate" value="" data-format="d/m/Y" data-init-set="false" data-theme="reps-datedropper" data-modal="true" data-large-mode="true" data-large-default="true" readonly>
+                        </div>
+                    }
+
+                    if (Common.CArray.SearchInCookie(role_view_reportenddate))
+                    {
+                        <div class="small-12 medium-12 large-6 columns">
+                            <label>End Date</label>
+                            <input class="date-input" type="text" id="endDate" name="endDate" value="" data-format="d/m/Y" data-init-set="false" data-theme="reps-datedropper" data-modal="true" data-large-mode="true" data-large-default="true" readonly>
+                        </div>
+                    }
+
+
+                    <div class="medium-12 columns reset-columns">
+                        <!-- Reports select Section  -->
+                        <label>
+                            <select @reportTypeStatus id="report_select" name="report_select" data-content="required" onchange="FormObjectSubmit(null, '#selectReport', false);">
+                                <option default selected value="-1">Please select report type:</option>
+                                @{
+                                    /// report names
+                                    foreach (var reportName in ViewData["reportNames"] as IEnumerable<dynamic>)
+                                    {
+                                        if (ViewData["ReportId"] != null && (int)ViewData["ReportId"] == (int)@reportName["ReportsId"])
+                                        {
+                                            <option selected value="@reportName["ReportsId"]">@reportName["Description"]</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@reportName["ReportsId"]">@reportName["Description"]</option>
+                                        }
+                                    }
+                                }
+                            </select>
+                        </label>
+                        <!--End of  Reports select Section  -->
+
+                    </div> <!-- End of medium-12 columns -->
+
+                                    <div id="report-filter-result" class="medium-12 columns reset-columns">
+                                        @Html.Partial("PartialFiltersDropdown")
+                                    </div> <!-- End of medium-4 columns -->
+
+                                    <div class="medium-12 columns reset-columns">
+                                        <div class="filter-buttons">
+
+
+
+
+                                            @*@Html.ActionLink(
+                                                linkText: "Download Report",
+                                                actionName: "GenerateReport",
+                                                controllerName: "Reports",
+                                                routeValues: null,
+                                                htmlAttributes: null
+                                            )*@
+
+
+
+
+
+
+
+
+
+                                            @*<input type="button" value="Download Report" class="button" name="downloadReport" id="downloadReport" />*@
+                                            @*<a href="@Url.Action("GenerateReport", "Reports")">Download Report</a>*@
+                                            <input type="button" value="Download Report" class="button" name="downloadReport" id="downloadReport" onclick="GenerateReportFormObjectSubmit('#selectReport', 'Reports', 'GenerateReport', 'partial-report-result', null, true);" />
+                                            @*<input type="button" value="Download Report" class="button" name="downloadReport" id="downloadReport" />*@ 
+                                            <a class="button align-right" onclick="ReportFormObjectSubmit('#selectReport', 'Reports', 'Search', 'partial-report-result', null, true);">Search</a>
+                                        </div> <!-- End of filter-buttons -->
+                                    </div> <!-- End of medium-4 columns -->
+                                    }
+            </div> <!-- End of filter-table -->
+
+
+
+        </div> <!-- End of box -->
+    </div> <!-- End of medium-3 columns reset-columns-->
+    <!-- Right Reports Box -->
+    <div class="small-12 medium-8 columns">
+        <div id="partial-report-result">
+            @Html.Partial("PartialSearchReportResult")
+        </div>
+
+    </div> <!-- End of medium-3 columns-->
+</div> <!-- End of row reset-columns -->
+
+
+<script>
+    //chart~table ~ date picker range date picker
+    var myDate = new Date();
+    $("#startDate").dateDropper().on("change", function () { getDate(this) }),
+    $("#endDate").dateDropper().on("change", function () { getDate(this) });
+
+    function getDate(element) {
+        var resultAlert;
+        try {
+            var startDate = $('#startDate').val();
+            var endDate = $('#endDate').val();
+
+            var datePartsStartDate = startDate.split("/");
+            var dateObjectStartDate = new Date(datePartsStartDate[2], datePartsStartDate[1] - 1, datePartsStartDate[0]); // month is 0-based
+
+            var datePartsendDate = endDate.split("/");
+            var dateObjectendDate = new Date(datePartsendDate[2], datePartsendDate[1] - 1, datePartsendDate[0]); // month is 0-based
+
+            switch (element.id) {
+                case "startDate": 
+                    if (dateObjectendDate < dateObjectStartDate) {
+                        alert("Start date must be less than end date");
+                        $('#startDate').val("");
+                        $('#endDate').val("");
+                        return false;
+                    }
+                    else {
+                        resultAlert;
+                    }
+                    break;
+                case "endDate":
+                    if (dateObjectendDate < dateObjectStartDate) {
+                        alert("End date must be greater than start date");
+                        $('#startDate').val("");
+                        $('#endDate').val("");
+                        return false;
+                    }
+                    else {
+                        resultAlert;
+                    }
+                    break;
+            }
+
+        } catch (error) {
+            resultAlert = null;
+        }
+
+        return resultAlert;
+    }
+    //end of chart~table ~ date picker range date picker
+</script>
+

@@ -1,0 +1,238 @@
+﻿
+@{
+    ViewBag.Title = "Edit Template";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    //string reportPresent = "";//variables
+}
+<!-- Tabs content -->
+@*<ul class="tabs" data-tabs id="example-tabs">
+    <li class="tabs-title is-active" onclick="workflowStepTemplate( '#footerDocument', '#footerWorkflowstep',false)"><a href="#panel1" aria-selected="true">Add Template</a></li>
+    <li class="tabs-title" onclick="workflowStepTemplate( '#footerDocument', '#footerWorkflowstep',true)"><a href="#panel2">Associate To Workflow Action</a></li>
+</ul>
+
+<div class="tabs-content" data-tabs-content="example-tabs">*@
+    @using (Ajax.BeginForm("EditDocumentTemplate", "AdminDocuments", null, new { name = "EditDocumentTemplate", id = "EditDocumentTemplate" }))
+    {
+        @*<div class="tabs-panel is-active" id="panel1">*@
+            foreach (var DocumentTemplate in ViewData["DocumentTemplateDetails"] as IEnumerable<dynamic>)
+            {
+                <input type="hidden" id="DocumentTypeID" name="DocumentTypeID" value="@DocumentTemplate["DocumentTypeID"]" />
+                <input type="hidden" id="DocumentTemplateID" name="DocumentTemplateID" value="@ViewData["DocumentTemplateID"]" />
+                <input type="hidden" id="DocumentVersionID" name="DocumentVersionID" value="@DocumentTemplate["DocumentVersionID"]" />
+                <input type="hidden" id="TemplateFixGUID" name="TemplateFixGUID" value="@DocumentTemplate["TemplateFixGUID"]" />
+                
+                <label>Template Name </label>
+                <input type="text" id="TemplateName" name="TemplateName" value="@DocumentTemplate["TemplateDisplayName"]" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharMax))" data-content="required" />
+
+                <label>Version<span id="versionText">*</span></label>
+                <input type="text" id="TemplateVersion" name="TemplateVersion" value="@DocumentTemplate["VersionName"]" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar50))" data-content="required" />
+
+                <label>
+                    Stored Procedure Name
+                    <input type="text" id="TemplateSPROC" name="TemplateSPROC" value="@DocumentTemplate["XMLStoredProc"]" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar50))" />
+                </label>
+
+
+                    <div id="fileLabel">
+                        <label>Document Template<span id="isRequiredFile"></span></label>
+                        <input type="file" name="TemplateFile" onchange="addFileData(this)" value="" id="fileUploadEdit" />
+                        <p class="uploadedFile myclass">
+                            @{
+                                if (DocumentTemplate["TemplateFileName"] == null)
+                                {
+                                    <a>"No file has been added yet"</a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("DownloadTemplate", "AdminDocuments", new { documentTemplateID = @DocumentTemplate["DocumentTemplateID"] ,filename = @DocumentTemplate["TemplateFileName"]})">@DocumentTemplate["TemplateFileName"]</a>
+                                }
+                            }
+                        </p>
+                    </div>
+
+                    <div class="row reset-row">
+
+                        <div class="small-3 columns reset-columns">
+                            <label>
+                                DocFusion Template
+                            </label>
+                            <label class="switch">
+                                <input type="checkbox" name="IsDocFusionTemplate" class="switch-input" id="IsDocFusionTemplate" value="IsDocFusionTemplate" onclick="ToggleFileTemplateRequired(this)" checked="@Convert.ToBoolean(@DocumentTemplate["IsDocfusionTemplate"])">
+                                <span class="switch-label" data-on="Yes" data-off="No"></span>
+                                <span class="switch-handle"></span>
+                            </label>
+                        </div> <!-- End of small-3 columns -->
+
+                        <div class="small-3 columns reset-columns">
+                            <label>
+                                eSignable
+                            </label>
+                            <label class="switch">
+                                <input type="checkbox" name="TemplateESign" class="switch-input" id="TemplateESign" onclick="ToggleFileTemplateRequired(this)" value="TemplateESign" checked="@Convert.ToBoolean(@DocumentTemplate["eSignable"])">
+                                <span class="switch-label" data-on="Yes" data-off="No"></span>
+                                <span class="switch-handle"></span>
+                            </label>
+                        </div> <!-- End of small-3 columns -->
+
+                        <div class="small-3 columns reset-columns">
+                            <label>
+                                Static Document
+                            </label>
+                            <label class="switch">
+                                <input type="checkbox" name="IsStaticDocument" class="switch-input" id="IsStaticDocument" onclick="ToggleFileTemplateRequired(this)" value="IsStaticDocument" checked="@Convert.ToBoolean(@DocumentTemplate["IsStaticDoc"])">
+                                <span class="switch-label" data-on="Yes" data-off="No"></span>
+                                <span class="switch-handle"></span>
+                            </label>
+                        </div> <!-- End of small-3 columns -->
+
+                        <div class="small-3 columns reset-columns">
+                            <label>
+                                Active
+                            </label>
+                            <label class="switch">
+                                <input type="checkbox" name="IsActive" class="switch-input" id="dataverif" onclick="" checked="@Convert.ToBoolean(@DocumentTemplate["IsActive"])">
+                                <span class="switch-label" data-on="Yes" data-off="No"></span>
+                                <span class="switch-handle"></span>
+                            </label>
+                        </div> <!-- End of small-3 columns -->
+
+                    </div> <!-- ENd of row reset-row -->
+                                }
+        @*</div>*@<!-- End of Panel 1-->
+    <!-- Panel 2 -->
+                                @*<div class="tabs-panel" id="panel2">
+                                    <div id="workflowTaskFormId">
+                                        <label> Workflow </label>
+                                        <select id="WorkflowID" name="WorkflowID" data-content="required" onchange="reps.workflowList(this)">
+                                            <option value='-1' default selected>Select an option:</option>
+                                            @{
+                                                if (ViewData["workflowsList"] != null || (ViewData["currentWorkflowList"] != null))
+                                                {
+                                                    foreach (var workflowList in ViewData["workflowsList"] as IEnumerable<dynamic>)
+                                                    {
+                                                        foreach (var currentWorkflowList in ViewData["currentWorkflowList"] as IEnumerable<dynamic>)
+                                                        {
+                                                            if (@workflowList["WorkflowTaskGUID"].ToString().Trim() == @currentWorkflowList["WorkflowTaskGUID"].ToString().Trim())
+                                                            {
+                                                                reportPresent = " selected ";
+                                                            }
+                                                        }
+                                                        <option @reportPresent value="@workflowList["TaskWorkflowID"]">@workflowList["TaskName"]</option>
+                                                        // reset to empty
+                                                        reportPresent = " ";
+                                                    }
+                                                }
+                                            }
+                                        </select>
+
+                                        <div id="WorkflowList">
+                                            @if (ViewData["workflowTaskList"] != null)
+                                            {
+                                                <label>
+                                                    Workflow Task
+                                                    <select id="workflowTaskID" name="workflowTaskID" data-content="required" onchange="reps.workflowTaskList(this)">
+                                                        <option value='-1' default selected>Select an option:</option>
+                                                        @foreach (var workflowList in ViewData["workflowTaskList"] as IEnumerable<dynamic>)
+                                                        {
+                                                            <option selected value="@workflowList["WorkflowTaskID"]">@workflowList["TaskName"]</option>
+                                                        }
+                                                    </select>
+                                                </label>
+                                            }
+                                        </div><!--WorkflowTaskList filter if workflow task is selected on change function-->
+
+                                        <div id="WorkflowTaskList"></div><!--WorkflowTaskList filter if workflow task is selected on change function-->
+
+
+
+                                        <label class="workflow-steps-label">@(ViewData["GetDocumentWorkflowTaskStep"] == null ? null : "Workflow Steps")</label>
+
+                                        <div id="documentWorkflowList">
+                                            @Html.Partial("~/Views/AdminDocuments/PopupEditDocumentWorkflowTemplate.cshtml")
+                                        </div>
+
+
+                                        <div id="workflowStepTaskList" style="display:none">
+                                            <ul class="edit-action-files-link" id="workflowStepTaskUL">
+                                                <li>
+                                                    <a href="#"></a>
+                                                    <a class="remove-file-uploaded" Onclick="ConfirmDelete(this)" href="#">x</a>
+                                                </li>
+                                            </ul>
+                                        </div> <!-- End of workflowStepTaskList-->
+
+                                    </div> <!-- End of workflowTaskFormId-->
+                                </div> <!-- End of Panel 2-->*@
+                                                }
+
+@*</div>*@ <!-- End of tabs-content -->
+<!-- End of Tabs content -->
+
+
+
+
+@section footer
+{
+    <div id="footerDocument">
+        @*<a id="btn-saved" class="button align-right dirty-disabled" href="#" onclick="FormObjectSubmit('#btn-saved', '#EditDocumentTemplate', true);">Update Template</a>*@
+        <a id="btn-saved" class="button align-right dirty-disabled" href="#" >Update Template</a>
+    </div>
+    @*<div id="footerWorkflowstep" style="display:none;">
+        <a tabindex="7" class="button align-left" id="btn-saved" href="#">Add Workflow Task</a>
+        <a tabindex="7" class="button align-right" id="btn-saved-document-workflow" onclick="workflowStepSaveToDocument('#footerDocument', '#footerWorkflowstep', '#workflowStepResult', '#workflowTaskListID');" href="#">Save Workflow Task</a>
+    </div>*@
+
+}
+
+
+
+@section script
+{
+    <script>
+        $(document).foundation();
+        //dirty function used to check if event listener has been modified and call the updates function
+        $('#EditDocumentTemplate').dirrty().on("dirty", function (e) {
+            $("#btn-saved").removeClass("dirty-disabled");//removed attribute if in case if anchor tag is used
+            //$("#versionText").html("*");
+            //$("#TemplateVersion").attr("data-content", "required");
+        }).on("clean", function (e) {
+            $("#btn-saved").addClass("dirty-disabled")//add attribute if in case if anchor tag is used
+            //$("#versionText").html(" ");
+            //$("#TemplateVersion").removeAttr("data-content").removeAttr('style');//.removeAttr()
+
+        });
+        //end of dirty function used to check if event listener has been modified and call the updates function
+
+
+        $(function () {
+            //filename: get filename if existed && set filename && set color true if file chosen
+            $('input[type="file"]').change(function () {
+                if ($(this).val() != "") {
+                    $(this).css('color', '#333');
+
+                    //remove "uploaded file" html
+                    $(".uploadedFile").html("");
+                    //end of remove "uploaded file" html
+
+                    //get db stored value splitted: uploaded
+                    var theSplitFilename = $('#fileUploadEdit').val().split('\\');
+                    $(".uploadedFile").html("Chosen File: " + theSplitFilename[theSplitFilename.length - 1]);
+                    //end of db stored value splitted: uplaoded
+                } else {
+                    $(this).css('color', 'transparent');
+                }
+            });
+            //end of filename: get filename if existed && set filename && set color true if file chosen
+        });
+
+
+        $('#btn-saved').on('click', function () {
+            var validation = reps.checkOnSubmit('#EditDocumentTemplate');
+            if (validation) {
+                SaveForm('#fileUploadEdit', '#EditDocumentTemplate', 'AdminDocuments', 'EditDocumentTemplate', 'Index', 'content-admin', '#btn-saved', { partial: true }, 'Document Template has been successfully updated');
+            }
+        });
+
+    </script>
+}

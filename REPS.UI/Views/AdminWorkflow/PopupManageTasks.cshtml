@@ -1,0 +1,140 @@
+﻿@{
+    ViewBag.Title = "Manage Tasks";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+    int TaskCount = 0;
+
+    //ajax
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "content-wrapper",
+        OnSuccess = "onSuccessToasterMsg(null,null,null,null,'Changes have been successfully saved');onSuccessToasterMsg('Dashboard','RefreshSidebar','sidebar',null,null);",
+        OnFailure = "OnFailure",
+        OnComplete = "onComplete",
+    };
+}
+
+<!-- PopupManageTasks Content -->
+<div class="row reset-row manage-workflows">
+    <input type="text" id="ADMWorkflowID" name="ADMWorkflowID" value="@ViewData["TaskWorkflowID"]" style="display:none" />
+
+    @using (Ajax.BeginForm("SaveTaskChanges", "AdminWorkflow", new { WorkflowID = @ViewData["WorkflowID"], TaskID = @ViewData["TaskID"] }, options, new { name = "EditTaskAdmin", id = "EditTaskAdmin", enctype = "multipart/form-data" }))
+    {
+        <div id="EditTaskAdminDiv">
+            @foreach (var Task in ViewData["TasksList"] as IEnumerable<dynamic>)
+            {
+                TaskCount = TaskCount + 1;
+                <div id="TaskCountDiv">
+                    <div id="" class="small-6 columns reset-columns">
+                        <label>
+                            Task Name <span>*</span>
+                            <input id="Edit:TaskName:@TaskCount:@Task["TaskName"]" name="Edit:TaskName:@Task["WorkflowTaskID"]:@Task["TaskID"]:@TaskCount" type="text" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar255))" placeholder="Add Task Name" value="@Task["TaskName"]" data-content="required" />
+                        </label>
+                    </div> <!-- End of small-6 columns-->
+                    <div class="small-2 columns">
+                        <label>
+                            Order <span>*</span>
+                            <input name="Edit:TaskOrder:@TaskCount" type="text" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.intValue))" placeholder="#" value="@Task["WorkflowTaskOrder"]" data-content="required" format="number" />
+                        </label>
+                    </div> <!-- End of small-4 columns -->
+                    <div class="small-2 columns">
+                        <label>
+                            Icon Name <span>*</span>
+                            <input name="Edit:Icon:@TaskCount" id="@TaskCount-icon-name" type="text" placeholder="" value="@Task["TaskDisplayIcon"]" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar255))" data-content="required" format="iconName" />
+                        </label>
+                    </div> <!-- End of small-4 columns -->
+                    <div class="small-2 columns">
+                        <label>
+                            @*<a onclick="RemoveTaskPopup(@Task["WorkflowTaskID"],@ViewData["WorkflowID"],@ViewData["TaskID"])" class="remove-workflow admin-add-tasks-remove">Remove</a>*@
+                            @Ajax.ActionLink("Remove", "DeleteTask",
+                                new { taskWorkflowID = @Task["WorkflowTaskID"], workflowID = @ViewData["WorkflowID"], taskID = @ViewData["TaskID"] },
+                                new AjaxOptions
+                                {
+                                    UpdateTargetId = "general-panel",
+                                    InsertionMode = InsertionMode.Replace,
+                                    HttpMethod = "POST",
+                                    Confirm = "Are you sure you want to remove this workflow?",
+                                    OnSuccess = "onSuccessToasterMsg('AdminWorkflow','Index','content-admin',{'partial': true},'Task has been successfully removed');onSuccessToasterMsg('Dashboard','RefreshSidebar','sidebar',null,null);",
+                                    OnFailure = "OnFailure"
+                                }, new { @class = "remove-workflow admin-add-tasks-remove" })
+                        </label>
+                    </div> <!-- End of small-4 columns -->
+                </div>
+
+            }
+        </div> <!-- End of EditTaskAdminDiv -->
+    }
+</div> <!-- End of row reset-row manage-workflows -->
+
+
+@section footer
+{
+    <a id="add-task-admin-btn" href="#" class="button add-workflow add-task-admin-btn">
+        Add Task
+    </a>
+    <a id="edit-workflow-admin-btn" onclick="FormObjectSubmit('#edit-workflow-admin-btn', EditTaskAdmin, true);" class="button align-right dirty-disabled">
+        Save
+    </a>
+
+}
+
+@section script
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //append another task
+            $('.add-task-admin-btn').on('click', function () {
+                if (($('#EditTaskAdminDiv').children('div').length) < 8) {           // Allow maximum 8 tasks
+                    var newCount = $('#EditTaskAdminDiv').children('div').length + 1;
+                    var WorkflowID = $('#ADMWorkflowID').val()
+                    $('#EditTaskAdminDiv').prepend("<div id='TaskCountDiv'><div id='' class='small-6 columns reset-columns'><label>Task Name<input id='Add:TaskName:" + newCount + "' name='Add:TaskName:" + WorkflowID + ":" + newCount + "' type='text' placeholder='Add Task Name' value=''/></label></div><div class='small-2 columns'><label>Order<input name='Add:TaskOrder:" + newCount + "' type='text' placeholder='#' value='' /></label></div><div class='small-2 columns'><label>Icon Name<input name='Add:Icon:" + newCount + "' type='text' id='" + newCount + "-icon-name'  format='iconName' placeholder='' value='' /></label></div><div class='small-2 columns'></div></div>");
+                    $('#EditTaskAdmin').dirrty();
+
+                    $('[id^="Add:TaskName"]').blur(function () {
+                        CheckIfNameExists($(this), '#edit-workflow-admin-btn', '#EditTaskAdmin', null, '@Global.Enums.FieldNameCheck.WorkflowTaskName', '@ViewData["TaskWorkflowID"]', false, null, null);
+                    });
+                } else {
+                    //toastr.error('Maximum 8 tasks allowed!');
+                    displayMessage('Maximum 8 tasks allowed!', 'error');
+                }
+            });
+        });
+
+        $('[id^="Edit:TaskName"]').blur(function () {
+            CheckIfNameExists($(this), '#edit-workflow-admin-btn', '#EditTaskAdmin', $(this).attr('id').split(":")[3], '@Global.Enums.FieldNameCheck.WorkflowTaskName', '@ViewData["TaskWorkflowID"]', false, null);
+        });
+
+        //dirty function used to check if event listener has been modified and call the updates function
+        $('#EditTaskAdmin').dirrty().on("dirty", function () {
+            $("#edit-workflow-admin-btn").removeClass("dirty-disabled");//removed attribute if in case if anchor tag is used
+        }).on("clean", function () {
+            $("#edit-workflow-admin-btn").addClass("dirty-disabled")//add attribute if in case if anchor tag is used
+        });
+        //end of dirty function used to check if event listener has been modified and call the updates function
+
+        var options = [];
+        $('.dropdown-menu a').on('click', function (event) {
+
+            var $target = $(event.currentTarget),
+                val = $target.attr('data-value'),
+                $inp = $target.find('input'),
+                idx;
+
+            if ((idx = options.indexOf(val)) > -1) {
+                options.splice(idx, 1);
+                setTimeout(function () { $inp.prop('checked', false) }, 0);
+            } else {
+                options.push(val);
+                setTimeout(function () { $inp.prop('checked', true) }, 0);
+            }
+
+            $(event.target).blur();
+
+            console.log(options);
+            return false;
+        });
+    </script>
+}
+
+<!-- End of PopupManageTasks-->

@@ -1,0 +1,197 @@
+﻿
+@{
+    ViewBag.Title = "Edit Entity";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+
+    ///get entity info
+    dynamic entitiesInfo = null;
+    if (ViewData["EntitiesList"] != null)
+    {
+        entitiesInfo = (ViewData["EntitiesList"] as IEnumerable<dynamic>).FirstOrDefault();
+    }
+    ///end of get entity info
+
+    //AjaxOptions property
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "content-wrapper",
+        OnSuccess = "onSuccessToasterMsg(null,null,null,null,'Entity has been successfully updated')",
+        OnComplete = "onComplete",
+    };
+    //end of AjaxOptions property
+}
+
+<!-- Add User -->
+<div class="popup-headings">
+    <h4>Entity Details</h4>
+    <p>Please make sure the user information supplied below is correct.</p>
+</div> <!-- End of popup-headings -->
+
+@using (Ajax.BeginForm("EditEntity", "AdminEntity", options, new { id = "entityEditForm" }))
+{
+    <div class="row reset-row">
+        <div class="medium-6 columns reset-columns">
+            <input type="hidden" name="entityID" id="entityID" value="@entitiesInfo["EntityID"]" />
+            <label>Entity Name<span>*</span></label>
+            <input tabindex="1" type="text" name="entityName" id="entityName" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharName))" value="@entitiesInfo["Name"]" data-content="required" autocomplete="off" format="alphanum" />
+            <label>Organisation Type<span>*</span></label>
+            <select tabindex="3" id="organisationType" name="organisationType" data-content="required">
+                <option value="-1" default>Select an option:</option>
+                @{
+                    ///OrganisationTypes
+                    foreach (var organisationType in ViewData["OrganizationTypes"] as IEnumerable<dynamic>)
+                    {
+                        if (@organisationType["OrganizationTypeID"] == @entitiesInfo["OrganizationTypeID"])
+                        {
+                            <option selected value="@organisationType["OrganizationTypeID"]">@organisationType["Description"]</option>
+                        }
+                        else
+                        {
+                            <option value="@organisationType["OrganizationTypeID"]">@organisationType["Description"]</option>
+                        }
+                    }
+                }
+            </select>
+            <label>Legal Name</label>
+            <input tabindex="5" type="text" name="legalName" id="legalName" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharName))" value="@entitiesInfo["LegalName"]" autocomplete="off" format="alphanum" />
+            <label>Telephone Number<span>*</span></label>
+            <input tabindex="7" type="text" name="telephone" id="telephone" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharTelephone))" value="@entitiesInfo["Telephone"]" autocomplete="off" format="number" data-content="required" />
+        </div> <!-- End of medium-6 columns reset-columns -->
+        <div class="medium-6 columns remove-padding-right">
+            <label>Parent Entity ID</label>
+            <select tabindex="2" id="parentEntityID" name="parentEntityID">
+                <option value="-1">Select an option:</option>
+                @{
+                    ///OrganisationTypes
+                    foreach (var parentEntityID in ViewData["AllEntitiesList"] as IEnumerable<dynamic>)
+                    {
+                        if (@parentEntityID["EntityID"] != @entitiesInfo["EntityID"]) //extract entities for parent entity - exclude the entity name
+                        {
+                            if (@entitiesInfo["ParentEntityID"] == @parentEntityID["EntityID"])//check if the parent entity is selected
+                            {
+                                <option selected value="@parentEntityID["EntityID"]">@parentEntityID["Name"]</option>
+                            }
+                            else
+                            {
+                                <option value="@parentEntityID["EntityID"]">@parentEntityID["Name"]</option>
+                            }
+                        }
+                    }
+                }
+            </select>
+            <label>Registration Number<span>*</span></label>
+            <input tabindex="4" type="text" name="registrationName" id="registrationName" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.VarcharRegistrationNumber))" value="@entitiesInfo["RegistrationNumber"]" data-content="required" format="alphanum" autocomplete="off" />
+            <label>Vat</label>
+            <input tabindex="6" type="text" name="vatID" id="vatID" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharVatID))" value="@entitiesInfo["VatID"]" autocomplete="off" format="alphanum" />
+
+
+            <label>Fax Number</label>
+            <input tabindex="8" type="text" name="fax" id="fax" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharFax))" value="@entitiesInfo["FaxNumber"]" autocomplete="off" format="number" />
+        </div> <!-- End of medium-6 columns remove-padding-right -->
+    </div>
+
+
+    <div class="row reset-row">
+        <div class="popup-headings">
+            <h4>Contact Details</h4>
+            <p>Please make sure the user information supplied below is correct.</p>
+        </div> <!-- End of popup-headings -->
+
+        <div class="medium-6 columns reset-columns">
+            <label>Email</label>
+            <input tabindex="9" type="text" name="email" id="email" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharEmail))" value="@entitiesInfo["Email"]" autocomplete="off" format="email" />
+
+            <label>Address Line 1 <span>*</span></label>
+            <input tabindex="11" type="text" name="AddressLine1" id="AddressLine1" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharAddress))" value="@entitiesInfo["AddressLine1"]" data-content="required" autocomplete="off" format="address" />
+
+            <label>City<span>*</span></label>
+            <input tabindex="13" type="text" name="city" id="city" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharCity))" value="@entitiesInfo["City"]" autocomplete="off" format="address" data-content="required" />
+
+            <label>Country</label>
+            <select tabindex="15" id="countryID" name="countryID"  onchange="reps.countrySelection(this)">
+                @*<option value='-1' default selected>Select an option:</option>*@
+                @{
+                    /// PropertyRoles
+                    foreach (var country in ViewData["Countries"] as IEnumerable<dynamic>)
+                    {
+                        if (@country["CountryID"] == @entitiesInfo["CountryID"])
+                        {
+                            <option value="@country["CountryID"]" selected>@country["Description"]</option>
+                        }
+                        else
+                        {
+                            <option value="@country["CountryID"]">@country["Description"]</option>
+                        }
+
+                    }
+                }
+            </select>
+
+        </div> <!-- End of medium-6 columns reset-columns -->
+
+        <div class="medium-6 columns reset-columns">
+            <label>Address Type<span>*</span></label>
+            <select tabindex="10" id="addressType" name="addressType" data-content="required">
+                <option value='-1' default selected>Select an option:</option>
+                @foreach (var AddressType in ViewData["AddressType"] as IEnumerable<dynamic>)
+                {
+                    if (@entitiesInfo["AddressTypeID"] == @AddressType["AddressTypeID"])
+                    {
+                        <option selected value="@AddressType["AddressTypeID"]">@AddressType["Description"]</option>
+                    }
+                    else
+                    {
+                        <option value="@AddressType["AddressTypeID"]">@AddressType["Description"]</option>
+                    }
+                }
+            </select>
+            <label>Address Line 2 </label>
+            <input tabindex="12" type="text" name="AddressLine2" id="AddressLine2" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharAddress))" value="@entitiesInfo["AddressLine2"]" autocomplete="off" format="address" />
+
+            <label>Postal Code</label>
+            <input tabindex="14" type="text" name="postal" id="postal" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharPostalCode))" value="@entitiesInfo["PostalCode"]" autocomplete="off" format="alphanum" />
+
+            <div id="ProvinceFilter"></div><!--province filter if country is selected on change function-->
+            <div id="editProvince">
+                <!--province filter if country is selected by default-->
+                <label> Province</label>
+                <select tabindex="16" id="province" name="province">
+                    <option value='-1'>Select an option:</option>
+                    @foreach (var province in ViewData["Province"] as IEnumerable<dynamic>)
+                    {
+                        if (@province["ProvinceID"] == @entitiesInfo["ProvinceID"])
+                        {
+                            <option value="@province["ProvinceID"]" selected>@province["Description"]</option>
+                        }
+                        else
+                        {
+                            <option value="@province["ProvinceID"]">@province["Description"]</option>
+                        }
+                    }
+                </select>
+            </div> <!-- End of editProvince -->
+
+        </div> <!-- End of medium-6 columns reset-columns -->
+    </div> <!-- End of row -->
+                    }
+
+@section footer
+{
+    <a id="btn-saved" class="button align-right dirty-disabled" href="#" onclick="FormObjectSubmit('#btn-saved','#entityEditForm', true);">Update entity</a>
+}
+
+@section script
+{
+    <script>
+        //dirty function used to check if event listener has been modified and call the updates function
+        $('#entityEditForm').dirrty().on("dirty", function () {
+            $("#btn-saved").removeClass("dirty-disabled");//removed attribute if in case if anchor tag is used
+        }).on("clean", function () {
+            $("#btn-saved").addClass("dirty-disabled")//add attribute if in case if anchor tag is used
+        });
+        //end of dirty function used to check if event listener has been modified and call the updates function
+    </script>
+}

@@ -1,0 +1,280 @@
+﻿@*@Scripts.Render("~/Bundles/JqueryMin")*@
+@Scripts.Render("~/Bundles/JSAPI")
+@Scripts.Render("~/Bundles/AuditTimeline")
+@Styles.Render("~/CSS/AuditTimelineCss")
+
+@{
+    ViewBag.Title = "Audit";
+    Layout = ViewBag.PageLayoutPath;
+
+    //User roles
+    string role_view_auditlist = "AU_LI";
+    string role_view_audittimeline = "AU_TI";
+    string role_view_audittable = "AU_TA";
+
+    if (!Common.CArray.SearchInCookie(role_view_auditlist))
+    {
+        Response.Redirect(Url.Action("Index", "Dashboard"));
+    }
+
+    if (ViewBag.PageLayoutPath != null)
+    {
+        @Html.Partial("PartialSubSection", null, new ViewDataDictionary { { "SelectedTab", "Audit" } })
+    }
+    var Audits = ViewData["Audits"] as IEnumerable<dynamic>;
+    var AuditsTimeline = ViewData["AuditsTimeline"] as IEnumerable<dynamic>;
+
+}
+
+
+<div class="box add-box-padding audit box-deal">
+    <div class="row reset-row">
+        <div class="medium-8 small-12 columns reset-columns">
+            <p>Please find the list of audit currently in the system.</p>
+        </div> <!-- End of medium-6 small-12 reset-columns -->
+
+        <div class="medium-4 small-12 columns">
+            <div class="filter-table">
+                <input type="text" id="search-table" name="search" style="" placeholder="Search">
+            </div>
+        </div> <!-- End of medium-6 small-12 -->
+    </div> <!-- End of row reset-row -->
+
+    @if (Common.CArray.SearchInCookie(role_view_audittable))
+    {
+        <div class="table-scroll">
+            <table id="audit-table" class="audit-table">
+                <thead>
+                    <tr id="table-head">
+                        <th width="100">Audit</th>
+                        <th width="30">Date Created</th>
+                        <th width="30">User</th>
+                        @*<th width="200">Comments</th>*@
+                    </tr>
+                </thead>
+                <tbody class="hover">
+                    @foreach (var Audit in AuditsTimeline)
+                {
+                        <tr>
+                            <td>@Audit["TaskName"]</td>
+                            <td>@(TimeZone.CurrentTimeZone.ToLocalTime(Audit["DateCreated"]).ToString("dd/MM/yyyy HH:mm:ss"))</td>
+                            <td>@Audit["GivenName"]</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div> <!-- End of table-scroll -->
+
+        <div id="table-result-search-data"></div>
+    <!-- End of table-headings -->
+    }
+
+    @if (Common.CArray.SearchInCookie(role_view_audittimeline))
+    {
+        <div id="timeline-embed"></div>
+        <script type="text/javascript">
+            var timeline;
+            //google.load("visualization", "1");
+            google.load('visualization', '1', { 'callback': 'drawVisualization()'  });
+
+            // Called when the Visualization API is loaded.
+            function drawVisualization() {
+                // Create and populate a data table.
+                var data = new google.visualization.DataTable();
+                data.addColumn('datetime', 'start');
+                data.addColumn('datetime', 'end');
+                data.addColumn('string', 'content');
+
+                @foreach (var AuditTime in AuditsTimeline)
+                {
+                    <text>
+                var ticks = @TimeZone.CurrentTimeZone.ToLocalTime(AuditTime["DateCreated"]).Ticks;
+
+                //ticks are in nanotime; convert to microtime
+                var ticksToMicrotime = ticks / 10000;
+
+                //ticks are recorded from 1/1/1; get microtime difference from 1/1/1/ to 1/1/1970
+                var epochMicrotimeDiff = Math.abs(new Date(0, 0, 1).setFullYear(1));
+
+                //new date is ticks, converted to microtime, minus difference from epoch microtime
+                var tickDate = new Date(ticksToMicrotime - epochMicrotimeDiff);
+                var stringDescription = "@AuditTime["Description"].ToString() - @AuditTime["TaskName"].ToString() <br> <span>@AuditTime["GivenName"].ToString()</span>";
+                data.addRows(
+                    [
+                        [tickDate, , stringDescription]
+                    ]
+                );
+                </text>
+                }
+
+                // specify options
+                var options = {
+                    "width": "100%",
+                    "showNavigation": "true",
+                    "height": "300px",
+                    "zoomMin": 10,             // one day in milliseconds
+                    "style": "box"
+                };
+
+                // Instantiate our timeline object.
+                timeline = new links.Timeline(document.getElementById('mytimeline'), options);
+                // Draw our timeline with the created data and options
+                timeline.draw(data);
+            }
+
+            setTimeout(drawVisualization, 1000);
+            // Set callback to run when API is loaded
+            google.setOnLoadCallback(drawVisualization);
+        </script>
+
+        <div id="mytimeline"></div>
+    }
+</div> <!-- End of box -->
+
+@if (Common.CArray.SearchInCookie(role_view_audittable))
+{
+    <script>
+        //call dynatable plugin search when document is ready
+        $(document).ready(function () {
+            DynatableSearch('#audit-table', '#table-result-search-data', '#search-table')
+        });
+        //end of call dynatable plugin search when document is ready
+    </script>
+}
+
+
+
+
+    @*<div id="deal-content-wrapper">
+            <div class="box audit box-deal">
+
+                <div class="table-scroll">
+                    <table id="audit-table" class="audit-table">
+                        <thead>
+                            <tr id="table-head">
+                                <th width="100">Transaction Type</th>
+                                <th width="30">Date Created</th>
+                                <th width="30">User</th>
+
+                            </tr>
+                        </thead>
+                        <tbody class="hover">
+                            <tr>
+                                <td>Transaction</td>
+                                <td>Date Created</td>
+                                <td>Given Name</td>
+
+                            </tr>
+
+                            <tr>
+                                <td>Transaction</td>
+                                <td>Date Created</td>
+                                <td>Given Name</td>
+
+                            </tr>
+
+                            <tr>
+                                <td>Transaction</td>
+                                <td>Date Created</td>
+                                <td>Given Name</td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div> <!-- End of table-scroll -->
+                <!-- End of table-headings -->
+                <div id="timeline-embed"></div>
+
+
+                <script type="text/javascript">
+                    var timeline;
+
+                    google.load("visualization", "1");
+
+                    // Set callback to run when API is loaded
+                    google.setOnLoadCallback(drawVisualization);
+
+                    // Called when the Visualization API is loaded.
+                    function drawVisualization() {
+                        // Create and populate a data table.
+                        var data = new google.visualization.DataTable();
+                        data.addColumn('datetime', 'start');
+                        data.addColumn('datetime', 'end');
+                        data.addColumn('string', 'content');
+
+
+                        var ticks = @TimeZone.CurrentTimeZone.ToLocalTime(AuditTime["DateCreated"]).Ticks;
+
+                        //ticks are in nanotime; convert to microtime
+                        var ticksToMicrotime = ticks / 10000;
+
+                        //ticks are recorded from 1/1/1; get microtime difference from 1/1/1/ to 1/1/1970
+                        var epochMicrotimeDiff = Math.abs(new Date(0, 0, 1).setFullYear(1));
+
+                        //new date is ticks, converted to microtime, minus difference from epoch microtime
+                        var tickDate = new Date(ticksToMicrotime - epochMicrotimeDiff);
+                        var stringDescription = "@AuditTime["Description"].ToString() - @AuditTime["TaskName"].ToString() <br> <span>@AuditTime["GivenName"].ToString()</span>";
+                        data.addRows(
+                            [
+                                [tickDate, , stringDescription]
+                            ]
+                        );
+
+
+
+                        // specify options
+                        var options = {
+                            "width": "100%",
+                            "showNavigation": "true",
+                            "height": "300px",
+                            "zoomMin": 10,             // one day in milliseconds
+                            "style": "box"
+                        };
+
+                        // Instantiate our timeline object.
+                        timeline = new links.Timeline(document.getElementById('mytimeline'), options);
+
+                        // Draw our timeline with the created data and options
+                        timeline.draw(data);
+                    }
+                    </script>
+
+                <div id="mytimeline"></div>
+
+            </div> <!-- End of box -->
+        </div>*@
+
+
+
+    @*@Scripts.Render("~/Bundles/Timeline")
+        @Scripts.Render("~/Bundles/Paging")
+
+
+
+
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+
+                    var dynatable = $('#audit-table').dynatable(
+                        {
+                            inputs: { pageText: '' },
+                            dataset: {
+                                perPageDefault: 5
+                            },
+                            features: {
+                                paginate: true,
+                                sort: true,
+                                pushState: true,
+                                search: true,
+                                recordCount: false,
+                                perPageSelect: false
+                            },
+                        }
+                        );
+                });
+            </script>*@
+
+
+

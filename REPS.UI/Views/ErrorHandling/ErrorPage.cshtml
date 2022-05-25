@@ -1,0 +1,57 @@
+﻿@{ Layout = null;}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="/Images/fav.png">
+    <title>REPS - Error</title>
+    <link href="@Url.Content("~/CSS/app.min.css")" rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="~/Javascripts/jquery.min.js"></script>
+    @Scripts.Render("~/Bundles/Scripts")
+    <link rel="stylesheet" href="~/CSS/toastr.min.css">
+
+</head>
+
+<body class="error-background">
+    @{
+        if (TempData["message"] != null)
+        {
+            <script type="text/javascript">
+                @Html.Raw(TempData["message"]);
+            </script>
+        }
+    }
+    <div class="error-box">
+        @{
+            if (ViewData["NoEntity"] != null)
+            {
+                <h1>@ViewData["NoEntity"]</h1>
+                <p>@ViewData["errorMsg"]</p>
+            }
+            else
+            {
+                <h1>An error has occured.</h1>
+            }
+        }
+        <p>Fill in the form below and one of friendly support agents will give you a call.</p>
+
+        @using (Html.BeginForm("SubmitError", "ErrorHandling", new { @credential = @ViewData["NoEntity"] }, FormMethod.Post, new { id = "ErrorForm" }))
+        {
+            <label for="names">Name</label>
+            <input type="text" name="fullname" value="@TempData["FullName"]" />
+
+            <label for="number">Contact number</label>
+            <input type="text" name="Number" value="@TempData["TelephoneNumber"]" />
+
+            <label for="message">Message</label>
+            <textarea class="error-message-area" name="message" placeholder="Enter your message..."></textarea>
+
+            <label style="display:none;" for="message">Error: </label>
+            <textarea style="display:none;" readonly name="errormsg">@TempData["errorMsg"]</textarea>
+
+            <input type="submit" value="Submit" class="button align-right" />
+        }
+    </div> <!-- End of error-box -->
+</body>
+</html>

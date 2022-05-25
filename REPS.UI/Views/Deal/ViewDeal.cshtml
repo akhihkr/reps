@@ -1,0 +1,193 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = ViewBag.PageLayoutPath;
+
+    //User roles
+    string role_view_generaltab = "GE_LI";
+    string role_view_participantlist = "PA_LI";
+    string role_view_participantadd = "PA_AD";
+    string role_view_propertylist = "PR_LI";
+    string role_view_propertyadd = "PR_AD";
+    string role_view_mortgagelist = "MO_LI";
+    string role_view_mortgageadd = "MO_AD";
+
+    if (!Common.CArray.SearchInCookie(role_view_generaltab))
+    {
+        Response.Redirect(Url.Action("Index", "Dashboard"));
+    }
+
+    if (ViewBag.PageLayoutPath != null)
+    {
+        @Html.Partial("PartialSubSection", null, new ViewDataDictionary { { "SelectedTab", "Deal" }, {"CurrentDealWorkflow", ViewData["CurrentDealWorkflow"]} })
+    }
+    #region if edit deal info is not null or empty
+    ///variables for deal edit info
+    dynamic editDealInfo = null;
+    ///end variables for deal edit info
+    if (ViewData["dealEdit"] != null && (int.Parse((ViewData["dealEdit"] as IEnumerable<dynamic>).Count().ToString()) != 0))
+    {
+        editDealInfo = (ViewData["dealEdit"] as IEnumerable<dynamic>).FirstOrDefault();
+    }
+    #endregion end if edit deal info is not null or empty
+}
+
+
+<div id="deal-content-wrapper">
+    <div class="box deal-section">
+        <div class="matter-general-info">
+            <div id="progress-percentage" class="progress-percentage">
+                <!-- Progress Circle Bar -->
+                <div class="progress-bar">
+                    <canvas id="inactiveProgress" class="progress-inactive" height="275" width="275"></canvas>
+                    <canvas id="activeProgress" class="progress-active" height="275" width="275"></canvas>
+                    <p>0%</p>
+                </div> <!-- End of progress-bar -->
+
+                <div id="progressControllerContainer">
+                    @*<input type="range" id="progressController" min="0" max="18" value="0">*@
+                    <input type="range" id="progressController" min="0" max="@ViewData["MandatoryActionsCount"]" value="@ViewData["CompletedActionsCount"]" />
+                </div>
+            </div> <!-- End of progress-percentage -->
+
+
+            <!-- summary Details -->
+            <div id="summary-header-details" style="position: relative;">
+                @Html.Partial("~/Views/Deal/PartialDealSummary.cshtml")
+            </div>
+            <!-- End of summary-details -->
+
+        </div> <!-- End of matter-general-info -->
+    </div> <!-- End of box matter-section -->
+
+    @if (Common.CArray.SearchInCookie(role_view_participantlist))
+    {
+        <!-- Participant -->
+        <div class="split-3">
+            <div class="box participant-columns">
+                <div class="participant-title-section">
+                    <h1>Participants</h1>
+                    @if (Common.CArray.SearchInCookie(role_view_participantadd))
+                    {
+                        <a href="#" class="button" onclick="CallPopupPanel('Participant', 'PopupAddParticipant', 'general-panel', {dealID : @editDealInfo["DealID"]})">
+                            Add Participant
+                        </a>
+                    }
+                </div> <!-- End of participant-title-section -->
+                <div class="matter-columns-content">
+                    <div id="participantBankInfoDetail">
+                        @Html.Partial("~/Views/Participant/PartialParticipant.cshtml")
+                    </div>
+                </div> <!-- End of matter-columns-content -->
+            </div> <!-- End of box -->
+        </div> <!-- End of split-3 -->
+    }
+
+    @if (Common.CArray.SearchInCookie(role_view_propertylist))
+    {
+        <!-- Properties -->
+        <div class="split-3">
+            <div class="box participant-columns">
+                <div class="properties-title-section">
+                    <h1>Properties</h1>
+                    @if (Common.CArray.SearchInCookie(role_view_propertyadd))
+                    {
+                        <a href="#" class="button" onclick="CallPopupPanel('Property', 'PopupAddProperty', 'general-panel', {dealID : @editDealInfo["DealID"]})">
+                            Add Property
+                        </a>
+                    }
+                </div> <!-- End of participant-title-section -->
+                <div class="matter-columns-content">
+                    <div id="PropertyInfoDetail">
+                        @Html.Partial("~/Views/Property/PartialProperty.cshtml")
+                    </div>
+                </div> <!-- End of matter-columns-content -->
+            </div> <!-- End of box -->
+        </div> <!-- End of split-3 -->
+    }
+
+    @if (Common.CArray.SearchInCookie(role_view_mortgagelist))
+    {
+        <!-- Mortgage -->
+        <div class="split-3 remove-margin-right">
+            <div class="box participant-columns">
+                <div class="mortgage-title-section">
+                    <h1>Mortgages</h1>
+                    @if (Common.CArray.SearchInCookie(role_view_mortgageadd))
+                    {
+                        <a href="#" class="button" onclick="CallPopupPanel('Mortgage', 'PopupAddMortgage', 'general-panel')">
+                            Add Mortgage
+                        </a>
+                    }
+                </div> <!-- End of participant-title-section -->
+                <div class="matter-columns-content">
+                    <div id="mortgageInfoDetail">
+                        @Html.Partial("~/Views/Mortgage/PartialMortgage.cshtml")
+                    </div>
+                </div> <!-- End of matter-columns-content -->
+            </div> <!-- End of box -->
+        </div> <!-- End of split-3 -->
+    }
+</div> <!-- End of deal-content-wrapper -->
+
+
+<script type="text/javascript">
+
+    var $pc = $('#progressController');
+    var $pCaption = $('.progress-bar p');
+    var iProgress = document.getElementById('inactiveProgress');
+    var aProgress = document.getElementById('activeProgress');
+    var iProgressCTX = iProgress.getContext('2d');
+
+    drawInactive(iProgressCTX);
+
+    $pc.on('change', function () {
+        var maxValue = $(this).attr('max');
+        var percentage = $(this).val() / maxValue;
+        drawProgress(aProgress, percentage, $pCaption);
+    });
+
+    function drawInactive(iProgressCTX) {
+        iProgressCTX.lineCap = 'square';
+
+        //progress bar
+        iProgressCTX.beginPath();
+        iProgressCTX.lineWidth = 3;
+        iProgressCTX.fillStyle = '#e6e6e6';
+        iProgressCTX.arc(39, 39, 38.5914375, 0, 2 * Math.PI);
+        iProgressCTX.fill();
+
+        //progressbar caption
+        iProgressCTX.beginPath();
+        iProgressCTX.lineWidth = 0;
+        iProgressCTX.fillStyle = '#fff';
+        iProgressCTX.arc(39, 39, 31.89375, 0, 2 * Math.PI);
+        iProgressCTX.fill();
+
+    }
+    function drawProgress(bar, percentage, $pCaption) {
+        var barCTX = bar.getContext("2d");
+        var quarterTurn = Math.PI / 2;
+        var endingAngle = ((2 * percentage) * Math.PI) - quarterTurn;
+        var startingAngle = 0 - quarterTurn;
+
+        bar.width = bar.width;
+        barCTX.lineCap = 'square';
+
+        barCTX.beginPath();
+        barCTX.lineWidth = 6;
+        barCTX.strokeStyle = '#4caf50';
+        barCTX.arc(39, 39, 34.7641875, startingAngle, endingAngle);
+        barCTX.stroke();
+
+        $pCaption.text((parseInt(percentage * 100, 10)) + '%');
+    }
+
+    var maxValue = $('#progressController').attr('max');
+    if (maxValue == 0) {                             // Avoid division error - set percentage to 0
+        var percentage = 0;
+    } else {
+        var percentage = ($pc.val() / maxValue);
+    }
+
+    drawProgress(aProgress, percentage, $pCaption);
+</script>

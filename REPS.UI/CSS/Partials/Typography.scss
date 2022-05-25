@@ -1,0 +1,48 @@
+﻿@charset "UTF-8";
+@import "GlobalVariables.scss";
+
+/* Removed absolute path as it is not working in local development */
+/*@font-face {
+   font-family: NotoSans-Regular;
+   src: url(/Fonts/Noto_Sans/NotoSans-Regular-webfont.woff);
+}
+
+@font-face {
+   font-family: NotoSans-Bold;
+   src: url(/Fonts/Noto_Sans/NotoSans-Bold.ttf);
+}
+
+@font-face {
+   font-family: NotoSans-Italic;
+   src: url(/Fonts/Noto_Sans/NotoSans-Italic.ttf);
+}*/
+
+
+
+body {
+    font-family: $body-font;
+}
+
+h1, h2, h3, h4, h5 {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    font-family: $heading-font, sans-serif;
+    text-decoration: none;
+}
+
+p {
+    font-size: 13px;
+    color: $body-color;
+    font-family: $body-font;
+}
+
+td {
+    font-size: 13px;
+    color: $body-color;
+}
+
+a {
+    color: $primary-color;
+    font-weight: normal;
+}

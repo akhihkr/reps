@@ -1,0 +1,75 @@
+﻿@using Common;
+@{
+    Layout = null;
+
+    //ajax
+    AjaxOptions option = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "participantBankInfoDetail",
+        OnFailure = "OnFailure",
+        OnComplete = "onComplete",
+    };
+}
+
+<!-- ADD EXISTING PARTICIPANT -->
+<div class="row reset-row show" id="add-existing-participant-section">
+
+    <!--Row Select Company Form | Individual Form-->
+    <div class="medium-6 columns reset-columns">
+
+        <!-- Add Participant Options -->
+        <label>Add Participant</label>
+        <select tabindex="1" id="participantNewExist" name="participantNewExist" onchange="reps.dropdownParticipantNewExist(this);">
+            <option value="0" >New Participant</option>
+            <option value="-1" default selected>Add From Existing</option>
+        </select>
+    </div> <!-- End of medium-6 columns reset-columns-->
+
+@using (Ajax.BeginForm("SaveExistingParticipant", "Participant", option, new { @id = "existParticipantForm", name = "existParticipantForm" }))
+{
+    <div class="medium-6 columns">
+        <label>
+            Participant Role<span>*</span>
+            <select id="existptRoleexist" name="existptRoleexist" data-content="required">
+                <option value='-1' default selected>Select an option:</option>
+                @{
+                    if (ViewData["PartRole"] != null)
+                    {
+                        /// ParticipantRoles
+                        foreach (var partRole in ViewData["PartRole"] as IEnumerable<dynamic>)
+                        {
+                            <option value="@partRole["ParticipantRoleID"]">@partRole["Description"]</option>
+                        }
+                    }
+
+                }
+            </select>
+        </label>
+    </div> <!-- End of medium-6 columns -->
+
+    <div class="medium-12 columns reset-columns">
+        
+            <label>
+                Search Participant
+            </label>
+            <input type="text" id="existParticipantName" name="existParticipantName" autocomplete="off" placeholder="Search" value="" onkeyup="reps.autosearch('existParticipantName', 'Participant', 'AutoSearch', 'suggestion-box')" data-content="required" />
+            
+
+            <!--Participant Type ID-->
+            <input type="hidden" id="participantTypeID" name="participantTypeID" value="" />
+            <!--ID of  individual | company : (organisationID or ParticipantID)-->
+            <input type="hidden" id="ptTypePersonCompany" name="ptTypePersonCompany" value="" />       
+    </div> <!-- End of medium-6 columns reset-columns -->
+
+    
+    
+    <div class="medium-12 columns reset-columns">
+        <div id="suggestion-box" style="display:none;"></div>
+    </div> <!-- End of medium-12 columns -->
+
+
+
+}
+</div> <!-- End of row reset-row -->

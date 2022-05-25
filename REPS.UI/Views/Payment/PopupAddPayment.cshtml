@@ -1,0 +1,125 @@
+﻿@using Global;
+@{
+    ViewBag.Title = "Add Payment";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    //ajax
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "payments-table",
+        OnSuccess = "onSuccessToasterMsg(null,null,null,null,'Payment has been successfully added')",
+        OnFailure = "OnFailure",
+        OnComplete = "onComplete",
+    };
+}
+
+@using (Ajax.BeginForm("AddNewPayment", "Payment", options, new { name = "AddFee", id = "AddFee" }))
+{
+    <!-- Add Payment Content -->
+    <div class="row reset-row">
+        @if (TempData.ContainsKey("FeesAddResult"))
+        {
+            foreach (var WFActionResult in TempData["FeesAddResult"] as IEnumerable<dynamic>)
+            {
+                string datarequired, fieldrequired = null;
+                if (Convert.ToBoolean(WFActionResult["IsRequired"]) == true)
+                {
+                    datarequired = "required";
+                    fieldrequired = "*";
+                }
+                else
+                {
+                    datarequired = null;
+                    fieldrequired = null;
+                }
+                switch ((int)WFActionResult["WorkflowVariableID"])
+                {
+                    case (int)Enums.FieldType.Type:
+                        <div class="medium-12 columns reset-columns">
+                            <label>Payment Type<span>@fieldrequired</span></label>
+                            <select tabindex="1" id="FeeType" name="FieldType:@WFActionResult["WorkflowTaskID"]:@WFActionResult["WorkflowActionVarID"]:@WFActionResult["WorkflowVariableID"]" data-content=@datarequired>
+                                <option value='-1' default selected>Select an option:</option>
+                                @foreach (var FeeType in TempData["FeeTypeList"] as IEnumerable<dynamic>)
+                                {
+                                    <option name="FieldType:@WFActionResult["WorkflowTaskID"]:@WFActionResult["WorkflowActionVarID"]:@WFActionResult["WorkflowVariableID"]" value="@FeeType["FeeTypeID"]">@FeeType["Description"]</option>
+                                }
+                            </select>
+                        </div> <!-- End of medium-12 columns reset-columns-->
+                        break;
+
+                    case (int)Enums.FieldType.Date:
+             
+                            <div class="small-12 medium-6 columns reset-columns">
+                                <label>
+                                    Date <span>@fieldrequired</span>
+                                    <input class="date-input" tabindex="2" type="text" name="datePickerEventStart" data-format="d/m/Y" data-theme="reps-datedropper" id="datePickerEventStart" data-content=@datarequired data-modal="true" data-large-mode="true" data-large-default="true" readonly>
+                                </label>
+                            </div>
+
+
+                            <div class="small-12 medium-6 columns">
+                                <label>
+                                    Time <span>@fieldrequired</span>
+                                    <input class="time-input" tabindex="3" type="text" value="" id="timePickerEventStart" name="timePickerEventStart" data-content=@datarequired readonly />
+                                </label>
+                            </div>
+                            <input type="hidden" id="DateTimeValue" name="FieldType:@WFActionResult["WorkflowTaskID"]:@WFActionResult["WorkflowActionVarID"]:@WFActionResult["WorkflowVariableID"]" />
+
+                        break;
+
+                    case (int)Enums.FieldType.Comment:
+                        <div class="small-12 columns reset-columns">
+                            <label>
+                                Description <span>*</span>
+                                <textarea tabindex="5" id="comment" name="FieldType:@WFActionResult["WorkflowTaskID"]:@WFActionResult["WorkflowActionVarID"]:@WFActionResult["WorkflowVariableID"]" type="text" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varcharMax))" placeholder="" data-content=@datarequired> </textarea>
+                            </label>
+                        </div>
+                        break;
+
+                    case (int)Enums.FieldType.Value:
+                        <div class="small-12 columns reset-columns">
+                            <label>
+                                Credit <span>@fieldrequired</span>
+                                <input tabindex="3" id="value" name="FieldType:@WFActionResult["WorkflowTaskID"]:@WFActionResult["WorkflowActionVarID"]:@WFActionResult["WorkflowVariableID"]" type="text" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.decimalValue))" placeholder="" data-content=@datarequired format="amount" />
+                            </label>
+                        </div>
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    </div> <!-- End of general-panel-content -->
+
+}
+
+@section footer
+{
+    <a class="button blue-cta" id="AddPaymentSaveBtn" href="#" onclick="FormatFeeDatePS();FormObjectSubmit('#AddPaymentSaveBtn', '#AddFee', true);">Save Payment</a>
+}
+
+@section script
+{
+    <script type="text/javascript">
+        
+        $("#timePickerEventStart").timeDropper();
+        var currentYear = new Date().getFullYear();
+        var options = {
+            minYear: currentYear,
+            maxYear: currentYear + 1,
+            lock: "from",
+        };
+        $("div.datedropper").remove();//to clear all divs for dropper rendered using class datedropper
+        $("#datePickerEventStart").dateDropper(options);
+
+        function FormatFeeDatePS() {
+            $('#DateTimeValue').val($('#datePickerEventStart').val() + " " + $('#timePickerEventStart').val());      // store date and time formatted to db
+        };
+
+        $('#AddPaymentSaveBtn').on('click', function () {
+            FormatFeeDatePS();
+        });
+    </script>
+}

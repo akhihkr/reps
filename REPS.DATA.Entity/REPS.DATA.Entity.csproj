@@ -1,0 +1,756 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6E640648-68D7-4AA9-B901-A81BC07F2278}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>REPS.DATA.Entity</RootNamespace>
+    <AssemblyName>REPS.DATA.Entity</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'MAU|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\MAU\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'local|AnyCPU'">
+    <OutputPath>bin\local\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountType.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Address.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AddressType.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Alerts.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AlertStatus.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AlertType.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetRoles.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserClaims.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserLogins.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUsers.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Audit.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuditDetail.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuthenticateIdentity.cs" />
+    <Compile Include="BankorCreditUnion.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Billing.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BillingDiscount.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BillingRate.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BillingRateDetail.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BillingTaxRate.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Correspondence.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Country.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CurrencyType.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C__RefactorLog.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Deal.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DealStatus.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DealType.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DiscountType.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Document.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DocumentTemplate.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DocumentType.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DocumentVersion.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DocumentWorkflow.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FeeType.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinancialInstrument.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinancialInstrumentDetail.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinancialObligation.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinancialObligationDetail.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FinancialTransaction.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FirmDetails.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IdentityType.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InstrumentType.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InterestType.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InterestVariation.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JobTitle.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lenders.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MessageQueue.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MessageStatus.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MetaData.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MimeType.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Notification.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NotificationType.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Organization.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrganizationType.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Participant.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ParticipantBankDetail.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ParticipantRole.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ParticipantType.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Person.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Property.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PropertyDetail.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PropertyType.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Province.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PS_ReportFeePerDealTable_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReportFilters.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReportLocation.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reports.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>REPS.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS.DATA.Authenticate.Entity.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>REPS.DATA.Authenticate.Entity.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="REPS.DATA.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>REPS.DATA.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS.DATA.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>REPS.DATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS.DATA.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>REPS.DATA.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_ADM_DownloadTemplate_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_ADM_GetAllActions_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_ADM_GetAllRoleActions_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_ADM_GetAllTasksPerProcess_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_ADM_GetDocumentCategoryList_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_ADM_GetDocumentTemplateList_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_ADM_GetDocumentWorkflowTaskList_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_ADM_GetEditDocumentTemplateFields_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_ADM_GetWorkflowActionIsMandatory_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_ADM_GetWorkflowsList_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_ADM_GetWorkFlowTasksActionsByTaskID_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_ADM_GetWorkflowVariableList_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_AutoSearchDeal_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_AutoSearchParticipant_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_DownloadStaticTemplate_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GeneralSearchDeal_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetAccountTypes_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetAddPaymentFields_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetAddressTypes_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetAddress_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetAlerts_ByAlertID_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetAlerts_ByUserID_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetAuditDetails_ByDealID_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetBankAddressCountByParticpantID_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetBankDetailsPerParticipant_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetBanks_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetCompletedActionsByWorkflowID_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetCorrespondenceAttachmentByID_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetCorrespondence_ByCorrespondenceID_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetCorrespondence_ByUserID_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetCountries_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetCurrentWorkflowDetails_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetCurrentWorkflowStep_ByDealIDTransactionTypeID_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetDealCompletionDate_ByDealID_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetDealLastActionBy_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetDealsDashboard_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetDealSumByTask_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetDeals_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetDealTypes_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetDiaryItems_ByUserID_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetDocumentTemplateDetails_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetDocumentTemplateListByWorkflow_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetDocumentTypeListByWorkflow_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetDocumentType_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetEditPaymentFields_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetEntities_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetHeaderTabNotificationBarActiveDeals_ByUserGUID_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetHeaderTabUserActiveDeals_ByUserGUID_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetInterestType_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetMandatoryActionsList_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetMortgageLender_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetMortgagePurchasePrice_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetMortgages_ByDealID_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetMortgageType_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetOrganisationTypes_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetOrganisation_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetParticipantBankDetails_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetParticipantRoles_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetParticipants_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetParticipantTypes_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetPaymentList_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetPaymentTypeList_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetPropertiesWithDetails_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetProperties_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetPropertyTypes_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetProvince_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetReportFilters_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetReportName_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetRoles_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetSizes_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetStoredDocumentByID_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetStoredSignedDocumentByID_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetTemplatePerWorkflowStep_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetTitles_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetUserInfo_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetUserRoleActions_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetUsersByAspId_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetUsers_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetWorkFlowActionsAddFields_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetWorkFlowActionsEditFieldsValues_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetWorkflowDealCount_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetWorkflowGUIDTaskGUID_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetWorkflowProgress_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetWorkFlowTasksActions_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_GetWorkFlowTasks_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_ReportFeePerDealChart_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_ReportFeePerDealTable_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_ReportFilterFeeTypesListDropDown_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_ReportGetUsers_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_ReportMonthlyPaymentChart_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_ReportMonthlyPaymentTable_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_ReportSumPerFeeDescriptionChart_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_ReportSumPerFeeDescriptionTable_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_ReportSumPerFeeTypeGenerated_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_ReportWorkflowDealPerCountTable_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_ReportWorkflowDealPerCount_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_ReportWorkflowStatus_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_Template_Client_Care_Letter_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="REPS_VerifyIndividualExist_Result.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SizeType.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Task.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Title.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Township.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionDetail.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionDocuments.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionStatus.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionType.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserAction.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserDeal.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserDocument.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserRole.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserRoleAction.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VariableType.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_aspnet_Applications.cs">
+      <DependentUpon>REPS.DATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_aspnet_MembershipUsers.cs">
+      <DependentUpon>REPS.DATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_aspnet_Profiles.cs">
+      <DependentUpon>REPS.DATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_aspnet_Roles.cs">
+      <DependentUpon>REPS.DATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_aspnet_Users.cs">
+      <DependentUpon>REPS.DATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_aspnet_UsersInRoles.cs">
+      <DependentUpon>REPS.DATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_aspnet_WebPartState_Paths.cs">
+      <DependentUpon>REPS.DATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_aspnet_WebPartState_Shared.cs">
+      <DependentUpon>REPS.DATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_aspnet_WebPartState_User.cs">
+      <DependentUpon>REPS.DATA.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkflowAction.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkflowActionMap.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkflowActionVariable.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkflowProgress.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkflowTask.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkflowTransaction.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkflowVariable.cs">
+      <DependentUpon>REPS.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <EntityDeploy Include="REPS.DATA.Authenticate.Entity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>REPS.DATA.Authenticate.Entity.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="REPS.DATA.Authenticate.Entity.edmx.diagram">
+      <DependentUpon>REPS.DATA.Authenticate.Entity.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="REPS.DATA.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>REPS.DATA.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="REPS.DATA.edmx.diagram">
+      <DependentUpon>REPS.DATA.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="REPS.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>REPS.DATA.edmx</DependentUpon>
+      <LastGenOutput>REPS.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="REPS.DATA.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>REPS.DATA.Authenticate.Entity.edmx</DependentUpon>
+      <LastGenOutput>REPS.DATA.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="REPS.DATA.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>REPS.DATA.Authenticate.Entity.edmx</DependentUpon>
+      <LastGenOutput>REPS.DATA.cs</LastGenOutput>
+    </Content>
+    <Content Include="REPS.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>REPS.DATA.edmx</DependentUpon>
+      <LastGenOutput>REPS.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

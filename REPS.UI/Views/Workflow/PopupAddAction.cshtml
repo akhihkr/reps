@@ -1,0 +1,158 @@
+﻿@using Global;
+@{
+
+    ViewBag.Title = "Add Action";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+    ViewBag.actionTitle = "Archived";
+    var ActionFieldList = ViewData["WorkflowTasksActionsResult"] as IEnumerable<dynamic>;
+    var taskID = ViewData["taskID"];
+
+}
+
+@using (Ajax.BeginForm("InsertWorkflowActionValues", "Workflow", null, new { name = "WorkflowAddAction", id = "WorkflowAddAction" }))
+{
+    if (int.Parse((ActionFieldList).Count().ToString()) == 0)
+    {
+        <div class="empty-section">
+            <i class="material-icons">settings</i>
+            <p>No action has been added. Please contact the administrator.</p>
+        </div> <!-- End of empty-section -->
+    }
+    else
+    {
+        <input type="hidden" id="taskID" name="taskID" value="@taskID" />
+        foreach (var WFActionResult in ActionFieldList)
+        {
+            string datarequired, fieldrequired = null;
+            if (Convert.ToBoolean(WFActionResult["IsRequired"]) == true)
+            {
+                datarequired = "required";
+                fieldrequired = "*";
+            }
+            else
+            {
+                datarequired = null;
+                fieldrequired = null;
+            }
+            switch ((int)WFActionResult["WorkflowVariableID"])
+            {
+                case (int)Enums.FieldType.Date:
+
+                    <div class="row reset-row picker-sections">
+                        <div class="small-12 medium-6 columns reset-columns">
+                            <label>
+                                Date <span>@fieldrequired</span>
+                                <input class="date-input" tabindex="1" type="text" id="datePickerEditPanel" name="birthDate" value="" data-modal="true" data-content="@datarequired" data-large-mode="true" data-large-default="true" data-theme="reps-datedropper" data-init-set="true" data-min-year="1970" data-format="d/m/Y" data-lock="to">
+                            </label>
+                        </div>
+                        <div class="small-12 medium-6 columns time-field">
+                            <label>
+                                Time <span>@fieldrequired</span>
+                                <input class="time-input" tabindex="2" type="text" id="timePickerEditPanel" data-content=@datarequired />
+                            </label>
+                        </div>
+                        <input type="text" id="DateTimeValue" name="FieldType:@WFActionResult["WorkflowTaskID"]:@WFActionResult["WorkflowActionVarID"]:@WFActionResult["WorkflowVariableID"]" style="display:none" />
+                    </div> <!-- End of row reset-row picker-sections -->
+                    break;
+                case (int)Enums.FieldType.Comment:
+                    <label>
+                        Description <span>@fieldrequired</span>
+                        <textarea tabindex="3" id="comment" name="FieldType:@WFActionResult["WorkflowTaskID"]:@WFActionResult["WorkflowActionVarID"]:@WFActionResult["WorkflowVariableID"]" placeholder="" data-content=@datarequired></textarea>
+                    </label>
+                    break;
+                case (int)Enums.FieldType.Value:
+                    <label>
+                        Monetary Value <span>@fieldrequired</span>
+                        @{
+                            if (Convert.ToBoolean(WFActionResult["IsRequired"]) == true)
+                            {
+                                <input id="value" tabindex="4" name="FieldType:@WFActionResult["WorkflowTaskID"]:@WFActionResult["WorkflowActionVarID"]:@WFActionResult["WorkflowVariableID"]" type="text" maxlength="@(Convert.ToInt32(Enums.maxLength.decimalValue))" format="number" data-content=@datarequired>
+                            }
+                            else
+                            {
+                                <input id="value" tabindex="4" name="FieldType:@WFActionResult["WorkflowTaskID"]:@WFActionResult["WorkflowActionVarID"]:@WFActionResult["WorkflowVariableID"]" type="text" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.decimalValue))" format="number">
+                            }
+                        }
+                    </label>
+                                break;
+                            case (int)Enums.FieldType.File:
+                                @*<div id='#fileProgressbar' class="fileProgressbar"></div>*@
+
+                    <!-- File Upload -->
+                                <div class="file-upload remove-padding">
+                                    <div class="image-upload-wrap">
+                                        <div id='fileProgressbar' class="fileProgressbar"></div>
+
+                                        <input class="file-upload-input" onchange="addFileData(this)" name="FieldType:@WFActionResult["WorkflowTaskID"]:@WFActionResult["WorkflowActionVarID"]:@WFActionResult["WorkflowVariableID"]" id="file-upload-input" type="file" multiple data-content=@datarequired />
+                                        @*<input class="file-upload-input"  name="FieldType:@WFActionResult["WorkflowTaskID"]:@WFActionResult["WorkflowActionVarID"]:@WFActionResult["WorkflowVariableID"]" id="file-upload-input" type="file" multiple data-content=@datarequired />*@
+
+                                        <div class="drag-text">
+                                            <i class="material-icons">cloud_upload</i>
+                                            <h3>Click to attach file</h3>
+                                            <span class='@(fieldrequired != null ? "UploadImageFilter" : null)'>@fieldrequired</span>
+                                        </div>
+                                    </div>
+                                    <div class="file-upload-content">
+                                        <div class="image-title-wrap">
+                                            <button type="button" onclick="removeUpload()" class="button">Remove <span class="image-title">Uploaded Image</span></button>
+                                        </div>
+                                    </div>
+                                </div> <!-- End of file-upload -->
+
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                    }
+                                }
+
+
+                            }
+
+@section footer
+{
+    @if (int.Parse((ActionFieldList).Count().ToString()) > 0)
+    {
+        <a tabindex="5" class="button blue-cta dirty-disabled" id="AddActionSaveBtn" href="#">Save Action</a>
+    }
+}
+
+@section script{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            // executes when HTML-Document is loaded and DOM is ready
+
+            //dirty function used to check if event listener has been modified and call the updates function
+            $('#WorkflowAddAction').dirrty().on("dirty", function () {
+                $("#AddActionSaveBtn").removeClass("dirty-disabled");//removed attribute if in case if anchor tag is used
+            }).on("clean", function () {
+                $("#AddActionSaveBtn").addClass("dirty-disabled")//add attribute if in case if anchor tag is used
+            });
+            //end of dirty function used to check if event listener has been modified and call the updates function
+
+            // Bind Close Action Panel
+            $('#AddWorkflowActionPanel i').on('click', function () {
+                $('#AddWorkflowActionPanel').toggleClass('show');
+                $('.overlay').toggleClass('show');
+                //Clear content
+                $('#AddWorkflowActionPanel').html("");
+            });
+
+            // Bind dateDropper
+            $("#datePickerEditPanel").dateDropper();
+
+            // Bind timeDropper
+            $("#timePickerEditPanel").timeDropper();
+
+            $('#AddActionSaveBtn').on('click', function () {
+                FormatActionDatePS();
+                var validation = reps.checkOnSubmit('#WorkflowAddAction');
+                if (validation) {
+                    SaveAction('#file-upload-input', '#WorkflowAddAction', 'Workflow', 'InsertWorkflowActionValues', 'DivDataWorkflow', 'WorkflowTaskActionTabs', 'Submenu', 'sub-menu-side-bar', '#AddActionSaveBtn');
+                }
+            });
+
+        });
+    </script>
+}

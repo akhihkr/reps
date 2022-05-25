@@ -1,0 +1,93 @@
+﻿@charset "UTF-8";
+@import "../Partials/GlobalVariables.scss";
+
+
+/*------------------------------------*\
+	PROFILE
+\*------------------------------------*/
+
+#sidebar-profile {
+    border-bottom: 1px solid #495961;
+    padding-top: 22px;
+    padding-bottom: 22px;
+    -moz-transition: 0.2s ease background;
+    -o-transition: 0.2s ease background;
+    -webkit-transition: 0.2s ease background;
+    transition: 0.2s ease background;
+}
+
+#sidebar-profile.clicked {
+    background: $primary-color;
+}
+
+#sidebar-profile span.clicked {
+    color: #fff;
+}
+
+#sidebar-profile li.clicked {
+    color: #fff;
+}
+
+#profile-title.clicked {
+    color: #fff !important;
+}
+
+#sidebar-profile span {
+    border: 0 !important;
+    line-height: 0.5em;
+    color: #ffffff;
+    font-family: $heading-font;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+#sidebar-profile li:hover {
+    background: none !important;
+}
+
+#sidebar-profile:hover {
+    background: $primary-color;
+    cursor: pointer;
+    -moz-transition: 0.2s ease background;
+    -o-transition: 0.2s ease background;
+    -webkit-transition: 0.2s ease background;
+    transition: 0.2s ease background;
+}
+
+#sidebar-profile:hover > #profile-name {
+    color: #ccc !important;
+}
+
+#sidebar-profile:hover > #sidebar-profile img {
+    width: 60px;
+    height: 60px;
+}
+
+#profile-title {
+    color: #ccc;
+    margin-top: -4px;
+}
+
+#sidebar-profile img {
+    border-radius: 50%;
+    width: 54px;
+    height: 54px;
+    margin: 0 auto;
+    display: block;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.18);
+}
+
+
+#sidebar-profile ul {
+    padding: 0;
+    margin: 0;
+    color: #fff;
+    font-size: 11px;
+}
+
+#sidebar-profile li {
+    border: 0 !important;
+    line-height: 0.5em;
+    color: #e1e1e1;
+    font-family: Gotham-Book;
+}

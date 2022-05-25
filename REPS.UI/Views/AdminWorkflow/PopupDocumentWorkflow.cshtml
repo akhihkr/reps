@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Assign Document to workflow steps";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    @Scripts.Render("~/Bundles/MultiSelect")
+
+}
+
+@using (Ajax.BeginForm("Index", "AdminWorkflow", null, null, new {id = "ManageDocumentWorkflowStep", enctype = "multipart/form-data" }))
+{
+    <div class="row reset-row manage-workflows">
+
+        <div class="small-12 columns reset-columns">
+            <input type="hidden" id="WorkflowStep" name="WorkflowStep" value="@ViewData["workflowStepID"]" />
+
+            <!-- Test Here -->
+            <select id='optgroup' multiple='multiple' style="position: absolute; left: -9999px;">
+                @foreach (var documentWorkflowStep in ViewData["DocumentTemplateWorkflowStepList"] as IEnumerable<dynamic>)
+                {
+                    if (Convert.ToInt32(documentWorkflowStep["Assigned"]) == 1)
+                    {
+                        <option value='@documentWorkflowStep["DocumentVersionID"]' selected>@documentWorkflowStep["TemplateDisplayName"]</option>
+                    }
+                    //Unassigned
+                    //else if (documentWorkflowStep["Assigned"] == null)
+                    else 
+                    {
+                        <option value='@documentWorkflowStep["DocumentVersionID"]'>@documentWorkflowStep["TemplateDisplayName"]</option>
+                    }
+                }
+            </select>
+
+
+            <!-- End Test -->
+        </div> <!-- End of small-6 columns-->
+    </div> <!-- End of row -->
+}
+
+
+
+
+@section footer
+{
+    <a id="btn-save" onclick="onSuccessToasterMsg(null, null, null, null,'Changes have been successfully saved');onComplete();" class="button align-right dirty-disabled">Close</a>
+}
+
+@section script
+{
+    <script>
+
+        $('#optgroup').multiSelect({
+            selectableHeader: "<div class='custom-header'>Not Assigned</div>",
+            selectionHeader: "<div class='custom-header'>Assigned</div>",
+            selectableOptgroup: true,
+            keepOrder: true,
+
+            afterSelect: function (documentTemplateID) {
+                var workflowStepID = $('#WorkflowStep').val();
+                AjaxControllerCaller('AdminWorkflow', 'SaveDocumentWorkflow', null, { 'documentTemplateID': documentTemplateID[0], 'workflowStepID': workflowStepID });
+            },
+            afterDeselect: function (documentTemplateID) {
+                var workflowStepID = $('#WorkflowStep').val();
+                AjaxControllerCaller('AdminWorkflow', 'UnassignDocumentWorkflow', null, { 'documentTemplateID': documentTemplateID[0], 'workflowStepID': workflowStepID });
+            }
+        });
+
+
+        //dirty function used to check if event listener has been modified and call the updates function
+        $('#ManageDocumentWorkflowStep').dirrty().on("dirty", function () {
+            $("#btn-save").removeClass("dirty-disabled");//removed attribute if in case if anchor tag is used
+        }).on("clean", function () {
+            $("#btn-save").addClass("dirty-disabled")//add attribute if in case if anchor tag is used
+        });
+        //end of dirty function used to check if event listener has been modified and call the updates function
+    </script>
+}

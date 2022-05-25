@@ -1,0 +1,115 @@
+﻿@{
+    Layout = null;
+
+    //User roles
+    string role_view_dealedit = "DE_ED";
+
+
+    // show the message
+    <script type="text/javascript">
+        @Html.Raw(TempData["ToasterMsgDeal"])
+    </script>
+
+    #region if edit deal info is not null or empty
+    ///variables for deal edit info
+    dynamic editDealInfo = null;
+    ///end variables for deal edit info
+    if (ViewData["dealEdit"] != null && (int.Parse((ViewData["dealEdit"] as IEnumerable<dynamic>).Count().ToString()) != 0))
+    {
+        editDealInfo = (ViewData["dealEdit"] as IEnumerable<dynamic>).FirstOrDefault();
+    }
+    #endregion end if edit deal info is not null or empty
+
+}
+
+@using (Ajax.BeginForm("ViewDeal", "Deal",
+                new AjaxOptions
+                {
+                    HttpMethod = "Post",
+                    OnSuccess = "CallPopupPanel('Deal','EditDeal','general-panel',{ URef:'" + @editDealInfo["UniqueReference"] + "'})",
+                }, new { @id = "matter-form" }))
+{
+    <div class="deal-general-details">
+        <input type="hidden" id="UniqueReference" name="UniqueReference" value=@editDealInfo["UniqueReference"]>
+        <ul>
+            <li><span id="client-unique-identifier">@editDealInfo["UniqueReference"]</span></li>
+            <li><span id="client-reference">@editDealInfo["ClientReference"]</span></li>
+            <li><span id="deal-type">@editDealInfo["DealType"]</span></li>
+            @if (Common.CArray.SearchInCookie(role_view_dealedit))
+            {
+                <li><a href="#" id="btn-save-edit-deal" onclick="FormObjectSubmitWithoutDirty('#matter-form');">Edit</a></li>
+            }
+        </ul>
+    </div> <!-- End of matter-general-details -->
+}
+
+<div id="deal-summary">
+    <div class="deal-summary-box">
+        <ul>
+            <li>
+                <i class="material-icons">star_half</i>
+            </li>
+            <li>
+                <span class="deal-summary-title">Initiate</span>
+            </li>
+            <li>
+                <span class="deal-summary-status">@(ViewData["LastWorkflowTaskName"] == null ? "-" : ViewData["LastWorkflowTaskName"])</span>
+            </li>
+        </ul>
+    </div> <!-- End of matter-summary-box -->
+
+    <div class="deal-summary-box">
+        <ul>
+            <li>
+                <i class="material-icons">credit_card</i>
+            </li>
+            <li>
+                <span class="deal-summary-title">Payments</span>
+            </li>
+            <li>
+                <span class="deal-summary-status">@(ViewBag.TotalPayments.ToString() == "0" ? "-" : Common.CString.GetEnumDescription(Global.Enums.Currency.ZAR)  + ViewBag.TotalPayments)</span>
+            </li>
+        </ul>
+    </div> <!-- End of matter-summary-box -->
+
+    <div class="deal-summary-box">
+        <ul>
+            <li>
+                <i class="material-icons">date_range</i>
+            </li>
+            <li>
+                <span class="deal-summary-title">Registration Date</span>
+            </li>
+            <li>
+                <div id="completion-date-data">
+                    @Html.Partial("PartialCompletionDateList")
+                </div>
+            </li>
+        </ul>
+    </div> <!-- End of matter-summary-box -->
+    <div id="matter-mortgage-price" class="deal-summary-box">
+        @Html.Partial("PartialMortgagePriceSum")
+    </div> <!-- End of matter-summary-box -->
+
+    <div id="last-action-by" class="deal-summary-box">
+        @Html.Partial("PartialLastActionBy")
+    </div> <!-- End of matter-summary-box -->
+    @if (ViewData["MandatoryActionsCount"].ToString() == ViewData["CompletedActionsCount"].ToString())
+    {
+        <div id="generate-swift" class="deal-summary-box">
+            <ul>
+                <li>
+                    <i class="material-icons">compare_arrows</i>
+                </li>
+                <li>
+                    <span class="deal-summary-title">Swift Transfer</span>
+                </li>
+                <li>
+                    <a href="#" class="button" onclick="GenerateSwiftFile()">
+                        Initiate SWIFT Transfer
+                    </a>
+                </li>
+            </ul>
+        </div> <!-- End of matter-summary-box -->
+    }
+</div> <!-- End of Deal Summary-->

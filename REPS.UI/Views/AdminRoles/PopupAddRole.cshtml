@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Add Role";
+    Layout = "~/Views/Shared/LayoutPopupPanel.cshtml";
+
+    //AjaxOptions property
+    AjaxOptions options = new AjaxOptions
+    {
+        HttpMethod = "Post",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "content-admin",
+        OnSuccess = "onSuccessToasterMsg(null,null,null,null,'Role has been successfully added')",
+        OnFailure = "OnFailure",
+        OnComplete = "onComplete",
+    };
+    //end of AjaxOptions property
+}
+
+@using (Ajax.BeginForm("AddRole", "AdminRoles", options, new { name = "AddRole", id = "AddRole", enctype = "multipart/form-data" }))
+{
+    <label>
+        Role Name <span>*</span>
+        <input type="text" id="RoleName" name="RoleName" maxlength="@(Convert.ToInt32(Global.Enums.maxLength.varchar255))" data-content="required" />
+    </label>
+}
+@section footer
+{
+    <a class="button align-right" id="btn-add-saved" onclick="CheckIfNameExists('#RoleName', '#btn-add-saved', '#AddRole', null, '@Global.Enums.FieldNameCheck.AdminRoleName', null, true, null);" href="#">Save Role</a>
+}
+
+@section script
+{
+}
